@@ -25,16 +25,16 @@ public class SetOpenTimer : MonoBehaviour
     void SetTimer()
     {
         myText.text = min.ToString() + ":" + sec.ToString();
-        if (GameMng.Instance.isOpen)
+        if (GameMng.Instance.getOpenData)
         {
-            min = Mathf.FloorToInt(GameMng.Instance.openTime / 60);
-            sec = Mathf.FloorToInt(GameMng.Instance.openTime % 60);
+            min = Mathf.FloorToInt(GameMng.Instance.getOpenTime / 60);
+            sec = Mathf.FloorToInt(GameMng.Instance.getOpenTime % 60);
         }
     }
 
     public void PlusTime()
     {
-        if (GameMng.Instance.isOpen == false)
+        if (GameMng.Instance.getOpenData == false)
         {
             sec += 5;
             if (sec >= 60)
@@ -47,7 +47,7 @@ public class SetOpenTimer : MonoBehaviour
 
     public void MinusTime()
     {
-        if (GameMng.Instance.isOpen == false && (min >= 0 && sec >= 0))
+        if (GameMng.Instance.getOpenData == false && (min >= 0 && sec >= 0))
         {
             sec -= 5;
             if (sec < 0 && min - 1 > -1)
@@ -61,7 +61,6 @@ public class SetOpenTimer : MonoBehaviour
     public void SendTimeData()
     {
         timer = (min * 60) + sec;
-        GameMng.Instance.openTime = timer;
-        GameMng.Instance.isOpen = true;
+        GameMng.Instance.OpenCafe(timer);
     }
 }

@@ -1,12 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameMng : MonoBehaviour
 {
-    public float openTime;
-    public bool isOpen = false;
+    public UnityEvent openEvent;
+    public UnityEvent closeEvent;
+
+    private float openTime;
+    private bool isOpen = false;
+
     public int money;
+    public bool getOpenData
+    {
+        get
+        {
+            return isOpen;
+        }
+    }
+    public float getOpenTime
+    {
+        get
+        {
+            return openTime;
+        }
+    }
 
     private static GameMng instance;
     public static GameMng Instance
@@ -43,10 +62,25 @@ public class GameMng : MonoBehaviour
         if (isOpen == true)
         {
             openTime -= 1 * Time.deltaTime;
-            if (openTime <= 0)
+            if (openTime <= 0 && isOpen == true)
             {
-                isOpen = false;
+                CloseCafe();
             }
         }
+    }
+
+    public void OpenCafe(float setOpenTime)
+    {
+        Debug.Log("Open");
+        isOpen = true;
+        openTime = setOpenTime;
+        openEvent.Invoke();
+    }
+
+    public void CloseCafe()
+    {
+        Debug.Log("Close");
+        isOpen = false;
+        closeEvent.Invoke();
     }
 }
