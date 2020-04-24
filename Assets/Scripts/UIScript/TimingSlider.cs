@@ -9,6 +9,8 @@ public class TimingSlider : MonoBehaviour
     public Slider mySlider;
     public bool isLeft = false;
     public bool isClick = false;
+    [Range(1, 30)]
+    public float sliderSpeed = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,11 +37,11 @@ public class TimingSlider : MonoBehaviour
 
         if (isLeft && !isClick)
         {
-            mySlider.value -= 1 * Time.deltaTime;
+            mySlider.value -= sliderSpeed * Time.deltaTime;
         }
         else if (!isLeft && !isClick)
         {
-            mySlider.value += 1 * Time.deltaTime;
+            mySlider.value += sliderSpeed * Time.deltaTime;
         }
     }
 
