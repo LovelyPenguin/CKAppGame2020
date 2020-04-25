@@ -51,11 +51,11 @@ public class TimingSlider : MonoBehaviour
         {
             if (mySlider.value > 1)
             {
-                Debug.Log(100 * (mySlider.maxValue - mySlider.value));
+                Debug.Log(100 * (mySlider.maxValue - mySlider.value) + "%");
             }
             else if (mySlider.value <= 1)
             {
-                Debug.Log(100 * mySlider.value);
+                Debug.Log(100 * mySlider.value + "%");
             }
         }
     }
