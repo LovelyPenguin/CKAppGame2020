@@ -8,6 +8,8 @@ public class GameMng : MonoBehaviour
     public UnityEvent openEvent;
     public UnityEvent closeEvent;
 
+    GameObject dustGenerator;
+
     private float openTime;
     private bool isOpen = false;
 
@@ -53,7 +55,7 @@ public class GameMng : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        dustGenerator = GameObject.Find("DustGenerator");
     }
 
     // Update is called once per frame
@@ -65,6 +67,7 @@ public class GameMng : MonoBehaviour
             if (openTime <= 0 && isOpen == true)
             {
                 CloseCafe();
+                dustGenerator.GetComponent<DustGenerator>().Generate();
             }
         }
     }
