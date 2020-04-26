@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
@@ -28,7 +27,6 @@ public class DragRaccoon : MonoBehaviour
     void OnMouseDown()
     {
         originCoord = transform.position;
-
         transform.Translate(0, mDeltaY, 0);
 
         mZCoord = 1;
