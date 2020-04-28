@@ -8,12 +8,9 @@ public class GameMng : MonoBehaviour
     public UnityEvent openEvent;
     public UnityEvent closeEvent;
 
-<<<<<<< Updated upstream
-=======
     GameObject dustGenerator;
     GameObject RaccoonMng;
 
->>>>>>> Stashed changes
     private float openTime;
     [SerializeField]
     private bool isOpen = false;
@@ -61,13 +58,9 @@ public class GameMng : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-<<<<<<< Updated upstream
-        
-=======
         dustGenerator = GameObject.Find("DustGenerator");
         RaccoonMng = GameObject.Find("RaccoonManager");
         closeEvent.AddListener(dustGenerator.GetComponent<DustGenerator>().Generate);
->>>>>>> Stashed changes
     }
 
     // Update is called once per frame
@@ -81,8 +74,6 @@ public class GameMng : MonoBehaviour
                 CloseCafe();
             }
         }
-<<<<<<< Updated upstream
-=======
         else
         {
             if (RaccoonMng.GetComponent<RaccoonMng>().isRCOnDrag())
@@ -141,6 +132,5 @@ public class GameMng : MonoBehaviour
         }
 
         Camera.main.transform.Translate(Offset);
->>>>>>> Stashed changes
     }
 }
