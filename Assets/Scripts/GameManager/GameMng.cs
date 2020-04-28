@@ -15,6 +15,7 @@ public class GameMng : MonoBehaviour
 
 >>>>>>> Stashed changes
     private float openTime;
+    [SerializeField]
     private bool isOpen = false;
 
     public int money;

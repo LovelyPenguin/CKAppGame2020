@@ -76,7 +76,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uAC1C\uC810 \uBA3C\uC800"
+  m_Text: Cafe Close
 --- !u!1 &6269462625501186433
 GameObject:
   m_ObjectHideFlags: 0
