@@ -8,9 +8,12 @@ public class TimingSlider : MonoBehaviour
 {
     public Slider mySlider;
     public bool isLeft = false;
-    public bool isClick = false;
+    private bool isClick = false;
     [Range(1, 30)]
     public float sliderSpeed = 1f;
+    [SerializeField]
+    private Text percentText;
+    private float percent;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +23,6 @@ public class TimingSlider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PercentCalculator();
         MoveSlider();
     }
 
@@ -51,12 +53,24 @@ public class TimingSlider : MonoBehaviour
         {
             if (mySlider.value > 1)
             {
-                Debug.Log(100 * (mySlider.maxValue - mySlider.value) + "%");
+                percent = 100 * (mySlider.maxValue - mySlider.value);
+                Debug.Log(percent);
             }
             else if (mySlider.value <= 1)
             {
-                Debug.Log(100 * mySlider.value + "%");
+                percent = 100 * mySlider.value;
+                Debug.Log(percent);
             }
         }
+    }
+
+    public void PercentConfirm()
+    {
+        isClick = true;
+        PercentCalculator();
+        percentText.text = percent.ToString();
+        isClick = false;
+        mySlider.value = 0;
+        gameObject.SetActive(false);
     }
 }
