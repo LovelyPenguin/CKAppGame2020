@@ -14,6 +14,14 @@ public class TimingSlider : MonoBehaviour
     [SerializeField]
     private Text percentText;
     private float percent;
+
+    public float getPercentValue
+    {
+        get
+        {
+            return percent;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -68,7 +76,6 @@ public class TimingSlider : MonoBehaviour
     {
         isClick = true;
         PercentCalculator();
-        percentText.text = percent.ToString();
         isClick = false;
         mySlider.value = 0;
         gameObject.SetActive(false);

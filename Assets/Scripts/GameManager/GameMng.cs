@@ -9,6 +9,7 @@ public class GameMng : MonoBehaviour
     public UnityEvent closeEvent;
 
     private float openTime;
+    [SerializeField]
     private bool isOpen = false;
 
     public int money;

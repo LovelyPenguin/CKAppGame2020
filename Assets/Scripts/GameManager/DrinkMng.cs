@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DrinkMng : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class DrinkMng : MonoBehaviour
     private GameObject drinkMakeBtn;
     [SerializeField]
     private GameObject tabBtn;
+    [SerializeField]
+    private Text percentText;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +46,12 @@ public class DrinkMng : MonoBehaviour
         {
             previousJuiceData.SetActive(false);
         }
+
+        SetInvisibleButton();
+
         currentJuice.SetActive(true);
+
+        PercentTextInitialize();
 
         previousJuiceData = juiceData;
     }
@@ -71,11 +79,27 @@ public class DrinkMng : MonoBehaviour
                 }
 
                 timingBar.SetActive(true);
+                currentJuice.GetComponent<JuiceObject>().SetDecoSprite(false);
+                currentJuice.GetComponent<JuiceObject>().FillMainSprite(1);
+
                 if (slideGameIsStart)
                 {
                     timingBar.GetComponent<TimingSlider>().PercentConfirm();
+
+                    currentJuice.GetComponent<JuiceObject>().isComplete = true;
+                    currentJuice.GetComponent<JuiceObject>().percentValue = timingBar.GetComponent<TimingSlider>().getPercentValue;
+
+                    if (timingBar.GetComponent<TimingSlider>().getPercentValue >= 50)
+                    {
+                        currentJuice.GetComponent<JuiceObject>().SetDecoSprite(true);
+                    }
+                    PercentTextInitialize();
                     MiniGameEnd();
                 }
+            }
+            else
+            {
+                currentJuice.GetComponent<JuiceObject>().FillMainSprite();
             }
         }
     }
@@ -94,21 +118,61 @@ public class DrinkMng : MonoBehaviour
         return false;
     }
 
+    private void PercentTextInitialize()
+    {
+        if (currentJuice.GetComponent<JuiceObject>().percentValue <= 0)
+        {
+            percentText.text = null;
+        }
+        else
+        {
+            if (Mathf.Round(currentJuice.GetComponent<JuiceObject>().percentValue) >= 80 &&
+                Mathf.Round(currentJuice.GetComponent<JuiceObject>().percentValue) < 90)
+            {
+                Debug.Log("Over 80%");
+            }
+            else if (Mathf.Round(currentJuice.GetComponent<JuiceObject>().percentValue) >= 90)
+            {
+                Debug.Log("Over 90%");
+            }
+
+            percentText.text = Mathf.Round(currentJuice.GetComponent<JuiceObject>().percentValue).ToString() + "%";
+        }
+    }
+
+    private void SetInvisibleButton()
+    {
+        if (currentJuice.GetComponent<JuiceObject>().isComplete == true)
+        {
+            drinkMakeBtn.SetActive(false);
+        }
+        else
+        {
+            drinkMakeBtn.SetActive(true);
+        }
+    }
+
     private void MiniGameEnd()
     {
         timingBar.SetActive(false);
         tabBtn.SetActive(false);
-        drinkMakeBtn.SetActive(true);
+        //currentJuice.GetComponent<JuiceObject>().SetDecoSprite(true);
         isStartMiniGame = false;
         timerOn = false;
         slideGameIsStart = false;
         tabCounter = 0;
+        SetInvisibleButton();
     }
 
     private IEnumerator SliderActive()
     {
         yield return new WaitForSeconds(1f);
-        Debug.Log("asdasd");
         slideGameIsStart = true;
+    }
+
+    // 나중에 음료 배달기능이 완성되면 사용할 것
+    public void DeliveryDrink()
+    {
+        currentJuice.GetComponent<JuiceObject>().ResetAllValue();
     }
 }
