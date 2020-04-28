@@ -8,10 +8,17 @@ public class GameMng : MonoBehaviour
     public UnityEvent openEvent;
     public UnityEvent closeEvent;
 
+<<<<<<< Updated upstream
+=======
+    GameObject dustGenerator;
+    GameObject RaccoonMng;
+
+>>>>>>> Stashed changes
     private float openTime;
     private bool isOpen = false;
 
     public int money;
+
     public bool getOpenData
     {
         get
@@ -53,7 +60,13 @@ public class GameMng : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< Updated upstream
         
+=======
+        dustGenerator = GameObject.Find("DustGenerator");
+        RaccoonMng = GameObject.Find("RaccoonManager");
+        closeEvent.AddListener(dustGenerator.GetComponent<DustGenerator>().Generate);
+>>>>>>> Stashed changes
     }
 
     // Update is called once per frame
@@ -67,6 +80,17 @@ public class GameMng : MonoBehaviour
                 CloseCafe();
             }
         }
+<<<<<<< Updated upstream
+=======
+        else
+        {
+            if (RaccoonMng.GetComponent<RaccoonMng>().isRCOnDrag())
+            {
+                Debug.Log("1");
+                MoveScreenEdge();
+            }
+        }
+        MoveScreenEdge();
     }
 
     public void OpenCafe(float setOpenTime)
@@ -82,5 +106,40 @@ public class GameMng : MonoBehaviour
         Debug.Log("Close");
         isOpen = false;
         closeEvent.Invoke();
+    }
+
+    public void MoveScreenEdge()
+    {
+        float edge = 20.0f;
+        UnityEngine.Vector3 mousePos = Input.mousePosition;
+        UnityEngine.Vector3 Offset = new UnityEngine.Vector3(0, 0, 0);
+
+        if (mousePos.x < edge && mousePos.x > 0)
+        {
+            Offset.x = -0.05f;
+        }
+        else if (Screen.width - mousePos.x < edge && mousePos.x < Screen.width)
+        {
+            Offset.x = 0.05f;
+        }
+        else
+        {
+            Offset.x = 0.0f;
+        }
+        if (mousePos.y < edge && mousePos.y > 0)
+        {
+            Offset.y = -0.05f;
+        }
+        else if (Screen.height - mousePos.y < edge && mousePos.y < Screen.height)
+        {
+            Offset.y = 0.05f;
+        }
+        else
+        {
+            Offset.y = 0.0f;
+        }
+
+        Camera.main.transform.Translate(Offset);
+>>>>>>> Stashed changes
     }
 }

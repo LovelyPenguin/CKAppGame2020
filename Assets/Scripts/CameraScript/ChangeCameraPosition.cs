@@ -21,7 +21,7 @@ public class ChangeCameraPosition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void PopInCamera()
@@ -39,4 +39,6 @@ public class ChangeCameraPosition : MonoBehaviour
             Mathf.Lerp(mainCam.transform.position.y, cameraInitialValueY, Time.deltaTime * returnSpeed),
             mainCam.transform.position.z);
     }
+
+   
 }
