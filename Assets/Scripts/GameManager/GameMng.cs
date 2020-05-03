@@ -11,7 +11,7 @@ public class GameMng : MonoBehaviour
     GameObject dustGenerator;
     GameObject RaccoonMng;
 
-    private float openTime;
+    public float openTime;
     [SerializeField]
     private bool isOpen = false;
 
@@ -22,13 +22,6 @@ public class GameMng : MonoBehaviour
         get
         {
             return isOpen;
-        }
-    }
-    public float getOpenTime
-    {
-        get
-        {
-            return openTime;
         }
     }
 
@@ -59,8 +52,7 @@ public class GameMng : MonoBehaviour
     void Start()
     {
         dustGenerator = GameObject.Find("DustGenerator");
-        // 에러 떄문에 임시로 주석처리. 나중에 풀어줄 것
-        //RaccoonMng = GameObject.Find("RaccoonManager");
+        RaccoonMng = GameObject.Find("RaccoonManager");
         closeEvent.AddListener(dustGenerator.GetComponent<DustGenerator>().Generate);
     }
 
@@ -77,12 +69,11 @@ public class GameMng : MonoBehaviour
         }
         else
         {
-            // 에러 때문에 임시로 주석처리 함 나중에 풀어줄 것
-            //if (RaccoonMng.GetComponent<RaccoonMng>().isRCOnDrag())
-            //{
-            //    Debug.Log("1");
-            //    MoveScreenEdge();
-            //}
+            if (RaccoonMng.GetComponent<RaccoonMng>().isRCOnDrag())
+            {
+                Debug.Log("1");
+                MoveScreenEdge();
+            }
         }
         MoveScreenEdge();
     }
