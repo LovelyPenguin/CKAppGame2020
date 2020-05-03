@@ -59,7 +59,8 @@ public class GameMng : MonoBehaviour
     void Start()
     {
         dustGenerator = GameObject.Find("DustGenerator");
-        RaccoonMng = GameObject.Find("RaccoonManager");
+        // 에러 떄문에 임시로 주석처리. 나중에 풀어줄 것
+        //RaccoonMng = GameObject.Find("RaccoonManager");
         closeEvent.AddListener(dustGenerator.GetComponent<DustGenerator>().Generate);
     }
 
@@ -76,11 +77,12 @@ public class GameMng : MonoBehaviour
         }
         else
         {
-            if (RaccoonMng.GetComponent<RaccoonMng>().isRCOnDrag())
-            {
-                Debug.Log("1");
-                MoveScreenEdge();
-            }
+            // 에러 때문에 임시로 주석처리 함 나중에 풀어줄 것
+            //if (RaccoonMng.GetComponent<RaccoonMng>().isRCOnDrag())
+            //{
+            //    Debug.Log("1");
+            //    MoveScreenEdge();
+            //}
         }
         MoveScreenEdge();
     }
@@ -132,5 +134,6 @@ public class GameMng : MonoBehaviour
         }
 
         Camera.main.transform.Translate(Offset);
+
     }
 }

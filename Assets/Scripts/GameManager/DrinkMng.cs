@@ -175,4 +175,10 @@ public class DrinkMng : MonoBehaviour
     {
         currentJuice.GetComponent<JuiceObject>().ResetAllValue();
     }
+
+    public void UpdateContent()
+    {
+        percentText.text = null;
+        drinkMakeBtn.SetActive(true);
+    }
 }

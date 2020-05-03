@@ -14,6 +14,8 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler
     public bool isComplete = false;
     public float percentValue;
 
+    RaycastHit hit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +34,7 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void ResetAllValue()
     {
-        isComplete = true;
+        isComplete = false;
         percentValue = 0f;
         mainSprite.SetActive(true);
         decoSprite.SetActive(true);
@@ -69,5 +71,31 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler
         Debug.Log("Drag End");
         gameObject.transform.position = initialValue;
         gameObject.transform.localScale = new Vector3(1f, 1f);
+
+        // 추후 라쿤 관련 클래스와 연계
+        if (true)
+        {
+            Transform mouseVector = new GameObject().GetComponent<Transform>();
+            mouseVector.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mouseVector.rotation = Camera.main.transform.rotation;
+
+            Debug.DrawRay(mouseVector.position, mouseVector.forward * 30, Color.blue, 1f);
+
+            if (Physics.Raycast(mouseVector.position, mouseVector.forward * 30, out hit))
+            {
+                hit.transform.GetComponent<MeshRenderer>().material.color = Color.red;
+                StartCoroutine(TestFunc(hit.transform.GetComponent<MeshRenderer>()));
+                ResetAllValue();
+                GameMng.Instance.GetComponent<DrinkMng>().UpdateContent();
+            }
+
+            Destroy(mouseVector.gameObject);
+        }
+    }
+
+    IEnumerator TestFunc(MeshRenderer mesh)
+    {
+        yield return new WaitForSeconds(1f);
+        mesh.material.color = Color.white;
     }
 }
