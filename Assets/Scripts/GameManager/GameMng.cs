@@ -52,8 +52,7 @@ public class GameMng : MonoBehaviour
     void Start()
     {
         dustGenerator = GameObject.Find("DustGenerator");
-        // 임시 주석임
-        //RaccoonMng = GameObject.Find("RaccoonManager");
+        RaccoonMng = GameObject.Find("RaccoonManager");
         closeEvent.AddListener(dustGenerator.GetComponent<DustGenerator>().Generate);
     }
 
@@ -70,12 +69,11 @@ public class GameMng : MonoBehaviour
         }
         else
         {
-            // 임시 주석임
-            //if (RaccoonMng.GetComponent<RaccoonMng>().isRCOnDrag())
-            //{
-            //    Debug.Log("1");
-            //    MoveScreenEdge();
-            //}
+            if (RaccoonMng.GetComponent<RaccoonMng>().isRCOnDrag())
+            {
+                Debug.Log("1");
+                MoveScreenEdge();
+            }
         }
         MoveScreenEdge();
     }
