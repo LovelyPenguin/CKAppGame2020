@@ -53,7 +53,8 @@ public class GameMng : MonoBehaviour
     {
         dustGenerator = GameObject.Find("DustGenerator");
         RaccoonMng = GameObject.Find("RaccoonManager");
-        closeEvent.AddListener(dustGenerator.GetComponent<DustGenerator>().Generate);
+        // 임시조치
+        //closeEvent.AddListener(dustGenerator.GetComponent<DustGenerator>().Generate);
     }
 
     // Update is called once per frame

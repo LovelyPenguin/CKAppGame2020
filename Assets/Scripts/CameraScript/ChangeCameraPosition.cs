@@ -21,10 +21,11 @@ public class ChangeCameraPosition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(mainCam.GetComponent<CameraController>().IsMoved())
-        {
-            cameraInitialValueY = mainCam.transform.position.y;
-        }
+        // 임시조치
+        //if(mainCam.GetComponent<CameraController>().IsMoved())
+        //{
+        //    cameraInitialValueY = mainCam.transform.position.y;
+        //}
     }
 
     public void PopInCamera()
