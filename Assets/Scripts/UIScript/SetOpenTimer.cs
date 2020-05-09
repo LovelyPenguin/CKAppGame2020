@@ -10,6 +10,9 @@ public class SetOpenTimer : MonoBehaviour
     public int min;
     public int sec;
 
+    [SerializeField]
+    private GameObject[] buttons;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,5 +65,18 @@ public class SetOpenTimer : MonoBehaviour
     {
         timer = (min * 60) + sec;
         GameMng.Instance.OpenCafe(timer);
+
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].SetActive(false);
+        }
+    }
+
+    public void ReturnButtons()
+    {
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].SetActive(true);
+        }
     }
 }
