@@ -10,7 +10,7 @@ public class RaccoonMng : MonoBehaviour
     public GameObject[] RC = new GameObject[RaccoonCount];
     GameObject[] Raccoon = new GameObject[RaccoonCount];
     bool[] RaccoonExist = new bool[RaccoonCount];
-    bool[] RaccoonUnlock = new bool[RaccoonCount];
+    public bool[] RaccoonUnlock = new bool[RaccoonCount];
     int[] RaccoonRank = new int[RaccoonCount];
 
     // Start is called before the first frame update
@@ -23,7 +23,10 @@ public class RaccoonMng : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(isRCOnDrag())
+        {
+            Camera.main.GetComponent<CameraController>().MoveScreenEdge();
+        }
     }
 
     public void GenerateRaccoon()
@@ -36,8 +39,10 @@ public class RaccoonMng : MonoBehaviour
             
             if (!RaccoonExist[selectedRC])
             {
-                Raccoon[selectedRC] = Instantiate(RC[selectedRC]) as GameObject;
+                RC[selectedRC].transform.position = new Vector3(5, 1, 5);
+                RC[selectedRC].GetComponent<RaccoonController>().SetRCActive(true);
                 RaccoonExist[selectedRC] = true;
+                Debug.Log("Raccoon Created!");
             }
         }
     }
@@ -46,9 +51,8 @@ public class RaccoonMng : MonoBehaviour
     {
         for (int i = 0; i < RaccoonCount; i++)
         {
-            if (RaccoonExist[i] && RC[i].GetComponent<RaccoonController>().GetIsDrag())
+            if (RC[i].GetComponent<RaccoonController>().GetIsDrag())
             {
-                Debug.Log("Raccoon is moving");
                 return true;
             }
         }

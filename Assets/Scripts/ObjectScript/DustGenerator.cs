@@ -41,8 +41,8 @@ public class DustGenerator : MonoBehaviour
                     item = Instantiate(dust3) as GameObject;
                     break;
             }
-            float xPos = Random.Range(0.0f, 10.0f);
-            float zPos = Random.Range(0.0f, 10.0f);
+            float xPos = Random.Range(0.0f, 9.0f);
+            float zPos = Random.Range(0.0f, 9.0f);
             item.transform.position = new Vector3(xPos, 1, zPos);
         }
         Debug.Log("Dust generated");
