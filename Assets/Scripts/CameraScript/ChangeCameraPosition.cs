@@ -21,23 +21,28 @@ public class ChangeCameraPosition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(mainCam.GetComponent<CameraController>().IsMoved())
+        {
+            cameraInitialValueY = mainCam.transform.position.y;
+        }
     }
 
     public void PopInCamera()
     {
-        mainCam.transform.position = new Vector3(
-            mainCam.transform.position.x,
-            Mathf.Lerp(mainCam.transform.position.y, cameraMovePositionY, Time.deltaTime * returnSpeed),
-            mainCam.transform.position.z);
+        if (mainCam.transform.position.y != cameraMovePositionY)
+            mainCam.transform.position = new Vector3(
+                mainCam.transform.position.x,
+                Mathf.Lerp(mainCam.transform.position.y, cameraMovePositionY, Time.deltaTime * returnSpeed),
+                mainCam.transform.position.z);
     }
 
     public void PopOutCamera()
     {
-        mainCam.transform.position = new Vector3(
-            mainCam.transform.position.x,
-            Mathf.Lerp(mainCam.transform.position.y, cameraInitialValueY, Time.deltaTime * returnSpeed),
-            mainCam.transform.position.z);
+        if (mainCam.transform.position.y != cameraInitialValueY)
+            mainCam.transform.position = new Vector3(
+                mainCam.transform.position.x,
+                Mathf.Lerp(mainCam.transform.position.y, cameraInitialValueY, Time.deltaTime * returnSpeed),
+                mainCam.transform.position.z);
     }
 
    

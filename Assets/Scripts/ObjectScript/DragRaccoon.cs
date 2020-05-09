@@ -20,32 +20,55 @@ public class DragRaccoon : MonoBehaviour
     public float mZCoord;
     private float mDeltaY = 0.3f;
     public GameObject Shadow;
-    GameObject item;
+    GameObject Shadowinst;
 
     RaycastHit hit;
 
     void OnMouseDown()
     {
+        Debug.Log("RCDrag_OnMouseDown");
         originCoord = transform.position;
         transform.Translate(0, mDeltaY, 0);
 
         mZCoord = 1;
-        item = Instantiate(Shadow) as GameObject;
+        Shadowinst = Instantiate(Shadow) as GameObject;
         Physics.Raycast(transform.position - new UnityEngine.Vector3(0, mDeltaY, 0), transform.forward, out hit, Mathf.Infinity);
-        item.transform.position = hit.point + new UnityEngine.Vector3(0, 0.1f, 0);
+        Shadowinst.transform.position = transform.position + new UnityEngine.Vector3(0, -0.1f, 0);
     }
 
     void OnMouseUp()
     {
-        if (Physics.Raycast(transform.position - new UnityEngine.Vector3(0, mDeltaY, 0), transform.forward, out hit, Mathf.Infinity) && hit.transform.gameObject.tag == "Map")
+        Debug.Log("RCDrag_OnMouseUp");
+        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
         {
-            transform.position = hit.point + new UnityEngine.Vector3(0,mDeltaY,0);
+            if (hit.transform.gameObject.tag == "Ground")
+            {
+                transform.position = hit.point + new UnityEngine.Vector3(0, mDeltaY, 0);
+                Debug.Log("GroundHit");
+            }
+            else if (hit.transform.gameObject.tag == "WallL")
+            {
+                transform.position = hit.point + new UnityEngine.Vector3(0, 0, -1.5f);
+                Debug.Log("WallLHit");
+            }
+            else if (hit.transform.gameObject.tag == "WallR")
+            {
+                transform.position = hit.point + new UnityEngine.Vector3(-1.5f, 0, 0);
+                Debug.Log("WallRHit");
+            }
+            else
+            {
+                transform.position = originCoord;
+                Debug.Log("ElseHit");
+                Debug.Log(hit.collider.gameObject.name);
+            }
         }
         else
         {
             transform.position = originCoord;
+            Debug.Log("NothingHit");
         }
-        Destroy(item);
+        Destroy(Shadowinst);
     }
 
     private UnityEngine.Vector3 GetMouseWorldPos()
@@ -60,8 +83,9 @@ public class DragRaccoon : MonoBehaviour
 
     void OnMouseDrag()
     {
+        //Debug.Log("RCDrag_OnMouseDrag");
         transform.position = GetMouseWorldPos();
         Physics.Raycast(transform.position - new UnityEngine.Vector3(0, mDeltaY, 0), transform.forward, out hit, Mathf.Infinity);
-        item.transform.position = hit.point + new UnityEngine.Vector3(0, 0.1f, 0);
+        Shadowinst.transform.position = transform.position + new UnityEngine.Vector3(0, -0.1f, 0);
     }
 }

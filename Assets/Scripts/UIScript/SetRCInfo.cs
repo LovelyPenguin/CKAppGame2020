@@ -10,6 +10,7 @@ public class SetRCInfo : MonoBehaviour
     GameObject RCMng;
     public GameObject[] Stars = new GameObject[5];
     public Sprite[] StarSprite = new Sprite[2];
+    public Text txt;
 
     private int CurrentRaccoon;
 
@@ -38,9 +39,15 @@ public class SetRCInfo : MonoBehaviour
     {
         GetComponent<Image>().sprite = Rc[CurrentRaccoon];
         if (RCMng.GetComponent<RaccoonMng>().GetRCUnlockData(CurrentRaccoon))
+        {
             GetComponent<Image>().color = Color.white;
+            txt.text = "업그레이드";
+        }
         else
+        {
             GetComponent<Image>().color = Color.black;
+            txt.text = "해금";
+        }
         SetStar(RCMng.GetComponent<RaccoonMng>().GetRCRank(CurrentRaccoon));
     }
     void SetStar(int num)
@@ -82,10 +89,25 @@ public class SetRCInfo : MonoBehaviour
         RaccoonImageUpdate();
     }
 
-    public void RCUpgrade()
+    public void RCInterAct()
+    {
+        if(RCMng.GetComponent<RaccoonMng>().RaccoonUnlock[CurrentRaccoon])
+        {
+            RCUpgrade();
+        }
+        else
+        {
+            RCUnlock();
+        }
+    }
+    private void RCUpgrade()
     {
         RCMng.GetComponent<RaccoonMng>().UpgradeRC(CurrentRaccoon);
         RaccoonImageUpdate();
     }
-
+    private void RCUnlock()
+    {
+        RCMng.GetComponent<RaccoonMng>().UnlockRC(CurrentRaccoon);
+        RaccoonImageUpdate();
+    }
 }
