@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class SendDragData : MonoBehaviour, IDragHandler, IEndDragHandler
 {
@@ -19,6 +20,7 @@ public class SendDragData : MonoBehaviour, IDragHandler, IEndDragHandler
         parentRect = gameObject.transform.parent.GetComponent<RectTransform>();
         previusAnchorPosition = parentRect.anchoredPosition.y;
         menuMng = parentRect.GetComponent<UIPopInOut>();
+        gameObject.GetComponent<Button>().onClick.AddListener(OnClick);
     }
 
     void Update()
@@ -52,5 +54,12 @@ public class SendDragData : MonoBehaviour, IDragHandler, IEndDragHandler
     public void OnEndDrag(PointerEventData data)
     {
         menuMng.isDrag = false;
+    }
+
+    public void OnClick()
+    {
+        onDrag.Invoke();
+        menuMng.isOpen = true;
+        menuMng.ActivateCloseButton();
     }
 }
