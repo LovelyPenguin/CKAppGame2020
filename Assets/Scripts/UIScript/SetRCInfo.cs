@@ -5,9 +5,12 @@ using UnityEngine.UI;
 
 public class SetRCInfo : MonoBehaviour
 {
-    static int RaccoonCount = 5;
+    static int RaccoonCount = 10;
+    RaccoonMng RCMng;
+    Image RCImage;
+
+    public GameObject RCPreview;
     public Sprite[] Rc = new Sprite[RaccoonCount];
-    GameObject RCMng;
     public GameObject[] Stars = new GameObject[5];
     public Sprite[] StarSprite = new Sprite[2];
     public Text txt;
@@ -25,7 +28,8 @@ public class SetRCInfo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        RCMng = GameObject.Find("RaccoonManager");
+        RCImage = RCPreview.GetComponent<Image>();
+        RCMng = GameObject.Find("RaccoonManager").GetComponent<RaccoonMng>();
         CurrentRaccoon = 0;
     }
 
@@ -37,18 +41,24 @@ public class SetRCInfo : MonoBehaviour
 
     private void RaccoonImageUpdate()
     {
-        GetComponent<Image>().sprite = Rc[CurrentRaccoon];
-        if (RCMng.GetComponent<RaccoonMng>().GetRCUnlockData(CurrentRaccoon))
+        int RCRank = RCMng.GetRCRank(CurrentRaccoon);
+
+        RCImage.sprite = Rc[CurrentRaccoon];
+        if (RCMng.GetRCUnlockData(CurrentRaccoon))
         {
-            GetComponent<Image>().color = Color.white;
-            txt.text = "업그레이드";
+            RCImage.color = Color.white;
+            if (RCRank == 5)
+                txt.text = "업그레이드 완료";
+            else
+                txt.text = "업그레이드 " + RCMng.GetRCCost(CurrentRaccoon, RCRank).ToString() + "원";
+
         }
         else
         {
-            GetComponent<Image>().color = Color.black;
-            txt.text = "해금";
+            RCImage.color = Color.black;
+            txt.text = "해금 " + RCMng.GetRCCost(CurrentRaccoon, RCRank).ToString() + "원";
         }
-        SetStar(RCMng.GetComponent<RaccoonMng>().GetRCRank(CurrentRaccoon));
+        SetStar(RCRank);
     }
     void SetStar(int num)
     {
@@ -63,35 +73,15 @@ public class SetRCInfo : MonoBehaviour
         }
     }
 
-    public void SetRaccoon1()
+    public void SetRaccoon(int RCNum)
     {
-        CurrentRaccoon = 0;
-        RaccoonImageUpdate();
-    }
-    public void SetRaccoon2()
-    {
-        CurrentRaccoon = 1;
-        RaccoonImageUpdate();
-    }
-    public void SetRaccoon3()
-    {
-        CurrentRaccoon = 2;
-        RaccoonImageUpdate();
-    }
-    public void SetRaccoon4()
-    {
-        CurrentRaccoon = 3;
-        RaccoonImageUpdate();
-    }
-    public void SetRaccoon5()
-    {
-        CurrentRaccoon = 4;
+        CurrentRaccoon = RCNum;
         RaccoonImageUpdate();
     }
 
     public void RCInterAct()
     {
-        if(RCMng.GetComponent<RaccoonMng>().RaccoonUnlock[CurrentRaccoon])
+        if(RCMng.RaccoonUnlock[CurrentRaccoon])
         {
             RCUpgrade();
         }
@@ -102,12 +92,12 @@ public class SetRCInfo : MonoBehaviour
     }
     private void RCUpgrade()
     {
-        RCMng.GetComponent<RaccoonMng>().UpgradeRC(CurrentRaccoon);
+        RCMng.UpgradeRC(CurrentRaccoon);
         RaccoonImageUpdate();
     }
     private void RCUnlock()
     {
-        RCMng.GetComponent<RaccoonMng>().UnlockRC(CurrentRaccoon);
+        RCMng.UnlockRC(CurrentRaccoon);
         RaccoonImageUpdate();
     }
 }

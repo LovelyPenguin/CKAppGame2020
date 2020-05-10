@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     private bool isMoved;
+    private Vector3 initPos;
 
     public bool IsMoved()
     {
@@ -17,6 +18,7 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         isMoved = false;
+        initPos = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
@@ -25,9 +27,19 @@ public class CameraController : MonoBehaviour
         
     }
 
+    public void RememberPos()
+    {
+        initPos = transform.position;
+    }
+
+    public void RollbackPos()
+    {
+        transform.position = initPos;
+    }
+
     public void MoveScreenEdge()
     {
-        float edge = 20.0f;
+        float edge = 50.0f;
         UnityEngine.Vector3 mousePos = Input.mousePosition;
         UnityEngine.Vector3 Offset = new UnityEngine.Vector3(0, 0, 0);
 

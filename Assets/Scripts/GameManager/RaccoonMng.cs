@@ -6,18 +6,20 @@ using UnityEngine;
 public class RaccoonMng : MonoBehaviour
 {
     private int selectedRC;
-    private static int RaccoonCount = 5;
+    private static int RaccoonCount = 10;
     public GameObject[] RC = new GameObject[RaccoonCount];
     GameObject[] Raccoon = new GameObject[RaccoonCount];
     bool[] RaccoonExist = new bool[RaccoonCount];
     public bool[] RaccoonUnlock = new bool[RaccoonCount];
     int[] RaccoonRank = new int[RaccoonCount];
+    private bool isCameraChanged;
+    GameMng GMng;
 
     // Start is called before the first frame update
     void Start()
     {
+        GMng = GameObject.Find("GameManager").GetComponent<GameMng>();
         UnlockRC(0);
-        UnlockRC(1);
     }
 
     // Update is called once per frame
@@ -25,7 +27,17 @@ public class RaccoonMng : MonoBehaviour
     {
         if(isRCOnDrag())
         {
+            if(!isCameraChanged)
+            {
+                isCameraChanged = true;
+                Camera.main.GetComponent<CameraController>().RememberPos();
+            }
             Camera.main.GetComponent<CameraController>().MoveScreenEdge();
+            
+        }
+        else
+        {
+            isCameraChanged = false;
         }
     }
 
@@ -33,7 +45,7 @@ public class RaccoonMng : MonoBehaviour
     {
         if (!GameObject.Find("GameManager").GetComponent<GameMng>().getOpenData)
         {
-            selectedRC = GameObject.Find("RaccoonPreview").GetComponent<SetRCInfo>().GetCurRCChoice;
+            selectedRC = GameObject.Find("RCinfo").GetComponent<SetRCInfo>().GetCurRCChoice;
 
             Debug.Log(selectedRC); 
             
@@ -59,6 +71,24 @@ public class RaccoonMng : MonoBehaviour
         return false;
     }
 
+    public void StartRCWork()
+    {
+        for(int i =0;i<RaccoonCount; i++)
+        {
+            if (RaccoonExist[i])
+                RC[i].GetComponent<RaccoonController>().StartWork();
+        }
+    }
+
+    public void StopRCWork()
+    {
+        for (int i = 0; i < RaccoonCount; i++)
+        {
+            if (RaccoonExist[i])
+                RC[i].GetComponent<RaccoonController>().StopWork();
+        }
+    }
+
     public bool GetRCUnlockData(int index)
     {
         return RaccoonUnlock[index];
@@ -71,13 +101,26 @@ public class RaccoonMng : MonoBehaviour
 
     public void UpgradeRC(int index)
     {
-        if (RaccoonRank[index] < 5 && RaccoonUnlock[index])
+        if (RaccoonRank[index] < 5 && GMng.money >= GetRCCost(index, RaccoonRank[index]))
+        {
+            GMng.money -= GetRCCost(index, RaccoonRank[index]);
             RaccoonRank[index]++;
+        }
     }
 
     public void UnlockRC(int index)
     {
-        RaccoonUnlock[index] = true;
-        RaccoonRank[index] = 1;
+        if (GMng.money >= GetRCCost(index, 0))
+        {
+            GMng.money -= GetRCCost(index, 0);
+            RaccoonUnlock[index] = true;
+            RaccoonRank[index] = 1;
+            GenerateRaccoon();
+        }
+    }
+
+    public int GetRCCost(int RCnum, int UPGnum)
+    {
+        return RC[RCnum].GetComponent<RaccoonController>().Cost[UPGnum];
     }
 }

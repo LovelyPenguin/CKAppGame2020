@@ -39,7 +39,7 @@ public class DragRaccoon : MonoBehaviour
     void OnMouseUp()
     {
         Debug.Log("RCDrag_OnMouseUp");
-        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
+        if (Physics.Raycast(transform.position + transform.forward, transform.forward, out hit, Mathf.Infinity))
         {
             if (hit.transform.gameObject.tag == "Ground")
             {
@@ -56,17 +56,24 @@ public class DragRaccoon : MonoBehaviour
                 transform.position = hit.point + new UnityEngine.Vector3(-1.5f, 0, 0);
                 Debug.Log("WallRHit");
             }
+            else if( hit.transform.gameObject.name == "HealMap")
+            {
+                transform.position = new UnityEngine.Vector3(7.5f, -4.5f, -2.5f);
+                Debug.Log("HealMapHit");
+            }
             else
             {
                 transform.position = originCoord;
                 Debug.Log("ElseHit");
                 Debug.Log(hit.collider.gameObject.name);
+                Camera.main.GetComponent<CameraController>().RollbackPos();
             }
         }
         else
         {
             transform.position = originCoord;
             Debug.Log("NothingHit");
+            Camera.main.GetComponent<CameraController>().RollbackPos();
         }
         Destroy(Shadowinst);
     }
