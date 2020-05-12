@@ -6,6 +6,9 @@ public class CameraController : MonoBehaviour
 {
     private bool isMoved;
     private Vector3 initPos;
+    private float DefaultCameraSize;
+    public float MaxCameraSize = 15;
+    public float MinCameraSize = 5;
 
     public bool IsMoved()
     {
@@ -19,12 +22,18 @@ public class CameraController : MonoBehaviour
     {
         isMoved = false;
         initPos = new Vector3(0, 0, 0);
+        DefaultCameraSize = GetComponent<Camera>().orthographicSize;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        ZoomInOut();
+        if (this.CompareTag("SubCamera"))
+        {
+            transform.position = Camera.main.transform.position;
+            GetComponent<Camera>().orthographicSize = Camera.main.GetComponent<Camera>().orthographicSize;
+        }
     }
 
     public void RememberPos()
@@ -70,5 +79,17 @@ public class CameraController : MonoBehaviour
 
         Camera.main.transform.Translate(Offset);
         isMoved = true;
+    }
+
+    private void ZoomInOut()
+    {
+        float Delta = Input.mouseScrollDelta.y * 0.1f;
+
+        GetComponent<Camera>().orthographicSize += Delta;
+
+        if (GetComponent<Camera>().orthographicSize > MaxCameraSize)
+            GetComponent<Camera>().orthographicSize = MaxCameraSize;
+        else if(GetComponent<Camera>().orthographicSize < MinCameraSize)
+            GetComponent<Camera>().orthographicSize = MinCameraSize;
     }
 }

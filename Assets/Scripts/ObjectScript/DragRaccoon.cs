@@ -39,26 +39,26 @@ public class DragRaccoon : MonoBehaviour
     void OnMouseUp()
     {
         Debug.Log("RCDrag_OnMouseUp");
-        if (Physics.Raycast(transform.position + transform.forward, transform.forward, out hit, Mathf.Infinity))
+        if (Physics.Raycast(transform.position + transform.forward - new UnityEngine.Vector3(0,mDeltaY,0), transform.forward, out hit, Mathf.Infinity))
         {
             if (hit.transform.gameObject.tag == "Ground")
             {
-                transform.position = hit.point + new UnityEngine.Vector3(0, mDeltaY, 0);
+                transform.position = hit.point + new UnityEngine.Vector3(0, 0, 0);
                 Debug.Log("GroundHit");
             }
-            else if (hit.transform.gameObject.tag == "WallL")
+            //else if (hit.transform.gameObject.tag == "WallL")
+            //{
+            //    transform.position = hit.point + new UnityEngine.Vector3(0, 0, -1.5f);
+            //    Debug.Log("WallLHit");
+            //}
+            //else if (hit.transform.gameObject.tag == "WallR")
+            //{
+            //    transform.position = hit.point + new UnityEngine.Vector3(-1.5f, 0, 0);
+            //    Debug.Log("WallRHit");
+            //}
+            else if( hit.transform.gameObject.tag == "Heal")
             {
-                transform.position = hit.point + new UnityEngine.Vector3(0, 0, -1.5f);
-                Debug.Log("WallLHit");
-            }
-            else if (hit.transform.gameObject.tag == "WallR")
-            {
-                transform.position = hit.point + new UnityEngine.Vector3(-1.5f, 0, 0);
-                Debug.Log("WallRHit");
-            }
-            else if( hit.transform.gameObject.name == "HealMap")
-            {
-                transform.position = new UnityEngine.Vector3(7.5f, -4.5f, -2.5f);
+                transform.position = hit.point;
                 Debug.Log("HealMapHit");
             }
             else

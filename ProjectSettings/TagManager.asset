@@ -8,6 +8,8 @@ TagManager:
   - Ground
   - WallL
   - WallR
+  - SubCamera
+  - Heal
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - 2DSprites
   - 
   - 
   - 

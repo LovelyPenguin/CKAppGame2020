@@ -51,7 +51,7 @@ public class RaccoonMng : MonoBehaviour
             
             if (!RaccoonExist[selectedRC])
             {
-                RC[selectedRC].transform.position = new Vector3(5, 1, 5);
+                RC[selectedRC].transform.position = new Vector3(5, 0, 5);
                 RC[selectedRC].GetComponent<RaccoonController>().SetRCActive(true);
                 RaccoonExist[selectedRC] = true;
                 Debug.Log("Raccoon Created!");
