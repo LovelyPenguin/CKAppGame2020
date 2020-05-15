@@ -53,7 +53,8 @@ public class GameMng : MonoBehaviour
     {
         dustGenerator = GameObject.Find("DustGenerator");
         RaccoonMng = GameObject.Find("RaccoonManager");
-        closeEvent.AddListener(dustGenerator.GetComponent<DustGenerator>().Generate);
+        // 임시 주석
+        //closeEvent.AddListener(dustGenerator.GetComponent<DustGenerator>().Generate);
     }
 
     // Update is called once per frame
@@ -69,13 +70,14 @@ public class GameMng : MonoBehaviour
         }
         else
         {
-            if (RaccoonMng.GetComponent<RaccoonMng>().isRCOnDrag())
-            {
-                Debug.Log("1");
-                MoveScreenEdge();
-            }
+            // 임시 주석
+            //if (RaccoonMng.GetComponent<RaccoonMng>().isRCOnDrag())
+            //{
+            //    Debug.Log("1");
+            //    //MoveScreenEdge();
+            //}
         }
-        MoveScreenEdge();
+        //MoveScreenEdge();
     }
 
     public void OpenCafe(float setOpenTime)
