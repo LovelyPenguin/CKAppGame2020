@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
-public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler
+public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHandler
 {
+    public UnityEvent startEvent;
+    public UnityEvent endEvent;
     [SerializeField]
     private GameObject mainSprite;
     [SerializeField]
     private GameObject decoSprite;
     private Vector2 initialValue;
+    [SerializeField]
+    private GameObject icon;
+
     public bool isComplete = false;
     public float percentValue;
 
@@ -19,6 +25,7 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler
     // Start is called before the first frame update
     void Start()
     {
+        icon.SetActive(false);
         initialValue = gameObject.transform.position;
     }
 
@@ -56,21 +63,27 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler
         mainSprite.GetComponent<Image>().fillAmount = value;
     }
 
+    void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
+    {
+        if (isComplete)
+        {
+            startEvent.Invoke();
+        }
+    }
+
     public void OnDrag(PointerEventData eventData)
     {
         if (isComplete)
         {
-            Debug.Log(Input.mousePosition);
-            gameObject.transform.position = Input.mousePosition;
-            gameObject.transform.localScale = new Vector3(0.3f, 0.3f);
+            icon.SetActive(true);
+            icon.transform.position = Input.mousePosition;
         }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         Debug.Log("Drag End");
-        gameObject.transform.position = initialValue;
-        gameObject.transform.localScale = new Vector3(1f, 1f);
+        icon.SetActive(false);
 
         // 추후 라쿤 관련 클래스와 연계
         if (true)
@@ -81,16 +94,17 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler
 
             Debug.DrawRay(mouseVector.position, mouseVector.forward * 30, Color.blue, 1f);
 
-            if (Physics.Raycast(mouseVector.position, mouseVector.forward * 30, out hit))
+            if (Physics.Raycast(mouseVector.position, mouseVector.forward * 30, out hit) && hit.transform.GetComponent<DrinkTransfer>() != null)
             {
-                hit.transform.GetComponent<MeshRenderer>().material.color = Color.red;
-                StartCoroutine(TestFunc(hit.transform.GetComponent<MeshRenderer>()));
+                Debug.Log(hit + "Detect");
+                hit.transform.GetComponent<DrinkTransfer>().isTransfer = true;
                 ResetAllValue();
                 GameMng.Instance.GetComponent<DrinkMng>().UpdateContent();
             }
 
             Destroy(mouseVector.gameObject);
         }
+        endEvent.Invoke();
     }
 
     IEnumerator TestFunc(MeshRenderer mesh)
