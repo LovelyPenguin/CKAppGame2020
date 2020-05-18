@@ -105,6 +105,12 @@ public class UIPopInOut : MonoBehaviour
         }
     }
 
+    public void OpenWindow()
+    {
+        isOpen = true;
+        cardExitPanel.SetActive(true);
+    }
+
     public void CloseWindow()
     {
         isOpen = false;
