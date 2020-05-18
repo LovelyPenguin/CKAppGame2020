@@ -13,6 +13,9 @@ public class RandomMove : MonoBehaviour
     private float speed;
     [SerializeField]
     private bool isArrive;
+    [SerializeField]
+    private float setTimer = 0.5f;
+    private float timer;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +25,7 @@ public class RandomMove : MonoBehaviour
         targetPostion.x = Random.Range(-15, 15);
         targetPostion.z = Random.Range(-15, 15);
         nav.SetDestination(targetPostion);
+        timer = setTimer;
     }
 
     // Update is called once per frame
@@ -30,14 +34,24 @@ public class RandomMove : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             targetPostion = target.transform.position;
+            nav.SetDestination(targetPostion);
         }
-        
-        if (Vector3.Distance(transform.position, nav.destination) <= 0.3f)
+        SetRnadomizeDestination();
+    }
+
+    private void SetRnadomizeDestination()
+    {
+        if (Vector3.Distance(transform.position, nav.destination) <= 0.5f)
         {
             isArrive = true;
-            targetPostion.x = Random.Range(-15, 15);
-            targetPostion.z = Random.Range(-15, 15);
-            nav.SetDestination(targetPostion);
+            timer -= Time.deltaTime;
+            if (timer <= 0f)
+            {
+                targetPostion.x = Random.Range(-15, 15);
+                targetPostion.z = Random.Range(-15, 15);
+                nav.SetDestination(targetPostion);
+                timer = setTimer;
+            }
         }
         else
         {
@@ -45,9 +59,14 @@ public class RandomMove : MonoBehaviour
         }
     }
 
+    private void MoveCheck()
+    {
+
+    }
+
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(targetPostion, 0.1f);
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(nav.destination, 0.1f);
     }
 }
