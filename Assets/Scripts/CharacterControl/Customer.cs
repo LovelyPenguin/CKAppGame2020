@@ -10,9 +10,10 @@ public class Customer : MonoBehaviour
 
     private float durationSecond;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        durationSecond = duration;
+        Debug.Log("START");
+        durationSecond = duration * 60;
     }
 
     // Update is called once per frame
@@ -41,10 +42,11 @@ public class Customer : MonoBehaviour
     {
         if (pause)
         {
-            
+            Debug.Log("Game Stop");
         }
         else
         {
+            Debug.Log("Game Restart");
             durationSecond -= GameMng.Instance.GetComponent<TimeMng>().flowTime;
             Debug.Log(GameMng.Instance.GetComponent<TimeMng>().flowTime);
         }

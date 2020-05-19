@@ -6736,6 +6736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugText: {fileID: 739726984}
+  flowTime: 0
 --- !u!1 &416494575
 GameObject:
   m_ObjectHideFlags: 0
@@ -12068,7 +12069,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a348bea6568d6614b85c68b1b797ef59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpne: 0
+  isOpen: 0
+  currentCafeTime: 0
+  duration: 1
 --- !u!1 &1157748323
 GameObject:
   m_ObjectHideFlags: 0
