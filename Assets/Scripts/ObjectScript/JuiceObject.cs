@@ -32,6 +32,10 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
     // Update is called once per frame
     void Update()
     {
+        if (icon.active)
+        {
+            icon.transform.position = Input.mousePosition;
+        }
     }
 
     public void SetDecoSprite(bool isVisible)
@@ -71,6 +75,11 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
         }
     }
 
+    void OnClickStay()
+    {
+
+    }
+
     public void OnDrag(PointerEventData eventData)
     {
         if (isComplete)
@@ -96,8 +105,7 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
 
             if (Physics.Raycast(mouseVector.position, mouseVector.forward * 30, out hit) && hit.transform.GetComponent<DrinkTransfer>() != null)
             {
-                Debug.Log(hit + "Detect");
-                hit.transform.GetComponent<DrinkTransfer>().isTransfer = true;
+                hit.transform.GetComponent<DrinkTransfer>().Detect();
                 ResetAllValue();
                 GameMng.Instance.GetComponent<DrinkMng>().UpdateContent();
             }
