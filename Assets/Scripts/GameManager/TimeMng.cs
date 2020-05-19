@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class TimeMng : MonoBehaviour
 {
     public Text debugText;
+    public float flowTime;
 
     private void Awake()
     {
@@ -28,13 +29,14 @@ public class TimeMng : MonoBehaviour
             float hour = compareTime.Hours * 3600;
             float min = compareTime.Minutes * 60;
             float sec = compareTime.Seconds;
-            Debug.Log(compareTime);
-            Debug.Log(hour + min + sec);
+            //Debug.Log(compareTime);
+            //Debug.Log(hour + min + sec);
 
             if (debugText != null)
             {
                 float time = hour + min + sec;
                 debugText.text = "마지막 접속으로 부터 : " + time + " sec";
+                flowTime = time;
             }
         }
     }
