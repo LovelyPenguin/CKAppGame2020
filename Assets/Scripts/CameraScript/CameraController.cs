@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    public GameObject GameMng;
+
     private bool isMoved;
+    private Vector3 initPos;
+    private float DefaultCameraSize;
+    public float MaxCameraSize = 15;
+    public float MinCameraSize = 5;
 
     public bool IsMoved()
     {
@@ -17,17 +23,43 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         isMoved = false;
+        initPos = new Vector3(0, 0, 0);
+        DefaultCameraSize = GetComponent<Camera>().orthographicSize;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        ZoomInOut();
+        if (this.CompareTag("SubCamera"))
+        {
+            transform.position = Camera.main.transform.position;
+            GetComponent<Camera>().orthographicSize = Camera.main.GetComponent<Camera>().orthographicSize;
+        }
+        else
+        {
+            if (transform.position.y > 20f)
+            {
+                GameMng.GetComponent<FloorStatMng>().SetFloor2();
+            }
+            else
+                GameMng.GetComponent<FloorStatMng>().SetFloor1();
+        }
+    }
+
+    public void RememberPos()
+    {
+        initPos = transform.position;
+    }
+
+    public void RollbackPos()
+    {
+        transform.position = initPos;
     }
 
     public void MoveScreenEdge()
     {
-        float edge = 20.0f;
+        float edge = 50.0f;
         UnityEngine.Vector3 mousePos = Input.mousePosition;
         UnityEngine.Vector3 Offset = new UnityEngine.Vector3(0, 0, 0);
 
@@ -58,5 +90,17 @@ public class CameraController : MonoBehaviour
 
         Camera.main.transform.Translate(Offset);
         isMoved = true;
+    }
+
+    private void ZoomInOut()
+    {
+        float Delta = Input.mouseScrollDelta.y * 0.1f;
+
+        GetComponent<Camera>().orthographicSize += Delta;
+
+        if (GetComponent<Camera>().orthographicSize > MaxCameraSize)
+            GetComponent<Camera>().orthographicSize = MaxCameraSize;
+        else if(GetComponent<Camera>().orthographicSize < MinCameraSize)
+            GetComponent<Camera>().orthographicSize = MinCameraSize;
     }
 }
