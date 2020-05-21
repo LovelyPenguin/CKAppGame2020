@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class RaccoonController : MonoBehaviour
@@ -92,7 +90,7 @@ public class RaccoonController : MonoBehaviour
 
             if (!isHealing)
             {
-                RCMove();
+                //RCMove();
                 if ((exhaustTime += Time.deltaTime) > 5.0f && stamina != 0 && isWorking)
                 {
                     this.stamina = this.stamina - 1;
@@ -180,52 +178,52 @@ public class RaccoonController : MonoBehaviour
         animator.SetTrigger("idleTrigger");
     }
 
-    private void RCMove()
-    {
-        if(!isOnDrag && isActive)
-        {
-            if (!isMoving)
-            {
-                if (isMoving = ThinkWay())
-                    animator.SetTrigger("WalkTrigger");
-            }
-            else
-            {
-                interpolant += (Time.deltaTime / distance);
-                if(interpolant > 1.0f)
-                {
-                    interpolant = 1.0f;
-                    isMoving = false;
-                    animator.SetTrigger("idleTrigger");
-                }
-                transform.position = UnityEngine.Vector3.Lerp(start, dest, interpolant);
-            }
-        }
-    }
+    //private void RCMove()
+    //{
+    //    if(!isOnDrag && isActive)
+    //    {
+    //        if (!isMoving)
+    //        {
+    //            if (isMoving = ThinkWay())
+    //                animator.SetTrigger("WalkTrigger");
+    //        }
+    //        else
+    //        {
+    //            interpolant += (Time.deltaTime / distance);
+    //            if(interpolant > 1.0f)
+    //            {
+    //                interpolant = 1.0f;
+    //                isMoving = false;
+    //                animator.SetTrigger("idleTrigger");
+    //            }
+    //            transform.position = UnityEngine.Vector3.Lerp(start, dest, interpolant);
+    //        }
+    //    }
+    //}
 
-    private bool ThinkWay()
-    {
-        if ((moveTime += Time.deltaTime) > 1.0f)
-        {
-            if (Random.Range(0, 10) > 6)
-            {
-                start = this.transform.position;
-                dest = new UnityEngine.Vector3(Random.Range(0.0f, 10.0f), transform.position.y, Random.Range(0.0f, 10.0f));
-                distance = (dest - start).magnitude;
-                direction = (dest - start).normalized;
+    //private bool ThinkWay()
+    //{
+    //    if ((moveTime += Time.deltaTime) > 1.0f)
+    //    {
+    //        if (Random.Range(0, 10) > 6)
+    //        {
+    //            start = this.transform.position;
+    //            dest = new UnityEngine.Vector3(Random.Range(0.0f, 10.0f), transform.position.y, Random.Range(0.0f, 10.0f));
+    //            distance = (dest - start).magnitude;
+    //            direction = (dest - start).normalized;
               
-                if (0 < Vector3.Dot(direction, new Vector3(-1, 0, 1)))
-                    transform.localScale = new Vector3(initXScale, initYScale, initZScale);
-                else
-                    transform.localScale = new Vector3(-initXScale, initYScale, initZScale);
+    //            if (0 < Vector3.Dot(direction, new Vector3(-1, 0, 1)))
+    //                transform.localScale = new Vector3(initXScale, initYScale, initZScale);
+    //            else
+    //                transform.localScale = new Vector3(-initXScale, initYScale, initZScale);
 
-                interpolant = 0.0f;
-                return true;
-            }
-            moveTime = 0.0f;
-        }
-        return false;
-    }
+    //            interpolant = 0.0f;
+    //            return true;
+    //        }
+    //        moveTime = 0.0f;
+    //    }
+    //    return false;
+    //}
     
 
     public bool GetIsDrag()

@@ -20,7 +20,7 @@ public class RandomMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        targetPostion = target.transform.position;
+        //targetPostion = target.transform.position;
 
         targetPostion.x = Random.Range(-15, 15);
         targetPostion.z = Random.Range(-15, 15);
