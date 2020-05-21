@@ -38,7 +38,8 @@ public class RaccoonController : MonoBehaviour
 
         Camera.main.GetComponent<CameraController>().RememberPos();
 
-        animator.SetTrigger("DragTrigger");
+        //애니메이터
+        //animator.SetTrigger("DragTrigger");
     }
 
     void OnMouseUp()
@@ -117,7 +118,8 @@ public class RaccoonController : MonoBehaviour
             Camera.main.GetComponent<CameraController>().RollbackPos();
         }
 
-        animator.SetTrigger("IdleTrigger");
+        //애니메이터
+        //animator.SetTrigger("idleTrigger");
         //isOnDrag = false;
 
         // 애니메이터
@@ -138,7 +140,8 @@ public class RaccoonController : MonoBehaviour
 
     void OnMouseDrag()
     {
-        animator.SetTrigger("DragTrigger");
+        //애니메이터
+        //animator.SetTrigger("DragTrigger");
         //Debug.Log("RCDrag_OnMouseDrag");
         transform.position = GetMouseWorldPos();
         Physics.Raycast(transform.position - new UnityEngine.Vector3(0, mDeltaY, 0), transform.forward, out hit, Mathf.Infinity);
@@ -396,10 +399,11 @@ public class RaccoonController : MonoBehaviour
     {
         if (RCState == State.inMap1)
         {
-            if (this.GetComponent<RandomMove>().Arrived)
-                animator.SetTrigger("idleTrigger");
-            else
-                animator.SetTrigger("WalkTrigger");
+            // 애니메이션
+            //if (this.GetComponent<RandomMove>().Arrived)
+            //    animator.SetTrigger("idleTrigger");
+            //else
+            //    animator.SetTrigger("WalkTrigger");
 
             Vector3 dir = this.GetComponent<RandomMove>().GetTargetPos() - this.transform.position;
 

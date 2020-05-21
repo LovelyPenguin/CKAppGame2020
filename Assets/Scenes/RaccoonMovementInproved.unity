@@ -4696,7 +4696,6 @@ GameObject:
   - component: {fileID: 469364605}
   - component: {fileID: 469364607}
   - component: {fileID: 469364610}
-  - component: {fileID: 469364614}
   - component: {fileID: 469364615}
   - component: {fileID: 469364613}
   m_Layer: 8
@@ -4777,25 +4776,6 @@ MonoBehaviour:
   speed: 0
   isArrive: 0
   setTimer: 0.5
---- !u!95 &469364614
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469364604}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: de12456b316f0a042989d28776e8addd, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!195 &469364615
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -11194,6 +11174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1193004097}
   - component: {fileID: 1193004098}
+  - component: {fileID: 1193004099}
   m_Layer: 8
   m_Name: rc1Sprite
   m_TagString: Untagged
@@ -11265,6 +11246,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1193004099
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193004096}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: de12456b316f0a042989d28776e8addd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1198710079
 GameObject:
   m_ObjectHideFlags: 0
