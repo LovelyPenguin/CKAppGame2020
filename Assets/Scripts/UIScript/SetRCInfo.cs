@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SetRCInfo : MonoBehaviour
 {
-    static int RaccoonCount = 5;
+    static int RaccoonCount;
     public GameObject RCImage;
     public Sprite[] Rc = new Sprite[RaccoonCount];
     RaccoonMng RCMng;

@@ -2,16 +2,30 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class RaccoonMng : MonoBehaviour
 {
     GameMng GMng;
     private int selectedRC;
-    private static int RaccoonCount = 10;
+    private static int RaccoonCount = 8;
+    private static int RaccoonRankCount = 5;
     public GameObject[] RC = new GameObject[RaccoonCount];
     bool[] RaccoonExist = new bool[RaccoonCount];
     public bool[] RaccoonUnlock = new bool[RaccoonCount];
     int[] RaccoonRank = new int[RaccoonCount];
+    public float[,] RCEfficiency = new float[RaccoonCount, RaccoonRankCount];
+
+    /*
+     * 라쿤의 장사 금액 효율을 반환한다
+     * ex) 1.0f, 1.5f
+     */
+    public float GetRCEfficiency(int RCIndex, int RankIndex)
+    {
+        if (RCIndex < 0 && RCIndex >= RaccoonCount && RankIndex < 0 && RankIndex >= RaccoonRankCount)
+            return 1f;
+        return RCEfficiency[RCIndex, RankIndex];
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -70,7 +84,7 @@ public class RaccoonMng : MonoBehaviour
     public void UpgradeRC(int index)
     {
         int cost = RetCost(index, RaccoonRank[index]);
-        if (RaccoonRank[index] < 5 && RaccoonUnlock[index] && GMng.money >= cost)
+        if (RaccoonRank[index] < RaccoonRankCount && RaccoonUnlock[index] && GMng.money >= cost)
         {
             RaccoonRank[index]++;
             GMng.money -= cost;
@@ -109,7 +123,7 @@ public class RaccoonMng : MonoBehaviour
 
     public int RetCost(int RcIndex, int UpgradeIndex)
     {
-        if (UpgradeIndex >= 0 && UpgradeIndex < 5)
+        if (UpgradeIndex >= 0 && UpgradeIndex < RaccoonRankCount)
             return RC[RcIndex].GetComponent<RaccoonController>().Cost[UpgradeIndex];
         return -1;
     }

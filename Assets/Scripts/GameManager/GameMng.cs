@@ -67,15 +67,16 @@ public class GameMng : MonoBehaviour
                 CloseCafe();
             }
         }
-        else
-        {
-            if (RaccoonMng.GetComponent<RaccoonMng>().isRCOnDrag())
-            {
-                Debug.Log("1");
-                //MoveScreenEdge();
-            }
-        }
-        //MoveScreenEdge();
+        // 카메라 이동은 카메라 매니저에서 담당해 더 이상 필요 없는 부분입니다.
+        //else
+        //{
+        //    if (RaccoonMng.GetComponent<RaccoonMng>().isRCOnDrag())
+        //    {
+        //        Debug.Log("1");
+        //        //MoveScreenEdge();
+        //    }
+        //}
+        ////MoveScreenEdge();
     }
 
     public void OpenCafe(float setOpenTime)
