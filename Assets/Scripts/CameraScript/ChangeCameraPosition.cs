@@ -10,12 +10,14 @@ public class ChangeCameraPosition : MonoBehaviour
     [SerializeField]
     public float cameraMovePositionY;
     private float cameraInitialValueY;
+    CameraController CmrCtrlr;
 
     // Start is called before the first frame update
     void Start()
     {
         mainCam = Camera.main;
         cameraInitialValueY = mainCam.transform.position.y;
+        CmrCtrlr = mainCam.GetComponent<CameraController>();
     }
 
     // Update is called once per frame
@@ -30,20 +32,34 @@ public class ChangeCameraPosition : MonoBehaviour
 
     public void PopInCamera()
     {
-        if (mainCam.transform.position.y != cameraMovePositionY)
-            mainCam.transform.position = new Vector3(
-                mainCam.transform.position.x,
-                Mathf.Lerp(mainCam.transform.position.y, cameraMovePositionY, Time.deltaTime * returnSpeed),
-                mainCam.transform.position.z);
+        if (!CmrCtrlr.IsMoved())
+        {
+            if (mainCam.transform.position.y != cameraMovePositionY)
+                mainCam.transform.position = new Vector3(
+                    mainCam.transform.position.x,
+                    Mathf.Lerp(mainCam.transform.position.y, cameraMovePositionY, Time.deltaTime * returnSpeed),
+                    mainCam.transform.position.z);
+        }
+        else
+        {
+            cameraInitialValueY = mainCam.transform.position.y;
+        }
     }
 
     public void PopOutCamera()
     {
-        if (mainCam.transform.position.y != cameraInitialValueY)
-            mainCam.transform.position = new Vector3(
-                mainCam.transform.position.x,
-                Mathf.Lerp(mainCam.transform.position.y, cameraInitialValueY, Time.deltaTime * returnSpeed),
-                mainCam.transform.position.z);
+        if (!CmrCtrlr.IsMoved())
+        {
+            if (mainCam.transform.position.y != cameraInitialValueY)
+                mainCam.transform.position = new Vector3(
+                    mainCam.transform.position.x,
+                    Mathf.Lerp(mainCam.transform.position.y, cameraInitialValueY, Time.deltaTime * returnSpeed),
+                    mainCam.transform.position.z);
+        }
+        else
+        {
+            cameraInitialValueY = mainCam.transform.position.y;
+        }
     }
 
    

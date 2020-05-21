@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class SetRCInfo : MonoBehaviour
 {
     static int RaccoonCount = 5;
+    public GameObject RCImage;
     public Sprite[] Rc = new Sprite[RaccoonCount];
-    GameObject RCMng;
+    RaccoonMng RCMng;
     public GameObject[] Stars = new GameObject[5];
     public Sprite[] StarSprite = new Sprite[2];
     public Text txt;
@@ -25,7 +26,7 @@ public class SetRCInfo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        RCMng = GameObject.Find("RaccoonManager");
+        RCMng = GameObject.Find("RaccoonManager").GetComponent<RaccoonMng>();
         CurrentRaccoon = 0;
     }
 
@@ -37,16 +38,25 @@ public class SetRCInfo : MonoBehaviour
 
     private void RaccoonImageUpdate()
     {
-        GetComponent<Image>().sprite = Rc[CurrentRaccoon];
+        RCImage.GetComponent<Image>().sprite = Rc[CurrentRaccoon];
         if (RCMng.GetComponent<RaccoonMng>().GetRCUnlockData(CurrentRaccoon))
         {
-            GetComponent<Image>().color = Color.white;
-            txt.text = "업그레이드";
+            int RCRank = RCMng.GetRCRank(CurrentRaccoon);
+            if (RCRank < 5)
+            {
+                RCImage.GetComponent<Image>().color = Color.white;
+                txt.text = "업그레이드 " + RCMng.RetCost(CurrentRaccoon, RCRank).ToString() + "원";
+            }
+            else
+            {
+                RCImage.GetComponent<Image>().color = Color.white;
+                txt.text = "업그레이드 완료";
+            }
         }
         else
         {
-            GetComponent<Image>().color = Color.black;
-            txt.text = "해금";
+            RCImage.GetComponent<Image>().color = Color.black;
+            txt.text = "해금" + RCMng.RetCost(CurrentRaccoon, 0).ToString() + "원";
         }
         SetStar(RCMng.GetComponent<RaccoonMng>().GetRCRank(CurrentRaccoon));
     }
@@ -63,29 +73,9 @@ public class SetRCInfo : MonoBehaviour
         }
     }
 
-    public void SetRaccoon1()
+    public void SetRaccoon(int index)
     {
-        CurrentRaccoon = 0;
-        RaccoonImageUpdate();
-    }
-    public void SetRaccoon2()
-    {
-        CurrentRaccoon = 1;
-        RaccoonImageUpdate();
-    }
-    public void SetRaccoon3()
-    {
-        CurrentRaccoon = 2;
-        RaccoonImageUpdate();
-    }
-    public void SetRaccoon4()
-    {
-        CurrentRaccoon = 3;
-        RaccoonImageUpdate();
-    }
-    public void SetRaccoon5()
-    {
-        CurrentRaccoon = 4;
+        CurrentRaccoon = index;
         RaccoonImageUpdate();
     }
 
