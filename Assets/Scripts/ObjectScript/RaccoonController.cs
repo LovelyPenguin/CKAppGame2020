@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class RaccoonController : MonoBehaviour
@@ -195,6 +196,8 @@ public class RaccoonController : MonoBehaviour
     private Color TransparentC = new Color(1f, 1f, 1f, 0f);
     private bool isVisible = true;
 
+    public NavMeshAgent navMesh;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -211,6 +214,9 @@ public class RaccoonController : MonoBehaviour
         stamina = 50;
         //SetRCActive(false);
         RCState = State.unActive;
+
+        navMesh.enabled = false;
+
     }
 
     // Update is called once per frame
@@ -257,11 +263,9 @@ public class RaccoonController : MonoBehaviour
                     Healing();
                     break;
                 case State.inMap1:
-                    
                     Exhausting();
                     break;
                 case State.inMap2:
-
                     Exhausting();
                     break;
                 case State.onDrag:
@@ -271,6 +275,7 @@ public class RaccoonController : MonoBehaviour
 
                     break;
             }
+            Move();
             StaminaBarUpdate();
         }
     }
@@ -383,7 +388,12 @@ public class RaccoonController : MonoBehaviour
 
     private void Move()
     {
-
+        if (RCState != State.inMap1)
+            navMesh.enabled = false;
+        else
+        {
+            navMesh.enabled = true;
+        }
     }
 
     //private void OnMouseDown()
