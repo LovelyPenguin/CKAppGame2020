@@ -69,4 +69,15 @@ public class RandomMove : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(nav.destination, 0.1f);
     }
+
+    public bool Arrived
+    {
+        get { return isArrive; }
+        set { isArrive = value; }
+    }
+
+    public Vector3 GetTargetPos()
+    {
+        return targetPostion;
+    }
 }

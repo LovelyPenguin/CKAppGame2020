@@ -35,6 +35,10 @@ public class RaccoonController : MonoBehaviour
 
         //애니메이터
         //animator.SetTrigger("DragTrigger");
+
+        Camera.main.GetComponent<CameraController>().RememberPos();
+
+        animator.SetTrigger("DragTrigger");
     }
 
     void OnMouseUp()
@@ -100,6 +104,8 @@ public class RaccoonController : MonoBehaviour
                 transform.position = originCoord;
                 Debug.Log("ElseHit");
                 Debug.Log(hit.collider.gameObject.name);
+
+                Camera.main.GetComponent<CameraController>().RollbackPos();
             }
         }
         else
@@ -107,9 +113,11 @@ public class RaccoonController : MonoBehaviour
             RCState = InitState;
             transform.position = originCoord;
             Debug.Log("NothingHit");
+
+            Camera.main.GetComponent<CameraController>().RollbackPos();
         }
 
-
+        animator.SetTrigger("IdleTrigger");
         //isOnDrag = false;
 
         // 애니메이터
@@ -130,6 +138,7 @@ public class RaccoonController : MonoBehaviour
 
     void OnMouseDrag()
     {
+        animator.SetTrigger("DragTrigger");
         //Debug.Log("RCDrag_OnMouseDrag");
         transform.position = GetMouseWorldPos();
         Physics.Raycast(transform.position - new UnityEngine.Vector3(0, mDeltaY, 0), transform.forward, out hit, Mathf.Infinity);
@@ -202,7 +211,6 @@ public class RaccoonController : MonoBehaviour
     void Start()
     {
         //애니메이터
-        //this.animator = GetComponent<Animator>();
         initXScale = transform.localScale.x;
         initYScale = transform.localScale.y;
         initZScale = transform.localScale.z;
@@ -217,6 +225,7 @@ public class RaccoonController : MonoBehaviour
 
         navMesh.enabled = false;
 
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -269,9 +278,6 @@ public class RaccoonController : MonoBehaviour
                     Exhausting();
                     break;
                 case State.onDrag:
-
-                    break;
-                case State.unActive:
 
                     break;
             }
@@ -388,11 +394,25 @@ public class RaccoonController : MonoBehaviour
 
     private void Move()
     {
-        if (RCState != State.inMap1)
-            navMesh.enabled = false;
+        if (RCState == State.inMap1)
+        {
+            if (this.GetComponent<RandomMove>().Arrived)
+                animator.SetTrigger("idleTrigger");
+            else
+                animator.SetTrigger("WalkTrigger");
+
+            Vector3 dir = this.GetComponent<RandomMove>().GetTargetPos() - this.transform.position;
+
+            if (dir.z - dir.x > 0)
+                Sprite.GetComponent<SpriteRenderer>().flipX = false;
+            else
+                Sprite.GetComponent<SpriteRenderer>().flipX = true;
+
+            navMesh.enabled = true;
+        }
         else
         {
-            navMesh.enabled = true;
+            navMesh.enabled = false;
         }
     }
 

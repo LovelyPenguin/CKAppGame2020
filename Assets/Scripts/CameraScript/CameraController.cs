@@ -31,20 +31,20 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         ZoomInOut();
-        if (this.CompareTag("SubCamera"))
-        {
-            transform.position = Camera.main.transform.position;
-            GetComponent<Camera>().orthographicSize = Camera.main.GetComponent<Camera>().orthographicSize;
-        }
-        else
-        {
+        //if (this.CompareTag("SubCamera"))
+        //{
+        //    transform.position = Camera.main.transform.position;
+        //    GetComponent<Camera>().orthographicSize = Camera.main.GetComponent<Camera>().orthographicSize;
+        //}
+        //else
+        //{
             if (transform.position.y > 20f)
             {
                 GameMng.GetComponent<FloorStatMng>().SetFloor2();
             }
             else
                 GameMng.GetComponent<FloorStatMng>().SetFloor1();
-        }
+        //}
     }
 
     public void RememberPos()
