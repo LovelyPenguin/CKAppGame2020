@@ -9,7 +9,10 @@ public class DrinkTransfer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        particle.SetActive(false);
+        if (particle != null)
+        {
+            particle.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -20,8 +23,9 @@ public class DrinkTransfer : MonoBehaviour
 
     public void Detect()
     {
-        particle.transform.position = transform.position;
-        particle.SetActive(true);
+        //particle.transform.position = transform.position;
+        GameMng.Instance.money += 10;
+        ParticleManager(true);
         isTransfer = true;
         StartCoroutine(Disable());
     }
@@ -29,7 +33,15 @@ public class DrinkTransfer : MonoBehaviour
     IEnumerator Disable()
     {
         yield return new WaitForSeconds(3f);
-        particle.SetActive(false);
+        ParticleManager(false);
         isTransfer = false;
+    }
+
+    private void ParticleManager(bool isActive)
+    {
+        if (particle != null)
+        {
+            particle.SetActive(isActive);
+        }
     }
 }
