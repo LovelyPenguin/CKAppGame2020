@@ -8,27 +8,46 @@ public class AutoSpriteFlip : MonoBehaviour
     public bool isLeftInitialize;
     public string direction;
 
-    private float previousXpos;
+    private Vector3 previousPos;
     // Start is called before the first frame update
     void Start()
     {
-        previousXpos = transform.position.x;
+        // 월드 좌표
+        //previousPos = transform.position;
+
+        // 로컬 좌표
+        previousPos = transform.localPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (previousXpos <= transform.position.x)
+        // 월드 좌표 감식
+        //if (previousPos.x <= transform.position.x && previousPos.z <= transform.position.z)
+        //{
+        //    direction = "Right";
+        //    sprite.flipX = isLeftInitialize;
+        //}
+        //else
+        //{
+        //    direction = "Left";
+        //    sprite.flipX = !isLeftInitialize;
+        //}
+
+        //previousPos = transform.position;
+
+        // 로컬 좌표 감식
+        if (previousPos.x < transform.localPosition.x)
         {
             direction = "Right";
             sprite.flipX = isLeftInitialize;
         }
-        else
+        else if (previousPos.x > transform.localPosition.x)
         {
             direction = "Left";
             sprite.flipX = !isLeftInitialize;
         }
 
-        previousXpos = transform.position.x;
+        previousPos = transform.localPosition;
     }
 }

@@ -22,8 +22,8 @@ public class RandomMove : MonoBehaviour
     {
         //targetPostion = target.transform.position;
 
-        targetPostion.x = Random.Range(-15, 15);
-        targetPostion.z = Random.Range(-15, 15);
+        targetPostion.x = Random.Range(0, 10);
+        targetPostion.z = Random.Range(0, 10);
         nav.SetDestination(targetPostion);
         timer = setTimer;
     }
@@ -31,24 +31,19 @@ public class RandomMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            targetPostion = target.transform.position;
-            nav.SetDestination(targetPostion);
-        }
         SetRnadomizeDestination();
     }
 
     private void SetRnadomizeDestination()
     {
-        if (Vector3.Distance(transform.position, nav.destination) <= 0.5f)
+        if (Vector3.Distance(transform.position, nav.destination) <= 1f)
         {
             isArrive = true;
             timer -= Time.deltaTime;
             if (timer <= 0f)
             {
-                targetPostion.x = Random.Range(-15, 15);
-                targetPostion.z = Random.Range(-15, 15);
+                targetPostion.x = Random.Range(0, 10);
+                targetPostion.z = Random.Range(0, 10);
                 nav.SetDestination(targetPostion);
                 timer = setTimer;
             }
