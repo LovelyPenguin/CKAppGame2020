@@ -27,12 +27,33 @@ public class SetOpenTimer : MonoBehaviour
 
     void SetTimer()
     {
-        myText.text = min.ToString() + ":" + sec.ToString();
         if (GameMng.Instance.getOpenData)
         {
             min = Mathf.FloorToInt(GameMng.Instance.openTime / 60);
             sec = Mathf.FloorToInt(GameMng.Instance.openTime % 60);
         }
+
+        string minString;
+        if (min < 10)
+        {
+            minString = '0' + min.ToString();
+        }
+        else
+        {
+            minString = min.ToString();
+        }
+
+        string secString;
+        if (sec < 10)
+        {
+            secString = '0' + sec.ToString();
+        }
+        else
+        {
+            secString = sec.ToString();
+        }
+
+        myText.text = minString + ":" + secString;
     }
 
     public void PlusTime()
