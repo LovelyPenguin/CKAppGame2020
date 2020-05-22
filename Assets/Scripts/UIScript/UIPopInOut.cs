@@ -18,6 +18,9 @@ public class UIPopInOut : MonoBehaviour
     private float returnSpeed = 5f;
     [SerializeField]
     private int previousSiblingIndex;
+    [SerializeField]
+    private float openPos;
+
     public UnityEvent PopIn;
     public UnityEvent PopOut;
 
@@ -33,7 +36,7 @@ public class UIPopInOut : MonoBehaviour
     {
         myRect = GetComponent<RectTransform>();
         defaultAnchorPosition = myRect.anchoredPosition;
-        destinationAnchorPostion = new Vector2(myRect.anchoredPosition.x, 795);
+        destinationAnchorPostion = new Vector2(myRect.anchoredPosition.x, openPos);
         previusAnchorPosition = myRect.anchoredPosition.y;
         mainCam = Camera.main;
         cardExitPanel.SetActive(false);
@@ -80,7 +83,7 @@ public class UIPopInOut : MonoBehaviour
 
     private void LimitPosition()
     {
-        if (myRect.anchoredPosition.y > 795)
+        if (myRect.anchoredPosition.y > openPos)
         {
             myRect.anchoredPosition = destinationAnchorPostion;
         }
