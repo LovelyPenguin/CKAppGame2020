@@ -107,7 +107,7 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
 
             if (Physics.Raycast(mouseVector.position, mouseVector.forward * 30, out hit) && hit.transform.GetComponent<DrinkTransfer>() != null)
             {
-                hit.transform.GetComponent<DrinkTransfer>().Detect(juiceValue);
+                hit.transform.GetComponent<DrinkTransfer>().Detect(juiceValue * Mathf.RoundToInt(MoneyCalc(percentValue)));
                 ResetAllValue();
                 GameMng.Instance.GetComponent<DrinkMng>().UpdateContent();
             }
@@ -117,9 +117,27 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
         endEvent.Invoke();
     }
 
-    IEnumerator TestFunc(MeshRenderer mesh)
+    float MoneyCalc(float percent)
     {
-        yield return new WaitForSeconds(1f);
-        mesh.material.color = Color.white;
+        if (percent <= 100 && percent > 90)
+        {
+            return 1.5f;
+        }
+        else if (percent <= 90 && percent > 75)
+        {
+            return 1.25f;
+        }
+        else if (percent <= 75 && percent > 30)
+        {
+            return 1.0f;
+        }
+        else if (percent <= 30 && percent > 10)
+        {
+            return 0.75f;
+        }
+        else
+        {
+            return 0.5f;
+        }
     }
 }
