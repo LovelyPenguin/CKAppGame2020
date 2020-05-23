@@ -62,21 +62,43 @@ public class RaccoonController : MonoBehaviour
         {
             if (hit.transform.gameObject.tag == "Ground")
             {
-                if (InitState == State.Healing)
-                    GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, healMapName);
-                RCState = State.inMap1;
-                GetComponent<RandomMove>().SetTargerFloor(1);
-                transform.position = hit.point + new UnityEngine.Vector3(0, mDeltaY, 0);
-                Debug.Log("GroundHit");
+                if (isWorking && InitState != State.inMap1 && InitState != State.inMap2)
+                {
+                    RCState = InitState;
+                    transform.position = originCoord;
+                    Debug.Log("Drag While Working is not allow");
+
+                    Camera.main.GetComponent<CameraController>().RollbackPos();
+                }
+                else
+                {
+                    if (InitState == State.Healing)
+                        GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, healMapName);
+                    RCState = State.inMap1;
+                    GetComponent<RandomMove>().SetTargerFloor(1);
+                    transform.position = hit.point + new UnityEngine.Vector3(0, mDeltaY, 0);
+                    Debug.Log("GroundHit");
+                }
             }
             else if (hit.transform.gameObject.tag == "2ndGround")
             {
-                if (InitState == State.Healing)
-                    GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, healMapName);
-                RCState = State.inMap2;
-                GetComponent<RandomMove>().SetTargerFloor(2);
-                transform.position = hit.point + new UnityEngine.Vector3(0, mDeltaY, 0);
-                Debug.Log("2ndGroundHit");
+                if (isWorking && InitState != State.inMap1 && InitState != State.inMap2)
+                {
+                    RCState = InitState;
+                    transform.position = originCoord;
+                    Debug.Log("Drag While Working is not allow");
+
+                    Camera.main.GetComponent<CameraController>().RollbackPos();
+                }
+                else
+                {
+                    if (InitState == State.Healing)
+                        GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, healMapName);
+                    RCState = State.inMap2;
+                    GetComponent<RandomMove>().SetTargerFloor(2);
+                    transform.position = hit.point + new UnityEngine.Vector3(0, mDeltaY, 0);
+                    Debug.Log("2ndGroundHit");
+                }
             }
             //else if (hit.transform.gameObject.tag == "WallL")
             //{
@@ -90,22 +112,33 @@ public class RaccoonController : MonoBehaviour
             //}
             else if (hit.transform.gameObject.tag == "Heal")
             {
-                if (InitState == State.Healing)
-                    GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, healMapName);
-
-                healMapName = hit.transform.gameObject.name;
-                healMapSeatNum = GameObject.Find("HealMap").GetComponent<HealMapMng>().retSeatIndexForName(healMapName);
-                Debug.Log(healMapSeatNum);
-                if (healMapSeatNum != -1)
+                if (isWorking && InitState != State.Healing)
                 {
-                    this.transform.position = GameObject.Find("HealMap").GetComponent<HealMapMng>().retPositionForName(healMapSeatNum, healMapName);
-                    RCState = State.Healing;
+                    RCState = InitState;
+                    transform.position = originCoord;
+                    Debug.Log("Drag While Working is not allow");
+
+                    Camera.main.GetComponent<CameraController>().RollbackPos();
                 }
                 else
                 {
-                    this.transform.position = originCoord;
-                    RCState = InitState;
-                }   
+                    if (InitState == State.Healing)
+                        GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, healMapName);
+
+                    healMapName = hit.transform.gameObject.name;
+                    healMapSeatNum = GameObject.Find("HealMap").GetComponent<HealMapMng>().retSeatIndexForName(healMapName);
+                    Debug.Log(healMapSeatNum);
+                    if (healMapSeatNum != -1)
+                    {
+                        this.transform.position = GameObject.Find("HealMap").GetComponent<HealMapMng>().retPositionForName(healMapSeatNum, healMapName);
+                        RCState = State.Healing;
+                    }
+                    else
+                    {
+                        this.transform.position = originCoord;
+                        RCState = InitState;
+                    }
+                }
 
              //   transform.position = hit.point + new UnityEngine.Vector3(0, mDeltaY, 0);
                 Debug.Log("HealHit");
@@ -215,6 +248,7 @@ public class RaccoonController : MonoBehaviour
     public float distance;
 
     public GameObject StaminaBar;
+    //public GameObject StaminaBarBack;
     public GameObject Sprite;
     
     private int healMapSeatNum;
@@ -555,24 +589,24 @@ public class RaccoonController : MonoBehaviour
     {
         if (isVisible)
         {
-            StaminaBar.transform.position = Camera.main.WorldToScreenPoint(this.transform.position);
-
+            StaminaBar.transform.position = Camera.main.WorldToScreenPoint(this.transform.position + this.transform.up * 2.8f);
+            //StaminaBarBack.transform.position = Camera.main.WorldToScreenPoint(this.transform.position);
             if (stamina == maxStamina)
-                StaminaBar.GetComponent<Image>().color = Color.green;
+                StaminaBar.GetComponentsInChildren<Image>()[1].color = Color.green;
             else if (stamina == 0)
-                StaminaBar.GetComponent<Image>().color = Color.gray;
+                StaminaBar.GetComponentsInChildren<Image>()[1].color = Color.gray;
             else
-                StaminaBar.GetComponent<Image>().color = new Color32(255, 127, 0, 255);
+                StaminaBar.GetComponentsInChildren<Image>()[1].color = new Color32(255, 127, 0, 255);
 
 
             if (stamina == 0)
-                StaminaBar.GetComponent<Image>().fillAmount = 1.0f;
+                StaminaBar.GetComponentsInChildren<Image>()[1].fillAmount = 1.0f;
             else
-                StaminaBar.GetComponent<Image>().fillAmount = ((float)stamina / maxStamina);
+                StaminaBar.GetComponentsInChildren<Image>()[1].fillAmount = ((float)stamina / maxStamina);
         }
         else
         {
-            StaminaBar.GetComponent<Image>().fillAmount = 0.0f;
+            StaminaBar.GetComponentsInChildren<Image>()[1].fillAmount = 0.0f;
         }
     }
 }
