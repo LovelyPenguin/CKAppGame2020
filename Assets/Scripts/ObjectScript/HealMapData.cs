@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class HealMapData : MonoBehaviour
@@ -8,6 +10,7 @@ public class HealMapData : MonoBehaviour
     private bool[] Usable = new bool[3];
     public bool Enable = true;
     private int SeatCount = 0;
+    public GameObject HMng;
 
     // this is for test
     public GameObject Quad;
@@ -59,4 +62,9 @@ public class HealMapData : MonoBehaviour
         return SeatCount;
     }
 
+    private void OnMouseDown()
+    {
+        if (!Enable)
+            HMng.GetComponent<HealMapMng>().FindMapIndex(this.name);
+    }
 }
