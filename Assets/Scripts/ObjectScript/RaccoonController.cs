@@ -99,13 +99,14 @@ public class RaccoonController : MonoBehaviour
                 if (healMapSeatNum != -1)
                 {
                     this.transform.position = GameObject.Find("HealMap").GetComponent<HealMapMng>().retPositionForName(healMapSeatNum, healMapName);
+                    RCState = State.Healing;
                 }
                 else
                 {
                     this.transform.position = originCoord;
+                    RCState = InitState;
                 }   
 
-                RCState = State.Healing;
              //   transform.position = hit.point + new UnityEngine.Vector3(0, mDeltaY, 0);
                 Debug.Log("HealHit");
             }

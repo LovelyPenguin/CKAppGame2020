@@ -9,18 +9,22 @@ public class HealMapData : MonoBehaviour
     public bool Enable = true;
     private int SeatCount = 0;
 
+    // this is for test
+    public GameObject Quad;
+    //
+
     // Start is called before the first frame update
     void Start()
     {
         for (int i = 0; i < 3; i++)
             Usable[i] = true;
-        Enable = true;
+        Enable = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Quad.SetActive(!Enable);
     }
 
     public int retSeatIndex()
