@@ -19,7 +19,7 @@ public class UIPopInOut : MonoBehaviour
     [SerializeField]
     private int previousSiblingIndex;
     [SerializeField]
-    private float openPos;
+    private float openPos = 770;
 
     public UnityEvent PopIn;
     public UnityEvent PopOut;
