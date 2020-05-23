@@ -1165,6 +1165,11 @@ PrefabInstance:
       propertyPath: icon
       value: 
       objectReference: {fileID: 1733977804}
+    - target: {fileID: 7566686985378810631, guid: fc88fae509a6d2a45bbe1b27a8f6c878,
+        type: 3}
+      propertyPath: juiceValue
+      value: 250
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc88fae509a6d2a45bbe1b27a8f6c878, type: 3}
 --- !u!1 &75665000
@@ -19718,6 +19723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
+  hour: 0
   min: 0
   sec: 10
   buttons:
@@ -26978,6 +26984,11 @@ PrefabInstance:
         type: 3}
       propertyPath: endEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637547503201400930, guid: 21dc66f1cd6e406478a444d996394ea0,
+        type: 3}
+      propertyPath: juiceValue
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7637547503201400932, guid: 21dc66f1cd6e406478a444d996394ea0,
         type: 3}

@@ -16,6 +16,8 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
     private Vector2 initialValue;
     [SerializeField]
     private GameObject icon;
+    [SerializeField]
+    private int juiceValue = 100;
 
     public bool isComplete = false;
     public float percentValue;
@@ -105,7 +107,7 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
 
             if (Physics.Raycast(mouseVector.position, mouseVector.forward * 30, out hit) && hit.transform.GetComponent<DrinkTransfer>() != null)
             {
-                hit.transform.GetComponent<DrinkTransfer>().Detect();
+                hit.transform.GetComponent<DrinkTransfer>().Detect(juiceValue);
                 ResetAllValue();
                 GameMng.Instance.GetComponent<DrinkMng>().UpdateContent();
             }

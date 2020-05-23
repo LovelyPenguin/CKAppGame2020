@@ -21,10 +21,10 @@ public class DrinkTransfer : MonoBehaviour
         
     }
 
-    public void Detect()
+    public void Detect(int money = 100)
     {
         //particle.transform.position = transform.position;
-        GameMng.Instance.money += 10;
+        GameMng.Instance.money += money;
         ParticleManager(true);
         isTransfer = true;
         StartCoroutine(Disable());
