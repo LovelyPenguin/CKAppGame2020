@@ -16,6 +16,9 @@ public class RaccoonController : MonoBehaviour
     State InitState;
     RaycastHit hit;
 
+    private Transform OnMapTransform;
+    private Transform DragTransform;
+
     void OnMouseDown()
     {
         InitState = RCState;
@@ -23,7 +26,6 @@ public class RaccoonController : MonoBehaviour
         Debug.Log("RCDrag_OnMouseDown");
         originCoord = transform.position;
         transform.Translate(0, mDeltaY, 0);
-
         mZCoord = 1;
         Shadowinst = Instantiate(Shadow) as GameObject;
         Physics.Raycast(transform.position - new UnityEngine.Vector3(0, mDeltaY, 0), transform.forward, out hit, Mathf.Infinity);
@@ -34,12 +36,18 @@ public class RaccoonController : MonoBehaviour
         //isMoving = false;
 
         //애니메이터
-        //animator.SetTrigger("DragTrigger");
+        //isMoving = false;
+        animator.ResetTrigger("idleTrigger");
+        animator.ResetTrigger("WalkTrigger");
+        animator.SetTrigger("DragTrigger");
 
         Camera.main.GetComponent<CameraController>().RememberPos();
 
         //애니메이터
         //animator.SetTrigger("DragTrigger");
+
+        Sprite.transform.localEulerAngles = new Vector3(30f, 0f, 0f);
+        Sprite.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
     void OnMouseUp()
@@ -57,6 +65,7 @@ public class RaccoonController : MonoBehaviour
                 if (InitState == State.Healing)
                     GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, healMapName);
                 RCState = State.inMap1;
+                GetComponent<RandomMove>().SetTargerFloor(1);
                 transform.position = hit.point + new UnityEngine.Vector3(0, mDeltaY, 0);
                 Debug.Log("GroundHit");
             }
@@ -65,6 +74,7 @@ public class RaccoonController : MonoBehaviour
                 if (InitState == State.Healing)
                     GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, healMapName);
                 RCState = State.inMap2;
+                GetComponent<RandomMove>().SetTargerFloor(2);
                 transform.position = hit.point + new UnityEngine.Vector3(0, mDeltaY, 0);
                 Debug.Log("2ndGroundHit");
             }
@@ -123,9 +133,12 @@ public class RaccoonController : MonoBehaviour
         //isOnDrag = false;
 
         // 애니메이터
-        //animator.SetTrigger("idleTrigger");
+        animator.SetTrigger("idleTrigger");
 
         //Destroy(Shadowinst);
+
+        Sprite.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
+        Sprite.transform.localScale = new Vector3(1f, 1.1547f, 1f);
     }
 
     private UnityEngine.Vector3 GetMouseWorldPos()
@@ -188,6 +201,7 @@ public class RaccoonController : MonoBehaviour
     //bool isOnDrag = false;
     //bool isActive = false;
     //bool isHealing = false;
+    private bool Movable;
 
     private enum State { unActive = 0, onDrag, inMap1, inMap2, Healing};
     private State RCState;
@@ -226,7 +240,8 @@ public class RaccoonController : MonoBehaviour
         //SetRCActive(false);
         RCState = State.unActive;
 
-        navMesh.enabled = false;
+        //navMesh.enabled = false;
+        SetMovable(false);
 
         animator = GetComponentInChildren<Animator>();
     }
@@ -272,16 +287,19 @@ public class RaccoonController : MonoBehaviour
             switch (RCState)
             {
                 case State.Healing:
+                    SetMovable(false);
                     Healing();
                     break;
                 case State.inMap1:
+                    SetMovable(true);
                     Exhausting();
                     break;
                 case State.inMap2:
+                    SetMovable(true);
                     Exhausting();
                     break;
                 case State.onDrag:
-
+                    SetMovable(false);
                     break;
             }
             Move();
@@ -395,28 +413,57 @@ public class RaccoonController : MonoBehaviour
             }
     }
 
-    private void Move()
+    void SetMovable(bool boolean)
     {
-        if (RCState == State.inMap1)
+        Movable = boolean;
+        if (Movable)
         {
-            // 애니메이션
-            //if (this.GetComponent<RandomMove>().Arrived)
-            //    animator.SetTrigger("idleTrigger");
-            //else
-            //    animator.SetTrigger("WalkTrigger");
-
-            Vector3 dir = this.GetComponent<RandomMove>().GetTargetPos() - this.transform.position;
-
-            if (dir.z - dir.x > 0)
-                Sprite.GetComponent<SpriteRenderer>().flipX = false;
-            else
-                Sprite.GetComponent<SpriteRenderer>().flipX = true;
-
             navMesh.enabled = true;
         }
         else
         {
             navMesh.enabled = false;
+            isMoving = false;
+        }
+
+    }
+
+    private void StartMove()
+    {
+        if(isMoving == false)
+        {
+            isMoving = true;
+            animator.SetTrigger("WalkTrigger");
+            Debug.Log("WalkTrigger ACtived");
+        }
+    }
+
+    private void EndMove()
+    {
+        if(isMoving == true)
+        {
+            isMoving = false;
+            animator.SetTrigger("idleTrigger");
+            Debug.Log("idleTrigger ACtived");
+        }
+    }
+
+    private void Move()
+    {
+        if (Movable)
+        {
+            // 애니메이션
+            if (this.GetComponent<RandomMove>().Arrived)
+                EndMove();
+            else
+                StartMove();
+
+            Vector3 dir = navMesh.desiredVelocity;
+
+            if (dir.z - dir.x > 0)
+                Sprite.GetComponent<SpriteRenderer>().flipX = false;
+            else
+                Sprite.GetComponent<SpriteRenderer>().flipX = true;
         }
     }
 

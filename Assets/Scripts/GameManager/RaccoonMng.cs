@@ -8,7 +8,7 @@ public class RaccoonMng : MonoBehaviour
 {
     GameMng GMng;
     private int selectedRC;
-    private static int RaccoonCount = 8;
+    private static int RaccoonCount = 7;
     private static int RaccoonRankCount = 5;
     public GameObject[] RC = new GameObject[RaccoonCount];
     bool[] RaccoonExist = new bool[RaccoonCount];
@@ -84,7 +84,7 @@ public class RaccoonMng : MonoBehaviour
     public void UpgradeRC(int index)
     {
         int cost = RetCost(index, RaccoonRank[index]);
-        if (RaccoonRank[index] < RaccoonRankCount && RaccoonUnlock[index] && GMng.money >= cost)
+        if (RaccoonRank[index] < RaccoonRankCount && RaccoonUnlock[index] && GMng.money >= cost && !GameObject.Find("GameManager").GetComponent<GameMng>().getOpenData)
         {
             RaccoonRank[index]++;
             GMng.money -= cost;
@@ -94,7 +94,7 @@ public class RaccoonMng : MonoBehaviour
     public void UnlockRC(int index)
     {
         int cost = RetCost(index, 0);
-        if(!RaccoonUnlock[index] && GMng.money >= cost)
+        if(!RaccoonUnlock[index] && GMng.money >= cost && !GameObject.Find("GameManager").GetComponent<GameMng>().getOpenData)
         {
             RaccoonUnlock[index] = true;
             RaccoonRank[index] = 1;
