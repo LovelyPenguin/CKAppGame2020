@@ -58,7 +58,7 @@ public class RaccoonController : MonoBehaviour
 
         Debug.Log("RCDrag_OnMouseUp");
         if (Physics.Raycast(transform.position + transform.forward - new UnityEngine.Vector3(0, mDeltaY, 0) - transform.up * 1f, Sprite.transform.forward, out hit, Mathf.Infinity))
-            //if (Physics.Raycast(transform.position + transform.forward - new UnityEngine.Vector3(0, mDeltaY, 0), transform.forward, out hit, Mathf.Infinity))
+        //if (Physics.Raycast(transform.position + transform.forward - new UnityEngine.Vector3(0, mDeltaY, 0), transform.forward, out hit, Mathf.Infinity))
         {
             if (hit.transform.gameObject.tag == "Ground")
             {
@@ -140,7 +140,7 @@ public class RaccoonController : MonoBehaviour
                     }
                 }
 
-             //   transform.position = hit.point + new UnityEngine.Vector3(0, mDeltaY, 0);
+                //   transform.position = hit.point + new UnityEngine.Vector3(0, mDeltaY, 0);
                 Debug.Log("HealHit");
             }
             else
@@ -167,6 +167,8 @@ public class RaccoonController : MonoBehaviour
         //isOnDrag = false;
 
         // 애니메이터
+        animator.ResetTrigger("DragTrigger");
+        animator.ResetTrigger("WalkTrigger");
         animator.SetTrigger("idleTrigger");
 
         //Destroy(Shadowinst);
@@ -210,9 +212,9 @@ public class RaccoonController : MonoBehaviour
     private static int maxStamina = 100;
     public int stamina
     {
-        get 
-        { 
-            return Stamina; 
+        get
+        {
+            return Stamina;
         }
         set
         {
@@ -237,7 +239,7 @@ public class RaccoonController : MonoBehaviour
     //bool isHealing = false;
     private bool Movable;
 
-    private enum State { unActive = 0, onDrag, inMap1, inMap2, Healing};
+    private enum State { unActive = 0, onDrag, inMap1, inMap2, Healing };
     private State RCState;
 
     public bool isMoving = false;
@@ -250,7 +252,7 @@ public class RaccoonController : MonoBehaviour
     public GameObject StaminaBar;
     //public GameObject StaminaBarBack;
     public GameObject Sprite;
-    
+
     private int healMapSeatNum;
 
     private Color OpaqueC = new Color(1f, 1f, 1f, 1f);
@@ -404,7 +406,7 @@ public class RaccoonController : MonoBehaviour
     private void SetVisible()
     {
         isVisible = !(GameObject.Find("GameManager").GetComponent<FloorStatMng>().CurFloor == FloorStatMng.Floor.Floor1 && RCState == State.inMap2);
-        
+
         if (isVisible)
         {
             Sprite.GetComponent<SpriteRenderer>().color = OpaqueC;
@@ -465,9 +467,11 @@ public class RaccoonController : MonoBehaviour
 
     private void StartMove()
     {
-        if(isMoving == false)
+        if (isMoving == false)
         {
             isMoving = true;
+            animator.ResetTrigger("idleTrigger");
+            animator.ResetTrigger("DragTrigger");
             animator.SetTrigger("WalkTrigger");
             Debug.Log("WalkTrigger ACtived");
         }
@@ -475,9 +479,11 @@ public class RaccoonController : MonoBehaviour
 
     private void EndMove()
     {
-        if(isMoving == true)
+        if (isMoving == true)
         {
             isMoving = false;
+            animator.ResetTrigger("WalkTrigger");
+            animator.ResetTrigger("DragTrigger");
             animator.SetTrigger("idleTrigger");
             Debug.Log("idleTrigger ACtived");
         }
@@ -500,6 +506,12 @@ public class RaccoonController : MonoBehaviour
             else
                 Sprite.GetComponent<SpriteRenderer>().flipX = true;
         }
+    }
+
+    public void CallUpgradeTrigger()
+    {
+        animator.SetTrigger("UpgradeTrigger");
+        SetMovable(false);
     }
 
     //private void OnMouseDown()
@@ -608,5 +620,6 @@ public class RaccoonController : MonoBehaviour
         {
             StaminaBar.GetComponentsInChildren<Image>()[1].fillAmount = 0.0f;
         }
+        this.animator.SetFloat("Stamina", stamina / 100f + 0.4f);
     }
 }

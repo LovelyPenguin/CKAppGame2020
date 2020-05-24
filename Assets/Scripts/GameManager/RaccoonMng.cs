@@ -87,6 +87,7 @@ public class RaccoonMng : MonoBehaviour
         if (RaccoonRank[index] < RaccoonRankCount && RaccoonUnlock[index] && GMng.money >= cost && !GameObject.Find("GameManager").GetComponent<GameMng>().getOpenData)
         {
             RaccoonRank[index]++;
+            RC[index].GetComponent<RaccoonController>().CallUpgradeTrigger();
             GMng.money -= cost;
         }
     }
