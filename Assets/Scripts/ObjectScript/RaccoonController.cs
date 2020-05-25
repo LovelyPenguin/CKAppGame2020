@@ -454,10 +454,14 @@ public class RaccoonController : MonoBehaviour
         if (isVisible)
         {
             Sprite.GetComponent<SpriteRenderer>().color = OpaqueC;
+            Shadow.GetComponent<SpriteRenderer>().color = OpaqueC;
+            StaminaBar.GetComponent<Image>().color = OpaqueC;
         }
         else
         {
             Sprite.GetComponent<SpriteRenderer>().color = TransparentC;
+            Shadow.GetComponent<SpriteRenderer>().color = TransparentC;
+            StaminaBar.GetComponent<Image>().color = TransparentC;
         }
     }
 
