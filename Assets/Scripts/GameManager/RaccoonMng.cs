@@ -9,7 +9,7 @@ public class RaccoonMng : MonoBehaviour
     GameMng GMng;
     private int selectedRC;
     private static int RaccoonCount = 7;
-    private static int RaccoonRankCount = 5;
+    private static int RaccoonRankCount = 3;
     public GameObject[] RC = new GameObject[RaccoonCount];
     bool[] RaccoonExist = new bool[RaccoonCount];
     public bool[] RaccoonUnlock = new bool[RaccoonCount];

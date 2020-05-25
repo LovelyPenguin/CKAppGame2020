@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
@@ -8,9 +9,9 @@ public class RaccoonController : MonoBehaviour
     private UnityEngine.Vector3 originCoord;
 
     public float mZCoord;
-    private float mDeltaY = 0.3f;
+    private float mDeltaY = 0.0f;
     public GameObject Shadow;
-    GameObject Shadowinst;
+    //GameObject Shadowinst;
 
     string healMapName;
     State InitState;
@@ -27,9 +28,9 @@ public class RaccoonController : MonoBehaviour
         originCoord = transform.position;
         transform.Translate(0, mDeltaY, 0);
         mZCoord = 1;
-        Shadowinst = Instantiate(Shadow) as GameObject;
+        //Shadowinst = Instantiate(Shadow) as GameObject;
         Physics.Raycast(transform.position - new UnityEngine.Vector3(0, mDeltaY, 0), transform.forward, out hit, Mathf.Infinity);
-        Shadowinst.transform.position = transform.position + new UnityEngine.Vector3(0, -0.1f, 0);
+        //Shadowinst.transform.position = transform.position + new UnityEngine.Vector3(0, -0.1f, 0);
 
 
         //isOnDrag = true;
@@ -54,10 +55,13 @@ public class RaccoonController : MonoBehaviour
     {
         Debug.DrawRay(transform.position + transform.forward - new UnityEngine.Vector3(0, mDeltaY, 0), Sprite.transform.forward, Color.red, 5f);
 
-        Destroy(Shadowinst);
+        //Destroy(Shadowinst);
+
+        animator.ResetTrigger("DragTrigger");
+        animator.ResetTrigger("WalkTrigger");
 
         Debug.Log("RCDrag_OnMouseUp");
-        if (Physics.Raycast(transform.position + transform.forward - new UnityEngine.Vector3(0, mDeltaY, 0) - transform.up * 1f, Sprite.transform.forward, out hit, Mathf.Infinity))
+        if (Physics.Raycast(transform.position + transform.forward - new UnityEngine.Vector3(0, mDeltaY, 0) - transform.up * 0.7f, Sprite.transform.forward, out hit, Mathf.Infinity))
         //if (Physics.Raycast(transform.position + transform.forward - new UnityEngine.Vector3(0, mDeltaY, 0), transform.forward, out hit, Mathf.Infinity))
         {
             if (hit.transform.gameObject.tag == "Ground")
@@ -68,15 +72,21 @@ public class RaccoonController : MonoBehaviour
                     transform.position = originCoord;
                     Debug.Log("Drag While Working is not allow");
 
+                    animator.SetTrigger("idleTrigger");
+
                     Camera.main.GetComponent<CameraController>().RollbackPos();
                 }
                 else
                 {
                     if (InitState == State.Healing)
                         GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, healMapName);
-                    RCState = State.inMap1;
+                    //RCState = State.inMap1;
                     GetComponent<RandomMove>().SetTargerFloor(1);
                     transform.position = hit.point + new UnityEngine.Vector3(0, mDeltaY, 0);
+
+                    animator.SetTrigger("DropTrigger");
+
+                    StartCoroutine(Drop(State.inMap1));
                     Debug.Log("GroundHit");
                 }
             }
@@ -88,15 +98,21 @@ public class RaccoonController : MonoBehaviour
                     transform.position = originCoord;
                     Debug.Log("Drag While Working is not allow");
 
+                    animator.SetTrigger("idleTrigger");
+
                     Camera.main.GetComponent<CameraController>().RollbackPos();
                 }
                 else
                 {
                     if (InitState == State.Healing)
                         GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, healMapName);
-                    RCState = State.inMap2;
+                    //RCState = State.inMap2;
                     GetComponent<RandomMove>().SetTargerFloor(2);
                     transform.position = hit.point + new UnityEngine.Vector3(0, mDeltaY, 0);
+
+                    animator.SetTrigger("DropTrigger");
+
+                    StartCoroutine(Drop(State.inMap2));
                     Debug.Log("2ndGroundHit");
                 }
             }
@@ -118,6 +134,8 @@ public class RaccoonController : MonoBehaviour
                     transform.position = originCoord;
                     Debug.Log("Drag While Working is not allow");
 
+                    animator.SetTrigger("idleTrigger");
+
                     Camera.main.GetComponent<CameraController>().RollbackPos();
                 }
                 else
@@ -131,10 +149,15 @@ public class RaccoonController : MonoBehaviour
                     if (healMapSeatNum != -1)
                     {
                         this.transform.position = GameObject.Find("HealMap").GetComponent<HealMapMng>().retPositionForName(healMapSeatNum, healMapName);
-                        RCState = State.Healing;
+                        //RCState = State.Healing;
+                        animator.SetTrigger("DropTrigger");
+
+                        StartCoroutine(Drop(State.Healing));
                     }
                     else
                     {
+                        animator.SetTrigger("idleTrigger");
+
                         this.transform.position = originCoord;
                         RCState = InitState;
                     }
@@ -150,6 +173,8 @@ public class RaccoonController : MonoBehaviour
                 Debug.Log("ElseHit");
                 Debug.Log(hit.collider.gameObject.name);
 
+                animator.SetTrigger("idleTrigger");
+
                 Camera.main.GetComponent<CameraController>().RollbackPos();
             }
         }
@@ -159,6 +184,8 @@ public class RaccoonController : MonoBehaviour
             transform.position = originCoord;
             Debug.Log("NothingHit");
 
+            animator.SetTrigger("idleTrigger");
+
             Camera.main.GetComponent<CameraController>().RollbackPos();
         }
 
@@ -166,10 +193,10 @@ public class RaccoonController : MonoBehaviour
         //animator.SetTrigger("idleTrigger");
         //isOnDrag = false;
 
-        // 애니메이터
-        animator.ResetTrigger("DragTrigger");
-        animator.ResetTrigger("WalkTrigger");
-        animator.SetTrigger("idleTrigger");
+        //// 애니메이터
+        //animator.ResetTrigger("DragTrigger");
+        //animator.ResetTrigger("WalkTrigger");
+        //animator.SetTrigger("idleTrigger");
 
         //Destroy(Shadowinst);
 
@@ -193,8 +220,22 @@ public class RaccoonController : MonoBehaviour
         //animator.SetTrigger("DragTrigger");
         //Debug.Log("RCDrag_OnMouseDrag");
         transform.position = GetMouseWorldPos();
-        Physics.Raycast(transform.position - new UnityEngine.Vector3(0, mDeltaY, 0), transform.forward, out hit, Mathf.Infinity);
-        Shadowinst.transform.position = transform.position + new UnityEngine.Vector3(0, -0.1f, 0);
+        //Physics.Raycast(transform.position - new UnityEngine.Vector3(0, mDeltaY, 0), transform.forward, out hit, Mathf.Infinity);
+        //Shadowinst.transform.position = transform.position + new UnityEngine.Vector3(0, -0.1f, 0);
+        //Shadow.transform.position = transform.position + new UnityEngine.Vector3(0, -0.1f, 0);
+    }
+
+    IEnumerator Drop(State NextState)
+    {
+        Vector3 initLocation = transform.position;
+        float height = 2.0f;
+        while (height > 0.0f)
+        {
+            Sprite.transform.position = initLocation + transform.up * (height -= Time.deltaTime * 8f);
+            yield return null;
+        }
+        Sprite.transform.position = initLocation;
+        RCState = NextState;
     }
 
 
@@ -239,7 +280,7 @@ public class RaccoonController : MonoBehaviour
     //bool isHealing = false;
     private bool Movable;
 
-    private enum State { unActive = 0, onDrag, inMap1, inMap2, Healing };
+    private enum State { unActive = 0, onDrag, inMap1, inMap2, Healing, dropping };
     private State RCState;
 
     public bool isMoving = false;
@@ -336,6 +377,9 @@ public class RaccoonController : MonoBehaviour
                     Exhausting();
                     break;
                 case State.onDrag:
+                    SetMovable(false);
+                    break;
+                case State.dropping:
                     SetMovable(false);
                     break;
             }
