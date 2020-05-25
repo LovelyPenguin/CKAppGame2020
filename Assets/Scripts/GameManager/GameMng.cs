@@ -7,6 +7,7 @@ public class GameMng : MonoBehaviour
 {
     public UnityEvent openEvent;
     public UnityEvent closeEvent;
+    public bool isPopupMenuOpen = false;
 
     GameObject dustGenerator;
     GameObject RaccoonMng;

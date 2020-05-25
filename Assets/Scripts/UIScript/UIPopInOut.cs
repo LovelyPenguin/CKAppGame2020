@@ -67,11 +67,13 @@ public class UIPopInOut : MonoBehaviour
         if (previusAnchorPosition < myRect.anchoredPosition.y)
         {
             isOpen = true;
+            GameMng.Instance.isPopupMenuOpen = isOpen;
             cardExitPanel.SetActive(true);
         }
         else if (previusAnchorPosition > myRect.anchoredPosition.y)
         {
             isOpen = false;
+            GameMng.Instance.isPopupMenuOpen = isOpen;
         }
         previusAnchorPosition = myRect.anchoredPosition.y;
     }
