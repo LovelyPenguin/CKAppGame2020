@@ -406,7 +406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mZCoord: 0
-  Shadow: {fileID: 5020033455599377140, guid: 7f95fbb96b043354292c89ea71fde798, type: 3}
+  Shadow: {fileID: 1623829578}
   Stamina: 0
   Cost: e0930400e0930400801a060020a1070070640800
   isMoving: 0
@@ -7506,7 +7506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mZCoord: 0
-  Shadow: {fileID: 5020033455599377140, guid: 7f95fbb96b043354292c89ea71fde798, type: 3}
+  Shadow: {fileID: 1445967856}
   Stamina: 0
   Cost: 400d0300400d0300e0930400801a0600d0dd0600
   isMoving: 0
@@ -8323,7 +8323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mZCoord: 0
-  Shadow: {fileID: 5020033455599377140, guid: 7f95fbb96b043354292c89ea71fde798, type: 3}
+  Shadow: {fileID: 1296082752}
   Stamina: 0
   Cost: f0490200f0490200400d0300e093040030570500
   isMoving: 0
@@ -12906,7 +12906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mZCoord: 0
-  Shadow: {fileID: 5020033455599377140, guid: 7f95fbb96b043354292c89ea71fde798, type: 3}
+  Shadow: {fileID: 262052507}
   Stamina: 0
   Cost: 801a0600801a060020a10700c027090010eb0900
   isMoving: 0
@@ -13271,7 +13271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mZCoord: 0
-  Shadow: {fileID: 5020033455599377140, guid: 7f95fbb96b043354292c89ea71fde798, type: 3}
+  Shadow: {fileID: 1550642812}
   Stamina: 0
   Cost: 20a1070020a10700c027090060ae0a00b0710b00
   isMoving: 0
@@ -20186,7 +20186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mZCoord: 0
-  Shadow: {fileID: 5020033455599377140, guid: 7f95fbb96b043354292c89ea71fde798, type: 3}
+  Shadow: {fileID: 1533765052}
   Stamina: 0
   Cost: c0270900c027090060ae0a0000350c0050f80c00
   isMoving: 0
