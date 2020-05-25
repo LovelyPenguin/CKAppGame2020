@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/MenuPrototype.unity
-    guid: 458480dbce3311e49a2c6a045e4ae4eb
-  - enabled: 1
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: Assets/Scenes/ShaderTest.unity
     guid: f560f398db543c846aa27a3bd26407ff
+  - enabled: 1
+    path: Assets/Scenes/RaccoonMovementInproved.unity
+    guid: b6a01804acc7e2e47b5d19b1a25f0432
   m_configObjects: {}
