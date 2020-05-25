@@ -25,6 +25,8 @@ public class DrinkMng : MonoBehaviour
     private GameObject tabBtn;
     [SerializeField]
     private Text percentText;
+    [SerializeField]
+    private GameObject blockImage;
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +62,7 @@ public class DrinkMng : MonoBehaviour
     {
         if (currentJuice != null)
         {
+            blockImage.SetActive(true);
             isStart = true;
             drinkMakeBtn.SetActive(false);
             tabBtn.SetActive(true);
@@ -161,6 +164,7 @@ public class DrinkMng : MonoBehaviour
         timerOn = false;
         slideGameIsStart = false;
         tabCounter = 0;
+        blockImage.SetActive(false);
         SetInvisibleButton();
     }
 
