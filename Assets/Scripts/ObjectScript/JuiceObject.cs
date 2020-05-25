@@ -20,6 +20,7 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
     private int juiceValue = 100;
 
     public bool isComplete = false;
+    public string juiceName;
     public float percentValue;
 
     RaycastHit hit;
@@ -107,9 +108,12 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
 
             if (Physics.Raycast(mouseVector.position, mouseVector.forward * 30, out hit) && hit.transform.GetComponent<DrinkTransfer>() != null)
             {
-                hit.transform.GetComponent<DrinkTransfer>().Detect(juiceValue * Mathf.RoundToInt(MoneyCalc(percentValue)));
-                ResetAllValue();
-                GameMng.Instance.GetComponent<DrinkMng>().UpdateContent();
+                if (hit.transform.GetComponent<DrinkTransfer>().selectJuice == juiceName)
+                {
+                    hit.transform.GetComponent<DrinkTransfer>().Detect(juiceValue * Mathf.RoundToInt(MoneyCalc(percentValue)));
+                    ResetAllValue();
+                    GameMng.Instance.GetComponent<DrinkMng>().UpdateContent();
+                }
             }
 
             Destroy(mouseVector.gameObject);
