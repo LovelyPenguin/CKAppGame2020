@@ -1,20 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class HealMapMng : MonoBehaviour
 {
     public GameObject[] Maps = new GameObject[4];
+    public GameObject HealMapUnlockUI;
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public int retSeatIndexForName(string name)
@@ -122,5 +122,45 @@ public class HealMapMng : MonoBehaviour
         }
 
         return Maps[MapIndex].GetComponent<HealMapData>().retSeatCount();
+    }
+
+    private int selectedMap;
+
+    public void FindMapIndex(string name)
+    {
+        if (name == Maps[0].name)
+        {
+            selectedMap = 0;
+        }
+        else if (name == Maps[1].name)
+        {
+            selectedMap = 1;
+        }
+        else if (name == Maps[2].name)
+        {
+            selectedMap = 2;
+        }
+        else if (name == Maps[3].name)
+        {
+            selectedMap = 3;
+        }
+        else
+        {
+            selectedMap = 0;
+        }
+
+        HealMapUnlockUI.SetActive(true);
+        Debug.Log("Popup");
+    }
+
+    public void UnlockHealMap()
+    {
+        Maps[selectedMap].GetComponent<HealMapData>().Enable = true;
+        HealMapUnlockUI.SetActive(false);
+    }
+
+    public void UnlockCancel()
+    {
+        HealMapUnlockUI.SetActive(false);
     }
 }

@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class SetRCInfo : MonoBehaviour
 {
-    static int RaccoonCount;
+    static int RaccoonCount = 7;
+    static int RaccoonRankCount = 3;
     public GameObject RCImage;
-    public Sprite[] Rc = new Sprite[RaccoonCount];
+    public Sprite[] Rc = new Sprite[RaccoonCount * RaccoonRankCount];
     RaccoonMng RCMng;
-    public GameObject[] Stars = new GameObject[5];
+    public GameObject[] Stars = new GameObject[RaccoonRankCount];
     public Sprite[] StarSprite = new Sprite[2];
     public Text txt;
 
@@ -38,11 +39,11 @@ public class SetRCInfo : MonoBehaviour
 
     private void RaccoonImageUpdate()
     {
-        RCImage.GetComponent<Image>().sprite = Rc[CurrentRaccoon];
+        int RCRank = RCMng.GetRCRank(CurrentRaccoon);
+        RCImage.GetComponent<Image>().sprite = Rc[CurrentRaccoon * RaccoonRankCount + RCRank - 1];
         if (RCMng.GetComponent<RaccoonMng>().GetRCUnlockData(CurrentRaccoon))
         {
-            int RCRank = RCMng.GetRCRank(CurrentRaccoon);
-            if (RCRank < 5)
+            if (RCRank < RaccoonRankCount)
             {
                 RCImage.GetComponent<Image>().color = Color.white;
                 txt.text = "업그레이드 " + RCMng.RetCost(CurrentRaccoon, RCRank).ToString() + "원";
@@ -67,7 +68,7 @@ public class SetRCInfo : MonoBehaviour
         {
             Stars[i].GetComponent<Image>().sprite = StarSprite[0];
         }
-        for(;i<5;i++)
+        for(;i< RaccoonRankCount; i++)
         {
             Stars[i].GetComponent<Image>().sprite = StarSprite[1];
         }

@@ -7,7 +7,7 @@
     }
     SubShader
     {
-        Tags { "RenderType"="CutOff" "Queue" = "CutOff"}
+        Tags { "RenderType"="CutOff"}
         LOD 100
 
         Pass

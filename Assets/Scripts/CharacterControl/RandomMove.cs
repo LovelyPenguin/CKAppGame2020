@@ -68,11 +68,23 @@ public class RandomMove : MonoBehaviour
     public bool Arrived
     {
         get { return isArrive; }
-        set { isArrive = value; }
+        //set { isArrive = value; }
     }
 
     public Vector3 GetTargetPos()
     {
         return targetPostion;
+    }
+
+    public void SetTargerFloor(int floor)
+    {
+        if (floor == 2)
+        {
+            targetPostion.y = 5.7f;
+        }
+        else
+        {
+            targetPostion.y = 0f;
+        }
     }
 }
