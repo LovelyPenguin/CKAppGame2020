@@ -6448,7 +6448,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1490122880}
   m_HandleRect: {fileID: 1490122879}
   m_Direction: 0
-  m_Value: -0.0000001695421
+  m_Value: 0
   m_Size: 0.71374047
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -21085,7 +21085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   returnSpeed: 5
-  cameraMovePositionY: 7.5
+  cameraMovePositionY: 14.5
 --- !u!114 &2126982872
 MonoBehaviour:
   m_ObjectHideFlags: 0
