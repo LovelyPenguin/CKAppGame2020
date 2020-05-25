@@ -87,6 +87,7 @@ public class RaccoonController : MonoBehaviour
                     animator.SetTrigger("DropTrigger");
 
                     StartCoroutine(Drop(State.inMap1));
+                    gameObject.GetComponent<RandomMove>().In1StFloor = true;
                     Debug.Log("GroundHit");
                 }
             }
@@ -113,6 +114,7 @@ public class RaccoonController : MonoBehaviour
                     animator.SetTrigger("DropTrigger");
 
                     StartCoroutine(Drop(State.inMap2));
+                    gameObject.GetComponent<RandomMove>().In1StFloor = false;
                     Debug.Log("2ndGroundHit");
                 }
             }

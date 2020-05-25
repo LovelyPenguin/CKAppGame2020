@@ -17,6 +17,8 @@ public class RandomMove : MonoBehaviour
     private float setTimer = 0.5f;
     private float timer;
 
+    public bool In1StFloor = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,8 +44,16 @@ public class RandomMove : MonoBehaviour
             timer -= Time.deltaTime;
             if (timer <= 0f)
             {
-                targetPostion.x = Random.Range(0, 10);
-                targetPostion.z = Random.Range(0, 10);
+                if (In1StFloor)
+                {
+                    targetPostion.x = Random.Range(0, 10);
+                    targetPostion.z = Random.Range(0, 10);
+                }
+                else
+                {
+                    targetPostion.x = Random.Range(-10, 0);
+                    targetPostion.z = Random.Range(-10, 0);
+                }
                 nav.SetDestination(targetPostion);
                 timer = setTimer;
             }
