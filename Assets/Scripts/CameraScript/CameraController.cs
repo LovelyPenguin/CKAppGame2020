@@ -6,6 +6,8 @@ public class CameraController : MonoBehaviour
 {
     public GameObject GameMng;
 
+    public GameObject Background;
+
     private bool isMoved;
     private Vector3 initPos;
     private float DefaultCameraSize;
@@ -99,8 +101,13 @@ public class CameraController : MonoBehaviour
         GetComponent<Camera>().orthographicSize += Delta;
 
         if (GetComponent<Camera>().orthographicSize > MaxCameraSize)
+        {
             GetComponent<Camera>().orthographicSize = MaxCameraSize;
-        else if(GetComponent<Camera>().orthographicSize < MinCameraSize)
+        }
+        else if (GetComponent<Camera>().orthographicSize < MinCameraSize)
+        {
             GetComponent<Camera>().orthographicSize = MinCameraSize;
+        }
+        Background.transform.localScale = new Vector3(GetComponent<Camera>().orthographicSize / 2, GetComponent<Camera>().orthographicSize / 2, 1);
     }
 }
