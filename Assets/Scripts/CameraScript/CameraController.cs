@@ -14,6 +14,8 @@ public class CameraController : MonoBehaviour
     public float MaxCameraSize = 15;
     public float MinCameraSize = 5;
 
+    public float SecondFloorViewHeight;
+
     public bool IsMoved()
     {
         bool retval = isMoved;
@@ -40,7 +42,7 @@ public class CameraController : MonoBehaviour
         //}
         //else
         //{
-            if (transform.position.y > 20f)
+            if (transform.position.y > SecondFloorViewHeight)
             {
                 GameMng.GetComponent<FloorStatMng>().SetFloor2();
             }

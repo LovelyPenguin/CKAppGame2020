@@ -56,6 +56,7 @@ public class SetRCInfo : MonoBehaviour
         }
         else
         {
+            RCImage.GetComponent<Image>().sprite = Rc[CurrentRaccoon * RaccoonRankCount + RCRank];
             RCImage.GetComponent<Image>().color = Color.black;
             txt.text = "해금" + RCMng.RetCost(CurrentRaccoon, 0).ToString() + "원";
         }
