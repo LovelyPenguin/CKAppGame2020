@@ -108,6 +108,6 @@ public class CameraController : MonoBehaviour
         {
             GetComponent<Camera>().orthographicSize = MinCameraSize;
         }
-        Background.transform.localScale = new Vector3(GetComponent<Camera>().orthographicSize / 2, GetComponent<Camera>().orthographicSize / 2, 1);
+        Background.transform.localScale = new Vector3(GetComponent<Camera>().orthographicSize / 10, GetComponent<Camera>().orthographicSize / 10, 1);
     }
 }
