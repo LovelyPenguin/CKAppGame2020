@@ -21,6 +21,8 @@ public class UIPopInOut : MonoBehaviour
     [SerializeField]
     private float openPos = 770;
 
+    GameMng GMng;
+
     public UnityEvent PopIn;
     public UnityEvent PopOut;
 
@@ -40,12 +42,15 @@ public class UIPopInOut : MonoBehaviour
         previusAnchorPosition = myRect.anchoredPosition.y;
         mainCam = Camera.main;
         cardExitPanel.SetActive(false);
+
+        GMng = GameObject.Find("GameManager").GetComponent<GameMng>();
     }
 
     void Update()
     {
         LimitPosition();
         UIPositionSetting();
+        GMng.isPopupMenuOpen = isOpen;
     }
 
     //public void OnDrag(PointerEventData data)

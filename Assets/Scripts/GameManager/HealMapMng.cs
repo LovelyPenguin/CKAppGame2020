@@ -7,9 +7,11 @@ public class HealMapMng : MonoBehaviour
 {
     public GameObject[] Maps = new GameObject[4];
     public GameObject HealMapUnlockUI;
+    GameMng GMng;
     // Start is called before the first frame update
     void Start()
     {
+        GMng = GameObject.Find("GameManager").GetComponent<GameMng>();
     }
 
     // Update is called once per frame
@@ -126,6 +128,8 @@ public class HealMapMng : MonoBehaviour
 
     private int selectedMap;
 
+    private bool HealUnlockUIActive = false;
+
     public void FindMapIndex(string name)
     {
         if (name == Maps[0].name)
@@ -149,18 +153,32 @@ public class HealMapMng : MonoBehaviour
             selectedMap = 0;
         }
 
-        HealMapUnlockUI.SetActive(true);
+
+        HealUnlockUIActive = true;
         Debug.Log("Popup");
     }
 
     public void UnlockHealMap()
     {
         Maps[selectedMap].GetComponent<HealMapData>().Enable = true;
+        HealUnlockUIActive = false;
         HealMapUnlockUI.SetActive(false);
     }
 
     public void UnlockCancel()
     {
+        HealUnlockUIActive = false;
         HealMapUnlockUI.SetActive(false);
+    }
+
+    private void LateUpdate()
+    {
+        if (HealUnlockUIActive && !GMng.isPopupMenuOpen)
+            HealMapUnlockUI.SetActive(true);
+        else
+        {
+            HealMapUnlockUI.SetActive(false);
+            HealUnlockUIActive = false;
+        }
     }
 }
