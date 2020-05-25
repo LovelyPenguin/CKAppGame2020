@@ -357,6 +357,7 @@ MonoBehaviour:
   speed: 0
   isArrive: 0
   setTimer: 0.5
+  In1StFloor: 1
 --- !u!65 &40315567
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5660,6 +5661,7 @@ MonoBehaviour:
   speed: 0
   isArrive: 0
   setTimer: 0.5
+  In1StFloor: 1
 --- !u!195 &469364615
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -6445,8 +6447,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1490122880}
   m_HandleRect: {fileID: 1490122879}
   m_Direction: 0
-  m_Value: -0.0000001695421
-  m_Size: 0.71374047
+  m_Value: -0.00000016954216
+  m_Size: 0.7137405
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7455,6 +7457,7 @@ MonoBehaviour:
   speed: 0
   isArrive: 0
   setTimer: 0.5
+  In1StFloor: 1
 --- !u!65 &680144875
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8271,6 +8274,7 @@ MonoBehaviour:
   speed: 0
   isArrive: 0
   setTimer: 0.5
+  In1StFloor: 1
 --- !u!65 &730393594
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9300,6 +9304,7 @@ MonoBehaviour:
   speed: 0
   isArrive: 0
   setTimer: 0.15
+  In1StFloor: 1
 --- !u!114 &859263832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12852,6 +12857,7 @@ MonoBehaviour:
   speed: 0
   isArrive: 0
   setTimer: 0.5
+  In1StFloor: 1
 --- !u!65 &1245717919
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13216,6 +13222,7 @@ MonoBehaviour:
   speed: 0
   isArrive: 0
   setTimer: 0.5
+  In1StFloor: 1
 --- !u!65 &1296754813
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20130,6 +20137,7 @@ MonoBehaviour:
   speed: 0
   isArrive: 0
   setTimer: 0.5
+  In1StFloor: 1
 --- !u!65 &2025593418
 BoxCollider:
   m_ObjectHideFlags: 0
