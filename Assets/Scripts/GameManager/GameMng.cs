@@ -41,6 +41,9 @@ public class GameMng : MonoBehaviour
 
     private void Awake()
     {
+#if UNITY_STANDALONE_WIN
+        Screen.SetResolution(384, 768, false);
+#endif
         instance = this;
         if (instance != this)
         {
