@@ -21,13 +21,21 @@ public class Customer : MonoBehaviour
     {
         OpenCheck();
         DurationCheck();
-
     }
 
     void OpenCheck()
     {
         isOpen = GameMng.Instance.getOpenData;
         currentCafeTime = GameMng.Instance.openTime;
+
+        if (isOpen == false)
+        {
+
+        }
+        else
+        {
+
+        }
     }
 
     void DurationCheck()
