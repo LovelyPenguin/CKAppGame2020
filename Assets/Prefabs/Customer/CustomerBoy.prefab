@@ -379,8 +379,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
+  isActive: 0
   currentCafeTime: 0
-  duration: 1
+  duration: 30
+  activeTime: 0
+  poolingPos: {x: -50, y: 0, z: 50}
+  entrancePos: {x: 5.63, y: 1.125, z: 1.24}
 --- !u!114 &2479461259495807894
 MonoBehaviour:
   m_ObjectHideFlags: 0
