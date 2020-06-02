@@ -86,6 +86,7 @@ public class RaccoonController : MonoBehaviour
 
                     animator.SetTrigger("DropTrigger");
 
+                    transform.SetParent(GameObject.Find("Raccoons").transform);
                     StartCoroutine(Drop(State.inMap1));
                     gameObject.GetComponent<RandomMove>().In1StFloor = true;
                     Debug.Log("GroundHit");
@@ -113,6 +114,7 @@ public class RaccoonController : MonoBehaviour
 
                     animator.SetTrigger("DropTrigger");
 
+                    transform.SetParent(GameObject.Find("Raccoons").transform);
                     StartCoroutine(Drop(State.inMap2));
                     gameObject.GetComponent<RandomMove>().In1StFloor = false;
                     Debug.Log("2ndGroundHit");
@@ -153,6 +155,8 @@ public class RaccoonController : MonoBehaviour
                         this.transform.position = GameObject.Find("HealMap").GetComponent<HealMapMng>().retPositionForName(healMapSeatNum, healMapName);
                         //RCState = State.Healing;
                         animator.SetTrigger("DropTrigger");
+
+                        transform.SetParent(GameObject.Find("HealMap").transform);
 
                         StartCoroutine(Drop(State.Healing));
                     }
