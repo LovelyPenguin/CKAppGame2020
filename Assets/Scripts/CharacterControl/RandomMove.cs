@@ -26,7 +26,12 @@ public class RandomMove : MonoBehaviour
 
         targetPostion.x = Random.Range(0, 10);
         targetPostion.z = Random.Range(0, 10);
-        nav.SetDestination(targetPostion);
+
+        // Start의 함수 실행 순서가 Awake다음으로 빨라서 만약에 오브젝트가 Nav Mesh가 활성화 되어 있다가
+        // 이 함수 구문보다 먼저 Nav Mesh의 Enable을 False로 만드는 부분이 있으면
+        // 건드는 부분에서 Nav Mesh가 활성화 되있을 경우에만 목적지를 설정할 수 있다는 에러 문구를 띄워서 0.3초 정도 느리게 초기화하는 의도로 제작되었음
+        StartCoroutine(InitializeDestination());
+
         timer = setTimer;
     }
 
@@ -54,7 +59,12 @@ public class RandomMove : MonoBehaviour
                     targetPostion.x = Random.Range(-10, 0);
                     targetPostion.z = Random.Range(-10, 0);
                 }
-                nav.SetDestination(targetPostion);
+
+                if (gameObject.GetComponent<NavMeshAgent>().enabled)
+                {
+                    nav.SetDestination(targetPostion);
+                }
+
                 timer = setTimer;
             }
         }
@@ -95,6 +105,16 @@ public class RandomMove : MonoBehaviour
         else
         {
             targetPostion.y = 0f;
+        }
+    }
+
+    IEnumerator InitializeDestination()
+    {
+        yield return new WaitForSeconds(0.3f);
+
+        if (nav.enabled)
+        {
+            nav.SetDestination(targetPostion);
         }
     }
 }
