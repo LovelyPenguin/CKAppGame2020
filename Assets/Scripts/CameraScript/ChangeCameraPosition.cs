@@ -10,6 +10,7 @@ public class ChangeCameraPosition : MonoBehaviour
     [SerializeField]
     public float cameraMovePositionY;
     private float cameraInitialValueY;
+    private float moveCameraPos;
     CameraController CmrCtrlr;
 
     // Start is called before the first frame update
@@ -17,6 +18,7 @@ public class ChangeCameraPosition : MonoBehaviour
     {
         mainCam = Camera.main;
         cameraInitialValueY = mainCam.transform.position.y;
+        moveCameraPos = cameraInitialValueY + cameraMovePositionY;
         CmrCtrlr = mainCam.GetComponent<CameraController>();
     }
 
@@ -34,10 +36,10 @@ public class ChangeCameraPosition : MonoBehaviour
     {
         if (!CmrCtrlr.IsMoved())
         {
-            if (mainCam.transform.position.y != cameraMovePositionY)
+            if (mainCam.transform.position.y != moveCameraPos)
                 mainCam.transform.position = new Vector3(
                     mainCam.transform.position.x,
-                    Mathf.Lerp(mainCam.transform.position.y, cameraMovePositionY, Time.deltaTime * returnSpeed),
+                    Mathf.Lerp(mainCam.transform.position.y, moveCameraPos, Time.deltaTime * returnSpeed),
                     mainCam.transform.position.z);
         }
         else

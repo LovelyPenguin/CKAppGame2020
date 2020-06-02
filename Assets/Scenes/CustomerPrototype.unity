@@ -184,37 +184,6 @@ MonoBehaviour:
   m_Spacing: {x: 55.7, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!1 &13073739 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 13073739, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
-    type: 3}
-  m_PrefabInstance: {fileID: 1622338325}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &13073740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 13073739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cf6a7f82ae8efb4093e7b45b2c248f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!65 &13073741
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 13073739}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.57, y: 0.69, z: 0.2}
-  m_Center: {x: -0.00000023841858, y: 0, z: 0}
 --- !u!1 &22361171
 GameObject:
   m_ObjectHideFlags: 0
@@ -9778,6 +9747,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -9868,6 +9838,20 @@ MonoBehaviour:
   MaxCameraSize: 15
   MinCameraSize: 5
   SecondFloorViewHeight: 27
+--- !u!114 &963194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46f0134e9373804faed80e1c9512600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cube1: {fileID: 963194225}
+  cube2: {fileID: 477011498}
 --- !u!1 &966320710
 GameObject:
   m_ObjectHideFlags: 0
@@ -20726,11 +20710,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 963194230}
+        m_MethodName: Disable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   PopOut:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2126982871}
         m_MethodName: PopOutCamera
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  PopOutEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 963194230}
+        m_MethodName: Enable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20753,7 +20762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   returnSpeed: 5
-  cameraMovePositionY: 14.5
+  cameraMovePositionY: -8
 --- !u!114 &2126982872
 MonoBehaviour:
   m_ObjectHideFlags: 0

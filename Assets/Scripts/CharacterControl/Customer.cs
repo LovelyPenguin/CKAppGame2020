@@ -6,9 +6,9 @@ using UnityEngine.AI;
 
 public class Customer : MonoBehaviour
 {
-    [HideInInspector]
+    //[HideInInspector]
     public bool isMoneyCollect;
-    [HideInInspector]
+    //[HideInInspector]
     public bool isActive = false;
 
     [Header("시간 설정")]
@@ -31,7 +31,7 @@ public class Customer : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        Debug.Log("START");
+
     }
 
     private void Start()
@@ -77,6 +77,7 @@ public class Customer : MonoBehaviour
                 InitializeSpawnData();
                 gameObject.transform.position = entrancePos;
                 gameObject.GetComponent<NavMeshAgent>().enabled = true;
+                StartCoroutine(ExcuteCollectMoney());
             }
         }
     }
@@ -86,12 +87,6 @@ public class Customer : MonoBehaviour
         if (isOpen && isActive)
         {
             durationSecond -= Time.deltaTime;
-
-            if (durationSecond <= setMoneyCollectTime)
-            {
-                isMoneyCollect = true;
-                ExcuteCollectMoney();
-            }
 
             if (durationSecond <= 0)
             {
@@ -155,8 +150,11 @@ public class Customer : MonoBehaviour
         }
     }
 
-    private void ExcuteCollectMoney()
+    IEnumerator ExcuteCollectMoney()
     {
+        Debug.Log(duration - setMoneyCollectTime + " Second");
+        yield return new WaitForSeconds(duration - setMoneyCollectTime);
+        isMoneyCollect = true;
         moneyIcon.SetActive(true);
     }
 }

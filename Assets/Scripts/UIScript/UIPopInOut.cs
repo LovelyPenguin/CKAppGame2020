@@ -26,6 +26,8 @@ public class UIPopInOut : MonoBehaviour
     public UnityEvent PopIn;
     public UnityEvent PopOut;
 
+    public UnityEvent PopOutEnd;
+
     public bool getIsOpen
     {
         get
@@ -51,6 +53,11 @@ public class UIPopInOut : MonoBehaviour
         LimitPosition();
         UIPositionSetting();
         GMng.isPopupMenuOpen = isOpen;
+
+        if (Vector2.Distance(myRect.anchoredPosition, defaultAnchorPosition) < 2f)
+        {
+            PopOutEnd.Invoke();
+        }
     }
 
     //public void OnDrag(PointerEventData data)
