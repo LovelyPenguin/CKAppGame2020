@@ -13,6 +13,7 @@ public class Customer : MonoBehaviour
     public float activeTime;
     public Vector3 poolingPos;
     public Vector3 entrancePos;
+    public bool isMoneyCollect;
 
     private float durationSecond;
     // Start is called before the first frame update
@@ -58,7 +59,7 @@ public class Customer : MonoBehaviour
             }
             if (activeTime <= 0)
             {
-                //Debug.Log("Active");
+                Debug.Log("Active");
                 isActive = true;
                 InitializeSpawnData();
                 gameObject.transform.position = entrancePos;
@@ -78,6 +79,10 @@ public class Customer : MonoBehaviour
                 ReturnHome();
             }
         }
+        //else if (isMoneyCollect && )
+        //{
+
+        //}
         else
         {
             ReturnHome();
@@ -91,7 +96,7 @@ public class Customer : MonoBehaviour
 
     void InitializeSpawnData()
     {
-        activeTime = Random.Range(5, 25);
+        activeTime = Random.Range(5, 10);
     }
 
     private void OnApplicationPause(bool pause)
@@ -129,6 +134,7 @@ public class Customer : MonoBehaviour
             gameObject.transform.position = poolingPos;
             gameObject.GetComponent<NavMeshAgent>().enabled = false;
             durationSecond = duration;
+            isMoneyCollect = false;
             isActive = false;
         }
     }
