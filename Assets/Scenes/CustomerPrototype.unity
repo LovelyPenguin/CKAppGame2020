@@ -6262,8 +6262,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1490122880}
   m_HandleRect: {fileID: 1490122879}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.71374047
+  m_Value: 0.00000016954205
+  m_Size: 0.7137404
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -15856,6 +15856,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CustomerBoy
       objectReference: {fileID: 0}
+    - target: {fileID: 2479461259495807895, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
+        type: 3}
+      propertyPath: setDrinkWaitingTime
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2479461259495807897, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
         type: 3}
       propertyPath: duration
@@ -15890,6 +15895,16 @@ PrefabInstance:
         type: 3}
       propertyPath: entrancePos.z
       value: 1.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 2479461259495807897, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2479461259495807897, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
+        type: 3}
+      propertyPath: isMoneyCollect
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2479461259495807900, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
         type: 3}
