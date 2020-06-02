@@ -119,7 +119,10 @@ public class Customer : MonoBehaviour
 
     private void ReturnHome()
     {
-        gameObject.GetComponent<NavMeshAgent>().SetDestination(entrancePos);
+        if (gameObject.GetComponent<NavMeshAgent>().enabled)
+        {
+            gameObject.GetComponent<NavMeshAgent>().SetDestination(entrancePos);
+        }
 
         if (Vector3.Distance(gameObject.transform.position, gameObject.GetComponent<NavMeshAgent>().destination) <= 1f)
         {
