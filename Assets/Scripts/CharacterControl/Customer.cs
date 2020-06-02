@@ -75,29 +75,12 @@ public class Customer : MonoBehaviour
 
             if (durationSecond <= 0)
             {
-
-                gameObject.GetComponent<NavMeshAgent>().SetDestination(entrancePos);
-
-                if (Vector3.Distance(gameObject.transform.position, gameObject.GetComponent<NavMeshAgent>().destination) <= 1f)
-                {
-                    gameObject.transform.position = poolingPos;
-                    gameObject.GetComponent<NavMeshAgent>().enabled = false;
-                    durationSecond = duration;
-                    isActive = false;
-                }
+                ReturnHome();
             }
         }
         else
         {
-            gameObject.GetComponent<NavMeshAgent>().SetDestination(entrancePos);
-
-            if (Vector3.Distance(gameObject.transform.position, gameObject.GetComponent<NavMeshAgent>().destination) <= 1f)
-            {
-                gameObject.transform.position = poolingPos;
-                gameObject.GetComponent<NavMeshAgent>().enabled = false;
-                durationSecond = duration;
-                isActive = false;
-            }
+            ReturnHome();
         }
     }
 
@@ -132,5 +115,18 @@ public class Customer : MonoBehaviour
 
         Gizmos.DrawSphere(entrancePos, 0.5f);
         Gizmos.color = Color.yellow;
+    }
+
+    private void ReturnHome()
+    {
+        gameObject.GetComponent<NavMeshAgent>().SetDestination(entrancePos);
+
+        if (Vector3.Distance(gameObject.transform.position, gameObject.GetComponent<NavMeshAgent>().destination) <= 1f)
+        {
+            gameObject.transform.position = poolingPos;
+            gameObject.GetComponent<NavMeshAgent>().enabled = false;
+            durationSecond = duration;
+            isActive = false;
+        }
     }
 }
