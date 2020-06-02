@@ -89,7 +89,15 @@ public class Customer : MonoBehaviour
         }
         else
         {
-            isActive = false;
+            gameObject.GetComponent<NavMeshAgent>().SetDestination(entrancePos);
+
+            if (Vector3.Distance(gameObject.transform.position, gameObject.GetComponent<NavMeshAgent>().destination) <= 1f)
+            {
+                gameObject.transform.position = poolingPos;
+                gameObject.GetComponent<NavMeshAgent>().enabled = false;
+                durationSecond = duration;
+                isActive = false;
+            }
         }
     }
 
