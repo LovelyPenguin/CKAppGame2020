@@ -9,6 +9,7 @@ public class DrinkTransfer : MonoBehaviour
     public GameObject particle;
     public string selectJuice;
     public GameObject juiceIcon;
+    public float setDrinkWaitingTime;
 
     private float setTimer;
     private string[] juiceList;
@@ -39,10 +40,7 @@ public class DrinkTransfer : MonoBehaviour
     {
         GameMng.Instance.money += money;
         ParticleManager(true);
-        isTransfer = true;
-        isDemandJuice = false;
-        selectJuice = juiceList[Random.Range(0, juiceList.Length - 1)];
-        juiceIcon.SetActive(false);
+        InitalizeParameter();
         StartCoroutine(Disable());
     }
 
@@ -73,7 +71,8 @@ public class DrinkTransfer : MonoBehaviour
             PickJuiceSprite();
             juiceIcon.SetActive(true);
             isTransfer = false;
-            timer = Random.Range(10, 30);
+            //timer = Random.Range(10, 30);
+            StartCoroutine(DrinkWaiting());
         }
     }
 
@@ -94,5 +93,20 @@ public class DrinkTransfer : MonoBehaviour
         {
             juiceIcon.GetComponent<SpriteRenderer>().color = Color.blue;
         }
+    }
+
+    private void InitalizeParameter()
+    {
+        isTransfer = true;
+        isDemandJuice = false;
+        selectJuice = juiceList[Random.Range(0, juiceList.Length - 1)];
+        juiceIcon.SetActive(false);
+        timer = Random.Range(10, 30);
+    }
+
+    IEnumerator DrinkWaiting()
+    {
+        yield return new WaitForSeconds(setDrinkWaitingTime);
+        InitalizeParameter();
     }
 }
