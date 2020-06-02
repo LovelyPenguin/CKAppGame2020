@@ -9,6 +9,11 @@ public class FloorStatMng : MonoBehaviour
     public Material[] Floor2ObjMtrls = new Material[count];
     public GameObject CollisionGround2;
 
+    private bool floor2enable;
+    public bool SecondFloorStat
+    {
+        get { return floor2enable; }
+    }   
     public enum Floor { Floor1 = 0, Floor2 };
     public Floor CurFloor
     {
@@ -18,6 +23,7 @@ public class FloorStatMng : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        floor2enable = false;
         SetFloor1();
     }
 
@@ -38,11 +44,18 @@ public class FloorStatMng : MonoBehaviour
 
     public void SetFloor2()
     {
+        if (floor2enable)
+        {
+            Floor2Mtrl.color = new Color(Floor2Mtrl.color.r, Floor2Mtrl.color.g, Floor2Mtrl.color.b, 1f);
+            foreach (Material m in Floor2ObjMtrls)
+                m.color = new Color(m.color.r, m.color.g, m.color.b, 1f);
+            curFloor = Floor.Floor2;
+            CollisionGround2.SetActive(true);
+        }
+    }
 
-        Floor2Mtrl.color = new Color(Floor2Mtrl.color.r, Floor2Mtrl.color.g, Floor2Mtrl.color.b, 1f);
-        foreach (Material m in Floor2ObjMtrls)
-            m.color = new Color(m.color.r, m.color.g, m.color.b, 1f);
-        curFloor = Floor.Floor2;
-        CollisionGround2.SetActive(true);
+    public void UnlockSecondFloor()
+    {
+        floor2enable = true;
     }
 }
