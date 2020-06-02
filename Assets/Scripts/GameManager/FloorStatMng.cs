@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FloorStatMng : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class FloorStatMng : MonoBehaviour
     public Material Floor2Mtrl;
     public Material[] Floor2ObjMtrls = new Material[count];
     public GameObject CollisionGround2;
+    public GameObject[] FloorChangeButtons = new GameObject[2];
 
     private bool floor2enable;
     public bool SecondFloorStat
@@ -24,6 +26,8 @@ public class FloorStatMng : MonoBehaviour
     void Start()
     {
         floor2enable = false;
+        FloorChangeButtons[1].GetComponent<Button>().enabled = false;
+        FloorChangeButtons[1].GetComponent<Image>().color = Color.gray;
         SetFloor1();
     }
 
@@ -56,6 +60,8 @@ public class FloorStatMng : MonoBehaviour
 
     public void UnlockSecondFloor()
     {
+        FloorChangeButtons[1].GetComponent<Button>().enabled = true;
+        FloorChangeButtons[1].GetComponent<Image>().color = Color.white;
         floor2enable = true;
     }
 }

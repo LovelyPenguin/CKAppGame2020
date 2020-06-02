@@ -16,6 +16,10 @@ public class RaccoonMng : MonoBehaviour
     int[] RaccoonRank = new int[RaccoonCount];
     public float[,] RCEfficiency = new float[RaccoonCount, RaccoonRankCount];
 
+    public int MaxRCCountperMap = 3;
+    private int map1RCCount = 0;
+    private int map2RCCount = 0;
+
     /*
      * 라쿤의 장사 금액 효율을 반환한다
      * ex) 1.0f, 1.5f
@@ -51,7 +55,6 @@ public class RaccoonMng : MonoBehaviour
             
             if (!RaccoonExist[RCindex])
             {
-                RC[RCindex].transform.position = new Vector3(5, 0, 5);
                 RC[RCindex].GetComponent<RaccoonController>().SetRCActive(true);
                 RaccoonExist[RCindex] = true;
                 Debug.Log("Raccoon Created!");

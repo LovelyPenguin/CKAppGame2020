@@ -82,13 +82,14 @@ public class RaccoonController : MonoBehaviour
                         GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, healMapName);
                     //RCState = State.inMap1;
                     GetComponent<RandomMove>().SetTargerFloor(1);
+                    GetComponent<RandomMove>().In1StFloor = true;
+
                     transform.position = hit.point + new UnityEngine.Vector3(0, mDeltaY, 0);
 
                     animator.SetTrigger("DropTrigger");
 
                     transform.SetParent(GameObject.Find("Raccoons").transform);
                     StartCoroutine(Drop(State.inMap1));
-                    gameObject.GetComponent<RandomMove>().In1StFloor = true;
                     Debug.Log("GroundHit");
                 }
             }
@@ -110,13 +111,14 @@ public class RaccoonController : MonoBehaviour
                         GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, healMapName);
                     //RCState = State.inMap2;
                     GetComponent<RandomMove>().SetTargerFloor(2);
+                    GetComponent<RandomMove>().In1StFloor = false;
+
                     transform.position = hit.point + new UnityEngine.Vector3(0, mDeltaY, 0);
 
                     animator.SetTrigger("DropTrigger");
 
                     transform.SetParent(GameObject.Find("Raccoons").transform);
                     StartCoroutine(Drop(State.inMap2));
-                    gameObject.GetComponent<RandomMove>().In1StFloor = false;
                     Debug.Log("2ndGroundHit");
                 }
             }
@@ -177,7 +179,7 @@ public class RaccoonController : MonoBehaviour
                 RCState = InitState;
                 transform.position = originCoord;
                 Debug.Log("ElseHit");
-                Debug.Log(hit.collider.gameObject.name);
+                Debug.Log("hit = " + hit.collider.gameObject.name);
 
                 animator.SetTrigger("idleTrigger");
 
@@ -240,7 +242,7 @@ public class RaccoonController : MonoBehaviour
             Sprite.transform.position = initLocation + transform.up * (height -= Time.deltaTime * 8f);
             yield return null;
         }
-        Sprite.transform.position = initLocation;
+        Sprite.transform.position = transform.position;
         RCState = NextState;
     }
 
@@ -286,7 +288,7 @@ public class RaccoonController : MonoBehaviour
     //bool isHealing = false;
     private bool Movable;
 
-    private enum State { unActive = 0, onDrag, inMap1, inMap2, Healing, dropping };
+    public enum State { unActive = 0, onDrag, inMap1, inMap2, Healing, dropping };
     private State RCState;
 
     public bool isMoving = false;
@@ -307,6 +309,9 @@ public class RaccoonController : MonoBehaviour
     private bool isVisible = true;
 
     public NavMeshAgent navMesh;
+
+    public Vector3 FirstFloorInitPos = new Vector3(5, 0, 5);
+    public Vector3 SecondFloorInitPos = new Vector3(15, 51, 15);
 
     // Start is called before the first frame update
     void Start()
@@ -367,7 +372,7 @@ public class RaccoonController : MonoBehaviour
 
         if (RCState != State.unActive)
         {
-            SetVisible();
+            //SetVisible();
             switch (RCState)
             {
                 case State.Healing:
@@ -453,23 +458,23 @@ public class RaccoonController : MonoBehaviour
         //    GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, other.gameObject.name);
         //}
     }
-    private void SetVisible()
-    {
-        isVisible = !(GameObject.Find("GameManager").GetComponent<FloorStatMng>().CurFloor == FloorStatMng.Floor.Floor1 && RCState == State.inMap2);
+    //private void SetVisible()
+    //{
+    //    isVisible = !(GameObject.Find("GameManager").GetComponent<FloorStatMng>().CurFloor == FloorStatMng.Floor.Floor1 && RCState == State.inMap2);
 
-        if (isVisible)
-        {
-            Sprite.GetComponent<SpriteRenderer>().color = OpaqueC;
-            Shadow.GetComponent<SpriteRenderer>().color = OpaqueC;
-            StaminaBar.GetComponent<Image>().color = OpaqueC;
-        }
-        else
-        {
-            Sprite.GetComponent<SpriteRenderer>().color = TransparentC;
-            Shadow.GetComponent<SpriteRenderer>().color = TransparentC;
-            StaminaBar.GetComponent<Image>().color = TransparentC;
-        }
-    }
+    //    if (isVisible)
+    //    {
+    //        Sprite.GetComponent<SpriteRenderer>().color = OpaqueC;
+    //        Shadow.GetComponent<SpriteRenderer>().color = OpaqueC;
+    //        StaminaBar.GetComponent<Image>().color = OpaqueC;
+    //    }
+    //    else
+    //    {
+    //        Sprite.GetComponent<SpriteRenderer>().color = TransparentC;
+    //        Shadow.GetComponent<SpriteRenderer>().color = TransparentC;
+    //        StaminaBar.GetComponent<Image>().color = TransparentC;
+    //    }
+    //}
 
     private void Healing()
     {
@@ -632,13 +637,13 @@ public class RaccoonController : MonoBehaviour
     public bool GetIsDrag()
     {
         return RCState == State.onDrag;
-     //   return isOnDrag;
+        //   return isOnDrag;
     }
 
     public void SetRCActive(bool activity)
     {
         //isActive = activity;
-        RCState = State.inMap1;
+        MoveFirstFloor();
     }
 
     public void StartWork()
@@ -675,5 +680,24 @@ public class RaccoonController : MonoBehaviour
             StaminaBar.GetComponentsInChildren<Image>()[1].fillAmount = 0.0f;
         }
         this.animator.SetFloat("Stamina", stamina / 100f + 0.4f);
+    }
+
+
+    public void MoveFirstFloor()
+    {
+        SetMovable(false);
+        transform.position = FirstFloorInitPos;
+        RCState = State.inMap1;
+        GetComponent<RandomMove>().SetTargerFloor(1);
+        GetComponent<RandomMove>().In1StFloor = true;
+    }
+
+    public void MoveSecondFloor()
+    {
+        SetMovable(false);
+        transform.position = SecondFloorInitPos;
+        RCState = State.inMap2;
+        GetComponent<RandomMove>().SetTargerFloor(2);
+        GetComponent<RandomMove>().In1StFloor = false;
     }
 }
