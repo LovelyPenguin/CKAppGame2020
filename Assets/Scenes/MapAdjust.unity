@@ -11037,6 +11037,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2126982871}
+        m_MethodName: SetInitializeYpos
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 22.85
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1105407107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18621,6 +18632,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2126982871}
+        m_MethodName: SetInitializeYpos
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 42
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1861104118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20820,6 +20842,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  PopOutEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2126982871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20833,7 +20858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   returnSpeed: 5
-  cameraMovePositionY: 14.5
+  cameraMovePositionY: -8
 --- !u!114 &2126982872
 MonoBehaviour:
   m_ObjectHideFlags: 0

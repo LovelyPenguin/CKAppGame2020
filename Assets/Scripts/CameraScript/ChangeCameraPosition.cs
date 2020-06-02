@@ -64,5 +64,9 @@ public class ChangeCameraPosition : MonoBehaviour
         }
     }
 
-   
+    public void SetInitializeYpos(float newPos)
+    {
+        cameraInitialValueY = newPos;
+        moveCameraPos = cameraInitialValueY + cameraMovePositionY;
+    }
 }
