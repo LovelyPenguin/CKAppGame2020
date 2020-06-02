@@ -24,7 +24,7 @@ public class DrinkTransfer : MonoBehaviour
         juiceIcon.SetActive(false);
         juiceList = GameMng.Instance.GetComponent<JuiceList>().juiceList;
 
-        setTimer = Random.Range(10, 30);
+        setTimer = Random.Range(3, 5);
         timer = setTimer;
         selectJuice = juiceList[Random.Range(0, juiceList.Length - 1)];
         isDemandJuice = false;
@@ -33,7 +33,10 @@ public class DrinkTransfer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DemandJuice();
+        if (gameObject.GetComponent<Customer>().isActive)
+        {
+            DemandJuice();
+        }
     }
 
     public void Detect(int money = 100)
@@ -65,22 +68,23 @@ public class DrinkTransfer : MonoBehaviour
         {
             timer -= Time.deltaTime;
         }
-        if (timer <= 0 && !isDemandJuice)
+
+        if (timer <= 0 && !isDemandJuice && !gameObject.GetComponent<Customer>().isMoneyCollect)
         {
             isDemandJuice = true;
             PickJuiceSprite();
             juiceIcon.SetActive(true);
             isTransfer = false;
-            //timer = Random.Range(10, 30);
             StartCoroutine(DrinkWaiting());
+        }
+        else if (gameObject.GetComponent<Customer>().isMoneyCollect)
+        {
+            InitalizeParameter();
         }
     }
 
     private void PickJuiceSprite()
     {
-        //for (int i = 0; i < juiceList.Length; i++)
-        //{
-        //}
         if (selectJuice == juiceList[0])
         {
             juiceIcon.GetComponent<SpriteRenderer>().color = Color.yellow;
