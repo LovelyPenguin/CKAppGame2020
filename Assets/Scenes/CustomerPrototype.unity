@@ -5540,6 +5540,8 @@ MonoBehaviour:
   - {fileID: 1576332705}
   - {fileID: 404926463}
   HealMapUnlockUI: {fileID: 528156080}
+  DefaultMapUnlockCost: 500000
+  ProductionRatio: 1.6
 --- !u!4 &477011500
 Transform:
   m_ObjectHideFlags: 0
@@ -6035,7 +6037,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &538992747
 Transform:
   m_ObjectHideFlags: 0
@@ -9835,6 +9837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameMng: {fileID: 409466718}
   Background: {fileID: 1654923256}
+  isMoved: 0
   MaxCameraSize: 15
   MinCameraSize: 5
   SecondFloorViewHeight: 27
@@ -9850,8 +9853,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b46f0134e9373804faed80e1c9512600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube1: {fileID: 963194225}
-  cube2: {fileID: 477011498}
 --- !u!1 &966320710
 GameObject:
   m_ObjectHideFlags: 0

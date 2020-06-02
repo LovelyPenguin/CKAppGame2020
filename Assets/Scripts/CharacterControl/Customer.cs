@@ -80,6 +80,9 @@ public class Customer : MonoBehaviour
             {
                 int number = Random.Range(0, 2);
 
+                // 디버깅용
+                number = 1;
+
                 if (number == 1)
                 {
                     Debug.Log("Active");
@@ -184,7 +187,7 @@ public class Customer : MonoBehaviour
         }
         else
         {
-            timer = setMoneyCollectTime - GameMng.Instance.openTime; 
+            timer = GameMng.Instance.openTime - setMoneyCollectTime;
         }
 
         Debug.Log("Set Timer: " + timer);
