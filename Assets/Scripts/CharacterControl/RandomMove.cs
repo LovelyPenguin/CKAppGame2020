@@ -26,7 +26,12 @@ public class RandomMove : MonoBehaviour
 
         targetPostion.x = Random.Range(0, 10);
         targetPostion.z = Random.Range(0, 10);
-        nav.SetDestination(targetPostion);
+
+        if (gameObject.GetComponent<NavMeshAgent>().enabled)
+        {
+            nav.SetDestination(targetPostion);
+        }
+
         timer = setTimer;
     }
 
