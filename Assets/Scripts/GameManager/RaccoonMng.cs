@@ -101,6 +101,11 @@ public class RaccoonMng : MonoBehaviour
             RaccoonRank[index] = 1;
             GMng.money -= cost;
             GenerateRaccoon(index);
+            if(index == 5)
+            {
+                GameObject.Find("GameManager").GetComponent<FloorStatMng>().UnlockSecondFloor();
+                Debug.Log("2nd Floor Unlocked");
+            }
         }
     }
 

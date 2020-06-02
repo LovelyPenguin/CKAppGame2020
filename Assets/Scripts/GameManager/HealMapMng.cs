@@ -1,12 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealMapMng : MonoBehaviour
 {
     public GameObject[] Maps = new GameObject[4];
     public GameObject HealMapUnlockUI;
+    private int enabledMapCount = 0;
+    public int DefaultMapUnlockCost = 500000;
+    public float ProductionRatio = 1.6f;
     GameMng GMng;
     // Start is called before the first frame update
     void Start()
@@ -130,6 +135,7 @@ public class HealMapMng : MonoBehaviour
 
     private bool HealUnlockUIActive = false;
 
+    int cost;
     public void FindMapIndex(string name)
     {
         if (name == Maps[0].name)
@@ -153,6 +159,16 @@ public class HealMapMng : MonoBehaviour
             selectedMap = 0;
         }
 
+        if(enabledMapCount != 0)
+        {
+            cost = (int)(DefaultMapUnlockCost * Mathf.Pow(ProductionRatio, enabledMapCount - 1));
+            HealMapUnlockUI.GetComponentsInChildren<Text>()[0].text = "휴식공간을 해금하시겠습니까?\n비용 = " + cost.ToString();
+        }
+        else
+        {
+            cost = 0;
+            HealMapUnlockUI.GetComponentsInChildren<Text>()[0].text = "휴식공간을 해금하시겠습니까?";
+        }
 
         HealUnlockUIActive = true;
         Debug.Log("Popup");
@@ -160,9 +176,14 @@ public class HealMapMng : MonoBehaviour
 
     public void UnlockHealMap()
     {
-        Maps[selectedMap].GetComponent<HealMapData>().Enable = true;
-        HealUnlockUIActive = false;
-        HealMapUnlockUI.SetActive(false);
+        if (GMng.money >= cost)
+        {
+            GMng.money -= cost;
+            Maps[selectedMap].GetComponent<HealMapData>().Enable = true;
+            enabledMapCount++;
+            HealUnlockUIActive = false;
+            HealMapUnlockUI.SetActive(false);
+        }
     }
 
     public void UnlockCancel()

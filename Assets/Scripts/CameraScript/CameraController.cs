@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
 
     public GameObject Background;
 
-    private bool isMoved;
+    public bool isMoved;
     private Vector3 initPos;
     private float DefaultCameraSize;
     public float MaxCameraSize = 15;
