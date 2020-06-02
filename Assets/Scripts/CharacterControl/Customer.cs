@@ -28,6 +28,7 @@ public class Customer : MonoBehaviour
     private float currentCafeTime;
 
     private bool isOpen;
+    private bool isReturning = false;
     // Start is called before the first frame update
     void Awake()
     {
@@ -49,6 +50,11 @@ public class Customer : MonoBehaviour
     {
         OpenCheck();
         DurationCheck();
+
+        if (isReturning == true)
+        {
+            ReturnHome();
+        }
 
         if (isActive == true)
         {
@@ -72,12 +78,24 @@ public class Customer : MonoBehaviour
             }
             if (activeTime <= 0)
             {
-                Debug.Log("Active");
-                isActive = true;
-                InitializeSpawnData();
-                gameObject.transform.position = entrancePos;
-                gameObject.GetComponent<NavMeshAgent>().enabled = true;
-                StartCoroutine(ExcuteCollectMoney());
+                int number = Random.Range(0, 2);
+
+                if (number == 1)
+                {
+                    Debug.Log("Active");
+                    isActive = true;
+                    isReturning = false;
+                    InitializeSpawnData();
+                    gameObject.transform.position = entrancePos;
+                    gameObject.GetComponent<NavMeshAgent>().enabled = true;
+                    StartCoroutine(ExcuteCollectMoney());
+                }
+                else
+                {
+                    Debug.Log("FAILED!!");
+                    isReturning = false;
+                    InitializeSpawnData();
+                }
             }
         }
     }
@@ -90,13 +108,13 @@ public class Customer : MonoBehaviour
 
             if (durationSecond <= 0)
             {
-                ReturnHome();
+                isReturning = true;
             }
         }
 
         else
         {
-            ReturnHome();
+            isReturning = true;
         }
     }
 
@@ -133,7 +151,7 @@ public class Customer : MonoBehaviour
         Gizmos.color = Color.yellow;
     }
 
-    public void ReturnHome()
+    private void ReturnHome()
     {
         if (gameObject.GetComponent<NavMeshAgent>().enabled)
         {
@@ -147,13 +165,30 @@ public class Customer : MonoBehaviour
             durationSecond = duration;
             isMoneyCollect = false;
             isActive = false;
+            isReturning = false;
         }
+    }
+
+    public void ReturnHome(bool isActive)
+    {
+        ReturnHome();
+        isReturning = true;
     }
 
     IEnumerator ExcuteCollectMoney()
     {
-        Debug.Log(duration - setMoneyCollectTime + " Second");
-        yield return new WaitForSeconds(duration - setMoneyCollectTime);
+        float timer = 0;
+        if (GameMng.Instance.openTime > duration)
+        {
+            timer = duration - setMoneyCollectTime;
+        }
+        else
+        {
+            timer = setMoneyCollectTime - GameMng.Instance.openTime; 
+        }
+
+        Debug.Log("Set Timer: " + timer);
+        yield return new WaitForSeconds(timer);
         isMoneyCollect = true;
         moneyIcon.SetActive(true);
     }
