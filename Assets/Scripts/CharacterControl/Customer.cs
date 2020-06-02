@@ -6,16 +6,28 @@ using UnityEngine.AI;
 
 public class Customer : MonoBehaviour
 {
-    public bool isOpen;
+    [HideInInspector]
+    public bool isMoneyCollect;
+    [HideInInspector]
     public bool isActive = false;
-    public float currentCafeTime;
-    public int duration;
+
+    [Header("시간 설정")]
+    public float duration;
     public float activeTime;
+    public float setMoneyCollectTime;
+
+    [Header("포지션")]
     public Vector3 poolingPos;
     public Vector3 entrancePos;
-    public bool isMoneyCollect;
+
+    [Header("기타 설정")]
+    [SerializeField]
+    private GameObject moneyIcon;
 
     private float durationSecond;
+    private float currentCafeTime;
+
+    private bool isOpen;
     // Start is called before the first frame update
     void Awake()
     {
@@ -29,6 +41,7 @@ public class Customer : MonoBehaviour
         GameMng.Instance.openEvent.AddListener(InitializeSpawnData);
         gameObject.transform.position = poolingPos;
         gameObject.GetComponent<NavMeshAgent>().enabled = false;
+        moneyIcon.SetActive(false);
     }
 
     // Update is called once per frame
@@ -74,15 +87,18 @@ public class Customer : MonoBehaviour
         {
             durationSecond -= Time.deltaTime;
 
+            if (durationSecond <= setMoneyCollectTime)
+            {
+                isMoneyCollect = true;
+                ExcuteCollectMoney();
+            }
+
             if (durationSecond <= 0)
             {
                 ReturnHome();
             }
         }
-        //else if (isMoneyCollect && )
-        //{
 
-        //}
         else
         {
             ReturnHome();
@@ -122,7 +138,7 @@ public class Customer : MonoBehaviour
         Gizmos.color = Color.yellow;
     }
 
-    private void ReturnHome()
+    public void ReturnHome()
     {
         if (gameObject.GetComponent<NavMeshAgent>().enabled)
         {
@@ -137,5 +153,10 @@ public class Customer : MonoBehaviour
             isMoneyCollect = false;
             isActive = false;
         }
+    }
+
+    private void ExcuteCollectMoney()
+    {
+        moneyIcon.SetActive(true);
     }
 }

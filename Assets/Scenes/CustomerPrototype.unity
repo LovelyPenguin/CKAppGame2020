@@ -184,6 +184,37 @@ MonoBehaviour:
   m_Spacing: {x: 55.7, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!1 &13073739 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 13073739, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
+    type: 3}
+  m_PrefabInstance: {fileID: 1622338325}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &13073740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13073739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf6a7f82ae8efb4093e7b45b2c248f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &13073741
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13073739}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.57, y: 0.69, z: 0.2}
+  m_Center: {x: -0.00000023841858, y: 0, z: 0}
 --- !u!1 &22361171
 GameObject:
   m_ObjectHideFlags: 0
@@ -6262,8 +6293,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1490122880}
   m_HandleRect: {fileID: 1490122879}
   m_Direction: 0
-  m_Value: 0.00000016954205
-  m_Size: 0.7137404
+  m_Value: 0
+  m_Size: 0.71374047
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -15855,56 +15886,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CustomerBoy
-      objectReference: {fileID: 0}
-    - target: {fileID: 2479461259495807895, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
-        type: 3}
-      propertyPath: setDrinkWaitingTime
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2479461259495807897, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
-        type: 3}
-      propertyPath: duration
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 2479461259495807897, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
-        type: 3}
-      propertyPath: poolingPos.x
-      value: -50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2479461259495807897, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
-        type: 3}
-      propertyPath: poolingPos.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2479461259495807897, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
-        type: 3}
-      propertyPath: poolingPos.z
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2479461259495807897, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
-        type: 3}
-      propertyPath: entrancePos.y
-      value: 1.125
-      objectReference: {fileID: 0}
-    - target: {fileID: 2479461259495807897, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
-        type: 3}
-      propertyPath: entrancePos.x
-      value: 5.63
-      objectReference: {fileID: 0}
-    - target: {fileID: 2479461259495807897, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
-        type: 3}
-      propertyPath: entrancePos.z
-      value: 1.24
-      objectReference: {fileID: 0}
-    - target: {fileID: 2479461259495807897, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2479461259495807897, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
-        type: 3}
-      propertyPath: isMoneyCollect
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2479461259495807900, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
         type: 3}
