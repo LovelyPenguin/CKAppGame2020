@@ -12,12 +12,11 @@ public class RCListScroll : MonoBehaviour,IBeginDragHandler, IDragHandler, IEndD
     private float initMousePosX;
     private float initXPos;
     private float XPos;
-    //private RectTransform rect;
+    private Vector2 newPos;
 
     // Start is called before the first frame update
     void Start()
     {
-        XPos = transform.position.x;
     }
 
     // Update is called once per frame
@@ -30,24 +29,27 @@ public class RCListScroll : MonoBehaviour,IBeginDragHandler, IDragHandler, IEndD
     {
         Debug.Log("RCList Clicked");
         initMousePosX = eventData.position.x;
-        initXPos = transform.position.x;
-        Debug.Log(initXPos);
+        newPos = GetComponent<RectTransform>().anchoredPosition;
+        initXPos = newPos.x;
+        Debug.Log("initXPos = " + initXPos);
     }
 
 
     public void OnDrag(PointerEventData eventData)
     {
-        float newXPos = initXPos + eventData.position.x - initMousePosX;
-        Debug.Log(newXPos);
+        float newXPos = initXPos + (eventData.position.x - initMousePosX) * 570 / Screen.width;
+        Debug.Log("newXPos = " + newXPos);
 
-        if ((newXPos < (XPos + maxX)) && (newXPos > (XPos - minX)))
-            transform.position = new Vector3(initXPos + eventData.position.x - initMousePosX, transform.position.y, transform.position.z);
+        if (newXPos <= maxX && newXPos >= -maxX)
+        {
+            newPos.x = newXPos;
+            GetComponent<RectTransform>().anchoredPosition = newPos; 
+            Debug.Log("newPos = " + newPos);
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log(GetComponent<RectTransform>().anchoredPosition.x);
-        Debug.Log("RCList Drag Ended");
     }
 
 }
