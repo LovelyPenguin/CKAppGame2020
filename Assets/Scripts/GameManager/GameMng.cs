@@ -18,6 +18,8 @@ public class GameMng : MonoBehaviour
 
     public int money;
 
+    public int customerCount;
+
     public bool getOpenData
     {
         get
@@ -96,6 +98,7 @@ public class GameMng : MonoBehaviour
         Debug.Log("Close");
         isOpen = false;
         closeEvent.Invoke();
+        customerCount = 0;
     }
 
     //public void MoveScreenEdge()

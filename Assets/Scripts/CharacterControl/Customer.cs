@@ -86,6 +86,7 @@ public class Customer : MonoBehaviour
                 if (number == 1)
                 {
                     Debug.Log("Active");
+                    GameMng.Instance.customerCount++;
                     isActive = true;
                     isReturning = false;
                     InitializeSpawnData();
