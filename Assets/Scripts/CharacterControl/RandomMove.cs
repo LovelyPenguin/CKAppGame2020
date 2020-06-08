@@ -56,8 +56,8 @@ public class RandomMove : MonoBehaviour
                 }
                 else
                 {
-                    targetPostion.x = Random.Range(-10, 0);
-                    targetPostion.z = Random.Range(-10, 0);
+                    targetPostion.x = Random.Range(10, 20);
+                    targetPostion.z = Random.Range(10, 20);
                 }
 
                 if (gameObject.GetComponent<NavMeshAgent>().enabled)
@@ -100,7 +100,7 @@ public class RandomMove : MonoBehaviour
     {
         if (floor == 2)
         {
-            targetPostion.y = 5.7f;
+            targetPostion.y = 51f;
         }
         else
         {

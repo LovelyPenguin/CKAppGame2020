@@ -78,17 +78,36 @@ public class RaccoonController : MonoBehaviour
                 }
                 else
                 {
-                    if (InitState == State.Healing)
-                        GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, healMapName);
-                    //RCState = State.inMap1;
-                    GetComponent<RandomMove>().SetTargerFloor(1);
-                    transform.position = hit.point + new UnityEngine.Vector3(0, mDeltaY, 0);
+                    if (RMng.CanMoveToAnotherFloor(1))
+                    {
+                        if (InitState == State.Healing)
+                            GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, healMapName);
+                        else
+                            RMng.ReleaseMapCount(InitState == State.inMap1 ? 1 : 2);
+                        RMng.MoveToAnotherFloor(1);
 
-                    animator.SetTrigger("DropTrigger");
+                        //RCState = State.inMap1;
+                        GetComponent<RandomMove>().SetTargerFloor(1);
+                        GetComponent<RandomMove>().In1StFloor = true;
 
-                    StartCoroutine(Drop(State.inMap1));
-                    gameObject.GetComponent<RandomMove>().In1StFloor = true;
-                    Debug.Log("GroundHit");
+                        transform.position = hit.point + new UnityEngine.Vector3(0, mDeltaY, 0);
+
+                        animator.SetTrigger("DropTrigger");
+
+                        transform.SetParent(GameObject.Find("Raccoons").transform);
+                        StartCoroutine(Drop(State.inMap1));
+                        Debug.Log("GroundHit");
+                    }
+                    else
+                    {
+                        RCState = InitState;
+                        transform.position = originCoord;
+                        Debug.Log("there is no space in 1st floor");
+
+                        animator.SetTrigger("idleTrigger");
+
+                        Camera.main.GetComponent<CameraController>().RollbackPos();
+                    }
                 }
             }
             else if (hit.transform.gameObject.tag == "2ndGround")
@@ -105,17 +124,38 @@ public class RaccoonController : MonoBehaviour
                 }
                 else
                 {
-                    if (InitState == State.Healing)
-                        GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, healMapName);
-                    //RCState = State.inMap2;
-                    GetComponent<RandomMove>().SetTargerFloor(2);
-                    transform.position = hit.point + new UnityEngine.Vector3(0, mDeltaY, 0);
+                    if (RMng.CanMoveToAnotherFloor(2))
+                    {
+                        if (InitState == State.Healing)
+                            GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, healMapName);
+                        else
+                            RMng.ReleaseMapCount(InitState == State.inMap1 ? 1 : 2);
+                        RMng.MoveToAnotherFloor(2);
+                        
 
-                    animator.SetTrigger("DropTrigger");
+                        //RCState = State.inMap2;
+                        GetComponent<RandomMove>().SetTargerFloor(2);
+                        GetComponent<RandomMove>().In1StFloor = false;
 
-                    StartCoroutine(Drop(State.inMap2));
-                    gameObject.GetComponent<RandomMove>().In1StFloor = false;
-                    Debug.Log("2ndGroundHit");
+
+                        transform.position = hit.point + new UnityEngine.Vector3(0, mDeltaY, 0);
+
+                        animator.SetTrigger("DropTrigger");
+
+                        transform.SetParent(GameObject.Find("Raccoons").transform);
+                        StartCoroutine(Drop(State.inMap2));
+                        Debug.Log("2ndGroundHit");
+                    }
+                    else
+                    {
+                        RCState = InitState;
+                        transform.position = originCoord;
+                        Debug.Log("There is no space in 2nd floor");
+
+                        animator.SetTrigger("idleTrigger");
+
+                        Camera.main.GetComponent<CameraController>().RollbackPos();
+                    }
                 }
             }
             //else if (hit.transform.gameObject.tag == "WallL")
@@ -144,6 +184,8 @@ public class RaccoonController : MonoBehaviour
                 {
                     if (InitState == State.Healing)
                         GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, healMapName);
+                    else
+                        RMng.ReleaseMapCount(InitState == State.inMap1 ? 1 : 2);
 
                     healMapName = hit.transform.gameObject.name;
                     healMapSeatNum = GameObject.Find("HealMap").GetComponent<HealMapMng>().retSeatIndexForName(healMapName);
@@ -153,6 +195,8 @@ public class RaccoonController : MonoBehaviour
                         this.transform.position = GameObject.Find("HealMap").GetComponent<HealMapMng>().retPositionForName(healMapSeatNum, healMapName);
                         //RCState = State.Healing;
                         animator.SetTrigger("DropTrigger");
+
+                        transform.SetParent(GameObject.Find("HealMap").transform);
 
                         StartCoroutine(Drop(State.Healing));
                     }
@@ -173,7 +217,7 @@ public class RaccoonController : MonoBehaviour
                 RCState = InitState;
                 transform.position = originCoord;
                 Debug.Log("ElseHit");
-                Debug.Log(hit.collider.gameObject.name);
+                Debug.Log("hit = " + hit.collider.gameObject.name);
 
                 animator.SetTrigger("idleTrigger");
 
@@ -236,7 +280,7 @@ public class RaccoonController : MonoBehaviour
             Sprite.transform.position = initLocation + transform.up * (height -= Time.deltaTime * 8f);
             yield return null;
         }
-        Sprite.transform.position = initLocation;
+        Sprite.transform.position = transform.position;
         RCState = NextState;
     }
 
@@ -282,7 +326,7 @@ public class RaccoonController : MonoBehaviour
     //bool isHealing = false;
     private bool Movable;
 
-    private enum State { unActive = 0, onDrag, inMap1, inMap2, Healing, dropping };
+    public enum State { unActive = 0, onDrag, inMap1, inMap2, Healing, dropping };
     private State RCState;
 
     public bool isMoving = false;
@@ -303,6 +347,10 @@ public class RaccoonController : MonoBehaviour
     private bool isVisible = true;
 
     public NavMeshAgent navMesh;
+    private RaccoonMng RMng;
+
+    public Vector3 FirstFloorInitPos = new Vector3(5, 0, 5);
+    public Vector3 SecondFloorInitPos = new Vector3(15, 51, 15);
 
     // Start is called before the first frame update
     void Start()
@@ -324,6 +372,8 @@ public class RaccoonController : MonoBehaviour
         SetMovable(false);
 
         animator = GetComponentInChildren<Animator>();
+
+        RMng = GameObject.Find("RaccoonManager").GetComponent<RaccoonMng>();
     }
 
     // Update is called once per frame
@@ -363,7 +413,7 @@ public class RaccoonController : MonoBehaviour
 
         if (RCState != State.unActive)
         {
-            SetVisible();
+            //SetVisible();
             switch (RCState)
             {
                 case State.Healing:
@@ -449,23 +499,23 @@ public class RaccoonController : MonoBehaviour
         //    GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, other.gameObject.name);
         //}
     }
-    private void SetVisible()
-    {
-        isVisible = !(GameObject.Find("GameManager").GetComponent<FloorStatMng>().CurFloor == FloorStatMng.Floor.Floor1 && RCState == State.inMap2);
+    //private void SetVisible()
+    //{
+    //    isVisible = !(GameObject.Find("GameManager").GetComponent<FloorStatMng>().CurFloor == FloorStatMng.Floor.Floor1 && RCState == State.inMap2);
 
-        if (isVisible)
-        {
-            Sprite.GetComponent<SpriteRenderer>().color = OpaqueC;
-            Shadow.GetComponent<SpriteRenderer>().color = OpaqueC;
-            StaminaBar.GetComponent<Image>().color = OpaqueC;
-        }
-        else
-        {
-            Sprite.GetComponent<SpriteRenderer>().color = TransparentC;
-            Shadow.GetComponent<SpriteRenderer>().color = TransparentC;
-            StaminaBar.GetComponent<Image>().color = TransparentC;
-        }
-    }
+    //    if (isVisible)
+    //    {
+    //        Sprite.GetComponent<SpriteRenderer>().color = OpaqueC;
+    //        Shadow.GetComponent<SpriteRenderer>().color = OpaqueC;
+    //        StaminaBar.GetComponent<Image>().color = OpaqueC;
+    //    }
+    //    else
+    //    {
+    //        Sprite.GetComponent<SpriteRenderer>().color = TransparentC;
+    //        Shadow.GetComponent<SpriteRenderer>().color = TransparentC;
+    //        StaminaBar.GetComponent<Image>().color = TransparentC;
+    //    }
+    //}
 
     private void Healing()
     {
@@ -628,13 +678,20 @@ public class RaccoonController : MonoBehaviour
     public bool GetIsDrag()
     {
         return RCState == State.onDrag;
-     //   return isOnDrag;
+        //   return isOnDrag;
     }
 
     public void SetRCActive(bool activity)
     {
         //isActive = activity;
-        RCState = State.inMap1;
+        if (RMng.CanMoveToAnotherFloor(1))
+        {
+            MoveFirstFloor(true);
+        }
+        else if (RMng.CanMoveToAnotherFloor(2))
+        {
+            MoveSecondFloor(true);
+        }
     }
 
     public void StartWork()
@@ -671,5 +728,34 @@ public class RaccoonController : MonoBehaviour
             StaminaBar.GetComponentsInChildren<Image>()[1].fillAmount = 0.0f;
         }
         this.animator.SetFloat("Stamina", stamina / 100f + 0.4f);
+    }
+
+
+    public void MoveFirstFloor(bool init = false)
+    {
+        if (RMng.MoveToAnotherFloor(1))
+        {
+            if (!init)
+                RMng.ReleaseMapCount(2);
+            SetMovable(false);
+            transform.position = FirstFloorInitPos;
+            RCState = State.inMap1;
+            GetComponent<RandomMove>().SetTargerFloor(1);
+            GetComponent<RandomMove>().In1StFloor = true;
+        }
+    }
+
+    public void MoveSecondFloor(bool init = false)
+    {
+        if (RMng.MoveToAnotherFloor(2))
+        {
+            if (!init)
+                RMng.ReleaseMapCount(1);
+            SetMovable(false);
+            transform.position = SecondFloorInitPos;
+            RCState = State.inMap2;
+            GetComponent<RandomMove>().SetTargerFloor(2);
+            GetComponent<RandomMove>().In1StFloor = false;
+        }
     }
 }
