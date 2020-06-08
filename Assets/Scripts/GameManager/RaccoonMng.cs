@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 
@@ -9,12 +11,16 @@ public class RaccoonMng : MonoBehaviour
     GameMng GMng;
     private int selectedRC;
     private static int RaccoonCount = 7;
-    private static int RaccoonRankCount = 3;
+    private static int RaccoonRankCount = 5;
     public GameObject[] RC = new GameObject[RaccoonCount];
     bool[] RaccoonExist = new bool[RaccoonCount];
     public bool[] RaccoonUnlock = new bool[RaccoonCount];
     int[] RaccoonRank = new int[RaccoonCount];
     public float[,] RCEfficiency = new float[RaccoonCount, RaccoonRankCount];
+
+    public int MaxRCCountperMap = 3;
+    private int map1RCCount = 0;
+    private int map2RCCount = 0;
 
     /*
      * 라쿤의 장사 금액 효율을 반환한다
@@ -37,7 +43,7 @@ public class RaccoonMng : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isRCOnDrag())
+        if (isRCOnDrag())
         {
             Camera.main.GetComponent<CameraController>().MoveScreenEdge();
         }
@@ -47,11 +53,10 @@ public class RaccoonMng : MonoBehaviour
     {
         if (!GameObject.Find("GameManager").GetComponent<GameMng>().getOpenData)
         {
-            Debug.Log(RCindex); 
-            
+            Debug.Log(RCindex);
+
             if (!RaccoonExist[RCindex])
             {
-                RC[RCindex].transform.position = new Vector3(5, 0, 5);
                 RC[RCindex].GetComponent<RaccoonController>().SetRCActive(true);
                 RaccoonExist[RCindex] = true;
                 Debug.Log("Raccoon Created!");
@@ -94,24 +99,30 @@ public class RaccoonMng : MonoBehaviour
 
     public void UnlockRC(int index)
     {
+        if (!GMng.gameObject.GetComponent<FloorStatMng>().SecondFloorStat && map1RCCount == MaxRCCountperMap)
+        {
+
+            return;
+        }
         int cost = RetCost(index, 0);
-        if(!RaccoonUnlock[index] && GMng.money >= cost && !GameObject.Find("GameManager").GetComponent<GameMng>().getOpenData)
+        if (!RaccoonUnlock[index] && GMng.money >= cost && !GameObject.Find("GameManager").GetComponent<GameMng>().getOpenData)
         {
             RaccoonUnlock[index] = true;
             RaccoonRank[index] = 1;
             GMng.money -= cost;
             GenerateRaccoon(index);
-            if(index == 5)
+            if (index == 5)
             {
                 GameObject.Find("GameManager").GetComponent<FloorStatMng>().UnlockSecondFloor();
                 Debug.Log("2nd Floor Unlocked");
             }
+
         }
     }
 
     public void StartRCWork()
     {
-        for(int i =0;i<RaccoonCount;i++)
+        for (int i = 0; i < RaccoonCount; i++)
         {
             if (RaccoonExist[i])
                 RC[i].GetComponent<RaccoonController>().StartWork();
@@ -133,4 +144,54 @@ public class RaccoonMng : MonoBehaviour
             return RC[RcIndex].GetComponent<RaccoonController>().Cost[UpgradeIndex];
         return -1;
     }
+
+    public bool MoveToAnotherFloor(int floor)
+    {
+        switch (floor)
+        {
+            case 1:
+                if (map1RCCount == MaxRCCountperMap)
+                    return false;
+                else
+                {
+                    map1RCCount++;
+                    return true;
+                }
+            case 2:
+                if (GameObject.Find("GameManager").GetComponent<FloorStatMng>().SecondFloorStat)
+                {
+                    if (map2RCCount == MaxRCCountperMap)
+                        return false;
+                    else
+                    {
+                        map2RCCount++;
+                        return true;
+                    }
+                }
+                else
+                    return false;
+
+        }
+        return false;
+    }
+
+    public bool CanMoveToAnotherFloor(int floor)
+    {
+        switch(floor)
+        {
+            case 1:
+                return map1RCCount != MaxRCCountperMap;
+            case 2:
+                return map2RCCount != MaxRCCountperMap;
+        }
+        return false;
+    }
+    public void ReleaseMapCount(int floor)
+    {
+        if(floor == 1)
+            map1RCCount--;
+        if (floor == 2)
+            map2RCCount--;
+    }
 }
+
