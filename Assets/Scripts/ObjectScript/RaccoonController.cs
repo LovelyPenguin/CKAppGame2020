@@ -447,12 +447,16 @@ public class RaccoonController : MonoBehaviour
                 GetComponent<NavMeshAgent>().speed = exhaustedSpeed;
                 GetComponent<RandomMove>().setTimer = 2.5f;
                 exhausted = true;
+                if(GetComponent<ParticleSystem>())
+                    GetComponent<ParticleSystem>().Play();
             }
-            else if(exhausted)
+            else if(exhausted && stamina > 10)
             {
                 GetComponent<NavMeshAgent>().speed = vividSpeed;
                 GetComponent<RandomMove>().setTimer = 0.5f;
                 exhausted = false;
+                if (GetComponent<ParticleSystem>())
+                    GetComponent<ParticleSystem>().Stop();
             }
         }
     }
