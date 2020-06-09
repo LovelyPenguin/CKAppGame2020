@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonTest : MonoBehaviour
+public class TimeGauge : MonoBehaviour
 {
     [Range(0, 15), SerializeField]
     private float timer;
