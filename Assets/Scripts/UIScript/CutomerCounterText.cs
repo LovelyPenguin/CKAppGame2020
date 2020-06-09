@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MoneyShow : MonoBehaviour
+public class CutomerCounterText : MonoBehaviour
 {
-    GameMng Mng;
+    private Text txt;
 
     // Start is called before the first frame update
     void Start()
     {
-        Mng = GameObject.Find("GameManager").GetComponent<GameMng>();
+        txt = GetComponent<Text>();
+        txt.text = GameMng.Instance.customerCount.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetComponent<Text>().text = Mng.money.ToString();
+        txt.text = GameMng.Instance.customerCount.ToString();
     }
 }
