@@ -31,7 +31,11 @@ public class SendDragData : MonoBehaviour, IDragHandler, IEndDragHandler
     public void OnDrag(PointerEventData data)
     {
         menuMng.isDrag = true;
+        Vector2 mngPosition = parentRect.GetComponent<RectTransform>().transform.position;
 
+        mngPosition.y = Input.mousePosition.y;
+
+        parentRect.GetComponent<RectTransform>().transform.position = mngPosition;
         if (previousTouchPosY < data.position.y)
         {
             menuMng.isOpen = true;
