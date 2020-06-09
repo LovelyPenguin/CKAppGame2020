@@ -14,7 +14,7 @@ public class RandomMove : MonoBehaviour
     [SerializeField]
     private bool isArrive;
     [SerializeField]
-    private float setTimer = 0.5f;
+    public float setTimer = 0.5f;
     private float timer;
 
     public bool In1StFloor = true;
@@ -43,7 +43,7 @@ public class RandomMove : MonoBehaviour
 
     private void SetRnadomizeDestination()
     {
-        if (Vector3.Distance(transform.position, nav.destination) <= 1f)
+        if (Vector3.Distance(transform.position, nav.destination) <= 0.1f)
         {
             isArrive = true;
             timer -= Time.deltaTime;
@@ -65,7 +65,7 @@ public class RandomMove : MonoBehaviour
                     nav.SetDestination(targetPostion);
                 }
 
-                timer = setTimer;
+                timer = setTimer + Random.Range(0.0f, 1.5f);
             }
         }
         else

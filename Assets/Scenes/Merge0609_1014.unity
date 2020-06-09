@@ -420,6 +420,8 @@ MonoBehaviour:
   navMesh: {fileID: 40315568}
   FirstFloorInitPos: {x: 5, y: 0, z: 5}
   SecondFloorInitPos: {x: 15, y: 51, z: 15}
+  exhaustedSpeed: 0
+  vividSpeed: 0
 --- !u!1 &41138238
 GameObject:
   m_ObjectHideFlags: 0
@@ -5599,6 +5601,8 @@ MonoBehaviour:
   navMesh: {fileID: 469364615}
   FirstFloorInitPos: {x: 5, y: 0, z: 5}
   SecondFloorInitPos: {x: 15, y: 51, z: 15}
+  exhaustedSpeed: 0.75
+  vividSpeed: 1.5
 --- !u!65 &469364610
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7499,6 +7503,8 @@ MonoBehaviour:
   navMesh: {fileID: 680144876}
   FirstFloorInitPos: {x: 5, y: 0, z: 5}
   SecondFloorInitPos: {x: 15, y: 51, z: 15}
+  exhaustedSpeed: 0
+  vividSpeed: 0
 --- !u!1 &689544354 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7566686985378810629, guid: fc88fae509a6d2a45bbe1b27a8f6c878,
@@ -8318,6 +8324,8 @@ MonoBehaviour:
   navMesh: {fileID: 730393595}
   FirstFloorInitPos: {x: 5, y: 0, z: 5}
   SecondFloorInitPos: {x: 15, y: 51, z: 15}
+  exhaustedSpeed: 0
+  vividSpeed: 0
 --- !u!1 &732464786
 GameObject:
   m_ObjectHideFlags: 0
@@ -12763,6 +12771,8 @@ MonoBehaviour:
   navMesh: {fileID: 1245717920}
   FirstFloorInitPos: {x: 5, y: 0, z: 5}
   SecondFloorInitPos: {x: 15, y: 51, z: 15}
+  exhaustedSpeed: 0
+  vividSpeed: 0
 --- !u!1 &1265659263
 GameObject:
   m_ObjectHideFlags: 0
@@ -13220,6 +13230,8 @@ MonoBehaviour:
   navMesh: {fileID: 1296754814}
   FirstFloorInitPos: {x: 5, y: 0, z: 5}
   SecondFloorInitPos: {x: 15, y: 51, z: 15}
+  exhaustedSpeed: 0
+  vividSpeed: 0
 --- !u!1 &1303797163
 GameObject:
   m_ObjectHideFlags: 0
@@ -20328,6 +20340,8 @@ MonoBehaviour:
   navMesh: {fileID: 2025593419}
   FirstFloorInitPos: {x: 5, y: 0, z: 5}
   SecondFloorInitPos: {x: 15, y: 51, z: 15}
+  exhaustedSpeed: 0
+  vividSpeed: 0
 --- !u!1 &2034556346
 GameObject:
   m_ObjectHideFlags: 0
@@ -20947,7 +20961,7 @@ MonoBehaviour:
   - {fileID: 1296754810}
   - {fileID: 2025593415}
   RaccoonUnlock: 0000000000000000
-  MaxRCCountperMap: 3
+  MaxRCCountperMap: 5
 --- !u!4 &2107937661
 Transform:
   m_ObjectHideFlags: 0

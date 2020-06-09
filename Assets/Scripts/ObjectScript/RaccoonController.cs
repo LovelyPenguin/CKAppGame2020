@@ -352,6 +352,10 @@ public class RaccoonController : MonoBehaviour
     public Vector3 FirstFloorInitPos = new Vector3(5, 0, 5);
     public Vector3 SecondFloorInitPos = new Vector3(15, 51, 15);
 
+    public float exhaustedSpeed;
+    public float vividSpeed;
+    private bool exhausted = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -437,6 +441,19 @@ public class RaccoonController : MonoBehaviour
             }
             Move();
             StaminaBarUpdate();
+
+            if(!exhausted && stamina <= 10)
+            {
+                GetComponent<NavMeshAgent>().speed = exhaustedSpeed;
+                GetComponent<RandomMove>().setTimer = 2.5f;
+                exhausted = true;
+            }
+            else if(exhausted)
+            {
+                GetComponent<NavMeshAgent>().speed = vividSpeed;
+                GetComponent<RandomMove>().setTimer = 0.5f;
+                exhausted = false;
+            }
         }
     }
 
