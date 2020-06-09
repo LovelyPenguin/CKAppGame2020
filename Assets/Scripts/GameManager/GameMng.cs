@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -13,6 +14,8 @@ public class GameMng : MonoBehaviour
     GameObject RaccoonMng;
 
     public float openTime;
+    [NonSerialized]
+    public float setOpenTime;
     [SerializeField]
     private bool isOpen = false;
 
@@ -90,6 +93,7 @@ public class GameMng : MonoBehaviour
         Debug.Log("Open");
         isOpen = true;
         openTime = setOpenTime;
+        this.setOpenTime = setOpenTime;
         openEvent.Invoke();
     }
 
