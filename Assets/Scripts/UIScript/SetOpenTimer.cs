@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿// 버그 초, 분, 시로 잡지 않고 전체적인 타임으로 받고 주는게 좋을 듯!
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -90,7 +91,7 @@ public class SetOpenTimer : MonoBehaviour
     {
         if (GameMng.Instance.getOpenData == false && min >= 0)
         {
-            if (sec != 0)
+            if (sec != 0 && (min != 0 || hour != 0))
             {
                 sec -= number;
             }
