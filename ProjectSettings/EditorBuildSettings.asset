@@ -5,13 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/Scenes/ShaderTest.unity
-    guid: f560f398db543c846aa27a3bd26407ff
   - enabled: 1
-    path: Assets/Scenes/RaccoonMovementInproved.unity
-    guid: b6a01804acc7e2e47b5d19b1a25f0432
+    path: Assets/Scenes/CustomerPrototype.unity
+    guid: af6a9796f2fe6a54d90e547b787b29e8
   m_configObjects: {}

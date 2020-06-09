@@ -44,7 +44,7 @@ public class ChangeCameraPosition : MonoBehaviour
         }
         else
         {
-            cameraInitialValueY = mainCam.transform.position.y;
+            //cameraInitialValueY = mainCam.transform.position.y;
         }
     }
 
@@ -60,7 +60,7 @@ public class ChangeCameraPosition : MonoBehaviour
         }
         else
         {
-            cameraInitialValueY = mainCam.transform.position.y;
+            //cameraInitialValueY = mainCam.transform.position.y;
         }
     }
 
