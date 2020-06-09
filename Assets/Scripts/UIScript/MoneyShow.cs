@@ -16,6 +16,6 @@ public class MoneyShow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<Text>().text = Mng.money.ToString() + "원";
+        GetComponent<Text>().text = Mng.money.ToString();
     }
 }

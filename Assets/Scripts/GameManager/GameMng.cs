@@ -20,7 +20,7 @@ public class GameMng : MonoBehaviour
     private bool isOpen = false;
 
     public int money;
-
+    [NonSerialized]
     public int customerCount;
 
     public bool getOpenData

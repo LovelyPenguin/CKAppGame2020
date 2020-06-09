@@ -3,21 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonTest : MonoBehaviour
+public class CutomerCounterText : MonoBehaviour
 {
-    [Range(0, 15), SerializeField]
-    private float timer;
-    private Image img;
+    private Text txt;
 
     // Start is called before the first frame update
     void Start()
     {
-        img = GetComponent<Image>();
+        txt = GetComponent<Text>();
+        txt.text = GameMng.Instance.customerCount.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        img.fillAmount = 1 / (GameMng.Instance.setOpenTime / GameMng.Instance.openTime);
+        txt.text = GameMng.Instance.customerCount.ToString();
     }
 }
