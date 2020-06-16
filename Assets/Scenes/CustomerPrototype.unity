@@ -418,6 +418,8 @@ MonoBehaviour:
   StaminaBar: {fileID: 293393613}
   Sprite: {fileID: 1321281536}
   navMesh: {fileID: 40315568}
+  FirstFloorInitPos: {x: 5, y: 0, z: 5}
+  SecondFloorInitPos: {x: 15, y: 51, z: 15}
 --- !u!1 &41138238
 GameObject:
   m_ObjectHideFlags: 0
@@ -2309,10 +2311,10 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.59, y: 1.58}
+  m_Size: {x: 2.3, y: 2.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &203202521
@@ -4966,7 +4968,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409466718}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f37c9c74d6d300946bca7e64b24dee2e, type: 3}
   m_Name: 
@@ -4975,6 +4977,9 @@ MonoBehaviour:
   Floor2ObjMtrls:
   - {fileID: 2100000, guid: 20ffffb8e23866e48b250350950094eb, type: 2}
   CollisionGround2: {fileID: 1503566428}
+  FloorChangeButtons:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &409466722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5616,6 +5621,8 @@ MonoBehaviour:
   StaminaBar: {fileID: 1700696593}
   Sprite: {fileID: 1193004096}
   navMesh: {fileID: 469364615}
+  FirstFloorInitPos: {x: 5, y: 0, z: 5}
+  SecondFloorInitPos: {x: 15, y: 51, z: 15}
 --- !u!65 &469364610
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7573,6 +7580,8 @@ MonoBehaviour:
   StaminaBar: {fileID: 437982152}
   Sprite: {fileID: 271802385}
   navMesh: {fileID: 680144876}
+  FirstFloorInitPos: {x: 5, y: 0, z: 5}
+  SecondFloorInitPos: {x: 15, y: 51, z: 15}
 --- !u!1 &689544354 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7566686985378810629, guid: fc88fae509a6d2a45bbe1b27a8f6c878,
@@ -8410,6 +8419,8 @@ MonoBehaviour:
   StaminaBar: {fileID: 75979868}
   Sprite: {fileID: 203202518}
   navMesh: {fileID: 730393595}
+  FirstFloorInitPos: {x: 5, y: 0, z: 5}
+  SecondFloorInitPos: {x: 15, y: 51, z: 15}
 --- !u!1 &732464786
 GameObject:
   m_ObjectHideFlags: 0
@@ -13144,6 +13155,8 @@ MonoBehaviour:
   StaminaBar: {fileID: 1224452114}
   Sprite: {fileID: 1981676640}
   navMesh: {fileID: 1245717920}
+  FirstFloorInitPos: {x: 5, y: 0, z: 5}
+  SecondFloorInitPos: {x: 15, y: 51, z: 15}
 --- !u!1 &1284266354
 GameObject:
   m_ObjectHideFlags: 0
@@ -13509,6 +13522,8 @@ MonoBehaviour:
   StaminaBar: {fileID: 1555633544}
   Sprite: {fileID: 2043975732}
   navMesh: {fileID: 1296754814}
+  FirstFloorInitPos: {x: 5, y: 0, z: 5}
+  SecondFloorInitPos: {x: 15, y: 51, z: 15}
 --- !u!1 &1303797163
 GameObject:
   m_ObjectHideFlags: 0
@@ -18711,7 +18726,7 @@ MonoBehaviour:
   coolTimer: 0.1
   plusCount: 1
   timerObj: {fileID: 1101740863}
-  isAdd: 0
+  isAdd: 1
 --- !u!1 &1806054141
 GameObject:
   m_ObjectHideFlags: 0
@@ -21203,6 +21218,8 @@ MonoBehaviour:
   StaminaBar: {fileID: 1652698077}
   Sprite: {fileID: 1315573634}
   navMesh: {fileID: 2025593419}
+  FirstFloorInitPos: {x: 5, y: 0, z: 5}
+  SecondFloorInitPos: {x: 15, y: 51, z: 15}
 --- !u!1 &2034556346
 GameObject:
   m_ObjectHideFlags: 0
@@ -21822,6 +21839,7 @@ MonoBehaviour:
   - {fileID: 1296754810}
   - {fileID: 2025593415}
   RaccoonUnlock: 0000000000000000
+  MaxRCCountperMap: 3
 --- !u!4 &2107937661
 Transform:
   m_ObjectHideFlags: 0
