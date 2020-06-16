@@ -15,25 +15,27 @@ public class MobileInputMng : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            key = true;
-        }
         if (key)
         {
             timer -= Time.deltaTime;
             if (timer >= 0)
             {
-                if (Input.GetKey(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Escape))
                 {
-                    Debug.Log("Click");
+                    Debug.Log("Click2");
+                    Application.Quit();
                 }
             }
             else
             {
                 key = false;
-                timer = 0.1f;
+                timer = 0.2f;
             }
+        }
+        if (Input.GetKeyUp(KeyCode.Escape) && !key)
+        {
+            key = true;
+            Debug.Log("Click1");
         }
     }
 }
