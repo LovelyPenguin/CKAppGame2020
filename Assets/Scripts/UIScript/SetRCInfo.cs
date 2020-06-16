@@ -44,10 +44,15 @@ public class SetRCInfo : MonoBehaviour
         TailUpdate(InteractButton);
     }
 
+    int Max(int a, int b)
+    {
+        return (a > b) ? a : b;
+    }
+
     private void RaccoonImageUpdate()
     {
         int RCRank = RCMng.GetRCRank(CurrentRaccoon);
-        RCImage.GetComponent<Image>().sprite = Rc[CurrentRaccoon * RaccoonRankCount + RCRank - 1];
+        RCImage.GetComponent<Image>().sprite = Rc[Max(CurrentRaccoon * RaccoonRankCount + RCRank - 1,0)];
         if (RCMng.GetComponent<RaccoonMng>().GetRCUnlockData(CurrentRaccoon))
         {
             if (RCRank < RaccoonRankCount)
