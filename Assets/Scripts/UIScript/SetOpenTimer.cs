@@ -1,4 +1,5 @@
 ﻿// 버그 초, 분, 시로 잡지 않고 전체적인 타임으로 받고 주는게 좋을 듯!
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,11 +30,13 @@ public class SetOpenTimer : MonoBehaviour
 
     void SetTimer()
     {
-        if (GameMng.Instance.getOpenData)
+        if (true)
         {
-            hour = Mathf.FloorToInt(GameMng.Instance.openTime / 3600);
-            min = Mathf.FloorToInt(GameMng.Instance.openTime / 60);
-            sec = Mathf.FloorToInt(GameMng.Instance.openTime % 60);
+            TimeSpan span;
+            span = new TimeSpan(0, 0, Mathf.FloorToInt(GameMng.Instance.openTime));
+            hour = span.Hours;
+            min = span.Minutes;
+            sec = span.Seconds;
         }
 
         string hourString;
@@ -73,45 +76,32 @@ public class SetOpenTimer : MonoBehaviour
     {
         if (GameMng.Instance.getOpenData == false)
         {
-            sec += number;
-            if (sec >= 60)
-            {
-                min++;
-                sec = 0;
-            }
-            if (min >= 60)
-            {
-                hour++;
-                min = 0;
-            }
+            //sec += number;
+            //if (sec >= 60)
+            //{
+            //    min++;
+            //    sec = 0;
+            //}
+            //if (min >= 60)
+            //{
+            //    hour++;
+            //    min = 0;
+            //}
+            GameMng.Instance.openTime += number;
         }
     }
 
     public void MinusTime(int number)
     {
-        if (GameMng.Instance.getOpenData == false && min >= 0)
+        if (GameMng.Instance.getOpenData == false && GameMng.Instance.openTime - number > 0)
         {
-            if (sec != 0 && (min != 0 || hour != 0))
-            {
-                sec -= number;
-            }
-            if (sec < 0 && min - 1 > -1)
-            {
-                min--;
-                sec = 55;
-            }
-            if (hour > 0 && min <= 0 && sec < 0)
-            {
-                hour--;
-                min = 59;
-                sec = 55;
-            }
+            GameMng.Instance.openTime -= number;
         }
     }
 
     public void SendTimeData()
     {
-        timer = (hour * 3600) + (min * 60) + sec;
+        timer = GameMng.Instance.openTime;
         if (timer > 0)
         {
             GameMng.Instance.OpenCafe(timer);
