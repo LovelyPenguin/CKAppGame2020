@@ -91,6 +91,11 @@ public class RaccoonMng : MonoBehaviour
         return RaccoonRankCount;
     }
 
+    public int GetMaxRCcount()
+    {
+        return RaccoonCount;
+    }
+
     public void UpgradeRC(int index)
     {
         int cost = RetCost(index, RaccoonRank[index]);

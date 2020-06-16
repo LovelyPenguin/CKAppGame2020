@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,13 +30,13 @@ public class SetRCInfo : MonoBehaviour
     void Start()
     {
         RCMng = GameObject.Find("RaccoonManager").GetComponent<RaccoonMng>();
-        CurrentRaccoon = 0;
+        SetRaccoon(0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        TailUpdate(InteractButton);
     }
 
     private void RaccoonImageUpdate()
@@ -76,6 +77,9 @@ public class SetRCInfo : MonoBehaviour
     private GameObject InteractButton;
     public GameObject ParentObj;
     public Font mfont;
+    public Sprite Balloon;
+    public Sprite BalloonTail;
+    private GameObject Tail;
 
     GameObject CreateButton(float xPos, float yPos, float width, float height, string text, Font font, Transform parent)
     {
@@ -84,11 +88,13 @@ public class SetRCInfo : MonoBehaviour
         newButton.layer = 5;
         newButton.transform.localScale = Vector3.one;
 
+
         RectTransform RectTnsf = newButton.AddComponent<RectTransform>();
         RectTnsf.anchoredPosition = new Vector2(xPos, yPos);
         RectTnsf.sizeDelta = new Vector2(width, height);
 
         Image Img = newButton.AddComponent<Image>();
+        Img.sprite = Balloon;
 
         Button btn = newButton.AddComponent<Button>();
         btn.onClick.AddListener(RCInterAct);
@@ -107,8 +113,41 @@ public class SetRCInfo : MonoBehaviour
         newText.alignment = TextAnchor.MiddleCenter;
         newText.transform.localScale = Vector3.one;
 
+        Tail = new GameObject("Tail");
+        Tail.transform.SetParent(newButton.transform);
+        Tail.layer = 5;
+        Image tailImg = Tail.AddComponent<Image>();
+        tailImg.sprite = BalloonTail;
+
+        TailUpdate(newButton);
+
         return newButton;
     }
+
+    private void TailUpdate(GameObject Balloon)
+    {
+        if(Tail)
+        {
+            float Delta = GameObject.Find("RBtn_2").transform.position.x - GameObject.Find("RBtn_1").transform.position.x;
+
+            Vector3 V1 = GameObject.Find("RCList").transform.position;
+            V1.x += (CurrentRaccoon - (int)RCMng.GetMaxRCcount() / 2) * Delta;
+
+            GameObject RCMask = GameObject.Find("RCMask");
+            if (V1.x > RCMask.transform.position.x + RCMask.GetComponent<RectTransform>().sizeDelta.x / 2 || V1.x < RCMask.transform.position.x - RCMask.GetComponent<RectTransform>().sizeDelta.x / 2)
+                DestroyUpgradeBtn();
+
+            Vector3 V2 = Balloon.transform.position;
+
+            Vector3 V = V1 - V2;
+
+            float deg;
+            Tail.transform.position = Balloon.transform.position + (V * 0.5f);
+            Tail.GetComponent<RectTransform>().sizeDelta = new Vector2(10, V.magnitude / 2);
+            Tail.transform.eulerAngles = new Vector3(0,0, (deg = Mathf.Atan(V.y / V.x) * 180 / Mathf.PI + 90.0f) > 90 ? deg - 180.0f : deg);
+        }
+    }
+    public GameObject RCInfoText;
     public void SetRaccoon(int index)
     {
         if (CurrentRaccoon == index)
@@ -129,8 +168,11 @@ public class SetRCInfo : MonoBehaviour
                     newTxt = "ÇØ±Ý" + RCMng.RetCost(CurrentRaccoon, 0).ToString() + "¿ø";
                 }
 
-                InteractButton = CreateButton(0,-325, 600, 200, newTxt, mfont, ParentObj.transform);
+                float XPos = (GameObject.Find("RCList").GetComponent<RectTransform>().localPosition.x + (index - (int)RCMng.GetMaxRCcount() / 2) * 110);
+                InteractButton = CreateButton(XPos, -325, 600, 200, newTxt, mfont, ParentObj.transform);
             }
+            else if (InteractButton)
+                DestroyUpgradeBtn();
         }
         else
         {
@@ -138,6 +180,7 @@ public class SetRCInfo : MonoBehaviour
             CurrentRaccoon = index;
             RcIcon.GetComponent<Image>().sprite = RcIcons[CurrentRaccoon];
         }
+        RCInfoText.GetComponent<RCInfoText>().UpdateText(CurrentRaccoon);
         RaccoonImageUpdate();
     }
 
