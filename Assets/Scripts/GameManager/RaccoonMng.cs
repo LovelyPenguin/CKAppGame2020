@@ -11,7 +11,7 @@ public class RaccoonMng : MonoBehaviour
     GameMng GMng;
     private int selectedRC;
     private static int RaccoonCount = 7;
-    private static int RaccoonRankCount = 5;
+    private static int RaccoonRankCount = 3;
     public GameObject[] RC = new GameObject[RaccoonCount];
     bool[] RaccoonExist = new bool[RaccoonCount];
     public bool[] RaccoonUnlock = new bool[RaccoonCount];
@@ -86,6 +86,16 @@ public class RaccoonMng : MonoBehaviour
         return RaccoonRank[index];
     }
 
+    public int GetRCMaxRank()
+    {
+        return RaccoonRankCount;
+    }
+
+    public int GetMaxRCcount()
+    {
+        return RaccoonCount;
+    }
+
     public void UpgradeRC(int index)
     {
         int cost = RetCost(index, RaccoonRank[index]);
@@ -111,7 +121,7 @@ public class RaccoonMng : MonoBehaviour
             RaccoonRank[index] = 1;
             GMng.money -= cost;
             GenerateRaccoon(index);
-            if (index == 5)
+            if (index == 4)
             {
                 GameObject.Find("GameManager").GetComponent<FloorStatMng>().UnlockSecondFloor();
                 Debug.Log("2nd Floor Unlocked");
