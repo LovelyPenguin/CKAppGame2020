@@ -1910,7 +1910,7 @@ Transform:
   - {fileID: 1296754811}
   - {fileID: 2025593416}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &185389082
 GameObject:
@@ -3011,7 +3011,7 @@ RectTransform:
   - {fileID: 1545266241}
   - {fileID: 777572192}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5046,6 +5046,7 @@ GameObject:
   - component: {fileID: 409466722}
   - component: {fileID: 409466724}
   - component: {fileID: 409466725}
+  - component: {fileID: 409466726}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5068,7 +5069,7 @@ MonoBehaviour:
   openEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2107937660}
+      - m_Target: {fileID: 0}
         m_MethodName: StartRCWork
         m_Mode: 1
         m_Arguments:
@@ -5093,7 +5094,7 @@ MonoBehaviour:
   closeEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2107937660}
+      - m_Target: {fileID: 0}
         m_MethodName: StopRCWork
         m_Mode: 1
         m_Arguments:
@@ -5180,11 +5181,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phase: 0
   isStart: 0
-  timingBar: {fileID: 0}
-  drinkMakeBtn: {fileID: 0}
-  tabBtn: {fileID: 0}
-  percentText: {fileID: 0}
-  blockImage: {fileID: 0}
+  timingBar: {fileID: 1531294848}
+  drinkMakeBtn: {fileID: 1061784466}
+  tabBtn: {fileID: 882962301}
+  percentText: {fileID: 651421370}
+  blockImage: {fileID: 1968497902}
 --- !u!114 &409466724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5214,6 +5215,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0.1
+--- !u!114 &409466726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409466718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1405e28990a75b54ca7b869a627ed239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RC:
+  - {fileID: 469364604}
+  - {fileID: 730393591}
+  - {fileID: 680144872}
+  - {fileID: 40315564}
+  - {fileID: 1245717916}
+  - {fileID: 1296754810}
+  - {fileID: 2025593415}
+  RaccoonUnlock: 0000000000000000
+  MaxRCCountperMap: 5
 --- !u!1001 &419132756
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10534,7 +10557,7 @@ Transform:
   - {fileID: 1576332706}
   - {fileID: 404926464}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &477011501
 MonoBehaviour:
@@ -11962,7 +11985,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &617355780
 GameObject:
@@ -13139,7 +13162,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 46.769, y: 48.085003, z: 51.796}
 --- !u!1 &709880681
 GameObject:
@@ -13609,7 +13632,7 @@ PrefabInstance:
     - target: {fileID: 2479461259495807900, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2479461259495807900, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
         type: 3}
@@ -14773,7 +14796,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 409466723}
         m_MethodName: TabPhase
         m_Mode: 1
         m_Arguments:
@@ -16323,7 +16346,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 409466723}
         m_MethodName: MakeDrink
         m_Mode: 1
         m_Arguments:
@@ -20755,7 +20778,7 @@ Transform:
   - {fileID: 1464219429}
   - {fileID: 923504200}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1500820379
 GameObject:
@@ -21702,7 +21725,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1556049774
 MonoBehaviour:
@@ -26589,59 +26612,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061456570}
   m_CullTransparentMesh: 0
---- !u!1 &2107937659
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2107937661}
-  - component: {fileID: 2107937660}
-  m_Layer: 0
-  m_Name: RaccoonManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2107937660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2107937659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1405e28990a75b54ca7b869a627ed239, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RC:
-  - {fileID: 469364604}
-  - {fileID: 730393591}
-  - {fileID: 680144872}
-  - {fileID: 40315564}
-  - {fileID: 1245717916}
-  - {fileID: 1296754810}
-  - {fileID: 2025593415}
-  RaccoonUnlock: 0000000000000000
-  MaxRCCountperMap: 5
---- !u!4 &2107937661
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2107937659}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2116845308
 GameObject:
   m_ObjectHideFlags: 0
