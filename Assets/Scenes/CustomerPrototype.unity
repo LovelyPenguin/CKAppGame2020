@@ -418,6 +418,10 @@ MonoBehaviour:
   StaminaBar: {fileID: 293393613}
   Sprite: {fileID: 1321281536}
   navMesh: {fileID: 40315568}
+  FirstFloorInitPos: {x: 5, y: 0, z: 5}
+  SecondFloorInitPos: {x: 15, y: 51, z: 15}
+  exhaustedSpeed: 0
+  vividSpeed: 0
 --- !u!1 &41138238
 GameObject:
   m_ObjectHideFlags: 0
@@ -2312,7 +2316,7 @@ SpriteRenderer:
   m_Size: {x: 2.3, y: 2.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &203202521
@@ -4976,6 +4980,9 @@ MonoBehaviour:
   Floor2ObjMtrls:
   - {fileID: 2100000, guid: 20ffffb8e23866e48b250350950094eb, type: 2}
   CollisionGround2: {fileID: 1503566428}
+  FloorChangeButtons:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &409466722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5630,6 +5637,10 @@ MonoBehaviour:
   StaminaBar: {fileID: 1700696593}
   Sprite: {fileID: 1193004096}
   navMesh: {fileID: 469364615}
+  FirstFloorInitPos: {x: 5, y: 0, z: 5}
+  SecondFloorInitPos: {x: 15, y: 51, z: 15}
+  exhaustedSpeed: 0
+  vividSpeed: 0
 --- !u!65 &469364610
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7587,6 +7598,10 @@ MonoBehaviour:
   StaminaBar: {fileID: 437982152}
   Sprite: {fileID: 271802385}
   navMesh: {fileID: 680144876}
+  FirstFloorInitPos: {x: 5, y: 0, z: 5}
+  SecondFloorInitPos: {x: 15, y: 51, z: 15}
+  exhaustedSpeed: 0
+  vividSpeed: 0
 --- !u!1 &689544354 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7566686985378810629, guid: fc88fae509a6d2a45bbe1b27a8f6c878,
@@ -8060,7 +8075,7 @@ MonoBehaviour:
   timer: 0
   totalTime: 0
   count: 0
-  coolTimer: 0.1
+  coolTimer: 0.05
   plusCount: 1
   timerObj: {fileID: 1101740863}
   isAdd: 0
@@ -8424,6 +8439,10 @@ MonoBehaviour:
   StaminaBar: {fileID: 75979868}
   Sprite: {fileID: 203202518}
   navMesh: {fileID: 730393595}
+  FirstFloorInitPos: {x: 5, y: 0, z: 5}
+  SecondFloorInitPos: {x: 15, y: 51, z: 15}
+  exhaustedSpeed: 0
+  vividSpeed: 0
 --- !u!1 &732464786
 GameObject:
   m_ObjectHideFlags: 0
@@ -10216,6 +10235,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f5bdcc218e268ae46a2d9db7467e8050, type: 3}
   - {fileID: 21300000, guid: f5bdcc218e268ae46a2d9db7467e8050, type: 3}
   - {fileID: 21300000, guid: f5bdcc218e268ae46a2d9db7467e8050, type: 3}
+  RcIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  RcIcon: {fileID: 0}
   Stars:
   - {fileID: 1294658153}
   - {fileID: 268372430}
@@ -10223,7 +10251,11 @@ MonoBehaviour:
   StarSprite:
   - {fileID: 21300000, guid: 34902068b961f424cb7088338fa94734, type: 3}
   - {fileID: 21300000, guid: 5cf8c1973b21c3244b8b0333420dd2ae, type: 3}
-  txt: {fileID: 718679809}
+  ParentObj: {fileID: 0}
+  mfont: {fileID: 0}
+  Balloon: {fileID: 0}
+  BalloonTail: {fileID: 0}
+  RCInfoText: {fileID: 0}
 --- !u!222 &966320712
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13169,6 +13201,10 @@ MonoBehaviour:
   StaminaBar: {fileID: 1224452114}
   Sprite: {fileID: 1981676640}
   navMesh: {fileID: 1245717920}
+  FirstFloorInitPos: {x: 5, y: 0, z: 5}
+  SecondFloorInitPos: {x: 15, y: 51, z: 15}
+  exhaustedSpeed: 0
+  vividSpeed: 0
 --- !u!1 &1284266354
 GameObject:
   m_ObjectHideFlags: 0
@@ -13534,6 +13570,10 @@ MonoBehaviour:
   StaminaBar: {fileID: 1555633544}
   Sprite: {fileID: 2043975732}
   navMesh: {fileID: 1296754814}
+  FirstFloorInitPos: {x: 5, y: 0, z: 5}
+  SecondFloorInitPos: {x: 15, y: 51, z: 15}
+  exhaustedSpeed: 0
+  vividSpeed: 0
 --- !u!1 &1303797163
 GameObject:
   m_ObjectHideFlags: 0
@@ -16686,10 +16726,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2479461259495807892, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2479461259495807893, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
         type: 3}
       propertyPath: m_Name
       value: CustomerBoy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2479461259495807895, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2479461259495807897, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
         type: 3}
@@ -16700,6 +16750,11 @@ PrefabInstance:
         type: 3}
       propertyPath: setMoneyCollectTime
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2479461259495807897, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2479461259495807900, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
         type: 3}
@@ -18743,7 +18798,7 @@ MonoBehaviour:
   timer: 0
   totalTime: 0
   count: 0
-  coolTimer: 0.1
+  coolTimer: 0.05
   plusCount: 1
   timerObj: {fileID: 1101740863}
   isAdd: 1
@@ -21238,6 +21293,10 @@ MonoBehaviour:
   StaminaBar: {fileID: 1652698077}
   Sprite: {fileID: 1315573634}
   navMesh: {fileID: 2025593419}
+  FirstFloorInitPos: {x: 5, y: 0, z: 5}
+  SecondFloorInitPos: {x: 15, y: 51, z: 15}
+  exhaustedSpeed: 0
+  vividSpeed: 0
 --- !u!1 &2034556346
 GameObject:
   m_ObjectHideFlags: 0
@@ -21857,6 +21916,7 @@ MonoBehaviour:
   - {fileID: 1296754810}
   - {fileID: 2025593415}
   RaccoonUnlock: 0000000000000000
+  MaxRCCountperMap: 3
 --- !u!4 &2107937661
 Transform:
   m_ObjectHideFlags: 0

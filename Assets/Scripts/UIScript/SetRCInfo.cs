@@ -29,8 +29,15 @@ public class SetRCInfo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CurrentRaccoon = 1;
         RCMng = GameObject.Find("RaccoonManager").GetComponent<RaccoonMng>();
         SetRaccoon(0);
+    }
+
+    private void Awake()
+    {
+        //RCMng = GameObject.Find("RaccoonManager").GetComponent<RaccoonMng>();
+        //SetRaccoon(0);
     }
 
     // Update is called once per frame
