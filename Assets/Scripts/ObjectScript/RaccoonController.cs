@@ -202,10 +202,10 @@ public class RaccoonController : MonoBehaviour
                     }
                     else
                     {
-                        animator.SetTrigger("idleTrigger");
+                        animator.SetTrigger("DropTrigger");
 
                         this.transform.position = originCoord;
-                        RCState = InitState;
+                        StartCoroutine(Drop(InitState));
                     }
                 }
 
