@@ -6,10 +6,12 @@ public class MobileInputMng : MonoBehaviour
 {
     public float timer = 0.1f;
     private bool key;
+    private float saveTimerValue;
     // Start is called before the first frame update
     void Start()
     {
         key = false;
+        saveTimerValue = timer;
     }
 
     // Update is called once per frame
@@ -22,20 +24,20 @@ public class MobileInputMng : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
-                    Debug.Log("Click2");
+                    Debug.Log("Two Application Quit");
                     Application.Quit();
                 }
             }
             else
             {
                 key = false;
-                timer = 0.2f;
+                timer = saveTimerValue;
             }
         }
         if (Input.GetKeyUp(KeyCode.Escape) && !key)
         {
             key = true;
-            Debug.Log("Click1");
+            Debug.Log("One");
         }
     }
 }

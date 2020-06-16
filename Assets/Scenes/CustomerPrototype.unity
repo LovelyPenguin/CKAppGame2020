@@ -5037,7 +5037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaba5d9af2686904da0b1c379c094ee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 0.1
+  timer: 0.2
 --- !u!1 &417511654
 GameObject:
   m_ObjectHideFlags: 0
@@ -10991,6 +10991,7 @@ GameObject:
   - component: {fileID: 1101740865}
   - component: {fileID: 1101740864}
   - component: {fileID: 1101740863}
+  - component: {fileID: 1101740867}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -11074,6 +11075,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1101740867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101740862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4806526b2d7c63448b03c60f6e369eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1104766663
 GameObject:
   m_ObjectHideFlags: 0
@@ -16676,6 +16689,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CustomerBoy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2479461259495807897, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
+        type: 3}
+      propertyPath: duration
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2479461259495807897, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
+        type: 3}
+      propertyPath: setMoneyCollectTime
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2479461259495807900, guid: 36f6e0dbb3be8404b98d4ef2d2c35244,
         type: 3}
