@@ -9,17 +9,16 @@ public class SetOpenTimer : MonoBehaviour
 {
     private Text myText;
     public float timer;
-    public int hour;
-    public int min;
-    public int sec;
 
     [SerializeField]
     private GameObject[] buttons;
+    private TimeSpan span;
 
     // Start is called before the first frame update
     void Start()
     {
         myText = gameObject.GetComponent<Text>();
+        span = new TimeSpan(0, 0, Mathf.FloorToInt(GameMng.Instance.openTime));
     }
 
     // Update is called once per frame
@@ -32,41 +31,37 @@ public class SetOpenTimer : MonoBehaviour
     {
         if (true)
         {
-            TimeSpan span;
             span = new TimeSpan(0, 0, Mathf.FloorToInt(GameMng.Instance.openTime));
-            hour = span.Hours;
-            min = span.Minutes;
-            sec = span.Seconds;
         }
 
         string hourString;
-        if (hour < 10)
+        if (span.Hours < 10)
         {
-            hourString = '0' + hour.ToString();
+            hourString = '0' + span.Hours.ToString();
         }
         else
         {
-            hourString = hour.ToString();
+            hourString = span.Hours.ToString();
         }
 
         string minString;
-        if (min < 10)
+        if (span.Minutes < 10)
         {
-            minString = '0' + min.ToString();
+            minString = '0' + span.Minutes.ToString();
         }
         else
         {
-            minString = min.ToString();
+            minString = span.Minutes.ToString();
         }
 
         string secString;
-        if (sec < 10)
+        if (span.Seconds < 10)
         {
-            secString = '0' + sec.ToString();
+            secString = '0' + span.Seconds.ToString();
         }
         else
         {
-            secString = sec.ToString();
+            secString = span.Seconds.ToString();
         }
 
         myText.text = hourString + ":" + minString + ":" + secString;
@@ -76,17 +71,6 @@ public class SetOpenTimer : MonoBehaviour
     {
         if (GameMng.Instance.getOpenData == false)
         {
-            //sec += number;
-            //if (sec >= 60)
-            //{
-            //    min++;
-            //    sec = 0;
-            //}
-            //if (min >= 60)
-            //{
-            //    hour++;
-            //    min = 0;
-            //}
             GameMng.Instance.openTime += number;
         }
     }
