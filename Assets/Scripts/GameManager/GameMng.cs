@@ -103,6 +103,7 @@ public class GameMng : MonoBehaviour
         isOpen = false;
         closeEvent.Invoke();
         customerCount = 0;
+        openTime = 0;
     }
 
     //public void MoveScreenEdge()
