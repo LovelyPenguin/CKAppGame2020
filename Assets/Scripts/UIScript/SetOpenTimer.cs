@@ -1,4 +1,5 @@
 ﻿// 버그 초, 분, 시로 잡지 않고 전체적인 타임으로 받고 주는게 좋을 듯!
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,17 +9,18 @@ public class SetOpenTimer : MonoBehaviour
 {
     private Text myText;
     public float timer;
-    public int hour;
-    public int min;
-    public int sec;
 
     [SerializeField]
     private GameObject[] buttons;
+    private TimeSpan span;
+    private bool secondLock = false;
+    private int hour;
 
     // Start is called before the first frame update
     void Start()
     {
         myText = gameObject.GetComponent<Text>();
+        span = new TimeSpan(0, 0, Mathf.FloorToInt(GameMng.Instance.openTime));
     }
 
     // Update is called once per frame
@@ -29,11 +31,10 @@ public class SetOpenTimer : MonoBehaviour
 
     void SetTimer()
     {
-        if (GameMng.Instance.getOpenData)
+        if (true)
         {
+            span = new TimeSpan(0, 0, Mathf.FloorToInt(GameMng.Instance.openTime));
             hour = Mathf.FloorToInt(GameMng.Instance.openTime / 3600);
-            min = Mathf.FloorToInt(GameMng.Instance.openTime / 60);
-            sec = Mathf.FloorToInt(GameMng.Instance.openTime % 60);
         }
 
         string hourString;
@@ -47,23 +48,27 @@ public class SetOpenTimer : MonoBehaviour
         }
 
         string minString;
-        if (min < 10)
+        if (span.Minutes < 10)
         {
-            minString = '0' + min.ToString();
+            minString = '0' + span.Minutes.ToString();
         }
         else
         {
-            minString = min.ToString();
+            minString = span.Minutes.ToString();
         }
 
         string secString;
-        if (sec < 10)
+        if (span.Seconds < 10 && !secondLock)
         {
-            secString = '0' + sec.ToString();
+            secString = '0' + span.Seconds.ToString();
+        }
+        else if (span.Seconds >= 10 && !secondLock)
+        {
+            secString = span.Seconds.ToString();
         }
         else
         {
-            secString = sec.ToString();
+            secString = "00";
         }
 
         myText.text = hourString + ":" + minString + ":" + secString;
@@ -73,45 +78,46 @@ public class SetOpenTimer : MonoBehaviour
     {
         if (GameMng.Instance.getOpenData == false)
         {
-            sec += number;
-            if (sec >= 60)
+            GameMng.Instance.openTime += number;
+
+            if (number >= 60)
             {
-                min++;
-                sec = 0;
+                secondLock = true;
             }
-            if (min >= 60)
+            else
             {
-                hour++;
-                min = 0;
+                secondLock = false;
             }
         }
     }
 
     public void MinusTime(int number)
     {
-        if (GameMng.Instance.getOpenData == false && min >= 0)
+        if (GameMng.Instance.getOpenData == false)
         {
-            if (sec != 0 && (min != 0 || hour != 0))
+            if (GameMng.Instance.openTime - number >= 0)
             {
-                sec -= number;
+                GameMng.Instance.openTime -= number;
             }
-            if (sec < 0 && min - 1 > -1)
+            else
             {
-                min--;
-                sec = 55;
+                GameMng.Instance.openTime = 0;
             }
-            if (hour > 0 && min <= 0 && sec < 0)
+
+            if (number >= 60)
             {
-                hour--;
-                min = 59;
-                sec = 55;
+                secondLock = true;
+            }
+            else
+            {
+                secondLock = false;
             }
         }
     }
 
     public void SendTimeData()
     {
-        timer = (hour * 3600) + (min * 60) + sec;
+        timer = GameMng.Instance.openTime;
         if (timer > 0)
         {
             GameMng.Instance.OpenCafe(timer);

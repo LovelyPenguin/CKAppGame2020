@@ -105,7 +105,7 @@ public class DrinkTransfer : MonoBehaviour
         isDemandJuice = false;
         selectJuice = juiceList[Random.Range(0, juiceList.Length - 1)];
         juiceIcon.SetActive(false);
-        timer = Random.Range(10, 30);
+        timer = Random.Range(5, 8);
     }
 
     IEnumerator DrinkWaiting()

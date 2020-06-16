@@ -129,6 +129,7 @@ public class Customer : MonoBehaviour
     void InitializeSpawnData()
     {
         activeTime = Random.Range(5, 10);
+        moneyIcon.SetActive(false);
     }
 
     private void OnApplicationPause(bool pause)
