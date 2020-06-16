@@ -61,7 +61,7 @@ public class GameMng : MonoBehaviour
     void Start()
     {
         dustGenerator = GameObject.Find("DustGenerator");
-        RaccoonMng = GameObject.Find("RaccoonManager");
+        RaccoonMng = GameObject.Find("GameManager");
         closeEvent.AddListener(dustGenerator.GetComponent<DustGenerator>().Generate);
     }
 

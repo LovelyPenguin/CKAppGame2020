@@ -30,14 +30,12 @@ public class SetRCInfo : MonoBehaviour
     void Start()
     {
         CurrentRaccoon = 1;
-        RCMng = GameObject.Find("RaccoonManager").GetComponent<RaccoonMng>();
+        RCMng = GameObject.Find("GameManager").GetComponent<RaccoonMng>();
         SetRaccoon(0);
     }
 
     private void Awake()
     {
-        //RCMng = GameObject.Find("RaccoonManager").GetComponent<RaccoonMng>();
-        //SetRaccoon(0);
     }
 
     // Update is called once per frame

@@ -37,7 +37,7 @@ public class RaccoonMng : MonoBehaviour
     void Start()
     {
         GMng = GameObject.Find("GameManager").GetComponent<GameMng>();
-        UnlockRC(0);
+        //UnlockRC(0);
     }
 
     // Update is called once per frame

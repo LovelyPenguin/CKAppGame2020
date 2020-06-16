@@ -176,7 +176,8 @@ public class RaccoonController : MonoBehaviour
                     transform.position = originCoord;
                     Debug.Log("Drag While Working is not allow");
 
-                    animator.SetTrigger("idleTrigger");
+                    animator.SetTrigger("DropTrigger");
+                    StartCoroutine(Drop(InitState));
 
                     Camera.main.GetComponent<CameraController>().RollbackPos();
                 }
@@ -377,7 +378,7 @@ public class RaccoonController : MonoBehaviour
 
         animator = GetComponentInChildren<Animator>();
 
-        RMng = GameObject.Find("RaccoonManager").GetComponent<RaccoonMng>();
+        RMng = GameObject.Find("GameManager").GetComponent<RaccoonMng>();
     }
 
     // Update is called once per frame
