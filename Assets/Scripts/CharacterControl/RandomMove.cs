@@ -43,7 +43,7 @@ public class RandomMove : MonoBehaviour
 
     private void SetRnadomizeDestination()
     {
-        if (Vector3.Distance(transform.position, nav.destination) <= 0.1f)
+        if (Vector3.Distance(transform.position, nav.destination) <= 1f)
         {
             isArrive = true;
             timer -= Time.deltaTime;
