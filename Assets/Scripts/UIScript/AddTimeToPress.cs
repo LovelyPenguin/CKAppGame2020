@@ -41,7 +41,7 @@ public class AddTimeToPress : MonoBehaviour, IPointerDownHandler, IPointerUpHand
                 }
                 else
                 {
-                    timerObj.MinusTime(count);
+                    timerObj.MinusTime(ref count);
                 }
                 timer = 0f;
             }

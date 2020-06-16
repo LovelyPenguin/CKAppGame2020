@@ -13,6 +13,8 @@ public class SetOpenTimer : MonoBehaviour
     [SerializeField]
     private GameObject[] buttons;
     private TimeSpan span;
+    private bool secondLock = false;
+    private int hour;
 
     // Start is called before the first frame update
     void Start()
@@ -32,16 +34,17 @@ public class SetOpenTimer : MonoBehaviour
         if (true)
         {
             span = new TimeSpan(0, 0, Mathf.FloorToInt(GameMng.Instance.openTime));
+            hour = Mathf.FloorToInt(GameMng.Instance.openTime / 3600);
         }
 
         string hourString;
-        if (span.Hours < 10)
+        if (hour < 10)
         {
-            hourString = '0' + span.Hours.ToString();
+            hourString = '0' + hour.ToString();
         }
         else
         {
-            hourString = span.Hours.ToString();
+            hourString = hour.ToString();
         }
 
         string minString;
@@ -55,13 +58,17 @@ public class SetOpenTimer : MonoBehaviour
         }
 
         string secString;
-        if (span.Seconds < 10)
+        if (span.Seconds < 10 && !secondLock)
         {
             secString = '0' + span.Seconds.ToString();
         }
-        else
+        else if (span.Seconds >= 10 && !secondLock)
         {
             secString = span.Seconds.ToString();
+        }
+        else
+        {
+            secString = "00";
         }
 
         myText.text = hourString + ":" + minString + ":" + secString;
@@ -72,14 +79,39 @@ public class SetOpenTimer : MonoBehaviour
         if (GameMng.Instance.getOpenData == false)
         {
             GameMng.Instance.openTime += number;
+
+            if (number >= 60)
+            {
+                secondLock = true;
+            }
+            else
+            {
+                secondLock = false;
+            }
         }
     }
 
-    public void MinusTime(int number)
+    public void MinusTime(ref int number)
     {
-        if (GameMng.Instance.getOpenData == false && GameMng.Instance.openTime - number > 0)
+        if (GameMng.Instance.getOpenData == false)
         {
-            GameMng.Instance.openTime -= number;
+            if (GameMng.Instance.openTime - number <= 0)
+            {
+                number = 1;
+            }
+            if (GameMng.Instance.openTime - 1 > 0)
+            {
+                GameMng.Instance.openTime -= number;
+            }
+
+            if (number >= 60)
+            {
+                secondLock = true;
+            }
+            else
+            {
+                secondLock = false;
+            }
         }
     }
 
