@@ -91,7 +91,7 @@ public class SetOpenTimer : MonoBehaviour
         }
     }
 
-    public void MinusTime(ref int number)
+    public void MinusTime(int number)
     {
         if (GameMng.Instance.getOpenData == false)
         {

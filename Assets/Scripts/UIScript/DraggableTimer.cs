@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class DraggableTimer : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHandler
 {
     private Vector2 previousMousePosition;
+    public int value;
 
     void Start()
     {
@@ -19,25 +20,35 @@ public class DraggableTimer : MonoBehaviour, IDragHandler, IEndDragHandler, IBeg
     public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("Timer Drag Begin");
-        previousMousePosition = Input.mousePosition;
+        if (!GameMng.Instance.getOpenData)
+        {
+            previousMousePosition = Input.mousePosition;
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (previousMousePosition.x < Input.mousePosition.x)
+        if (!GameMng.Instance.getOpenData)
         {
-            Debug.Log("Time Add");
-            GameMng.Instance.openTime += 1;
-        }
-        else if (previousMousePosition.x > Input.mousePosition.x)
-        {
-            Debug.Log("Time Minus");
-            if (GameMng.Instance.openTime > 0)
+            if (previousMousePosition.x < Input.mousePosition.x)
             {
-                GameMng.Instance.openTime -= 1;
+                Debug.Log("Time Add");
+                GameMng.Instance.openTime += value;
             }
+            else if (previousMousePosition.x > Input.mousePosition.x)
+            {
+                Debug.Log("Time Minus");
+                if (GameMng.Instance.openTime - value > 0)
+                {
+                    GameMng.Instance.openTime -= value;
+                }
+                else if (GameMng.Instance.openTime > 0)
+                {
+                    GameMng.Instance.openTime -= 1;
+                }
+            }
+            previousMousePosition = Input.mousePosition;
         }
-        previousMousePosition = Input.mousePosition;
     }
 
     public void OnEndDrag(PointerEventData eventData)
