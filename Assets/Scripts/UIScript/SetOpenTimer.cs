@@ -95,13 +95,13 @@ public class SetOpenTimer : MonoBehaviour
     {
         if (GameMng.Instance.getOpenData == false)
         {
-            if (GameMng.Instance.openTime - number <= 0)
-            {
-                number = 1;
-            }
-            if (GameMng.Instance.openTime - 1 > 0)
+            if (GameMng.Instance.openTime - number >= 0)
             {
                 GameMng.Instance.openTime -= number;
+            }
+            else
+            {
+                GameMng.Instance.openTime = 0;
             }
 
             if (number >= 60)
