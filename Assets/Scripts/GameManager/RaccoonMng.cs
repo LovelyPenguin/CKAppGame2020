@@ -1,10 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
+
+
+[Serializable]
+class SaveData
+{
+    public bool[] RCEXIST = new bool[7];
+    public bool[] RCUNLOCK = new bool[7];
+    public int[] RCRANK = new int[7];
+}
+
 
 public class RaccoonMng : MonoBehaviour
 {
@@ -22,6 +33,9 @@ public class RaccoonMng : MonoBehaviour
     private int map1RCCount = 0;
     private int map2RCCount = 0;
 
+    
+
+
     /*
      * 라쿤의 장사 금액 효율을 반환한다
      * ex) 1.0f, 1.5f
@@ -38,6 +52,16 @@ public class RaccoonMng : MonoBehaviour
     {
         GMng = GameObject.Find("GameManager").GetComponent<GameMng>();
         //UnlockRC(0);
+        if (GMng.GetComponent<SaveLoader>().CheckFileExist("RCMNG"))
+        {
+            LoadData();
+            for (int i = 0; i < 7; i++)
+            {
+                Debug.Log("RCUnlock Status = " + i + RaccoonUnlock[i]);
+                if (RaccoonUnlock[i])
+                    RC[i].GetComponent<RaccoonController>().SetRCActive(true);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -47,6 +71,26 @@ public class RaccoonMng : MonoBehaviour
         {
             Camera.main.GetComponent<CameraController>().MoveScreenEdge();
         }
+    }
+
+    public void SaveData()
+    {
+        SaveData save = new SaveData();
+        save.RCEXIST = RaccoonExist;
+        save.RCRANK = RaccoonRank;
+        save.RCUNLOCK = RaccoonUnlock;
+
+        GMng.GetComponent<SaveLoader>().SaveGame<SaveData>(ref save, "RCMNG");
+    }
+
+    public void LoadData()
+    {
+        SaveData save = new SaveData();
+        GMng.GetComponent<SaveLoader>().LoadGame<SaveData>(ref save, "RCMNG");
+
+        Array.Copy(save.RCEXIST, RaccoonExist, 7);
+        Array.Copy(save.RCRANK, RaccoonRank, 7);
+        Array.Copy(save.RCUNLOCK, RaccoonUnlock, 7);
     }
 
     public void GenerateRaccoon(int RCindex)

@@ -358,6 +358,11 @@ public class RaccoonController : MonoBehaviour
     private bool exhausted = false;
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        RCState = State.unActive;
+        RMng = GameObject.Find("GameManager").GetComponent<RaccoonMng>();
+    }
     void Start()
     {
         //애니메이터
@@ -371,14 +376,13 @@ public class RaccoonController : MonoBehaviour
         healTime = 0.0f;
         stamina = 50;
         //SetRCActive(false);
-        RCState = State.unActive;
 
         //navMesh.enabled = false;
         SetMovable(false);
 
         animator = GetComponentInChildren<Animator>();
 
-        RMng = GameObject.Find("GameManager").GetComponent<RaccoonMng>();
+        //RMng = GameObject.Find("GameManager").GetComponent<RaccoonMng>();
     }
 
     // Update is called once per frame
