@@ -361,6 +361,7 @@ public class RaccoonController : MonoBehaviour
     private void Awake()
     {
         RCState = State.unActive;
+        animator = GetComponentInChildren<Animator>();
         RMng = GameObject.Find("GameManager").GetComponent<RaccoonMng>();
     }
     void Start()
@@ -380,7 +381,6 @@ public class RaccoonController : MonoBehaviour
         //navMesh.enabled = false;
         SetMovable(false);
 
-        animator = GetComponentInChildren<Animator>();
 
         //RMng = GameObject.Find("GameManager").GetComponent<RaccoonMng>();
     }
@@ -634,10 +634,20 @@ public class RaccoonController : MonoBehaviour
         }
     }
 
-    public void CallUpgradeTrigger()
+    public void CallUpgradeTrigger(int rank)
     {
-        animator.SetTrigger("UpgradeTrigger");
-        SetMovable(false);
+        switch (rank)
+        {
+            case 2:
+                animator.SetTrigger("UpgradeTrigger");
+                SetMovable(false);
+                break;
+            case 3:
+                animator.SetTrigger("UpgradeTrigger");
+                animator.SetTrigger("UpgradeTrigger2");
+                SetMovable(false);
+                break;
+        }
     }
 
     //private void OnMouseDown()

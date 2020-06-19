@@ -60,7 +60,8 @@ public class RaccoonMng : MonoBehaviour
                 Debug.Log("RCUnlock Status = " + i + RaccoonUnlock[i]);
                 if (RaccoonUnlock[i])
                 {
-                    RC[i].GetComponent<RaccoonController>().SetRCActive(true); 
+                    RC[i].GetComponent<RaccoonController>().SetRCActive(true);
+                    RC[i].GetComponent<RaccoonController>().CallUpgradeTrigger(RaccoonRank[i]);
                     if (i == 4)
                     {
                         GameObject.Find("GameManager").GetComponent<FloorStatMng>().UnlockSecondFloor();
@@ -153,7 +154,7 @@ public class RaccoonMng : MonoBehaviour
         if (RaccoonRank[index] < RaccoonRankCount && RaccoonUnlock[index] && GMng.money >= cost && !GameObject.Find("GameManager").GetComponent<GameMng>().getOpenData)
         {
             RaccoonRank[index]++;
-            RC[index].GetComponent<RaccoonController>().CallUpgradeTrigger();
+            RC[index].GetComponent<RaccoonController>().CallUpgradeTrigger(RaccoonRank[index]);
             GMng.money -= cost;
         }
     }
