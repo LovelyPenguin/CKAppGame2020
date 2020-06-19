@@ -8,7 +8,7 @@ public class HealMapData : MonoBehaviour
 {
     public Vector3[] Locations = new Vector3[3];
     private bool[] Usable = new bool[3];
-    public bool Enable = true;
+    public bool Enable = false;
     private int SeatCount = 0;
     public GameObject HMng;
 
@@ -21,7 +21,6 @@ public class HealMapData : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
             Usable[i] = true;
-        Enable = false;
     }
 
     // Update is called once per frame

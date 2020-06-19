@@ -49,6 +49,11 @@ public class RaccoonController : MonoBehaviour
 
         Sprite.transform.localEulerAngles = new Vector3(30f, 0f, 0f);
         Sprite.transform.localScale = new Vector3(1f, 1f, 1f);
+
+        if (InitState == State.inMap1)
+            RMng.ReleaseMapCount(1);
+        else if (InitState == State.inMap2)
+            RMng.ReleaseMapCount(2);
     }
 
     void OnMouseUp()
@@ -64,115 +69,67 @@ public class RaccoonController : MonoBehaviour
         if (Physics.Raycast(transform.position + transform.forward - new UnityEngine.Vector3(0, mDeltaY, 0) - transform.up * 0.7f, Sprite.transform.forward, out hit, Mathf.Infinity))
         //if (Physics.Raycast(transform.position + transform.forward - new UnityEngine.Vector3(0, mDeltaY, 0), transform.forward, out hit, Mathf.Infinity))
         {
+            // 1층에 놓았을떄
             if (hit.transform.gameObject.tag == "Ground")
             {
+                // 가게가 운영중이며 다른 공간에서 데려온 경우
+                // 이동은 취소되야 된다.
                 if (isWorking && InitState != State.inMap1 && InitState != State.inMap2)
                 {
-                    RCState = InitState;
                     transform.position = originCoord;
                     Debug.Log("Drag While Working is not allow");
 
-                    animator.SetTrigger("idleTrigger");
+                    animator.SetTrigger("DropTrigger");
+                    StartCoroutine(Drop(InitState));
 
                     Camera.main.GetComponent<CameraController>().RollbackPos();
                 }
+                // 아닌 경우 즉 가게가 운영중이 아니거나 맵에서 끌고오는 경우
                 else
                 {
+                    // 1층으로 이동이 가능한 경우
                     if (RMng.CanMoveToAnotherFloor(1))
                     {
                         if (InitState == State.Healing)
+                        {
                             GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, healMapName);
-                        else
-                            RMng.ReleaseMapCount(InitState == State.inMap1 ? 1 : 2);
+                            transform.SetParent(GameObject.Find("Raccoons").transform);
+                        }
                         RMng.MoveToAnotherFloor(1);
 
-                        //RCState = State.inMap1;
                         GetComponent<RandomMove>().SetTargerFloor(1);
                         GetComponent<RandomMove>().In1StFloor = true;
 
                         transform.position = hit.point + new UnityEngine.Vector3(0, mDeltaY, 0);
 
                         animator.SetTrigger("DropTrigger");
-
-                        transform.SetParent(GameObject.Find("Raccoons").transform);
                         StartCoroutine(Drop(State.inMap1));
+
                         Debug.Log("GroundHit");
                     }
+                    // 1층이 가득차 이동이 불가능 한 경우
                     else
                     {
-                        RCState = InitState;
+                        if (InitState == State.inMap2)
+                            RMng.MoveToAnotherFloor(2);
+
                         transform.position = originCoord;
                         Debug.Log("there is no space in 1st floor");
 
-                        animator.SetTrigger("idleTrigger");
+                        animator.SetTrigger("DropTrigger");
+                        StartCoroutine(Drop(InitState));
 
                         Camera.main.GetComponent<CameraController>().RollbackPos();
                     }
                 }
             }
+            // 2층애 놓았을떄
             else if (hit.transform.gameObject.tag == "2ndGround")
             {
+                // 가게가 운영중이며 다른 공간에서 데려온 경우
+                // 이동은 취소되야 된다.
                 if (isWorking && InitState != State.inMap1 && InitState != State.inMap2)
                 {
-                    RCState = InitState;
-                    transform.position = originCoord;
-                    Debug.Log("Drag While Working is not allow");
-
-                    animator.SetTrigger("idleTrigger");
-
-                    Camera.main.GetComponent<CameraController>().RollbackPos();
-                }
-                else
-                {
-                    if (RMng.CanMoveToAnotherFloor(2))
-                    {
-                        if (InitState == State.Healing)
-                            GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, healMapName);
-                        else
-                            RMng.ReleaseMapCount(InitState == State.inMap1 ? 1 : 2);
-                        RMng.MoveToAnotherFloor(2);
-                        
-
-                        //RCState = State.inMap2;
-                        GetComponent<RandomMove>().SetTargerFloor(2);
-                        GetComponent<RandomMove>().In1StFloor = false;
-
-
-                        transform.position = hit.point + new UnityEngine.Vector3(0, mDeltaY, 0);
-
-                        animator.SetTrigger("DropTrigger");
-
-                        transform.SetParent(GameObject.Find("Raccoons").transform);
-                        StartCoroutine(Drop(State.inMap2));
-                        Debug.Log("2ndGroundHit");
-                    }
-                    else
-                    {
-                        RCState = InitState;
-                        transform.position = originCoord;
-                        Debug.Log("There is no space in 2nd floor");
-
-                        animator.SetTrigger("idleTrigger");
-
-                        Camera.main.GetComponent<CameraController>().RollbackPos();
-                    }
-                }
-            }
-            //else if (hit.transform.gameObject.tag == "WallL")
-            //{
-            //    transform.position = hit.point + new UnityEngine.Vector3(0, 0, -1.5f);
-            //    Debug.Log("WallLHit");
-            //}
-            //else if (hit.transform.gameObject.tag == "WallR")
-            //{
-            //    transform.position = hit.point + new UnityEngine.Vector3(-1.5f, 0, 0);
-            //    Debug.Log("WallRHit");
-            //}
-            else if (hit.transform.gameObject.tag == "Heal")
-            {
-                if (isWorking && InitState != State.Healing)
-                {
-                    RCState = InitState;
                     transform.position = originCoord;
                     Debug.Log("Drag While Working is not allow");
 
@@ -183,10 +140,63 @@ public class RaccoonController : MonoBehaviour
                 }
                 else
                 {
+                    // 2층에 이동 가능한 경우
+                    if (RMng.CanMoveToAnotherFloor(2))
+                    {
+                        if (InitState == State.Healing)
+                        {
+                            GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, healMapName);
+                            transform.SetParent(GameObject.Find("Raccoons").transform);
+                        }
+                        RMng.MoveToAnotherFloor(2);
+                        
+                        GetComponent<RandomMove>().SetTargerFloor(2);
+                        GetComponent<RandomMove>().In1StFloor = false;
+
+                        transform.position = hit.point + new UnityEngine.Vector3(0, mDeltaY, 0);
+
+                        animator.SetTrigger("DropTrigger");
+                        StartCoroutine(Drop(State.inMap2));
+
+                        Debug.Log("2ndGroundHit");
+                    }
+                    // 2층이 가득차 이동이 불가능 한 경우
+                    else
+                    {
+                        if (InitState == State.inMap1)
+                            RMng.MoveToAnotherFloor(1);
+
+                        transform.position = originCoord;
+                        Debug.Log("There is no space in 2nd floor");
+
+                        animator.SetTrigger("DropTrigger");
+                        StartCoroutine(Drop(InitState));
+
+                        Camera.main.GetComponent<CameraController>().RollbackPos();
+                    }
+                }
+            }
+            // 휴식 공간으로 이동시킨 경우
+            else if (hit.transform.gameObject.tag == "Heal")
+            {
+                // 가게가 운영중이며 휴식공간 간에 이동이 아닌경우
+                if (isWorking && InitState != State.Healing)
+                {
+                    transform.position = originCoord;
+                    Debug.Log("Drag While Working is not allow");
+
+                    RMng.MoveToAnotherFloor(InitState == State.inMap1 ? 1 : 2);
+
+                    animator.SetTrigger("DropTrigger");
+                    StartCoroutine(Drop(InitState));
+
+                    Camera.main.GetComponent<CameraController>().RollbackPos();
+                }
+                // 아닌 경우 즉 가게가 운영중이 아닌 경우
+                else
+                {
                     if (InitState == State.Healing)
                         GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, healMapName);
-                    else
-                        RMng.ReleaseMapCount(InitState == State.inMap1 ? 1 : 2);
 
                     healMapName = hit.transform.gameObject.name;
                     healMapSeatNum = GameObject.Find("HealMap").GetComponent<HealMapMng>().retSeatIndexForName(healMapName);
@@ -203,6 +213,8 @@ public class RaccoonController : MonoBehaviour
                     }
                     else
                     {
+                        RMng.MoveToAnotherFloor(InitState == State.inMap1 ? 1 : 2);
+
                         animator.SetTrigger("DropTrigger");
 
                         this.transform.position = originCoord;
@@ -213,39 +225,40 @@ public class RaccoonController : MonoBehaviour
                 //   transform.position = hit.point + new UnityEngine.Vector3(0, mDeltaY, 0);
                 Debug.Log("HealHit");
             }
+            // 휴식 공간도 맵도 아닌 경우
             else
             {
-                RCState = InitState;
                 transform.position = originCoord;
                 Debug.Log("ElseHit");
                 Debug.Log("hit = " + hit.collider.gameObject.name);
 
-                animator.SetTrigger("idleTrigger");
+                if (InitState == State.inMap1)
+                    RMng.MoveToAnotherFloor(1);
+                if (InitState == State.inMap2)
+                    RMng.MoveToAnotherFloor(2);
+
+                animator.SetTrigger("DropTrigger");
+                StartCoroutine(Drop(InitState));
 
                 Camera.main.GetComponent<CameraController>().RollbackPos();
             }
         }
+        // 충돌 판정에 실패한 경우
         else
         {
-            RCState = InitState;
             transform.position = originCoord;
             Debug.Log("NothingHit");
 
-            animator.SetTrigger("idleTrigger");
+            if (InitState == State.inMap1)
+                RMng.MoveToAnotherFloor(1);
+            if (InitState == State.inMap2)
+                RMng.MoveToAnotherFloor(2);
+
+            animator.SetTrigger("DropTrigger");
+            StartCoroutine(Drop(InitState));
 
             Camera.main.GetComponent<CameraController>().RollbackPos();
         }
-
-        //애니메이터
-        //animator.SetTrigger("idleTrigger");
-        //isOnDrag = false;
-
-        //// 애니메이터
-        //animator.ResetTrigger("DragTrigger");
-        //animator.ResetTrigger("WalkTrigger");
-        //animator.SetTrigger("idleTrigger");
-
-        //Destroy(Shadowinst);
 
         Sprite.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
         Sprite.transform.localScale = new Vector3(1f, 1.1547f, 1f);
@@ -375,7 +388,6 @@ public class RaccoonController : MonoBehaviour
         moveTime = 0.0f;
         exhaustTime = 0.0f;
         healTime = 0.0f;
-        stamina = 50;
         //SetRCActive(false);
 
         //navMesh.enabled = false;
@@ -560,18 +572,18 @@ public class RaccoonController : MonoBehaviour
                 break;
         }
         healTime += Time.deltaTime;
-        if (healTime > efficiency && stamina != maxStamina)
+        if (healTime > efficiency)
         {
-            this.stamina = this.stamina + 1;
+            this.stamina += 1;
             healTime = 0.0f;
         }
     }
     private void Exhausting()
     {
         if (isWorking)
-            if ((exhaustTime += Time.deltaTime) > 5.0f && stamina != 0 && isWorking)
+            if ((exhaustTime += Time.deltaTime) > 5.0f && isWorking)
             {
-                this.stamina = this.stamina - 1;
+                this.stamina -= 1;
                 exhaustTime = 0.0f;
             }
     }

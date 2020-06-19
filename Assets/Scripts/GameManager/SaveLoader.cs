@@ -6,6 +6,7 @@ using System.IO;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.VFX;
 
 public class SaveLoader : MonoBehaviour
@@ -104,6 +105,8 @@ public class SaveLoader : MonoBehaviour
         defsave.FileNum = 0;
 
         SaveDef();
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         Debug.Log("Game Saved Data Reseted!");
     }

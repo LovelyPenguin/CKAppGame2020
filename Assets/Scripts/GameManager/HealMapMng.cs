@@ -5,6 +5,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[Serializable]
+class HSaveData
+{
+    public bool[] HMAPUNLOCK = new bool[4];
+    public int ENABLEDMAPCOUNT;
+}
+
 public class HealMapMng : MonoBehaviour
 {
     public GameObject[] Maps = new GameObject[4];
@@ -13,15 +20,39 @@ public class HealMapMng : MonoBehaviour
     public int DefaultMapUnlockCost = 500000;
     public float ProductionRatio = 1.6f;
     GameMng GMng;
+    GameObject GMNG;
     // Start is called before the first frame update
     void Start()
     {
-        GMng = GameObject.Find("GameManager").GetComponent<GameMng>();
+        GMNG = GameObject.Find("GameManager");
+        GMng = GMNG.GetComponent<GameMng>();
+        LoadData();
     }
 
     // Update is called once per frame
     void Update()
     {
+    }
+
+    public void SaveData()
+    {
+        HSaveData save = new HSaveData();
+        for(int i=0;i<4;i++)
+            save.HMAPUNLOCK[i] = Maps[i].GetComponent<HealMapData>().Enable;
+        save.ENABLEDMAPCOUNT = enabledMapCount;
+
+        GMNG.GetComponent<SaveLoader>().SaveData<HSaveData>(ref save,"HMNG");
+    }
+
+    public void LoadData()
+    {
+        HSaveData save = new HSaveData();
+        if (GMNG.GetComponent<SaveLoader>().LoadData<HSaveData>(ref save, "HMNG"))
+        {
+            for (int i = 0; i < 4; i++)
+                Maps[i].GetComponent<HealMapData>().Enable = save.HMAPUNLOCK[i];
+            enabledMapCount = save.ENABLEDMAPCOUNT;
+        }
     }
 
     public int retSeatIndexForName(string name)

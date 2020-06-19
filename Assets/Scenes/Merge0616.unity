@@ -1979,6 +1979,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 477011499}
+        m_MethodName: SaveData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &169164452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5234,6 +5245,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 409466726}
+        m_MethodName: StartRCWork
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   closeEvent:
     m_PersistentCalls:
       m_Calls:
@@ -5250,6 +5272,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 65889004}
         m_MethodName: ReturnButtons
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 409466726}
+        m_MethodName: StopRCWork
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15528,7 +15561,7 @@ MonoBehaviour:
   - {x: 1.02, y: 0, z: -1}
   - {x: -1.96, y: 0, z: 0.97}
   - {x: -1.59, y: 0, z: -2.02}
-  Enable: 1
+  Enable: 0
   HMng: {fileID: 477011498}
   Quad: {fileID: 1093985572}
 --- !u!65 &954902870
@@ -27013,7 +27046,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 409466727}
-        m_MethodName: ResetGame
+        m_MethodName: ResetData
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

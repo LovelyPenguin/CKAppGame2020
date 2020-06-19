@@ -14,6 +14,8 @@ class RSaveData
     public bool[] RCEXIST = new bool[7];
     public bool[] RCUNLOCK = new bool[7];
     public int[] RCRANK = new int[7];
+    public int[] RCSTAMINA = new int[7];
+    public int CURRCCOUNT;
 }
 
 
@@ -32,6 +34,7 @@ public class RaccoonMng : MonoBehaviour
     public int MaxRCCountperMap = 3;
     private int map1RCCount = 0;
     private int map2RCCount = 0;
+    private int curRCCount = 0;
 
     
 
@@ -87,6 +90,9 @@ public class RaccoonMng : MonoBehaviour
         save.RCEXIST = RaccoonExist;
         save.RCRANK = RaccoonRank;
         save.RCUNLOCK = RaccoonUnlock;
+        save.CURRCCOUNT = curRCCount;
+        for (int i = 0; i < RaccoonCount; i++)
+            save.RCSTAMINA[i] = RC[i].GetComponent<RaccoonController>().stamina;
 
         GMng.GetComponent<SaveLoader>().SaveData<RSaveData>(ref save, "RCMNG");
     }
@@ -99,6 +105,9 @@ public class RaccoonMng : MonoBehaviour
         Array.Copy(save.RCEXIST, RaccoonExist, 7);
         Array.Copy(save.RCRANK, RaccoonRank, 7);
         Array.Copy(save.RCUNLOCK, RaccoonUnlock, 7);
+        curRCCount = save.CURRCCOUNT;
+        for (int i = 0; i < RaccoonCount; i++)
+            RC[i].GetComponent<RaccoonController>().stamina = save.RCSTAMINA[i];
     }
 
     public void GenerateRaccoon(int RCindex)
@@ -110,7 +119,9 @@ public class RaccoonMng : MonoBehaviour
             if (!RaccoonExist[RCindex])
             {
                 RC[RCindex].GetComponent<RaccoonController>().SetRCActive(true);
+                RC[RCindex].GetComponent<RaccoonController>().stamina = 50;
                 RaccoonExist[RCindex] = true;
+                curRCCount++;
                 Debug.Log("Raccoon Created!");
             }
         }
@@ -161,23 +172,23 @@ public class RaccoonMng : MonoBehaviour
 
     public void UnlockRC(int index)
     {
-        if (!GMng.gameObject.GetComponent<FloorStatMng>().SecondFloorStat && map1RCCount == MaxRCCountperMap)
+        if (!GMng.gameObject.GetComponent<FloorStatMng>().SecondFloorStat && curRCCount == MaxRCCountperMap)
         {
-
-            return;
+            if (index != 4)
+                return;
         }
         int cost = RetCost(index, 0);
         if (!RaccoonUnlock[index] && GMng.money >= cost && !GameObject.Find("GameManager").GetComponent<GameMng>().getOpenData)
         {
-            RaccoonUnlock[index] = true;
-            RaccoonRank[index] = 1;
-            GMng.money -= cost;
-            GenerateRaccoon(index);
             if (index == 4)
             {
                 GameObject.Find("GameManager").GetComponent<FloorStatMng>().UnlockSecondFloor();
                 Debug.Log("2nd Floor Unlocked");
             }
+            RaccoonUnlock[index] = true;
+            RaccoonRank[index] = 1;
+            GMng.money -= cost;
+            GenerateRaccoon(index);
 
         }
     }
