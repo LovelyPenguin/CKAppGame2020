@@ -49,7 +49,7 @@ public class SetRCInfo : MonoBehaviour
         return (a > b) ? a : b;
     }
 
-    private void RaccoonImageUpdate()
+    public void RaccoonImageUpdate()
     {
         int RCRank = RCMng.GetRCRank(CurrentRaccoon);
         RCImage.GetComponent<Image>().sprite = Rc[Max(CurrentRaccoon * RaccoonRankCount + RCRank - 1,0)];
