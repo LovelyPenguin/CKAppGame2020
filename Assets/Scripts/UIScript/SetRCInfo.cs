@@ -93,11 +93,16 @@ public class SetRCInfo : MonoBehaviour
 
     GameObject CreateButton(float xPos, float yPos, float width, float height, string text, Font font, Transform parent)
     {
+        Tail = new GameObject("Tail");
+        Tail.transform.SetParent(parent);
+        Tail.layer = 5;
+        Image tailImg = Tail.AddComponent<Image>();
+        tailImg.sprite = BalloonTail;
+
         GameObject newButton = new GameObject("UpgradeBtn");
         newButton.transform.SetParent(parent);
         newButton.layer = 5;
         newButton.transform.localScale = Vector3.one;
-
 
         RectTransform RectTnsf = newButton.AddComponent<RectTransform>();
         RectTnsf.anchoredPosition = new Vector2(xPos, yPos);
@@ -123,12 +128,6 @@ public class SetRCInfo : MonoBehaviour
         newText.alignment = TextAnchor.MiddleCenter;
         newText.transform.localScale = Vector3.one;
 
-        Tail = new GameObject("Tail");
-        Tail.transform.SetParent(newButton.transform);
-        Tail.layer = 5;
-        Image tailImg = Tail.AddComponent<Image>();
-        tailImg.sprite = BalloonTail;
-
         TailUpdate(newButton);
 
         return newButton;
@@ -138,22 +137,25 @@ public class SetRCInfo : MonoBehaviour
     {
         if(Tail)
         {
-            float Delta = GameObject.Find("RBtn_2").transform.position.x - GameObject.Find("RBtn_1").transform.position.x;
+            float Delta = GameObject.Find("RBtn_2").transform.localPosition.x - GameObject.Find("RBtn_1").transform.localPosition.x;
 
-            Vector3 V1 = GameObject.Find("RCList").transform.position;
+            Vector3 V1 = GameObject.Find("RCList").transform.localPosition;
             V1.x += (CurrentRaccoon - (int)RCMng.GetMaxRCcount() / 2) * Delta;
 
             GameObject RCMask = GameObject.Find("RCMask");
-            if (V1.x > RCMask.transform.position.x + RCMask.GetComponent<RectTransform>().sizeDelta.x / 2 || V1.x < RCMask.transform.position.x - RCMask.GetComponent<RectTransform>().sizeDelta.x / 2)
+            Debug.Log("tail's end Point = " + V1);
+            if (V1.x > RCMask.transform.localPosition.x + RCMask.GetComponent<RectTransform>().sizeDelta.x/2 || V1.x < RCMask.transform.localPosition.x - RCMask.GetComponent<RectTransform>().sizeDelta.x/2)
                 DestroyUpgradeBtn();
 
-            Vector3 V2 = Balloon.transform.position;
+            Vector3 V2 = Balloon.transform.localPosition;
 
+            Debug.Log("tail's begin Point = " + V2);
             Vector3 V = V1 - V2;
+            Debug.Log("tail's vector = " + V);
 
             float deg;
-            Tail.transform.position = Balloon.transform.position + (V * 0.5f);
-            Tail.GetComponent<RectTransform>().sizeDelta = new Vector2(10, V.magnitude / 2);
+            Tail.transform.localPosition = Balloon.transform.localPosition + (V * 0.5f);
+            Tail.GetComponent<RectTransform>().sizeDelta = new Vector2(10, V.magnitude/2);
             Tail.transform.eulerAngles = new Vector3(0,0, (deg = Mathf.Atan(V.y / V.x) * 180 / Mathf.PI + 90.0f) > 90 ? deg - 180.0f : deg);
         }
     }
@@ -178,8 +180,8 @@ public class SetRCInfo : MonoBehaviour
                     newTxt = "ÇØ±Ý" + RCMng.RetCost(CurrentRaccoon, 0).ToString() + "¿ø";
                 }
 
-                float XPos = (GameObject.Find("RCList").GetComponent<RectTransform>().localPosition.x + (index - (int)RCMng.GetMaxRCcount() / 2) * 110);
-                InteractButton = CreateButton(XPos, -325, 600, 200, newTxt, mfont, ParentObj.transform);
+                float XPos = (GameObject.Find("RCList").GetComponent<RectTransform>().localPosition.x + (index - (int)RCMng.GetMaxRCcount() / 2) * 220)/2;
+                InteractButton = CreateButton(XPos, 300, 600, 200, newTxt, mfont, ParentObj.transform);
             }
             else if (InteractButton)
                 DestroyUpgradeBtn();
@@ -210,7 +212,10 @@ public class SetRCInfo : MonoBehaviour
     public void DestroyUpgradeBtn()
     {
         if (InteractButton)
+        {
             DestroyImmediate(InteractButton);
+            DestroyImmediate(Tail);
+        }
     }
 
     private void RCUpgrade()

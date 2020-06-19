@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class RCListScroll : MonoBehaviour,IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public float minX;
-    public float maxX;
+    private float minX = -220;
+    private float maxX = 220;
 
     private float initMousePosX;
     private float initXPos;
@@ -31,21 +31,22 @@ public class RCListScroll : MonoBehaviour,IBeginDragHandler, IDragHandler, IEndD
         initMousePosX = eventData.position.x;
         newPos = GetComponent<RectTransform>().anchoredPosition;
         initXPos = newPos.x;
-        Debug.Log("initXPos = " + initXPos);
+        //Debug.Log("initXPos = " + initXPos);
     }
 
 
     public void OnDrag(PointerEventData eventData)
     {
-        float newXPos = initXPos + (eventData.position.x - initMousePosX) * 570 / Screen.width;
-        Debug.Log("newXPos = " + newXPos);
+        float newXPos = initXPos + (eventData.position.x - initMousePosX) * 1530 / Screen.width;
+        //Debug.Log("newXPos = " + newXPos);
 
-        if (newXPos <= maxX && newXPos >= -maxX)
-        {
-            newPos.x = newXPos;
-            GetComponent<RectTransform>().anchoredPosition = newPos; 
-            Debug.Log("newPos = " + newPos);
-        }
+        if (newXPos > maxX)
+            newXPos = maxX;
+        if (newXPos < minX)
+            newXPos = minX;
+        newPos.x = newXPos;
+        GetComponent<RectTransform>().anchoredPosition = newPos;
+        //Debug.Log("newPos = " + newPos);
     }
 
     public void OnEndDrag(PointerEventData eventData)
