@@ -9,7 +9,7 @@ using UnityEngine.Assertions.Must;
 
 
 [Serializable]
-class SaveData
+class RSaveData
 {
     public bool[] RCEXIST = new bool[7];
     public bool[] RCUNLOCK = new bool[7];
@@ -59,7 +59,14 @@ public class RaccoonMng : MonoBehaviour
             {
                 Debug.Log("RCUnlock Status = " + i + RaccoonUnlock[i]);
                 if (RaccoonUnlock[i])
-                    RC[i].GetComponent<RaccoonController>().SetRCActive(true);
+                {
+                    RC[i].GetComponent<RaccoonController>().SetRCActive(true); 
+                    if (i == 4)
+                    {
+                        GameObject.Find("GameManager").GetComponent<FloorStatMng>().UnlockSecondFloor();
+                        Debug.Log("2nd Floor Unlocked");
+                    }
+                }
             }
         }
     }
@@ -75,18 +82,18 @@ public class RaccoonMng : MonoBehaviour
 
     public void SaveData()
     {
-        SaveData save = new SaveData();
+        RSaveData save = new RSaveData();
         save.RCEXIST = RaccoonExist;
         save.RCRANK = RaccoonRank;
         save.RCUNLOCK = RaccoonUnlock;
 
-        GMng.GetComponent<SaveLoader>().SaveGame<SaveData>(ref save, "RCMNG");
+        GMng.GetComponent<SaveLoader>().SaveData<RSaveData>(ref save, "RCMNG");
     }
 
     public void LoadData()
     {
-        SaveData save = new SaveData();
-        GMng.GetComponent<SaveLoader>().LoadGame<SaveData>(ref save, "RCMNG");
+        RSaveData save = new RSaveData();
+        GMng.GetComponent<SaveLoader>().LoadData<RSaveData>(ref save, "RCMNG");
 
         Array.Copy(save.RCEXIST, RaccoonExist, 7);
         Array.Copy(save.RCRANK, RaccoonRank, 7);

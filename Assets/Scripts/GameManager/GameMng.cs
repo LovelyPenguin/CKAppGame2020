@@ -4,6 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[Serializable]
+class GSaveData
+{
+    public int MONEY;
+    public int CUSTOMERCOUNT;
+}
+
 public class GameMng : MonoBehaviour
 {
     public UnityEvent openEvent;
@@ -63,6 +70,8 @@ public class GameMng : MonoBehaviour
         dustGenerator = GameObject.Find("DustGenerator");
         RaccoonMng = GameObject.Find("GameManager");
         closeEvent.AddListener(dustGenerator.GetComponent<DustGenerator>().Generate);
+
+        LoadGame();
     }
 
     // Update is called once per frame
@@ -140,4 +149,22 @@ public class GameMng : MonoBehaviour
     //    Camera.main.transform.Translate(Offset);
 
     //}
+
+    public void LoadGame()
+    {
+        GSaveData save = new GSaveData();
+        if (gameObject.GetComponent<SaveLoader>().LoadData<GSaveData>(ref save, "GMNG"))
+        {
+            money = save.MONEY;
+            customerCount = save.CUSTOMERCOUNT;
+        }
+    }
+
+    public void SaveGame()
+    {
+        GSaveData save = new GSaveData();
+        save.MONEY = money;
+        save.CUSTOMERCOUNT = customerCount;
+        gameObject.GetComponent<SaveLoader>().SaveData<GSaveData>(ref save, "GMNG");
+    }
 }

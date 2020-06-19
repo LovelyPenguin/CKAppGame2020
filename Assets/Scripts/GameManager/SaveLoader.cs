@@ -10,12 +10,12 @@ using UnityEngine.VFX;
 
 public class SaveLoader : MonoBehaviour
 {
-    SavedFiles defsave = new SavedFiles();
+    SavedFilesData defsave = new SavedFilesData();
 
     // Start is called before the first frame update
     void Start()
     {
-        if (!LoadGame<SavedFiles>(ref defsave, "def"))
+        if (!LoadData<SavedFilesData>(ref defsave, "def"))
         {
             defsave.FileNum = 0;
             SaveDef();
@@ -41,7 +41,7 @@ public class SaveLoader : MonoBehaviour
 
     
     // T 형 데이터에 대한 템플릿 함수로 선언되어 있으며 T에는 시리얼라이즈된 클래스를 넘겨주어야 한다.
-    public bool SaveGame<T>(ref T Data, string FileName)
+    public bool SaveData<T>(ref T Data, string FileName)
     {
         if (defsave.FileNum < 10)
         {
@@ -70,7 +70,7 @@ public class SaveLoader : MonoBehaviour
     }
 
     // T 형 데이터에 대한 템플릿 함수로 선언되어 있으며 T에는 시리얼라이즈된 클래스를 넘겨주어야 한다.
-    public bool LoadGame<T>(ref T Data, string FileName)
+    public bool LoadData<T>(ref T Data, string FileName)
     {
         string fileName = "/" + FileName + ".dat";
         if (File.Exists(Application.persistentDataPath + fileName))
@@ -94,7 +94,7 @@ public class SaveLoader : MonoBehaviour
         return File.Exists(Application.persistentDataPath + "/" + FileName + ".dat");
     }
 
-    public void ResetGame()
+    public void ResetData()
     {
         for (int i = 0; i < defsave.FileNum; i++)
         {
@@ -111,7 +111,7 @@ public class SaveLoader : MonoBehaviour
 }
 
 [Serializable]
-class SavedFiles
+class SavedFilesData
 {
     public string[] FileNames = new string[10];
     public int FileNum;
