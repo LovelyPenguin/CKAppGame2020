@@ -9,7 +9,15 @@ public class ResumeButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pausePopup = GetComponentInParent<GameObject>();
+        //if (pausePopup == null)
+        //{
+        //    Debug.Log("Initialize");
+        //    pausePopup = GetComponentInParent<GameObject>();
+        //}
+        //else
+        //{
+        //    Debug.Log("File Ready");
+        //}
     }
 
     // Update is called once per frame

@@ -9,14 +9,14 @@ public class PauseButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (pausePopup == null)
-        {
-            pausePopup = GameObject.Find("PauseMenu");
-        }
-        else
-        {
-            Debug.LogError("Pause Menu Not found!");
-        }
+        //if (pausePopup == null)
+        //{
+        //    pausePopup = GameObject.Find("PauseMenu");
+        //}
+        //else
+        //{
+        //    Debug.LogError("Pause Menu Not found!");
+        //}
     }
 
     // Update is called once per frame
