@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class MenuClose : MonoBehaviour
+public class ProfileChange : MonoBehaviour
 {
-    public UnityEvent close;
+    public GameObject iconList;
+    public GameObject cardExit;
 
     // Start is called before the first frame update
     void Start()
@@ -19,8 +19,9 @@ public class MenuClose : MonoBehaviour
         
     }
 
-    public void CloseCheck()
+    public void OnClick()
     {
-        close.Invoke();
+        iconList.SetActive(true);
+        cardExit.SetActive(true);
     }
 }
