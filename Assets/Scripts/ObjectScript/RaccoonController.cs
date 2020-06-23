@@ -401,6 +401,7 @@ public class RaccoonController : MonoBehaviour
         //navMesh.enabled = false;
         SetMovable(false);
 
+        GetComponent<NavMeshAgent>().speed = vividSpeed;
 
         //RMng = GameObject.Find("GameManager").GetComponent<RaccoonMng>();
     }

@@ -22,7 +22,7 @@ public class RaccoonCutScene : MonoBehaviour, IPointerClickHandler
         {
             curCutSceneCount = 0;
             GetComponent<Image>().color = new Color(1, 1, 1, 0);
-            StartCoroutine(SceneChange(RCCutScenes[curCutSceneCount], GetComponent<RectTransform>().sizeDelta));
+            StartCoroutine(CSceneChange(RCCutScenes[curCutSceneCount], GetComponent<RectTransform>().sizeDelta));
         }
         else
         {
@@ -50,13 +50,14 @@ public class RaccoonCutScene : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    IEnumerator SceneChange(Sprite newSprite, Vector2 endSize)
+    IEnumerator CSceneChange(Sprite newSprite, Vector2 endSize)
     {
         GameObject newImageObj = new GameObject();
         Image newImage = newImageObj.AddComponent<Image>();
         newImage.sprite = newSprite;
         newImageObj.transform.SetParent(GameObject.Find("CutSceneCanvas").transform);
         newImageObj.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+        newImageObj.transform.localScale = Vector3.one;
 
         Vector2 Size = endSize * 1.3f;
         float count = 0.0f;
@@ -64,7 +65,7 @@ public class RaccoonCutScene : MonoBehaviour, IPointerClickHandler
         while (count <= 1.0f)
         {
             newImageObj.GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(Size, endSize, count);
-            //Debug.Log("Size = " + newImageObj.GetComponent<RectTransform>().sizeDelta);
+            Debug.Log("Size = " + newImageObj.GetComponent<RectTransform>().sizeDelta);
             initColor.a = count;
             newImage.color = initColor;
 
