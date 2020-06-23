@@ -40,6 +40,7 @@ public class RaccoonController : MonoBehaviour
         //isMoving = false;
         animator.ResetTrigger("idleTrigger");
         animator.ResetTrigger("WalkTrigger");
+        animator.ResetTrigger("DropTrigger");
         animator.SetTrigger("DragTrigger");
 
         Camera.main.GetComponent<CameraController>().RememberPos();
@@ -287,6 +288,7 @@ public class RaccoonController : MonoBehaviour
 
     IEnumerator Drop(State NextState)
     {
+        GetComponent<BoxCollider>().enabled = false;
         Vector3 initLocation = transform.position;
         float height = 2.0f;
         while (height > 0.0f)
@@ -296,6 +298,8 @@ public class RaccoonController : MonoBehaviour
         }
         Sprite.transform.position = transform.position;
         RCState = NextState;
+        yield return new WaitForSeconds(0.5f);
+        GetComponent<BoxCollider>().enabled = true;
     }
 
 
