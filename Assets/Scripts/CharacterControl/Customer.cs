@@ -76,7 +76,7 @@ public class Customer : MonoBehaviour
         }
         else
         {
-            if (isActive == false)
+            if (isActive == false && GetComponent<CheckCustomerAppear>().CheckAppear())
             {
                 activeTime -= Time.deltaTime;
             }
