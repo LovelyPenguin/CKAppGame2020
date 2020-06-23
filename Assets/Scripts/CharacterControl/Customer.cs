@@ -30,6 +30,8 @@ public class Customer : MonoBehaviour
 
     private bool isOpen;
     private bool isReturning = false;
+
+    public DustGenerator dustGen;
     // Start is called before the first frame update
     void Awake()
     {
@@ -44,6 +46,7 @@ public class Customer : MonoBehaviour
         gameObject.transform.position = poolingPos;
         gameObject.GetComponent<NavMeshAgent>().enabled = false;
         moneyIcon.SetActive(false);
+        dustGen = GameObject.Find("DustGenerator").GetComponent<DustGenerator>();
     }
 
     // Update is called once per frame
@@ -82,7 +85,8 @@ public class Customer : MonoBehaviour
             }
             if (activeTime <= 0)
             {
-                int number = Random.Range(0, 2);
+                int number = Random.Range(0, 2 + dustGen.CurDustCount);
+                Debug.Log("Customer Random Number : " + number);
 
                 // 디버깅용
                 number = 1;
