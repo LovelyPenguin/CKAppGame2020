@@ -19,10 +19,11 @@ public class CutSceneControl : MonoBehaviour
         
     }
 
-    public void CutSceneStart(int ID)
+    public ref GameObject CutSceneStart(int ID)
     {
         BackGround.SetActive(true);
         CutScenes[ID].SetActive(true);
+        return ref CutScenes[ID];
     }
 
     public void CutSceneEnd()

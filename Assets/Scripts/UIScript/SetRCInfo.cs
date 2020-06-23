@@ -220,7 +220,7 @@ public class SetRCInfo : MonoBehaviour
 
     private void RCUpgrade()
     {
-        RCMng.GetComponent<RaccoonMng>().UpgradeRC(CurrentRaccoon);
+        RCMng.GetComponent<RaccoonMng>().UpgradeRC(CurrentRaccoon, Rc[CurrentRaccoon * RaccoonRankCount + RCMng.GetRCRank(CurrentRaccoon)]);
         RaccoonImageUpdate();
     }
     private void RCUnlock()

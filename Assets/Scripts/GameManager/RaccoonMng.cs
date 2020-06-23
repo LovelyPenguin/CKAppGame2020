@@ -160,13 +160,14 @@ public class RaccoonMng : MonoBehaviour
         return RaccoonCount;
     }
 
-    public void UpgradeRC(int index)
+    public void UpgradeRC(int index, Sprite RCSprite)
     {
         int cost = RetCost(index, RaccoonRank[index]);
         if (RaccoonRank[index] < RaccoonRankCount && RaccoonUnlock[index] && GMng.money >= cost && !GameObject.Find("GameManager").GetComponent<GameMng>().getOpenData)
         {
             RaccoonRank[index]++;
             RC[index].GetComponent<RaccoonController>().CallUpgradeTrigger(RaccoonRank[index]);
+            GameObject.Find("CutSceneCanvas").GetComponent<CutSceneControl>().CutSceneStart(7).GetComponent<UpgradePopUp>().RCUpgradePopUp(RCSprite, RaccoonRank[index]);
             GMng.money -= cost;
         }
     }
