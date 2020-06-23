@@ -23,8 +23,8 @@ public class UpgradePopUp : MonoBehaviour, IPointerClickHandler
     // Update is called once per frame
     void Update()
     {
-        RotateBack[0].transform.Rotate(Vector3.forward, 1.0f);
-        RotateBack[1].transform.Rotate(Vector3.forward, -1.0f);
+        RotateBack[0].transform.Rotate(Vector3.forward, 0.3f);
+        RotateBack[1].transform.Rotate(Vector3.forward, -0.3f);
     }
 
     public void RCUpgradePopUp(Sprite RCImage, int newRCRank)
@@ -81,6 +81,8 @@ public class UpgradePopUp : MonoBehaviour, IPointerClickHandler
 
                 break;
         }
+
+        StartCoroutine(Poping());
         
     }
 
@@ -91,5 +93,22 @@ public class UpgradePopUp : MonoBehaviour, IPointerClickHandler
 
         gameObject.SetActive(false);
         GetComponentInParent<CutSceneControl>().CutSceneEnd();
+    }
+
+    IEnumerator Poping()
+    {
+        Vector3 endScale = transform.localScale;
+        Vector3 startScale = endScale * 0.3f;
+
+        float count = 0.0f;
+        while (count <= 1.0f)
+        {
+            transform.localScale = Vector3.Lerp(startScale, endScale, count);
+            count += Time.deltaTime * 2.0f;
+
+            yield return null;
+        }
+
+        transform.localScale = endScale;
     }
 }
