@@ -23938,6 +23938,9 @@ MonoBehaviour:
   dust1: {fileID: 8669843900451979652, guid: 8876a18ee05ba274bb4be5cadb261ace, type: 3}
   dust2: {fileID: 1226534449981521091, guid: bcdfeb2a58e0e7f499fafad7ef2e1e97, type: 3}
   dust3: {fileID: 4904557506106145866, guid: 7770769bd4ff12f4c881ff730bd47017, type: 3}
+  Sweep1: {fileID: 21300000, guid: bde3e117ab3be084dadbd9be69fd0f56, type: 3}
+  Sweep2: {fileID: 21300000, guid: e6bc7d44f64de444c80a716be81efeac, type: 3}
+  SweepTime: 0.25
 --- !u!1 &1562633668
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using System.Drawing;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 
 public class DustConroller : MonoBehaviour
 {
@@ -46,6 +44,7 @@ public class DustConroller : MonoBehaviour
 
     private void OnMouseDown()
     {
+        GetComponentInParent<DustGenerator>().StartSweepAnim(transform.position);
         Size -= SizeDecrease;
         if (Size <= 0.6f)
         {
