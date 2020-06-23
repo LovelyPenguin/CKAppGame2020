@@ -21,6 +21,21 @@ public class SetOpenTimer : MonoBehaviour
     {
         myText = gameObject.GetComponent<Text>();
         span = new TimeSpan(0, 0, Mathf.FloorToInt(GameMng.Instance.openTime));
+
+        if (!GameMng.Instance.getOpenData)
+        {
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                buttons[i].SetActive(true);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                buttons[i].SetActive(false);
+            }
+        }
     }
 
     // Update is called once per frame

@@ -19,6 +19,9 @@ public class TimeMng : MonoBehaviour
         {
             PlayerPrefs.SetString("SaveLastTime", System.DateTime.Now.ToString());
             Debug.Log("Save Time Data");
+
+            Debug.Log("GameQuit! " + GameMng.Instance.openTime);
+            PlayerPrefs.SetFloat("GAMETIME", GameMng.Instance.openTime);
         }
         else
         {
@@ -26,19 +29,27 @@ public class TimeMng : MonoBehaviour
             System.DateTime lastDataTime = System.DateTime.Parse(lastTime);
             System.TimeSpan compareTime = System.DateTime.Now - lastDataTime;
 
-            float day = compareTime.Days * 86400;
-            float hour = compareTime.Hours * 3600;
-            float min = compareTime.Minutes * 60;
-            float sec = compareTime.Seconds;
             Debug.Log("Connect Time : " + compareTime.Seconds);
+
+            GameMng.Instance.openTime = PlayerPrefs.GetFloat("GAMETIME") - compareTime.Seconds;
+            GameMng.Instance.setOpenTime = PlayerPrefs.GetFloat("FIRSTOPENTIME");
 
             if (debugText != null)
             {
-                float time = hour + min + sec;
+                float time = compareTime.Seconds;
                 debugText.text = "마지막 접속으로 부터 : " + time + " sec";
                 flowTime = time;
             }
         }
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.SetString("SaveLastTime", System.DateTime.Now.ToString());
+        Debug.Log("Save Time Data");
+
+        Debug.Log("GameQuit! " + GameMng.Instance.openTime);
+        PlayerPrefs.SetFloat("GAMETIME", GameMng.Instance.openTime);
     }
 
     private void OnDestroy()
