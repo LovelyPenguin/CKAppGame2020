@@ -31,7 +31,12 @@ public class TimeMng : MonoBehaviour
 
             Debug.Log("Connect Time : " + compareTime.Seconds);
 
+            // 쓸땐 주석 지워줄 것
             GameMng.Instance.openTime = PlayerPrefs.GetFloat("GAMETIME") - compareTime.Seconds;
+            if (GameMng.Instance.openTime <= 0)
+            {
+                GameMng.Instance.openTime = 0f;
+            }
             GameMng.Instance.setOpenTime = PlayerPrefs.GetFloat("FIRSTOPENTIME");
 
             if (debugText != null)
