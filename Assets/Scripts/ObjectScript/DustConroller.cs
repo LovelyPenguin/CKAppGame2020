@@ -49,6 +49,7 @@ public class DustConroller : MonoBehaviour
         if (Size <= 0.6f)
         {
             Destroy(gameObject);
+            GetComponentInParent<DustGenerator>().DisCountDust();
             GameObject.Find("GameManager").GetComponent<GameMng>().money += (Random.Range(minReward, maxReward) * 10);
         }
     }

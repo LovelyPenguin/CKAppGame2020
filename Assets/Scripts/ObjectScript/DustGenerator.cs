@@ -12,16 +12,28 @@ public class DustGenerator : MonoBehaviour
 
     public float SweepTime;
 
+    private int curDustCount;
+
+    public int CurDustCount
+    {
+        get { return curDustCount; }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        curDustCount = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void DisCountDust()
+    {
+        curDustCount--;
     }
 
     public void Generate()
@@ -33,14 +45,17 @@ public class DustGenerator : MonoBehaviour
             {
                 case 0:
                     item = Instantiate(dust1) as GameObject;
+                    curDustCount++;
                     break;
 
                 case 1:
                     item = Instantiate(dust2) as GameObject;
+                    curDustCount++;
                     break;
 
                 default:
                     item = Instantiate(dust3) as GameObject;
+                    curDustCount++;
                     break;
             }
             float xPos = Random.Range(0.0f, 8.0f);
