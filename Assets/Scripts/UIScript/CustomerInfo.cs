@@ -23,6 +23,7 @@ public class CustomerInfo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameMng.Instance.SaveGame();
         if (isUnlock)
         {
             nameText.text = name;

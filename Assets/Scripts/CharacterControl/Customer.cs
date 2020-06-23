@@ -9,6 +9,8 @@ public class Customer : MonoBehaviour
     public bool isMoneyCollect;
     //[HideInInspector]
     public bool isActive = false;
+    public bool unlock;
+    public int money;
 
     [Header("시간 설정")]
     public float duration;
@@ -47,16 +49,19 @@ public class Customer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        OpenCheck();
-        DurationCheck();
-
-        if (isReturning == true)
+        if (unlock)
         {
-            ReturnHome();
-        }
+            OpenCheck();
+            DurationCheck();
 
-        if (isActive == true)
-        {
+            if (isReturning == true)
+            {
+                ReturnHome();
+            }
+
+            if (isActive == true)
+            {
+            }
         }
     }
 

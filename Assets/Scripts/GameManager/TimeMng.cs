@@ -18,6 +18,7 @@ public class TimeMng : MonoBehaviour
         if (pause)
         {
             PlayerPrefs.SetString("SaveLastTime", System.DateTime.Now.ToString());
+            Debug.Log("Save Time Data");
         }
         else
         {
@@ -29,8 +30,7 @@ public class TimeMng : MonoBehaviour
             float hour = compareTime.Hours * 3600;
             float min = compareTime.Minutes * 60;
             float sec = compareTime.Seconds;
-            //Debug.Log(compareTime);
-            //Debug.Log(hour + min + sec);
+            Debug.Log("Connect Time : " + compareTime.Seconds);
 
             if (debugText != null)
             {
