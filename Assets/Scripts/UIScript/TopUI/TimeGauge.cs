@@ -8,6 +8,7 @@ public class TimeGauge : MonoBehaviour
     [Range(0, 15), SerializeField]
     private float timer;
     private Image img;
+    private float setOpenTime;
 
     // Start is called before the first frame update
     void Start()

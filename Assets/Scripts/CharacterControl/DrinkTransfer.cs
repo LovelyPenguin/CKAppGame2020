@@ -42,6 +42,7 @@ public class DrinkTransfer : MonoBehaviour
     public void Detect(int money = 100)
     {
         GameMng.Instance.money += money;
+        GetComponent<Customer>().money += money;
         ParticleManager(true);
         InitalizeParameter();
         StartCoroutine(Disable());

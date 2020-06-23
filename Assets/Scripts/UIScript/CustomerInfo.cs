@@ -14,6 +14,7 @@ public class CustomerInfo : MonoBehaviour
     public int currentStamp;
     public Image[] itemImages = new Image[3];
     public CustomerWindow customerWindow;
+    public Customer targetCustomer;
 
     [SerializeField]
     private Image mainImage;
@@ -23,6 +24,10 @@ public class CustomerInfo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isUnlock = targetCustomer.unlock;
+        getMoney = targetCustomer.money;
+
+        GameMng.Instance.SaveGame();
         if (isUnlock)
         {
             nameText.text = name;
@@ -38,7 +43,8 @@ public class CustomerInfo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        isUnlock = targetCustomer.unlock;
+        getMoney = targetCustomer.money;
     }
 
     public void ButtonClick()

@@ -67,6 +67,15 @@ public class GameMng : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        switch (PlayerPrefs.GetInt("OPENSTATUS"))
+        {
+            case 0:
+                isOpen = false;
+                break;
+            case 1:
+                isOpen = true;
+                break;
+        }
         dustGenerator = GameObject.Find("DustGenerator");
         RaccoonMng = GameObject.Find("GameManager");
         closeEvent.AddListener(dustGenerator.GetComponent<DustGenerator>().Generate);
@@ -101,8 +110,10 @@ public class GameMng : MonoBehaviour
     {
         Debug.Log("Open");
         isOpen = true;
+        PlayerPrefs.SetInt("OPENSTATUS", 1);
         openTime = setOpenTime;
         this.setOpenTime = setOpenTime;
+        PlayerPrefs.SetFloat("FIRSTOPENTIME", this.setOpenTime);
         openEvent.Invoke();
     }
 
@@ -110,6 +121,7 @@ public class GameMng : MonoBehaviour
     {
         Debug.Log("Close");
         isOpen = false;
+        PlayerPrefs.SetInt("OPENSTATUS", 0);
         closeEvent.Invoke();
         customerCount = 0;
         openTime = 0;
