@@ -13,7 +13,7 @@ public class RaccoonCutScene : MonoBehaviour, IPointerClickHandler
 
     void Awake()
     {
-        GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
+        GetComponent<RectTransform>().sizeDelta = new Vector2(540, 960);
     }
     // Start is called before the first frame update
     void Start()
@@ -63,7 +63,7 @@ public class RaccoonCutScene : MonoBehaviour, IPointerClickHandler
         Color initColor = newImage.color;
         while (count <= 1.0f)
         {
-            newImageObj.GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(Size, endSize * 0.9f, count);
+            newImageObj.GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(Size, endSize, count);
             //Debug.Log("Size = " + newImageObj.GetComponent<RectTransform>().sizeDelta);
             initColor.a = count;
             newImage.color = initColor;
