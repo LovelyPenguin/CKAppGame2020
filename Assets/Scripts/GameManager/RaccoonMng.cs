@@ -122,6 +122,7 @@ public class RaccoonMng : MonoBehaviour
                 RC[RCindex].GetComponent<RaccoonController>().stamina = 50;
                 RaccoonExist[RCindex] = true;
                 curRCCount++;
+                GameObject.Find("CutSceneCanvas").GetComponent<CutSceneControl>().CutSceneStart(RCindex);
                 Debug.Log("Raccoon Created!");
             }
         }

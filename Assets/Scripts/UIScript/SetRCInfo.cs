@@ -122,7 +122,7 @@ public class SetRCInfo : MonoBehaviour
         newTextObj.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
         Text newText = newTextObj.AddComponent<Text>();
         newText.font = font;
-        newText.fontSize = 40;
+        newText.fontSize = 60;
         newText.text = text;
         newText.color = Color.black;
         newText.alignment = TextAnchor.MiddleCenter;
@@ -177,7 +177,7 @@ public class SetRCInfo : MonoBehaviour
                 }
                 else
                 {
-                    newTxt = "해금" + RCMng.RetCost(CurrentRaccoon, 0).ToString() + "원";
+                    newTxt = "해금 " + RCMng.RetCost(CurrentRaccoon, 0).ToString() + "원";
                 }
 
                 float XPos = (GameObject.Find("RCList").GetComponent<RectTransform>().localPosition.x + (index - (int)RCMng.GetMaxRCcount() / 2) * 220)/2;

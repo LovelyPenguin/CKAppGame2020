@@ -95,6 +95,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2001b8bce2b74f468dbe6ba7d6c22d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SizeIncrease: 0.1
+  SizeDecrease: 0.2
+  maxReward: 50
+  minReward: 30
+  Sweep1: {fileID: 21300000, guid: bde3e117ab3be084dadbd9be69fd0f56, type: 3}
+  Sweep2: {fileID: 21300000, guid: e6bc7d44f64de444c80a716be81efeac, type: 3}
 --- !u!58 &4904557506106145862
 CircleCollider2D:
   m_ObjectHideFlags: 0
