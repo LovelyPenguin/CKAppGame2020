@@ -1,7 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
+
+[Serializable]
+class DrinkSaveData
+{
+    public bool[] UNLOCK = new bool[3];
+}
 
 public class DrinkMng : MonoBehaviour
 {
@@ -28,10 +36,15 @@ public class DrinkMng : MonoBehaviour
     [SerializeField]
     private GameObject blockImage;
 
+    public JuiceData[] juiceList;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (GameMng.Instance.GetComponent<SaveLoader>().CheckFileExist("DRINKMNG"))
+        {
+            LoadData();
+        }
     }
 
     // Update is called once per frame
@@ -184,5 +197,35 @@ public class DrinkMng : MonoBehaviour
     {
         percentText.text = null;
         drinkMakeBtn.SetActive(true);
+    }
+
+    public void SaveData()
+    {
+        DrinkSaveData save = new DrinkSaveData();
+        bool[] unlock = new bool[juiceList.Length];
+
+        for (int i = 0; i < juiceList.Length; i++)
+        {
+            unlock[i] = juiceList[i].isUnlock;
+            Debug.Log(unlock[i]);
+        }
+        save.UNLOCK = unlock;
+
+        GameMng.Instance.GetComponent<SaveLoader>().SaveData<DrinkSaveData>(ref save, "DRINKDATASAVE");
+    }
+
+    public void LoadData()
+    {
+        DrinkSaveData save = new DrinkSaveData();
+        GameMng.Instance.GetComponent<SaveLoader>().LoadData<DrinkSaveData>(ref save, "DRINKDATASAVE");
+
+        bool[] unlock = new bool[juiceList.Length];
+
+        Array.Copy(save.UNLOCK, unlock, juiceList.Length);
+
+        for (int i = 0; i < juiceList.Length; i++)
+        {
+            juiceList[i].isUnlock = unlock[i];
+        }
     }
 }

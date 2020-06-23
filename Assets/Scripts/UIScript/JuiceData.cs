@@ -8,8 +8,7 @@ public class JuiceData : MonoBehaviour
     public GameObject juice;
     public DrinkMng drinkMng;
 
-    [SerializeField]
-    private bool isUnlock = false;
+    public bool isUnlock;
     [SerializeField]
     private int tabCountData;
     // Start is called before the first frame update
