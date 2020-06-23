@@ -343,6 +343,14 @@ public class RaccoonController : MonoBehaviour
     public enum State { unActive = 0, onDrag, inMap1, inMap2, Healing, dropping };
     private State RCState;
 
+    public State GetRCState
+    {
+        get
+        {
+            return RCState;
+        }
+    }
+
     public bool isMoving = false;
     public float interpolant;
     public UnityEngine.Vector3 start;
