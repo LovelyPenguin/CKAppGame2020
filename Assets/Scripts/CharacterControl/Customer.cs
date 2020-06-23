@@ -85,6 +85,7 @@ public class Customer : MonoBehaviour
             }
             if (activeTime <= 0)
             {
+                // 0 ~ (2 + n)
                 int number = Random.Range(0, 2 + dustGen.CurDustCount);
                 Debug.Log("Customer Random Number : " + number);
 

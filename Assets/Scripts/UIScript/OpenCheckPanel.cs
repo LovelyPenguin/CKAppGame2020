@@ -12,6 +12,16 @@ public class OpenCheckPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (GameMng.Instance.getOpenData)
+        {
+            Open();
+            Debug.Log("HELOO");
+        }
+        else
+        {
+            Close();
+            Debug.Log("asdoiudsalkdsa");
+        }
     }
 
     // Update is called once per frame
