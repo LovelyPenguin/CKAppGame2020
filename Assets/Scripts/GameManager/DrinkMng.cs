@@ -30,6 +30,8 @@ public class DrinkMng : MonoBehaviour
     [SerializeField]
     private GameObject drinkMakeBtn;
     [SerializeField]
+    private GameObject unlockBtn;
+    [SerializeField]
     private GameObject tabBtn;
     [SerializeField]
     private Text percentText;
@@ -50,10 +52,13 @@ public class DrinkMng : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void SetMiniGameData(int tabCountData, GameObject juiceData)
+    int tabCountDataTemp;
+    GameObject juiceDataTemp;
+    GameObject mainObjTemp;
+    public void SetMiniGameData(int tabCountData, GameObject juiceData, ref bool unlock, GameObject mainObj)
     {
         this.tabCountData = tabCountData;
         currentJuice = juiceData;
@@ -62,7 +67,11 @@ public class DrinkMng : MonoBehaviour
             previousJuiceData.SetActive(false);
         }
 
-        SetInvisibleButton();
+        SetInvisibleButton(unlock);
+
+        tabCountDataTemp = tabCountData;
+        juiceDataTemp = juiceData;
+        mainObjTemp = mainObj;
 
         currentJuice.SetActive(true);
 
@@ -79,6 +88,30 @@ public class DrinkMng : MonoBehaviour
             isStart = true;
             drinkMakeBtn.SetActive(false);
             tabBtn.SetActive(true);
+        }
+    }
+
+    public void UnlockDrink()
+    {
+        if (GameMng.Instance.money - mainObjTemp.GetComponent<JuiceData>().unlockCost >= 0)
+        {
+            mainObjTemp.GetComponent<JuiceData>().isUnlock = true;
+            SetMiniGameData(tabCountDataTemp, juiceDataTemp, ref mainObjTemp.GetComponent<JuiceData>().isUnlock, mainObjTemp);
+        }
+    }
+
+    public void UnlockDrink(int cost, ref bool unlock)
+    {
+        drinkMakeBtn.SetActive(false);
+        unlockBtn.SetActive(true);
+        if (GameMng.Instance.money - cost >= 0)
+        {
+            //unlock = true;
+            //GameMng.Instance.money -= cost;
+        }
+        else
+        {
+            //unlock = false;
         }
     }
 
@@ -156,15 +189,23 @@ public class DrinkMng : MonoBehaviour
         }
     }
 
-    private void SetInvisibleButton()
+    private void SetInvisibleButton(bool isUnlock = true)
     {
-        if (currentJuice.GetComponent<JuiceObject>().isComplete == true)
+        if (isUnlock)
         {
-            drinkMakeBtn.SetActive(false);
+            unlockBtn.SetActive(false);
+            if (currentJuice.GetComponent<JuiceObject>().isComplete)
+            {
+                drinkMakeBtn.SetActive(false);
+            }
+            else
+            {
+                drinkMakeBtn.SetActive(true);
+            }
         }
         else
         {
-            drinkMakeBtn.SetActive(true);
+            unlockBtn.SetActive(true);
         }
     }
 

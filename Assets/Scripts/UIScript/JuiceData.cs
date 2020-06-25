@@ -11,6 +11,7 @@ public class JuiceData : MonoBehaviour
     public bool isUnlock;
     [SerializeField]
     private int tabCountData;
+    public int unlockCost;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,6 @@ public class JuiceData : MonoBehaviour
     public void Click()
     {
         Debug.Log(gameObject.name + " Click");
-        drinkMng.SetMiniGameData(tabCountData, juice);
+        drinkMng.SetMiniGameData(tabCountData, juice, ref isUnlock, gameObject);
     }
 }
