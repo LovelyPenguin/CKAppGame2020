@@ -20,7 +20,6 @@ public class CheckCustomerAppear : MonoBehaviour
 
     public bool CheckAppear()
     {
-        Debug.Log(PlayerPrefs.GetInt("CUSTOMERCOUNT"));
         if (condition <= PlayerPrefs.GetInt("CUSTOMERCOUNT"))
         {
             return true;

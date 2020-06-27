@@ -8,7 +8,7 @@ public class Customer : MonoBehaviour
     //[HideInInspector]
     public bool isMoneyCollect;
     //[HideInInspector]
-    public bool isActive = false;
+    public bool isActive;
     public bool unlock;
     public int money;
 
@@ -31,6 +31,10 @@ public class Customer : MonoBehaviour
     private bool isOpen;
     private bool isReturning = false;
 
+    public GameObject[] items;
+    public bool[] itemActive;
+    public int[] itemPercentage;
+
     public DustGenerator dustGen;
     // Start is called before the first frame update
     void Awake()
@@ -40,8 +44,15 @@ public class Customer : MonoBehaviour
 
     private void Start()
     {
-        //durationSecond = duration * 60;
-        durationSecond = duration;
+        string objectTime = gameObject.name + "Time";
+        if (isActive)
+        {
+            durationSecond = PlayerPrefs.GetFloat(objectTime) - GameMng.Instance.GetComponent<TimeMng>().getCompareTime;
+        }
+        else
+        {
+            durationSecond = duration;
+        }
         GameMng.Instance.openEvent.AddListener(InitializeSpawnData);
         gameObject.transform.position = poolingPos;
         gameObject.GetComponent<NavMeshAgent>().enabled = false;
@@ -85,7 +96,6 @@ public class Customer : MonoBehaviour
             }
             if (activeTime <= 0)
             {
-                // 0 ~ (2 + n)
                 int number = Random.Range(0, 2 + dustGen.CurDustCount);
                 Debug.Log("Customer Random Number : " + number);
 
@@ -97,11 +107,14 @@ public class Customer : MonoBehaviour
                     Debug.Log("Active");
                     GameMng.Instance.customerCount++;
                     isActive = true;
+                    string objectActive = gameObject.name + "IsActive";
+                    PlayerPrefs.SetInt(objectActive, 1);
                     isReturning = false;
                     InitializeSpawnData();
                     gameObject.transform.position = entrancePos;
                     gameObject.GetComponent<NavMeshAgent>().enabled = true;
                     StartCoroutine(ExcuteCollectMoney());
+                    StartCoroutine(SpawnItem(Random.Range(3, durationSecond)));
                 }
                 else
                 {
@@ -131,6 +144,70 @@ public class Customer : MonoBehaviour
         }
     }
 
+    private void OnApplicationPause(bool pause)
+    {
+        string objectTime = gameObject.name + "Time";
+        string objectActiveTime = gameObject.name + "ActiveTime";
+        string objectActive = gameObject.name + "IsActive";
+
+        if (pause)
+        {
+            //isActive = (PlayerPrefs.GetInt(objectActive) == 1) ? true : false;
+            PlayerPrefs.SetInt(objectActive, isActive ? 1 : 0);
+            if (isActive)
+            {
+                PlayerPrefs.SetFloat(objectTime, durationSecond);
+            }
+            else
+            {
+                PlayerPrefs.SetFloat(objectTime, duration);
+                PlayerPrefs.SetFloat(objectActiveTime, activeTime);
+            }
+        }
+        else
+        {
+            isActive = (PlayerPrefs.GetInt(objectActive) == 1) ? true : false;
+
+            if (isActive)
+            {
+                durationSecond = PlayerPrefs.GetFloat(objectTime) - GameMng.Instance.GetComponent<TimeMng>().getCompareTime;
+            }
+            else
+            {
+                if (GameMng.Instance.getOpenData)
+                {
+                    activeTime = PlayerPrefs.GetFloat(objectActiveTime) - GameMng.Instance.GetComponent<TimeMng>().getCompareTime;
+                }
+            }
+        }
+    }
+
+    IEnumerator DelayFunction(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        
+    }
+
+    private void OnApplicationQuit()
+    {
+        string objectTime = gameObject.name + "Time";
+        string objectActiveTime = gameObject.name + "ActiveTime";
+        string objectActive = gameObject.name + "IsActive";
+
+        PlayerPrefs.SetInt(objectActive, isActive ? 1 : 0);
+
+        if (isActive)
+        {
+            PlayerPrefs.SetFloat(objectTime, durationSecond);
+        }
+        else
+        {
+            PlayerPrefs.SetFloat(objectTime, duration);
+            PlayerPrefs.SetFloat(objectActiveTime, activeTime);
+        }
+    }
+
     void Spawn()
     {
         isActive = true;
@@ -138,22 +215,11 @@ public class Customer : MonoBehaviour
 
     void InitializeSpawnData()
     {
-        activeTime = Random.Range(5, 10);
-        moneyIcon.SetActive(false);
-    }
+        string objectTime = gameObject.name + "ActiveTime";
 
-    private void OnApplicationPause(bool pause)
-    {
-        if (pause)
-        {
-            Debug.Log("Game Stop");
-        }
-        else
-        {
-            Debug.Log("Game Restart");
-            durationSecond -= GameMng.Instance.GetComponent<TimeMng>().flowTime;
-            Debug.Log(GameMng.Instance.GetComponent<TimeMng>().flowTime);
-        }
+        activeTime = Random.Range(5, 10);
+        PlayerPrefs.SetFloat(objectTime, activeTime);
+        moneyIcon.SetActive(false);
     }
 
     private void OnDrawGizmosSelected()
@@ -177,8 +243,12 @@ public class Customer : MonoBehaviour
             gameObject.transform.position = poolingPos;
             gameObject.GetComponent<NavMeshAgent>().enabled = false;
             durationSecond = duration;
+            string objectTime = gameObject.name + "Time";
+            PlayerPrefs.SetFloat(objectTime, durationSecond);
             isMoneyCollect = false;
             isActive = false;
+            string objectActive = gameObject.name + "IsActive";
+            PlayerPrefs.SetInt(objectActive, 0);
             isReturning = false;
         }
     }
@@ -205,5 +275,20 @@ public class Customer : MonoBehaviour
         yield return new WaitForSeconds(timer);
         isMoneyCollect = true;
         moneyIcon.SetActive(true);
+    }
+
+    IEnumerator SpawnItem(float waitForSec)
+    {
+        Debug.Log(waitForSec);
+        yield return new WaitForSeconds(waitForSec);
+        if (isActive)
+        {
+            Debug.Log("Item Drop!");
+            int itemIndex = Random.Range(0, 3);
+            GameObject obj = Instantiate(items[0], transform.position, transform.rotation);
+            Rigidbody objrig = obj.GetComponent<Rigidbody>();
+            obj.GetComponent<CustomerItemInfo>().host = gameObject;
+            objrig.AddForce(0, 10, 0);
+        }
     }
 }

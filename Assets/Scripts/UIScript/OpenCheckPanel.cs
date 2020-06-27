@@ -15,12 +15,10 @@ public class OpenCheckPanel : MonoBehaviour
         if (GameMng.Instance.getOpenData)
         {
             Open();
-            Debug.Log("HELOO");
         }
         else
         {
             Close();
-            Debug.Log("asdoiudsalkdsa");
         }
     }
 

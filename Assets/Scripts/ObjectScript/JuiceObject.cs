@@ -43,7 +43,10 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
 
     public void SetDecoSprite(bool isVisible)
     {
-        decoSprite.SetActive(isVisible);
+        if (decoSprite != null)
+        {
+            decoSprite.SetActive(isVisible);
+        }
     }
 
     public void ResetAllValue()
@@ -51,7 +54,10 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
         isComplete = false;
         percentValue = 0f;
         mainSprite.SetActive(true);
-        decoSprite.SetActive(true);
+        if (decoSprite != null)
+        {
+            decoSprite.SetActive(true);
+        }
     }
 
     public void FillMainSprite()

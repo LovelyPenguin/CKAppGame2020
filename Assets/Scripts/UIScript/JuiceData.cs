@@ -7,6 +7,7 @@ public class JuiceData : MonoBehaviour
 {
     public GameObject juice;
     public DrinkMng drinkMng;
+    public Image iconImage;
 
     public bool isUnlock;
     [SerializeField]
@@ -16,6 +17,7 @@ public class JuiceData : MonoBehaviour
     void Start()
     {
         drinkMng = GameMng.Instance.gameObject.GetComponent<DrinkMng>();
+        iconImage = gameObject.transform.GetChild(0).GetComponent<Image>();
     }
 
     // Update is called once per frame

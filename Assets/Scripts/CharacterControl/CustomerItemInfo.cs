@@ -5,7 +5,6 @@ using UnityEngine;
 public class CustomerItemInfo : MonoBehaviour
 {
     public GameObject host;
-    public bool isActive;
 
     // Start is called before the first frame update
     void Start()

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6167369456139189314}
   - component: {fileID: 6167369456139189315}
   - component: {fileID: 6167369456139189312}
+  - component: {fileID: 1471328920}
   m_Layer: 8
   m_Name: CustomerGirl
   m_TagString: Untagged
@@ -146,6 +147,13 @@ MonoBehaviour:
   poolingPos: {x: -50, y: 0, z: 50}
   entrancePos: {x: 5.63, y: 1.125, z: 1.24}
   moneyIcon: {fileID: 6167369457714097139}
+  items:
+  - {fileID: 3535399585868084103, guid: 92a6e5848618748499b0d03d65f8bc77, type: 3}
+  - {fileID: 5437751308636621936, guid: 18de493c3688e4040a3527eed7c2b01f, type: 3}
+  - {fileID: 3063276434748495235, guid: a613b322bd781ad428130a41d23158d2, type: 3}
+  itemActive: 000000
+  itemPercentage: 
+  dustGen: {fileID: 0}
 --- !u!114 &6167369456139189314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,6 +206,19 @@ MonoBehaviour:
   sprite: {fileID: 6167369456508453714}
   isLeftInitialize: 0
   direction: 
+--- !u!114 &1471328920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6167369456139189313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88cf9f57609ea9145ab41baec0320c6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  condition: 0
 --- !u!1 &6167369456146640848
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,7 +245,7 @@ Transform:
   m_GameObject: {fileID: 6167369456146640848}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2.35, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 6167369457696511059}
   m_RootOrder: 2
@@ -268,8 +289,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4087d0ce531b45448ace2888b9e0c03b, type: 3}
-  m_Color: {r: 0.54901963, g: 0.54901963, b: 0.54901963, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 67dcf3f57deeab24d8011b0103f0e7b6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

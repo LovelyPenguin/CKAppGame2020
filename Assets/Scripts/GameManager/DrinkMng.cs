@@ -41,12 +41,19 @@ public class DrinkMng : MonoBehaviour
     public JuiceData[] juiceList;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (GameMng.Instance.GetComponent<SaveLoader>().CheckFileExist("DRINKMNG"))
         {
             LoadData();
         }
+        
+        string[] juiceNames = new string[juiceList.Length];
+        for (int i = 0; i < juiceList.Length; i++)
+        {
+            juiceNames[i] = juiceList[i].name;
+        }
+        GameMng.Instance.GetComponent<JuiceList>().juiceList = juiceNames;
     }
 
     // Update is called once per frame

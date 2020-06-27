@@ -86,17 +86,14 @@ public class DrinkTransfer : MonoBehaviour
 
     private void PickJuiceSprite()
     {
-        if (selectJuice == juiceList[0])
+        JuiceData[] juice = GameMng.Instance.GetComponent<DrinkMng>().juiceList;
+
+        for (int i = 0; i < juiceList.Length; i++)
         {
-            juiceIcon.GetComponent<SpriteRenderer>().color = Color.yellow;
-        }
-        if (selectJuice == juiceList[1])
-        {
-            juiceIcon.GetComponent<SpriteRenderer>().color = Color.red;
-        }
-        if (selectJuice == juiceList[2])
-        {
-            juiceIcon.GetComponent<SpriteRenderer>().color = Color.blue;
+            if (selectJuice == juiceList[i])
+            {
+                juiceIcon.GetComponent<SpriteRenderer>().sprite = juice[i].iconImage.sprite;
+            }
         }
     }
 

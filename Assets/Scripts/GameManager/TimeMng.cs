@@ -7,6 +7,7 @@ public class TimeMng : MonoBehaviour
 {
     public Text debugText;
     public float flowTime;
+    public float getCompareTime;
 
     private void Awake()
     {
@@ -33,6 +34,7 @@ public class TimeMng : MonoBehaviour
 
             // 쓸땐 주석 지워줄 것
             GameMng.Instance.openTime = PlayerPrefs.GetFloat("GAMETIME") - compareTime.Seconds;
+            getCompareTime = compareTime.Seconds;
             if (GameMng.Instance.openTime <= 0)
             {
                 GameMng.Instance.openTime = 0f;
