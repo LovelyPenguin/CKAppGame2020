@@ -42,6 +42,10 @@ public class SetOpenTimer : MonoBehaviour
     void Update()
     {
         SetTimer();
+        if (GameMng.Instance.getOpenData)
+        {
+            buttons[0].SetActive(false);
+        }
     }
 
     void SetTimer()
