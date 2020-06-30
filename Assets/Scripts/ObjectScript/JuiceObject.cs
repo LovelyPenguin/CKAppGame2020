@@ -119,7 +119,7 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
                     hit.transform.GetComponent<DrinkTransfer>().Detect(juiceValue * Mathf.RoundToInt(MoneyCalc(percentValue)));
                     if (percentValue >= 50)
                     {
-                        hit.transform.GetComponent<Customer>().stamp += 1;
+                        hit.transform.GetComponent<Customer>().AddStamp();
                     }
                     ResetAllValue();
                     GameMng.Instance.GetComponent<DrinkMng>().UpdateContent();

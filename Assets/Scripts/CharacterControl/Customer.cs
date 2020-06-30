@@ -40,6 +40,7 @@ public class Customer : MonoBehaviour
 
     public DustGenerator dustGen;
     public int stamp;
+    public float activePercent;
     // Start is called before the first frame update
     void Awake()
     {
@@ -113,13 +114,12 @@ public class Customer : MonoBehaviour
             }
             if (activeTime <= 0)
             {
-                int number = Random.Range(0, (5 + dustGen.CurDustCount));
-                Debug.Log("Customer Random Number : " + number);
+                int number = Random.Range(0, 100);
 
                 // 디버깅용
-                number = 1;
+                number = 100;
 
-                if (number == 1)
+                if (activePercent <= (number + GameMng.Instance.GetComponent<CustomerMng>().buff) - (dustGen.CurDustCount * 2))
                 {
                     Debug.Log("Active");
                     GameMng.Instance.customerCount++;
@@ -347,6 +347,20 @@ public class Customer : MonoBehaviour
             itemGen[randomIndex] = true;
             obj.GetComponent<CustomerItemInfo>().itemIndex = randomIndex;
             objrig.AddForce(0, 10, 0);
+        }
+    }
+
+    public void AddStamp()
+    {
+        float randomNumber = Random.Range(0, 100);
+
+        if (randomNumber >= 10)
+        {
+            stamp++;
+        }
+        if (stamp == 200)
+        {
+            Debug.Log("BUFFFFFFFFF");
         }
     }
 }

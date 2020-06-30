@@ -126,4 +126,16 @@ public class CustomerMng : MonoBehaviour
             }
         }
     }
+
+    public float buff;
+    public void BuffCustomerActive()
+    {
+        buff = 10;
+        StartCoroutine(Debuff());
+    }
+    IEnumerator Debuff()
+    {
+        yield return new WaitForSeconds(10f);
+        buff = 0;
+    }
 }
