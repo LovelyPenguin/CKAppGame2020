@@ -170,6 +170,10 @@ public class RaccoonMng : MonoBehaviour
             GameObject.Find("CutSceneCanvas").GetComponent<CutSceneControl>().CutSceneStart(7).GetComponent<UpgradePopUp>().RCUpgradePopUp(RCSprite, RaccoonRank[index]);
             GMng.money -= cost;
         }
+        else if(GMng.money < cost)
+        {
+            GMng.gameObject.GetComponent<FailMsgBox>().Create("돈이 부족합니다.");
+        }
     }
 
     public void UnlockRC(int index)

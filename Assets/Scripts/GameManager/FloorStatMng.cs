@@ -27,7 +27,8 @@ public class FloorStatMng : MonoBehaviour
     {
         floor2enable = false;
         FloorChangeButtons[1].GetComponent<Button>().enabled = false;
-        FloorChangeButtons[1].GetComponent<Image>().color = Color.gray;
+        FloorChangeButtons[1].GetComponent<Image>().color = new Color(0.2f,0.2f,0.2f);
+        FloorChangeButtons[1].GetComponent<RectTransform>().anchoredPosition = new Vector2(-80, 0);
         SetFloor1();
     }
 
@@ -43,6 +44,19 @@ public class FloorStatMng : MonoBehaviour
         foreach (Material m in Floor2ObjMtrls)
             m.color = new Color(m.color.r, m.color.g, m.color.b, 0f);
         curFloor = Floor.Floor1;
+
+        FloorChangeButtons[0].GetComponent<Image>().color = Color.white;
+        FloorChangeButtons[0].GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -121);
+        if (floor2enable)
+        {
+            FloorChangeButtons[1].GetComponent<Image>().color = Color.gray;
+            FloorChangeButtons[1].GetComponent<RectTransform>().anchoredPosition = new Vector2(-20, 0);
+        }
+        else
+        {
+            FloorChangeButtons[1].GetComponent<Image>().color = new Color(0.2f, 0.2f, 0.2f);
+            FloorChangeButtons[1].GetComponent<RectTransform>().anchoredPosition = new Vector2(-80, 0);
+        }
         CollisionGround2.SetActive(false);
     }
 
@@ -54,6 +68,11 @@ public class FloorStatMng : MonoBehaviour
             foreach (Material m in Floor2ObjMtrls)
                 m.color = new Color(m.color.r, m.color.g, m.color.b, 1f);
             curFloor = Floor.Floor2;
+
+            FloorChangeButtons[0].GetComponent<Image>().color = Color.gray;
+            FloorChangeButtons[0].GetComponent<RectTransform>().anchoredPosition = new Vector2(-20, -121);
+            FloorChangeButtons[1].GetComponent<Image>().color = Color.white;
+            FloorChangeButtons[1].GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
             CollisionGround2.SetActive(true);
         }
     }
@@ -61,7 +80,8 @@ public class FloorStatMng : MonoBehaviour
     public void UnlockSecondFloor()
     {
         FloorChangeButtons[1].GetComponent<Button>().enabled = true;
-        FloorChangeButtons[1].GetComponent<Image>().color = Color.white;
+        FloorChangeButtons[1].GetComponent<Image>().color = Color.gray;
+        FloorChangeButtons[1].GetComponent<RectTransform>().anchoredPosition = new Vector2(-20, 0);
         floor2enable = true;
     }
 }

@@ -42,12 +42,12 @@ public class CameraController : MonoBehaviour
         //}
         //else
         //{
-            if (transform.position.y > SecondFloorViewHeight)
-            {
-                GameMng.GetComponent<FloorStatMng>().SetFloor2();
-            }
-            else
-                GameMng.GetComponent<FloorStatMng>().SetFloor1();
+            //if (transform.position.y > SecondFloorViewHeight)
+            //{
+            //    GameMng.GetComponent<FloorStatMng>().SetFloor2();
+            //}
+            //else
+            //    GameMng.GetComponent<FloorStatMng>().SetFloor1();
         //}
     }
 
