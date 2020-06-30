@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DustConroller : MonoBehaviour
 {
@@ -46,6 +47,9 @@ public class DustConroller : MonoBehaviour
     {
         GetComponentInParent<DustGenerator>().StartSweepAnim(transform.position);
         Size -= SizeDecrease;
+
+        GameMng.Instance.GetComponent<CustomerMng>().AllItemDropCalc(transform.position);
+
         if (Size <= 0.6f)
         {
             Destroy(gameObject);

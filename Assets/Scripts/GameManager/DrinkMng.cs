@@ -64,7 +64,8 @@ public class DrinkMng : MonoBehaviour
 
     int tabCountDataTemp;
     GameObject juiceDataTemp;
-    GameObject mainObjTemp;
+    [HideInInspector]
+    public GameObject mainObjTemp;
     public void SetMiniGameData(int tabCountData, GameObject juiceData, ref bool unlock, GameObject mainObj)
     {
         this.tabCountData = tabCountData;
@@ -102,6 +103,7 @@ public class DrinkMng : MonoBehaviour
     {
         if (GameMng.Instance.money - mainObjTemp.GetComponent<JuiceData>().unlockCost >= 0)
         {
+            GameMng.Instance.money -= mainObjTemp.GetComponent<JuiceData>().unlockCost;
             mainObjTemp.GetComponent<JuiceData>().isUnlock = true;
             SetMiniGameData(tabCountDataTemp, juiceDataTemp, ref mainObjTemp.GetComponent<JuiceData>().isUnlock, mainObjTemp);
         }

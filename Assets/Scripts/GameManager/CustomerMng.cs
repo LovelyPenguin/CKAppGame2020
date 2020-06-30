@@ -112,4 +112,18 @@ public class CustomerMng : MonoBehaviour
             }
         }
     }
+
+    public void AllItemDropCalc(Vector3 pos)
+    {
+        int randomCustomer = UnityEngine.Random.Range(0, customers.Length);
+        int randomItem = UnityEngine.Random.Range(0, 3);
+
+        if (customers[randomCustomer].unlock)
+        {
+            if (customers[randomCustomer].itemActive[randomItem] == false)
+            {
+                customers[randomCustomer].ItemDrop(pos);
+            }
+        }
+    }
 }

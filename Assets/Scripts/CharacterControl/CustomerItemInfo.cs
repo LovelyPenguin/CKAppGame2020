@@ -23,6 +23,7 @@ public class CustomerItemInfo : MonoBehaviour
     {
         Debug.Log("Click!");
         host.GetComponent<Customer>().itemActive[itemIndex] = true;
+        host.GetComponent<Customer>().itemGen[itemIndex] = false;
         Destroy(gameObject);
     }
 }

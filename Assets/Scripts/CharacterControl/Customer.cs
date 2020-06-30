@@ -32,7 +32,10 @@ public class Customer : MonoBehaviour
     private bool isReturning = false;
 
     public GameObject[] items;
+    [HideInInspector]
     public bool[] itemActive;
+    [HideInInspector]
+    public bool[] itemGen;
     public int[] itemPercentage;
 
     public DustGenerator dustGen;
@@ -40,7 +43,7 @@ public class Customer : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-
+        itemGen = new bool[3];
     }
 
     private void Start()
@@ -110,7 +113,7 @@ public class Customer : MonoBehaviour
             }
             if (activeTime <= 0)
             {
-                int number = Random.Range(0, 2 + dustGen.CurDustCount);
+                int number = Random.Range(0, (5 + dustGen.CurDustCount));
                 Debug.Log("Customer Random Number : " + number);
 
                 // 디버깅용
@@ -310,11 +313,40 @@ public class Customer : MonoBehaviour
         Debug.Log("Item Drop!");
 
         int randomIndex = Random.Range(0, 3);
+        float percentCalc = Random.Range(0, 100);
 
-        GameObject obj = Instantiate(items[randomIndex], transform.position, transform.rotation);
-        Rigidbody objrig = obj.GetComponent<Rigidbody>();
-        obj.GetComponent<CustomerItemInfo>().host = gameObject;
-        obj.GetComponent<CustomerItemInfo>().itemIndex = randomIndex;
-        objrig.AddForce(0, 10, 0);
+        Debug.Log("Item : " + items[randomIndex]);
+        Debug.Log("Drop Percentage : " + percentCalc);
+
+        if (percentCalc <= itemPercentage[randomIndex] && itemActive[randomIndex] == false && itemGen[randomIndex] == false)
+        {
+            GameObject obj = Instantiate(items[randomIndex], transform.position, transform.rotation);
+            Rigidbody objrig = obj.GetComponent<Rigidbody>();
+            obj.GetComponent<CustomerItemInfo>().host = gameObject;
+            itemGen[randomIndex] = true;
+            obj.GetComponent<CustomerItemInfo>().itemIndex = randomIndex;
+            objrig.AddForce(0, 10, 0);
+        }
+    }
+
+    public void ItemDrop(Vector3 pos)
+    {
+        Debug.Log("Item Drop!");
+
+        int randomIndex = Random.Range(0, 3);
+        float percentCalc = Random.Range(0, 100);
+
+        Debug.Log("Item : " + items[randomIndex]);
+        Debug.Log("Drop Percentage : " + percentCalc);
+
+        if (percentCalc <= itemPercentage[randomIndex] && itemActive[randomIndex] == false && itemGen[randomIndex] == false)
+        {
+            GameObject obj = Instantiate(items[randomIndex], pos, transform.rotation);
+            Rigidbody objrig = obj.GetComponent<Rigidbody>();
+            obj.GetComponent<CustomerItemInfo>().host = gameObject;
+            itemGen[randomIndex] = true;
+            obj.GetComponent<CustomerItemInfo>().itemIndex = randomIndex;
+            objrig.AddForce(0, 10, 0);
+        }
     }
 }

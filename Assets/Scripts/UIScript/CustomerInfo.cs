@@ -12,7 +12,7 @@ public class CustomerInfo : MonoBehaviour
     public int getMoney;
     public int maxStamp;
     public int currentStamp;
-    public Image[] itemImages = new Image[3];
+    public Sprite[] itemImages = new Sprite[3];
     public CustomerWindow customerWindow;
     public Customer targetCustomer;
 
@@ -38,6 +38,12 @@ public class CustomerInfo : MonoBehaviour
             nameText.text = "???";
             mainImage.color = Color.black;
         }
+
+        for (int i = 0; i < 3; i++)
+        {
+            itemImages[i] = targetCustomer.items[i].GetComponent<SpriteRenderer>().sprite;
+            Debug.Log("Penguin");
+        }
     }
 
     // Update is called once per frame
@@ -62,7 +68,8 @@ public class CustomerInfo : MonoBehaviour
                 currentStamp.ToString(),
                 itemImages,
                 mainImage,
-                isUnlock);
+                isUnlock,
+                targetCustomer);
         }
         else
         {
@@ -75,7 +82,8 @@ public class CustomerInfo : MonoBehaviour
                 "",
                 null,
                 mainImage,
-                isUnlock);
+                isUnlock,
+                targetCustomer);
         }
     }
 
