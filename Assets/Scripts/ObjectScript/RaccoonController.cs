@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class RaccoonController : MonoBehaviour
 {
@@ -382,6 +383,9 @@ public class RaccoonController : MonoBehaviour
     public float vividSpeed;
     private bool exhausted = false;
 
+    public UnityEvent ExhaustStart;
+    public UnityEvent ExhaustStop;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -475,18 +479,20 @@ public class RaccoonController : MonoBehaviour
             if(!exhausted && stamina <= 10)
             {
                 GetComponent<NavMeshAgent>().speed = exhaustedSpeed;
-                GetComponent<RandomMove>().setTimer = 2.5f;
+                GetComponent<RandomMove>().setTimer = 4.0f;
                 exhausted = true;
                 if(GetComponent<ParticleSystem>())
                     GetComponent<ParticleSystem>().Play();
+                ExhaustStart.Invoke();
             }
             else if(exhausted && stamina > 10)
             {
                 GetComponent<NavMeshAgent>().speed = vividSpeed;
-                GetComponent<RandomMove>().setTimer = 0.5f;
+                GetComponent<RandomMove>().setTimer = 1.0f;
                 exhausted = false;
                 if (GetComponent<ParticleSystem>())
                     GetComponent<ParticleSystem>().Stop();
+                ExhaustStop.Invoke();
             }
         }
     }

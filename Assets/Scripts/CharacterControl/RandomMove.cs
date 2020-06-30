@@ -43,7 +43,7 @@ public class RandomMove : MonoBehaviour
 
     private void SetRnadomizeDestination()
     {
-        if (Vector3.Distance(transform.position, nav.destination) <= 1f)
+        if (Vector3.Distance(transform.position, nav.destination) <= 0.1f)
         {
             isArrive = true;
             timer -= Time.deltaTime;
@@ -65,7 +65,7 @@ public class RandomMove : MonoBehaviour
                     nav.SetDestination(targetPostion);
                 }
 
-                timer = setTimer + Random.Range(0.0f, 1.5f);
+                timer = setTimer + Random.Range(0.0f, 2.0f);
             }
         }
         else
