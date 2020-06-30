@@ -309,10 +309,12 @@ public class Customer : MonoBehaviour
     {
         Debug.Log("Item Drop!");
 
-        GameObject obj = Instantiate(items[0], transform.position, transform.rotation);
+        int randomIndex = Random.Range(0, 3);
+
+        GameObject obj = Instantiate(items[randomIndex], transform.position, transform.rotation);
         Rigidbody objrig = obj.GetComponent<Rigidbody>();
         obj.GetComponent<CustomerItemInfo>().host = gameObject;
-        obj.GetComponent<CustomerItemInfo>().itemIndex = 0;
+        obj.GetComponent<CustomerItemInfo>().itemIndex = randomIndex;
         objrig.AddForce(0, 10, 0);
     }
 }
