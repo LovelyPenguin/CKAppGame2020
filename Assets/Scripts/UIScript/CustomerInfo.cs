@@ -45,6 +45,7 @@ public class CustomerInfo : MonoBehaviour
     {
         isUnlock = targetCustomer.unlock;
         getMoney = targetCustomer.money;
+        currentStamp = targetCustomer.stamp;
     }
 
     public void ButtonClick()

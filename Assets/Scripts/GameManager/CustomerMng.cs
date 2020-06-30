@@ -8,6 +8,8 @@ class CustomerSaveData
 {
     public bool[] UNLOCK = new bool[2];
     public int[] GETMONEY = new int[2];
+    public int[] STAMP = new int[2];
+    //public GameObject[,] ITEMS = new GameObject[2, 3];
 }
 
 public class CustomerMng : MonoBehaviour
@@ -56,11 +58,13 @@ public class CustomerMng : MonoBehaviour
         CustomerSaveData save = new CustomerSaveData();
         bool[] unlock = new bool[customers.Length];
         int[] money = new int[customers.Length];
+        int[] stamp = new int[customers.Length];
 
         for (int i = 0; i < customers.Length; i++)
         {
             unlock[i] = customers[i].unlock;
             money[i] = customers[i].money;
+            stamp[i] = customers[i].stamp;
         }
         save.UNLOCK = unlock;
         save.GETMONEY = money;
@@ -75,14 +79,17 @@ public class CustomerMng : MonoBehaviour
 
         bool[] unlock = new bool[customers.Length];
         int[] money = new int[customers.Length];
+        int[] stamp = new int[customers.Length];
 
         Array.Copy(save.UNLOCK, unlock, customers.Length);
         Array.Copy(save.GETMONEY, money, customers.Length);
+        Array.Copy(save.STAMP, stamp, customers.Length);
 
         for (int i = 0; i < customers.Length; i++)
         {
             customers[i].unlock = unlock[i];
             customers[i].money = money[i];
+            customers[i].stamp = stamp[i];
         }
     }
 }

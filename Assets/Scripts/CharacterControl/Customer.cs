@@ -36,6 +36,7 @@ public class Customer : MonoBehaviour
     public int[] itemPercentage;
 
     public DustGenerator dustGen;
+    public int stamp;
     // Start is called before the first frame update
     void Awake()
     {
@@ -47,7 +48,18 @@ public class Customer : MonoBehaviour
         string objectTime = gameObject.name + "Time";
         if (isActive)
         {
-            durationSecond = PlayerPrefs.GetFloat(objectTime) - GameMng.Instance.GetComponent<TimeMng>().getCompareTime;
+            if (durationSecond > 0)
+            {
+                durationSecond = PlayerPrefs.GetFloat(objectTime) - GameMng.Instance.GetComponent<TimeMng>().getCompareTime;
+                gameObject.transform.position = entrancePos;
+                gameObject.GetComponent<NavMeshAgent>().enabled = true;
+            }
+            else
+            {
+                isActive = false;
+                durationSecond = duration;
+                gameObject.GetComponent<NavMeshAgent>().enabled = false;
+            }
         }
         else
         {
@@ -55,7 +67,6 @@ public class Customer : MonoBehaviour
         }
         GameMng.Instance.openEvent.AddListener(InitializeSpawnData);
         gameObject.transform.position = poolingPos;
-        gameObject.GetComponent<NavMeshAgent>().enabled = false;
         moneyIcon.SetActive(false);
         dustGen = GameObject.Find("DustGenerator").GetComponent<DustGenerator>();
     }
@@ -114,7 +125,6 @@ public class Customer : MonoBehaviour
                     gameObject.transform.position = entrancePos;
                     gameObject.GetComponent<NavMeshAgent>().enabled = true;
                     StartCoroutine(ExcuteCollectMoney());
-                    StartCoroutine(SpawnItem(Random.Range(3, durationSecond)));
                 }
                 else
                 {

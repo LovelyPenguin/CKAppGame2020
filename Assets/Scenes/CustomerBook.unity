@@ -5760,7 +5760,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0cee81810644bf409e18da76f0b80f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  juiceList: []
+  juiceList:
+  - Orange
+  - StrawBerry
+  - Grape
+  - Drink04
+  - Drink05
 --- !u!114 &409466725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12941,6 +12946,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &587074069
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 587074071}
+  - component: {fileID: 587074070}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &587074070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587074069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 759bbb547fb6c5649b482741cd619980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cus:
+  - {fileID: 1330171410}
+  - {fileID: 888117891}
+--- !u!4 &587074071
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587074069}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.176777, y: 1.2593775, z: 4.823223}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &617355780
 GameObject:
@@ -24376,7 +24427,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1639901526
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30144,6 +30195,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 824570563739343166, guid: 6f0844e613b08164686e7355aca166c1,
+        type: 3}
+      propertyPath: activeTime
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0844e613b08164686e7355aca166c1, type: 3}
 --- !u!4 &850793077246396890
@@ -31278,6 +31334,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CustomerGirl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167369457696511058, guid: 4a7f2e4da50295648bebba3b0ea297ce,
+        type: 3}
+      propertyPath: activeTime
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6167369457696511059, guid: 4a7f2e4da50295648bebba3b0ea297ce,
         type: 3}
