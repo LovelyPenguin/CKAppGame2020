@@ -156,6 +156,7 @@ MonoBehaviour:
   itemPercentage: 320000003200000032000000
   dustGen: {fileID: 0}
   stamp: 0
+  activePercent: 0
 --- !u!114 &6167369456139189314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,7 +332,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6167369456508453712}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.285, z: 0}
+  m_LocalPosition: {x: 0, y: -0.099, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 6167369457696511059}
@@ -376,7 +377,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 27c36e443bb01bf4c89ff777b3e1c52f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 783b462609aaf384a8e632ff31a71baa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
