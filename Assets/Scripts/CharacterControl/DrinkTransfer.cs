@@ -15,7 +15,8 @@ public class DrinkTransfer : MonoBehaviour
     private float setTimer;
     private string[] juiceList = new string[5];
     private float timer;
-    
+
+    public float[] itemDropPercent = new float[3];
 
     private void Awake()
     {

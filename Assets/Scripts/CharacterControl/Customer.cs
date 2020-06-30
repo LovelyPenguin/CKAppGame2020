@@ -53,6 +53,7 @@ public class Customer : MonoBehaviour
                 durationSecond = PlayerPrefs.GetFloat(objectTime) - GameMng.Instance.GetComponent<TimeMng>().getCompareTime;
                 gameObject.transform.position = entrancePos;
                 gameObject.GetComponent<NavMeshAgent>().enabled = true;
+                StartCoroutine(ExcuteCollectMoney());
             }
             else
             {
@@ -274,9 +275,9 @@ public class Customer : MonoBehaviour
     IEnumerator ExcuteCollectMoney()
     {
         float timer = 0;
-        if (GameMng.Instance.openTime > duration)
+        if (GameMng.Instance.openTime > durationSecond)
         {
-            timer = duration - setMoneyCollectTime;
+            timer = durationSecond - setMoneyCollectTime;
         }
         else
         {
@@ -302,5 +303,16 @@ public class Customer : MonoBehaviour
             obj.GetComponent<CustomerItemInfo>().host = gameObject;
             objrig.AddForce(0, 10, 0);
         }
+    }
+
+    public void ItemDrop()
+    {
+        Debug.Log("Item Drop!");
+
+        GameObject obj = Instantiate(items[0], transform.position, transform.rotation);
+        Rigidbody objrig = obj.GetComponent<Rigidbody>();
+        obj.GetComponent<CustomerItemInfo>().host = gameObject;
+        obj.GetComponent<CustomerItemInfo>().itemIndex = 0;
+        objrig.AddForce(0, 10, 0);
     }
 }

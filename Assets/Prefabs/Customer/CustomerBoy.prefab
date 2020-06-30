@@ -142,7 +142,7 @@ MonoBehaviour:
   unlock: 0
   money: 0
   duration: 30
-  activeTime: 0
+  activeTime: 10
   setMoneyCollectTime: 8
   poolingPos: {x: -50, y: 0, z: 50}
   entrancePos: {x: 5.63, y: 1.125, z: 1.24}
@@ -154,6 +154,7 @@ MonoBehaviour:
   itemActive: 000000
   itemPercentage: 
   dustGen: {fileID: 0}
+  stamp: 0
 --- !u!114 &824570563449376173
 MonoBehaviour:
   m_ObjectHideFlags: 0

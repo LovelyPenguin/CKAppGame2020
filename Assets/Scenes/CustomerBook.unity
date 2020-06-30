@@ -30131,21 +30131,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CustomerBoy
       objectReference: {fileID: 0}
-    - target: {fileID: 824570563449376172, guid: 6f0844e613b08164686e7355aca166c1,
-        type: 3}
-      propertyPath: juice.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 824570563449376172, guid: 6f0844e613b08164686e7355aca166c1,
-        type: 3}
-      propertyPath: juice.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 824570563449376172, guid: 6f0844e613b08164686e7355aca166c1,
-        type: 3}
-      propertyPath: juice.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 824570563739343163, guid: 6f0844e613b08164686e7355aca166c1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -30203,8 +30188,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 824570563739343166, guid: 6f0844e613b08164686e7355aca166c1,
         type: 3}
-      propertyPath: activeTime
-      value: 10
+      propertyPath: itemPercentage.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 824570563739343166, guid: 6f0844e613b08164686e7355aca166c1,
+        type: 3}
+      propertyPath: itemPercentage.Array.data[0]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 824570563739343166, guid: 6f0844e613b08164686e7355aca166c1,
+        type: 3}
+      propertyPath: itemPercentage.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 824570563739343166, guid: 6f0844e613b08164686e7355aca166c1,
+        type: 3}
+      propertyPath: itemPercentage.Array.data[2]
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0844e613b08164686e7355aca166c1, type: 3}
@@ -31343,8 +31343,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6167369457696511058, guid: 4a7f2e4da50295648bebba3b0ea297ce,
         type: 3}
-      propertyPath: activeTime
-      value: 10
+      propertyPath: itemPercentage.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167369457696511058, guid: 4a7f2e4da50295648bebba3b0ea297ce,
+        type: 3}
+      propertyPath: itemPercentage.Array.data[0]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167369457696511058, guid: 4a7f2e4da50295648bebba3b0ea297ce,
+        type: 3}
+      propertyPath: itemPercentage.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167369457696511058, guid: 4a7f2e4da50295648bebba3b0ea297ce,
+        type: 3}
+      propertyPath: itemPercentage.Array.data[2]
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6167369457696511059, guid: 4a7f2e4da50295648bebba3b0ea297ce,
         type: 3}

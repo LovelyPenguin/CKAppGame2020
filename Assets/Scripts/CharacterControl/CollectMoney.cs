@@ -21,6 +21,7 @@ public class CollectMoney : MonoBehaviour
         Debug.Log("CLICK");
         gameObject.GetComponentInParent<DrinkTransfer>().Detect(1000);
         gameObject.GetComponentInParent<Customer>().ReturnHome(true);
+        gameObject.GetComponentInParent<Customer>().ItemDrop();
         gameObject.SetActive(false);
     }
 }
