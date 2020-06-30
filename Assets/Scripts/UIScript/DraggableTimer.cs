@@ -19,7 +19,7 @@ public class DraggableTimer : MonoBehaviour, IDragHandler, IEndDragHandler, IBeg
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("Timer Drag Begin");
+        //Debug.Log("Timer Drag Begin");
         if (!GameMng.Instance.getOpenData)
         {
             previousMousePosition = Input.mousePosition;
@@ -32,12 +32,12 @@ public class DraggableTimer : MonoBehaviour, IDragHandler, IEndDragHandler, IBeg
         {
             if (previousMousePosition.x < Input.mousePosition.x)
             {
-                Debug.Log("Time Add");
+                //Debug.Log("Time Add");
                 GameMng.Instance.openTime += value;
             }
             else if (previousMousePosition.x > Input.mousePosition.x)
             {
-                Debug.Log("Time Minus");
+                //Debug.Log("Time Minus");
                 if (GameMng.Instance.openTime - value > 0)
                 {
                     GameMng.Instance.openTime -= value;
@@ -53,6 +53,6 @@ public class DraggableTimer : MonoBehaviour, IDragHandler, IEndDragHandler, IBeg
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("Timer Drag End");
+        //Debug.Log("Timer Drag End");
     }
 }

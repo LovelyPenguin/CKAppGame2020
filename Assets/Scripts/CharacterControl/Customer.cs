@@ -63,7 +63,9 @@ public class Customer : MonoBehaviour
         }
         else
         {
+            isActive = false;
             durationSecond = duration;
+            gameObject.GetComponent<NavMeshAgent>().enabled = false;
         }
         GameMng.Instance.openEvent.AddListener(InitializeSpawnData);
         gameObject.transform.position = poolingPos;

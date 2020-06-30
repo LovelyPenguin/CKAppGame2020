@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DrinkTransfer : MonoBehaviour
 {
@@ -12,8 +13,15 @@ public class DrinkTransfer : MonoBehaviour
     public float setDrinkWaitingTime;
 
     private float setTimer;
-    private string[] juiceList;
+    private string[] juiceList = new string[5];
     private float timer;
+    
+
+    private void Awake()
+    {
+        
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +30,10 @@ public class DrinkTransfer : MonoBehaviour
             particle.SetActive(false);
         }
         juiceIcon.SetActive(false);
-        juiceList = GameMng.Instance.GetComponent<JuiceList>().juiceList;
+        for (int i = 0; i < 5; i++)
+        {
+            juiceList[i] = GameMng.Instance.GetComponent<DrinkMng>().juiceList[i].juice.GetComponent<JuiceObject>().juiceName;
+        }
 
         setTimer = Random.Range(3, 5);
         timer = setTimer;
@@ -84,15 +95,15 @@ public class DrinkTransfer : MonoBehaviour
         }
     }
 
+
     private void PickJuiceSprite()
     {
-        JuiceData[] juice = GameMng.Instance.GetComponent<DrinkMng>().juiceList;
-
+        Sprite[] juice = GameMng.Instance.GetComponent<DrinkMng>().juiceSprites;
         for (int i = 0; i < juiceList.Length; i++)
         {
             if (selectJuice == juiceList[i])
             {
-                juiceIcon.GetComponent<SpriteRenderer>().sprite = juice[i].iconImage.sprite;
+                juiceIcon.GetComponent<SpriteRenderer>().sprite = juice[i];
             }
         }
     }

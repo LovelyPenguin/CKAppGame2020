@@ -39,6 +39,7 @@ public class DrinkMng : MonoBehaviour
     private GameObject blockImage;
 
     public JuiceData[] juiceList;
+    public Sprite[] juiceSprites;
 
     // Start is called before the first frame update
     void Awake()
@@ -53,7 +54,6 @@ public class DrinkMng : MonoBehaviour
         {
             juiceNames[i] = juiceList[i].name;
         }
-        GameMng.Instance.GetComponent<JuiceList>().juiceList = juiceNames;
     }
 
     // Update is called once per frame
