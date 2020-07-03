@@ -5,11 +5,9 @@ using UnityEngine.UI;
 
 public class FloorStatMng : MonoBehaviour
 {
-    public static int count = 1;
-    public Material Floor2Mtrl;
-    public Material[] Floor2ObjMtrls = new Material[count];
     public GameObject CollisionGround2;
     public GameObject[] FloorChangeButtons = new GameObject[2];
+    public GameObject MenuCollection;
 
     private bool floor2enable;
     public bool SecondFloorStat
@@ -29,7 +27,7 @@ public class FloorStatMng : MonoBehaviour
         FloorChangeButtons[1].GetComponent<Button>().enabled = false;
         FloorChangeButtons[1].GetComponent<Image>().color = new Color(0.2f,0.2f,0.2f);
         FloorChangeButtons[1].GetComponent<RectTransform>().anchoredPosition = new Vector2(-80, 0);
-        SetFloor1();
+        //SetFloor1();
     }
 
     // Update is called once per frame
@@ -40,10 +38,10 @@ public class FloorStatMng : MonoBehaviour
 
     public void SetFloor1()
     {
-        Floor2Mtrl.color = new Color(Floor2Mtrl.color.r, Floor2Mtrl.color.g, Floor2Mtrl.color.b, 0f);
-        foreach (Material m in Floor2ObjMtrls)
-            m.color = new Color(m.color.r, m.color.g, m.color.b, 0f);
         curFloor = Floor.Floor1;
+
+        Camera.main.GetComponent<FloorChange>().SetFloorFirst(22.85f);
+        MenuCollection.GetComponent<ChangeCameraPosition>().SetInitializeYpos(22.85f);
 
         FloorChangeButtons[0].GetComponent<Image>().color = Color.white;
         FloorChangeButtons[0].GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -121);
@@ -64,10 +62,10 @@ public class FloorStatMng : MonoBehaviour
     {
         if (floor2enable)
         {
-            Floor2Mtrl.color = new Color(Floor2Mtrl.color.r, Floor2Mtrl.color.g, Floor2Mtrl.color.b, 1f);
-            foreach (Material m in Floor2ObjMtrls)
-                m.color = new Color(m.color.r, m.color.g, m.color.b, 1f);
             curFloor = Floor.Floor2;
+
+            Camera.main.GetComponent<FloorChange>().SetFloorSecond(82f);
+            MenuCollection.GetComponent<ChangeCameraPosition>().SetInitializeYpos(82f);
 
             FloorChangeButtons[0].GetComponent<Image>().color = Color.gray;
             FloorChangeButtons[0].GetComponent<RectTransform>().anchoredPosition = new Vector2(-20, -121);

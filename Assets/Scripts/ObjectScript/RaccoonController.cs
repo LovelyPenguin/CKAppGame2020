@@ -581,13 +581,13 @@ public class RaccoonController : MonoBehaviour
         switch (SeatCount)
         {
             case 1:
-                efficiency = 1.0f;
+                efficiency = 60.0f;
                 break;
             case 2:
-                efficiency = 2.0f;
+                efficiency = 120.0f;
                 break;
             default:
-                efficiency = 3.0f;
+                efficiency = 180.0f;
                 break;
         }
         healTime += Time.deltaTime;
@@ -600,7 +600,7 @@ public class RaccoonController : MonoBehaviour
     private void Exhausting()
     {
         if (isWorking)
-            if ((exhaustTime += Time.deltaTime) > 5.0f && isWorking)
+            if ((exhaustTime += Time.deltaTime) > 300.0f && isWorking)
             {
                 this.stamina -= 1;
                 exhaustTime = 0.0f;

@@ -160,6 +160,7 @@ public class SetRCInfo : MonoBehaviour
         }
     }
     public GameObject RCInfoText;
+    public GameObject RCNameText;
     public void SetRaccoon(int index)
     {
         if (CurrentRaccoon == index)
@@ -193,6 +194,7 @@ public class SetRCInfo : MonoBehaviour
             RcIcon.GetComponent<Image>().sprite = RcIcons[CurrentRaccoon];
         }
         RCInfoText.GetComponent<RCInfoText>().UpdateText(CurrentRaccoon);
+        RCNameText.GetComponent<RCInfoText>().UpdateText(CurrentRaccoon);
         RaccoonImageUpdate();
     }
 

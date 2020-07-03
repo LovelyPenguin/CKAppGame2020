@@ -24,8 +24,16 @@ public class FailMsgBox : MonoBehaviour
 
     }
 
+    public void Create()
+    {
+        Create("돈이 부족해요!");
+    }
     public void Create(string context)
     {
+        if(FailPopup)
+        {
+            DestroyImmediate(FailPopup);
+        }
         FailPopup = new GameObject("Fail");
         FailPopup.transform.SetParent(GameObject.Find("Canvas").transform);
         FailPopup.layer = 5;

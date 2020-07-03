@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -8,6 +9,8 @@ public class RaccoonCutScene : MonoBehaviour, IPointerClickHandler
 {
     public int CutSceneCount = 10;
     public Sprite[] RCCutScenes = new Sprite[10];
+
+    public UnityEvent endCalls;
 
     int curCutSceneCount;
 
@@ -45,6 +48,7 @@ public class RaccoonCutScene : MonoBehaviour, IPointerClickHandler
             GetComponent<Image>().sprite = RCCutScenes[curCutSceneCount];
         else
         {
+            endCalls.Invoke();
             this.gameObject.SetActive(false);
             GetComponentInParent<CutSceneControl>().CutSceneEnd();
         }

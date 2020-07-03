@@ -163,16 +163,20 @@ public class RaccoonMng : MonoBehaviour
     public void UpgradeRC(int index, Sprite RCSprite)
     {
         int cost = RetCost(index, RaccoonRank[index]);
-        if (RaccoonRank[index] < RaccoonRankCount && RaccoonUnlock[index] && GMng.money >= cost && !GameObject.Find("GameManager").GetComponent<GameMng>().getOpenData)
+        if (GMng.money < cost)
+        {
+            GMng.gameObject.GetComponent<FailMsgBox>().Create();
+        }
+        else if (GameObject.Find("GameManager").GetComponent<GameMng>().getOpenData)
+        {
+            GMng.gameObject.GetComponent<FailMsgBox>().Create("장사 중에는 라쿤을 업그레이드 할수 없어요!");
+        }
+        else if (RaccoonRank[index] < RaccoonRankCount )
         {
             RaccoonRank[index]++;
             RC[index].GetComponent<RaccoonController>().CallUpgradeTrigger(RaccoonRank[index]);
             GameObject.Find("CutSceneCanvas").GetComponent<CutSceneControl>().CutSceneStart(7).GetComponent<UpgradePopUp>().RCUpgradePopUp(RCSprite, RaccoonRank[index]);
             GMng.money -= cost;
-        }
-        else if(GMng.money < cost)
-        {
-            GMng.gameObject.GetComponent<FailMsgBox>().Create("돈이 부족합니다.");
         }
     }
 
@@ -181,10 +185,21 @@ public class RaccoonMng : MonoBehaviour
         if (!GMng.gameObject.GetComponent<FloorStatMng>().SecondFloorStat && curRCCount == MaxRCCountperMap)
         {
             if (index != 4)
+            {
+                gameObject.GetComponent<FailMsgBox>().Create("1층이 가득찼어요!\n새로운 라쿤을 데려오면 좋은 일이 생길지도?");
                 return;
+            }
         }
         int cost = RetCost(index, 0);
-        if (!RaccoonUnlock[index] && GMng.money >= cost && !GameObject.Find("GameManager").GetComponent<GameMng>().getOpenData)
+        if(GameObject.Find("GameManager").GetComponent<GameMng>().getOpenData)
+        {
+            gameObject.GetComponent<FailMsgBox>().Create("장사 중에는 새로운 라쿤을 데려올수 없어요!");
+        }
+        else if(GMng.money < cost)
+        {
+            gameObject.GetComponent<FailMsgBox>().Create();
+        }
+        else if (!RaccoonUnlock[index])
         {
             if (index == 4)
             {

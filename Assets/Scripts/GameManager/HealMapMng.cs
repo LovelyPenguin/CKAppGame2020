@@ -212,9 +212,13 @@ public class HealMapMng : MonoBehaviour
             GMng.money -= cost;
             Maps[selectedMap].GetComponent<HealMapData>().Enable = true;
             enabledMapCount++;
-            HealUnlockUIActive = false;
-            HealMapUnlockUI.SetActive(false);
         }
+        else
+        {
+            GMNG.GetComponent<FailMsgBox>().Create();
+        }
+        HealUnlockUIActive = false;
+        HealMapUnlockUI.SetActive(false);
     }
 
     public void UnlockCancel()
