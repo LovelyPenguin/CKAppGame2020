@@ -1125,6 +1125,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  NonDoubleClickEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &44696063
 GameObject:
   m_ObjectHideFlags: 0
@@ -5925,6 +5928,20 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 404926469}
         m_MethodName: Set
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  NonDoubleClickEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 404926465}
+        m_MethodName: UnlockThis
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -26595,6 +26612,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  NonDoubleClickEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 954902869}
+        m_MethodName: UnlockThis
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -30242,6 +30273,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  NonDoubleClickEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1284266356}
+        m_MethodName: UnlockThis
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1296082752
 GameObject:
   m_ObjectHideFlags: 0
@@ -33288,6 +33333,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  NonDoubleClickEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1513311127
 GameObject:
   m_ObjectHideFlags: 0
@@ -34461,6 +34509,20 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1576332711}
         m_MethodName: Set
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  NonDoubleClickEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1576332707}
+        m_MethodName: UnlockThis
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

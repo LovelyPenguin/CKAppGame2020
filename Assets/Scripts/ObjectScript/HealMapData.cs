@@ -61,7 +61,13 @@ public class HealMapData : MonoBehaviour
         return SeatCount;
     }
 
-    private void OnMouseUp()
+    //private void OnMouseUp()
+    //{
+    //    if (!Enable)
+    //        HMng.GetComponent<HealMapMng>().FindMapIndex(this.name);
+    //}
+
+    public void UnlockThis()
     {
         if (!Enable)
             HMng.GetComponent<HealMapMng>().FindMapIndex(this.name);
