@@ -44,6 +44,10 @@ public class CustomerInfo : MonoBehaviour
             itemImages[i] = targetCustomer.items[i].GetComponent<SpriteRenderer>().sprite;
             Debug.Log("Penguin");
         }
+        for (int i = 0; i < 3; i++)
+        {
+            itemImages[i] = targetCustomer.items[i].GetComponent<SpriteRenderer>().sprite;
+        }
     }
 
     // Update is called once per frame
