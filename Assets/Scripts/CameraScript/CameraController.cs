@@ -63,7 +63,17 @@ public class CameraController : MonoBehaviour
 
     public void RollbackPos()
     {
-        transform.position = initPos;
+        //transform.position = initPos;
+        StartCoroutine(ChangePos(initPos));
+    }
+    IEnumerator ChangePos(Vector3 Pos)
+    {
+        while (Vector3.Distance(transform.position, Pos) > 0.1f)
+        {
+            transform.position = Vector3.Lerp(transform.position, Pos, Time.deltaTime * 10);
+            yield return null;
+        }
+        transform.position = Pos;
     }
 
     public void MoveScreenEdge()

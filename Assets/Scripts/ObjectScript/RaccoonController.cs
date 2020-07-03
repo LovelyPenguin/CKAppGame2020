@@ -71,6 +71,9 @@ public class RaccoonController : MonoBehaviour
         if (Physics.Raycast(transform.position + transform.forward - new UnityEngine.Vector3(0, mDeltaY, 0) - transform.up * 0.7f, Sprite.transform.forward, out hit, Mathf.Infinity))
         //if (Physics.Raycast(transform.position + transform.forward - new UnityEngine.Vector3(0, mDeltaY, 0), transform.forward, out hit, Mathf.Infinity))
         {
+            if (hit.transform.gameObject.GetComponent<SetCameraPos>())
+                hit.transform.gameObject.GetComponent<SetCameraPos>().Set();
+
             // 1층에 놓았을떄
             if (hit.transform.gameObject.tag == "Ground")
             {
