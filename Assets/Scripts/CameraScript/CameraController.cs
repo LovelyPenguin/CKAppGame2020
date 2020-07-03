@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CameraController : MonoBehaviour
 {
@@ -29,6 +31,7 @@ public class CameraController : MonoBehaviour
         isMoved = false;
         initPos = new Vector3(0, 0, 0);
         DefaultCameraSize = GetComponent<Camera>().orthographicSize;
+        exist[0] = exist[1] = false;
     }
 
     // Update is called once per frame
@@ -98,10 +101,54 @@ public class CameraController : MonoBehaviour
         isMoved = true;
     }
 
+
+    private Vector2[] InitPos = new Vector2[2];
+    private float InitDelta;
+    private Vector2[] CurPos = new Vector2[2];
+    private float CurDelta;
+    private bool[] exist = new bool[2];
+
     private void ZoomInOut()
     {
-        float Delta = Input.mouseScrollDelta.y * 0.1f;
+        float Delta;
+        // for mouse wheel input
+        {
+            Delta = Input.mouseScrollDelta.y * 0.1f;
 
+        }
+        // for touch input
+        {
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                Touch t = Input.GetTouch(i);
+                if (t.phase == TouchPhase.Began)
+                {
+                    if (i < 2)
+                    {
+                        exist[i] = true;
+                        InitPos[i] = t.position;
+                    }
+                }
+                else if (t.phase == TouchPhase.Ended)
+                {
+                    if (i < 2)
+                        CurPos[i] = t.position;
+                }
+                else if (t.phase == TouchPhase.Moved)
+                {
+                    if (i < 2)
+                        exist[i] = false;
+                }
+            }
+
+            if (exist[0] && exist[1])
+            {
+                InitDelta = (InitPos[1] - InitPos[0]).magnitude;
+                CurDelta = (CurPos[1] - CurPos[0]).magnitude;
+
+                Delta = Mathf.Abs(CurDelta - InitDelta);
+            }
+        }
         GetComponent<Camera>().orthographicSize += Delta;
 
         if (GetComponent<Camera>().orthographicSize > MaxCameraSize)

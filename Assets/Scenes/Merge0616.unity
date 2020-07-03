@@ -990,6 +990,8 @@ GameObject:
   - component: {fileID: 41138242}
   - component: {fileID: 41138241}
   - component: {fileID: 41138240}
+  - component: {fileID: 41138245}
+  - component: {fileID: 41138244}
   m_Layer: 0
   m_Name: CollisionGround
   m_TagString: Ground
@@ -1084,6 +1086,45 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41138238}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &41138244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41138238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f322287f96b85409d09d1be449cb10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newPos: {x: -20.23, y: 0, z: -20.23}
+--- !u!114 &41138245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41138238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcff48cfd0d817344922b66a7e8e303f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DoubleClickEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 41138244}
+        m_MethodName: Set
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &44696063
 GameObject:
   m_ObjectHideFlags: 0
@@ -5769,6 +5810,8 @@ GameObject:
   - component: {fileID: 404926466}
   - component: {fileID: 404926468}
   - component: {fileID: 404926467}
+  - component: {fileID: 404926470}
+  - component: {fileID: 404926469}
   m_Layer: 0
   m_Name: HealMap_4
   m_TagString: Heal
@@ -5852,6 +5895,45 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 0.1}
   m_Center: {x: 0, y: 1.5, z: 1.5}
+--- !u!114 &404926469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404926463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f322287f96b85409d09d1be449cb10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newPos: {x: -29, y: -4, z: -23.08}
+--- !u!114 &404926470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404926463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcff48cfd0d817344922b66a7e8e303f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DoubleClickEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 404926469}
+        m_MethodName: Set
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &408096505
 GameObject:
   m_ObjectHideFlags: 0
@@ -6941,7 +7023,7 @@ MonoBehaviour:
   navMesh: {fileID: 469364615}
   FirstFloorInitPos: {x: 5, y: 0, z: 5}
   SecondFloorInitPos: {x: 15, y: 51, z: 15}
-  exhaustedSpeed: 0.75
+  exhaustedSpeed: 0.375
   vividSpeed: 1.5
   ExhaustStart:
     m_PersistentCalls:
@@ -14186,8 +14268,8 @@ MonoBehaviour:
   navMesh: {fileID: 680144876}
   FirstFloorInitPos: {x: 5, y: 0, z: 5}
   SecondFloorInitPos: {x: 15, y: 51, z: 15}
-  exhaustedSpeed: 0.25
-  vividSpeed: 1
+  exhaustedSpeed: 0.2
+  vividSpeed: 0.75
   ExhaustStart:
     m_PersistentCalls:
       m_Calls: []
@@ -19560,7 +19642,7 @@ MonoBehaviour:
   navMesh: {fileID: 730393595}
   FirstFloorInitPos: {x: 5, y: 0, z: 5}
   SecondFloorInitPos: {x: 15, y: 51, z: 15}
-  exhaustedSpeed: 0.5
+  exhaustedSpeed: 0.375
   vividSpeed: 1.5
   ExhaustStart:
     m_PersistentCalls:
@@ -26391,6 +26473,8 @@ GameObject:
   - component: {fileID: 954902868}
   - component: {fileID: 954902871}
   - component: {fileID: 954902870}
+  - component: {fileID: 954902873}
+  - component: {fileID: 954902872}
   m_Layer: 0
   m_Name: HealMap_1
   m_TagString: Heal
@@ -26472,6 +26556,45 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 0.1}
   m_Center: {x: 0, y: 1.5, z: 1.5}
+--- !u!114 &954902872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954902866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f322287f96b85409d09d1be449cb10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newPos: {x: -10.02, y: 0, z: -25.7}
+--- !u!114 &954902873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954902866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcff48cfd0d817344922b66a7e8e303f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DoubleClickEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 954902872}
+        m_MethodName: Set
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -29525,8 +29648,8 @@ MonoBehaviour:
   navMesh: {fileID: 1245717920}
   FirstFloorInitPos: {x: 5, y: 0, z: 5}
   SecondFloorInitPos: {x: 15, y: 51, z: 15}
-  exhaustedSpeed: 1
-  vividSpeed: 1
+  exhaustedSpeed: 0.375
+  vividSpeed: 1.5
   ExhaustStart:
     m_PersistentCalls:
       m_Calls: []
@@ -29994,6 +30117,8 @@ GameObject:
   - component: {fileID: 1284266357}
   - component: {fileID: 1284266359}
   - component: {fileID: 1284266358}
+  - component: {fileID: 1284266361}
+  - component: {fileID: 1284266360}
   m_Layer: 0
   m_Name: HealMap_2
   m_TagString: Heal
@@ -30078,6 +30203,45 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 0.1}
   m_Center: {x: 0, y: 1.5, z: 1.5}
+--- !u!114 &1284266360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284266354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f322287f96b85409d09d1be449cb10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newPos: {x: -23.08, y: -4, z: -29}
+--- !u!114 &1284266361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284266354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcff48cfd0d817344922b66a7e8e303f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DoubleClickEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1284266360}
+        m_MethodName: Set
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1296082752
 GameObject:
   m_ObjectHideFlags: 0
@@ -30277,8 +30441,8 @@ MonoBehaviour:
   navMesh: {fileID: 1296754814}
   FirstFloorInitPos: {x: 5, y: 0, z: 5}
   SecondFloorInitPos: {x: 15, y: 51, z: 15}
-  exhaustedSpeed: 1
-  vividSpeed: 1
+  exhaustedSpeed: 0.375
+  vividSpeed: 1.5
   ExhaustStart:
     m_PersistentCalls:
       m_Calls: []
@@ -32989,6 +33153,8 @@ GameObject:
   - component: {fileID: 1503566432}
   - component: {fileID: 1503566431}
   - component: {fileID: 1503566430}
+  - component: {fileID: 1503566435}
+  - component: {fileID: 1503566434}
   m_Layer: 0
   m_Name: CollisionGround2
   m_TagString: 2ndGround
@@ -33083,6 +33249,45 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503566428}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1503566434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503566428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f322287f96b85409d09d1be449cb10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newPos: {x: -20.23, y: 0, z: -20.23}
+--- !u!114 &1503566435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503566428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcff48cfd0d817344922b66a7e8e303f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DoubleClickEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1503566434}
+        m_MethodName: Set
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1513311127
 GameObject:
   m_ObjectHideFlags: 0
@@ -34141,6 +34346,8 @@ GameObject:
   - component: {fileID: 1576332708}
   - component: {fileID: 1576332710}
   - component: {fileID: 1576332709}
+  - component: {fileID: 1576332712}
+  - component: {fileID: 1576332711}
   m_Layer: 0
   m_Name: HealMap_3
   m_TagString: Heal
@@ -34224,6 +34431,45 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 0.1}
   m_Center: {x: 0, y: 1.5, z: 1.5}
+--- !u!114 &1576332711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576332705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f322287f96b85409d09d1be449cb10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newPos: {x: -25.99, y: 0, z: -9.73}
+--- !u!114 &1576332712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576332705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcff48cfd0d817344922b66a7e8e303f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DoubleClickEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1576332711}
+        m_MethodName: Set
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1597171216
 GameObject:
   m_ObjectHideFlags: 0
@@ -38992,8 +39238,8 @@ MonoBehaviour:
   navMesh: {fileID: 2025593419}
   FirstFloorInitPos: {x: 5, y: 0, z: 5}
   SecondFloorInitPos: {x: 15, y: 51, z: 15}
-  exhaustedSpeed: 1
-  vividSpeed: 1
+  exhaustedSpeed: 0.375
+  vividSpeed: 1.5
   ExhaustStart:
     m_PersistentCalls:
       m_Calls: []
