@@ -71,9 +71,6 @@ public class RaccoonController : MonoBehaviour
         if (Physics.Raycast(transform.position + transform.forward - new UnityEngine.Vector3(0, mDeltaY, 0) - transform.up * 0.7f, Sprite.transform.forward, out hit, Mathf.Infinity))
         //if (Physics.Raycast(transform.position + transform.forward - new UnityEngine.Vector3(0, mDeltaY, 0), transform.forward, out hit, Mathf.Infinity))
         {
-            if (hit.transform.gameObject.GetComponent<SetCameraPos>())
-                hit.transform.gameObject.GetComponent<SetCameraPos>().Set();
-
             // 1층에 놓았을떄
             if (hit.transform.gameObject.tag == "Ground")
             {
@@ -109,6 +106,9 @@ public class RaccoonController : MonoBehaviour
 
                         animator.SetTrigger("DropTrigger");
                         StartCoroutine(Drop(State.inMap1));
+
+                        if (hit.transform.gameObject.GetComponent<SetCameraPos>())
+                            hit.transform.gameObject.GetComponent<SetCameraPos>().Set();
 
                         Debug.Log("GroundHit");
                     }
@@ -163,6 +163,9 @@ public class RaccoonController : MonoBehaviour
                         animator.SetTrigger("DropTrigger");
                         StartCoroutine(Drop(State.inMap2));
 
+                        if (hit.transform.gameObject.GetComponent<SetCameraPos>())
+                            hit.transform.gameObject.GetComponent<SetCameraPos>().Set();
+
                         Debug.Log("2ndGroundHit");
                     }
                     // 2층이 가득차 이동이 불가능 한 경우
@@ -215,6 +218,9 @@ public class RaccoonController : MonoBehaviour
                         transform.SetParent(GameObject.Find("HealMap").transform);
 
                         StartCoroutine(Drop(State.Healing));
+
+                        if (hit.transform.gameObject.GetComponent<SetCameraPos>())
+                            hit.transform.gameObject.GetComponent<SetCameraPos>().Set();
                     }
                     else
                     {

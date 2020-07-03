@@ -1,10 +1,10 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq.Expressions;
 using UnityEngine;
 
 public class SetCameraPos : MonoBehaviour
 {
+    static bool coroutineEnable = true;
+
     public Vector3 newPos;
 
     Vector3 MainPos1 = new Vector3(-20.23f, 22.85f, -20.23f);
@@ -33,17 +33,22 @@ public class SetCameraPos : MonoBehaviour
         else
             InitYPos = 82f;
 
-        StartCoroutine(ChangePos(new Vector3(newPos.x, newPos.y + InitYPos, newPos.z)));
+        if (coroutineEnable)
+        {
+            coroutineEnable = false;
+            StartCoroutine(ChangePos(new Vector3(newPos.x, newPos.y + InitYPos, newPos.z)));
+        }
     }
 
     IEnumerator ChangePos(Vector3 Pos)
     {
-        while (Vector3.Distance(Camera.main.transform.position, Pos) > 0.1f)
+        while (Vector3.Distance(Camera.main.transform.position, Pos) > 0.01f)
         {
             Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, Pos, Time.deltaTime * 10);
             CCP.SetInitializeYpos(Camera.main.transform.position.y);
             yield return null;
         }
         Camera.main.transform.position = Pos;
+        coroutineEnable = true;
     }
 }
