@@ -8,7 +8,7 @@ using UnityEngine.UI;
 [Serializable]
 class DrinkSaveData
 {
-    public bool[] UNLOCK = new bool[3];
+    public bool[] UNLOCK = new bool[6];
 }
 
 public class DrinkMng : MonoBehaviour
@@ -138,7 +138,7 @@ public class DrinkMng : MonoBehaviour
 
                 timingBar.SetActive(true);
                 currentJuice.GetComponent<JuiceObject>().SetDecoSprite(false);
-                currentJuice.GetComponent<JuiceObject>().FillMainSprite(1);
+                currentJuice.GetComponent<JuiceObject>().FillMainSprite();
 
                 if (slideGameIsStart)
                 {
@@ -157,7 +157,7 @@ public class DrinkMng : MonoBehaviour
             }
             else
             {
-                currentJuice.GetComponent<JuiceObject>().FillMainSprite();
+                currentJuice.GetComponent<JuiceObject>().FillMainSprite(1);
             }
         }
     }
