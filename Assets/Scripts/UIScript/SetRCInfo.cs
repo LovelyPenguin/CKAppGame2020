@@ -9,6 +9,7 @@ public class SetRCInfo : MonoBehaviour
     static int RaccoonCount = 7;
     static int RaccoonRankCount = 3;
     public GameObject RCImage;
+    public GameObject RCRockImage;
     public Sprite[] Rc = new Sprite[RaccoonCount * RaccoonRankCount];
     public Sprite[] RcIcons = new Sprite[RaccoonCount];
     public GameObject RcIcon;
@@ -49,6 +50,7 @@ public class SetRCInfo : MonoBehaviour
         return (a > b) ? a : b;
     }
 
+
     public void RaccoonImageUpdate()
     {
         int RCRank = RCMng.GetRCRank(CurrentRaccoon);
@@ -58,16 +60,14 @@ public class SetRCInfo : MonoBehaviour
             if (RCRank < RaccoonRankCount)
             {
                 RCImage.GetComponent<Image>().color = Color.white;
-            }
-            else
-            {
-                RCImage.GetComponent<Image>().color = Color.white;
+                RCRockImage.SetActive(false);
             }
         }
         else
         {
             RCImage.GetComponent<Image>().sprite = Rc[CurrentRaccoon * RaccoonRankCount + RCRank];
-            RCImage.GetComponent<Image>().color = Color.black;
+            RCImage.GetComponent<Image>().color = Color.gray;
+            RCRockImage.SetActive(true);
         }
         SetStar(RCMng.GetComponent<RaccoonMng>().GetRCRank(CurrentRaccoon));
     }
@@ -96,6 +96,7 @@ public class SetRCInfo : MonoBehaviour
         Tail = new GameObject("Tail");
         Tail.transform.SetParent(parent);
         Tail.layer = 5;
+        Tail.transform.localScale = Vector3.one;
         Image tailImg = Tail.AddComponent<Image>();
         tailImg.sprite = BalloonTail;
 
@@ -122,7 +123,7 @@ public class SetRCInfo : MonoBehaviour
         newTextObj.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
         Text newText = newTextObj.AddComponent<Text>();
         newText.font = font;
-        newText.fontSize = 60;
+        newText.fontSize = 50;
         newText.text = text;
         newText.color = Color.black;
         newText.alignment = TextAnchor.MiddleCenter;
@@ -154,8 +155,8 @@ public class SetRCInfo : MonoBehaviour
             Debug.Log("tail's vector = " + V);
 
             float deg;
-            Tail.transform.localPosition = Balloon.transform.localPosition + (V * 0.5f);
-            Tail.GetComponent<RectTransform>().sizeDelta = new Vector2(10, V.magnitude/2);
+            Tail.transform.localPosition = Balloon.transform.localPosition + (V * 0.3f);
+            Tail.GetComponent<RectTransform>().sizeDelta = new Vector2(100, V.magnitude/1.5f);
             Tail.transform.eulerAngles = new Vector3(0,0, (deg = Mathf.Atan(V.y / V.x) * 180 / Mathf.PI + 90.0f) > 90 ? deg - 180.0f : deg);
         }
     }
@@ -182,7 +183,7 @@ public class SetRCInfo : MonoBehaviour
                 }
 
                 float XPos = (GameObject.Find("RCList").GetComponent<RectTransform>().localPosition.x + (index - (int)RCMng.GetMaxRCcount() / 2) * 220)/2;
-                InteractButton = CreateButton(XPos, 300, 600, 200, newTxt, mfont, ParentObj.transform);
+                InteractButton = CreateButton(XPos, 230, 500, 125, newTxt, mfont, ParentObj.transform);
             }
             else if (InteractButton)
                 DestroyUpgradeBtn();
