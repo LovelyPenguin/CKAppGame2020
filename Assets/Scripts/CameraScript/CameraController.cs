@@ -136,29 +136,42 @@ public class CameraController : MonoBehaviour
                     if (i < 2)
                     {
                         exist[i] = true;
-                        InitPos[i] = t.position;
+                        InitPos[i] = new Vector2(t.position.x / Screen.width, t.position.y / Screen.height);
+                        CurPos[i] = new Vector2(t.position.x / Screen.width, t.position.y / Screen.height);
+                        //Debug.Log(i + "번째 Begin" + t.position);
                     }
                 }
                 else if (t.phase == TouchPhase.Ended)
                 {
                     if (i < 2)
-                        CurPos[i] = t.position;
+                    {
+                        exist[i] = false;
+                        //Debug.Log(i + "번째 Ended" + t.position)
+                    }
                 }
                 else if (t.phase == TouchPhase.Moved)
                 {
                     if (i < 2)
-                        exist[i] = false;
+                    {
+                        CurPos[i] = new Vector2(t.position.x / Screen.width, t.position.y / Screen.height);
+                        //Debug.Log(i + "번째 Moved" + t.position);
+                    }
                 }
             }
 
             if (exist[0] && exist[1])
             {
-                InitDelta = (InitPos[1] - InitPos[0]).magnitude;
-                CurDelta = (CurPos[1] - CurPos[0]).magnitude;
+                InitDelta = Vector2.Distance(InitPos[1], InitPos[0]);
+                CurDelta = Vector2.Distance(CurPos[1], CurPos[0]);
 
-                Delta = Mathf.Abs(CurDelta - InitDelta);
+                for (int i = 0; i < 2; i++)
+                    InitPos[i] = CurPos[i];
+
+                Delta = (InitDelta - CurDelta) * 20;
+                //Debug.Log("Delta = " + Delta);
             }
         }
+        //Debug.Log("Delta = " + Delta);
         GetComponent<Camera>().orthographicSize += Delta;
 
         if (GetComponent<Camera>().orthographicSize > MaxCameraSize)
