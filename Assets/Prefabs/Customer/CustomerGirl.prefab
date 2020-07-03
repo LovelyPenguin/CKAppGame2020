@@ -139,7 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMoneyCollect: 0
   isActive: 0
-  unlock: 0
+  unlock: 1
   money: 0
   duration: 30
   activeTime: 10
@@ -152,9 +152,11 @@ MonoBehaviour:
   - {fileID: 5437751308636621936, guid: 18de493c3688e4040a3527eed7c2b01f, type: 3}
   - {fileID: 3063276434748495235, guid: a613b322bd781ad428130a41d23158d2, type: 3}
   itemActive: 000000
-  itemPercentage: 
+  itemGen: 
+  itemPercentage: 320000003200000032000000
   dustGen: {fileID: 0}
   stamp: 0
+  activePercent: 0
 --- !u!114 &6167369456139189314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +194,10 @@ MonoBehaviour:
   selectJuice: 
   juiceIcon: {fileID: 6167369456146640848}
   setDrinkWaitingTime: 10
+  itemDropPercent:
+  - 0
+  - 0
+  - 0
 --- !u!114 &6167369456139189312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 6167369456508453714}
-  isLeftInitialize: 0
+  isLeftInitialize: 1
   direction: 
 --- !u!114 &1471328920
 MonoBehaviour:
@@ -326,7 +332,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6167369456508453712}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.285, z: 0}
+  m_LocalPosition: {x: 0, y: -0.099, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 6167369457696511059}
@@ -371,7 +377,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d02181e365d15464794b9ae3d6f923fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 783b462609aaf384a8e632ff31a71baa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

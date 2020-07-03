@@ -19,6 +19,8 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
     [SerializeField]
     private int juiceValue = 100;
 
+    private int index = 0;
+
     public bool isComplete = false;
     public string juiceName;
     public float percentValue;
@@ -62,18 +64,16 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
 
     public void FillMainSprite()
     {
-        if (mainSprite.GetComponent<Image>().fillAmount >= 1)
-        {
-            mainSprite.GetComponent<Image>().fillAmount = 0;
-            return;
-        }
-
-        mainSprite.GetComponent<Image>().fillAmount += 0.35f;
+        mainSprite.GetComponent<Image>().sprite = mainSprite.GetComponent<SpriteChange>().spr[4];
     }
 
     public void FillMainSprite(int value)
     {
-        mainSprite.GetComponent<Image>().fillAmount = value;
+        if (index >= 5)
+        {
+            index = 0;
+        }
+        mainSprite.GetComponent<Image>().sprite = mainSprite.GetComponent<SpriteChange>().spr[index++];
     }
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
@@ -119,7 +119,7 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
                     hit.transform.GetComponent<DrinkTransfer>().Detect(juiceValue * Mathf.RoundToInt(MoneyCalc(percentValue)));
                     if (percentValue >= 50)
                     {
-                        hit.transform.GetComponent<Customer>().stamp += 1;
+                        hit.transform.GetComponent<Customer>().AddStamp();
                     }
                     ResetAllValue();
                     GameMng.Instance.GetComponent<DrinkMng>().UpdateContent();

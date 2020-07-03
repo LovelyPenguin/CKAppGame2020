@@ -124,6 +124,7 @@ public class GameMng : MonoBehaviour
         PlayerPrefs.SetInt("OPENSTATUS", 0);
         closeEvent.Invoke();
         customerCount = 0;
+        //openTime = 600;
         openTime = 0;
     }
 

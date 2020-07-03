@@ -21,4 +21,9 @@ public class TimeGauge : MonoBehaviour
     {
         img.fillAmount = 1 / (GameMng.Instance.setOpenTime / GameMng.Instance.openTime);
     }
+
+    public void Active(bool isAct)
+    {
+        gameObject.SetActive(isAct);
+    }
 }

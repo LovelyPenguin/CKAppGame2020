@@ -114,12 +114,14 @@ public class SetOpenTimer : MonoBehaviour
     {
         if (GameMng.Instance.getOpenData == false)
         {
+            //if (GameMng.Instance.openTime - number >= 600)
             if (GameMng.Instance.openTime - number >= 0)
             {
                 GameMng.Instance.openTime -= number;
             }
             else
             {
+                //GameMng.Instance.openTime = 600;
                 GameMng.Instance.openTime = 0;
             }
 
@@ -138,6 +140,7 @@ public class SetOpenTimer : MonoBehaviour
     {
         timer = GameMng.Instance.openTime;
         if (timer > 0)
+        //if (timer >= 600)
         {
             GameMng.Instance.OpenCafe(timer);
 

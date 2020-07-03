@@ -8,7 +8,7 @@ using UnityEngine.UI;
 [Serializable]
 class DrinkSaveData
 {
-    public bool[] UNLOCK = new bool[3];
+    public bool[] UNLOCK = new bool[6];
 }
 
 public class DrinkMng : MonoBehaviour
@@ -64,7 +64,8 @@ public class DrinkMng : MonoBehaviour
 
     int tabCountDataTemp;
     GameObject juiceDataTemp;
-    GameObject mainObjTemp;
+    [HideInInspector]
+    public GameObject mainObjTemp;
     public void SetMiniGameData(int tabCountData, GameObject juiceData, ref bool unlock, GameObject mainObj)
     {
         this.tabCountData = tabCountData;
@@ -102,6 +103,7 @@ public class DrinkMng : MonoBehaviour
     {
         if (GameMng.Instance.money - mainObjTemp.GetComponent<JuiceData>().unlockCost >= 0)
         {
+            GameMng.Instance.money -= mainObjTemp.GetComponent<JuiceData>().unlockCost;
             mainObjTemp.GetComponent<JuiceData>().isUnlock = true;
             SetMiniGameData(tabCountDataTemp, juiceDataTemp, ref mainObjTemp.GetComponent<JuiceData>().isUnlock, mainObjTemp);
         }
@@ -136,7 +138,7 @@ public class DrinkMng : MonoBehaviour
 
                 timingBar.SetActive(true);
                 currentJuice.GetComponent<JuiceObject>().SetDecoSprite(false);
-                currentJuice.GetComponent<JuiceObject>().FillMainSprite(1);
+                currentJuice.GetComponent<JuiceObject>().FillMainSprite();
 
                 if (slideGameIsStart)
                 {
@@ -155,7 +157,7 @@ public class DrinkMng : MonoBehaviour
             }
             else
             {
-                currentJuice.GetComponent<JuiceObject>().FillMainSprite();
+                currentJuice.GetComponent<JuiceObject>().FillMainSprite(1);
             }
         }
     }
