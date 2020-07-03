@@ -17316,9 +17316,9 @@ MonoBehaviour:
   info: {fileID: 1382106680}
   unlockCondition: {fileID: 1862941388}
   itemImages:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1513311129}
+  - {fileID: 740761837}
+  - {fileID: 697339141}
   nullImage: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!224 &972179917
 RectTransform:
