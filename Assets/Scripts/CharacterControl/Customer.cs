@@ -49,6 +49,7 @@ public class Customer : MonoBehaviour
 
     private void Start()
     {
+        activeTime = Random.Range(5, 35);
         string objectTime = gameObject.name + "Time";
         if (isActive)
         {
