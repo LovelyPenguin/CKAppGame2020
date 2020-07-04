@@ -1392,7 +1392,7 @@ GameObject:
   - component: {fileID: 51761164}
   - component: {fileID: 51761163}
   m_Layer: 5
-  m_Name: RaccoonIcon
+  m_Name: DrinkIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1435,7 +1435,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ee4a01c6c70aaec4b81c6cdaa89f6a89, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0d6a9ba054511fb4e891e81c0499c56a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2406,11 +2406,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CustomerStdBoy
       objectReference: {fileID: 0}
-    - target: {fileID: 666858931728062063, guid: bca759fac39b3ff4ab83a67a2b6d4075,
-        type: 3}
-      propertyPath: speed
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bca759fac39b3ff4ab83a67a2b6d4075, type: 3}
 --- !u!4 &82650626 stripped
@@ -3023,6 +3018,7 @@ RectTransform:
   m_Children:
   - {fileID: 1477075885}
   - {fileID: 51761162}
+  - {fileID: 665512439}
   m_Father: {fileID: 714726153}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3775,7 +3771,7 @@ PrefabInstance:
     - target: {fileID: 7566686985378810628, guid: fc88fae509a6d2a45bbe1b27a8f6c878,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 7566686985378810628, guid: fc88fae509a6d2a45bbe1b27a8f6c878,
         type: 3}
@@ -4413,12 +4409,12 @@ PrefabInstance:
     - target: {fileID: 7566686985378810628, guid: fc88fae509a6d2a45bbe1b27a8f6c878,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 7566686985378810628, guid: fc88fae509a6d2a45bbe1b27a8f6c878,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 62.99998
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7566686985378810628, guid: fc88fae509a6d2a45bbe1b27a8f6c878,
         type: 3}
@@ -5225,11 +5221,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CustomerBoy
       objectReference: {fileID: 0}
-    - target: {fileID: 824570563449376173, guid: 6f0844e613b08164686e7355aca166c1,
-        type: 3}
-      propertyPath: speed
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 824570563739343163, guid: 6f0844e613b08164686e7355aca166c1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5727,7 +5718,7 @@ PrefabInstance:
     - target: {fileID: 6269462625501186433, guid: 72f9196d93b39a74fb8c36e011d1ef6a,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72f9196d93b39a74fb8c36e011d1ef6a, type: 3}
@@ -6674,9 +6665,13 @@ MonoBehaviour:
     \uB179\uC5EC\uBC84\uB9AC\uC790!\r"
   hashTag: "#\uCF54\uCF54\uC544\uC758_\uB530\uB4EF\uD55C_\uC804\uC728 #\uC74C\uB8CC\uAE4C\uC9C0_\uC4F0\uBA74_\uC880
     #\uCD08\uCF5C\uB9BF #\uC74C\uB8CC\n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30"
+  mainName: "\uD56B\uCD08\uCF54"
   headName: {fileID: 1984309288}
   tagName: {fileID: 1345569967}
+  mainNaming: {fileID: 665512440}
+  icon: {fileID: 51761163}
   unlockBtn: {fileID: 842956212}
+  unlockData: {fileID: 979603348}
 --- !u!114 &367912751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8001,11 +7996,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CustomerStdGirl
-      objectReference: {fileID: 0}
-    - target: {fileID: 1149368735606556483, guid: 2ee160d1701c98a4582da76c605ca238,
-        type: 3}
-      propertyPath: speed
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1149368737231138642, guid: 2ee160d1701c98a4582da76c605ca238,
         type: 3}
@@ -13513,9 +13503,13 @@ MonoBehaviour:
     \uB354\uC6B4\uB0A0\uC5D4~\r"
   hashTag: "#\uC544\uC774\uC2A4\u314C #\uC5D0\uC774\uB4DC #\uAD11\uACE0\uC544\uB2D8
     #\uBE14\uB8E8\uB808\uBAAC #\uC74C\uB8CC\n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30"
+  mainName: "\uBE14\uB8E8\uC5D0\uC774\uB4DC"
   headName: {fileID: 1984309288}
   tagName: {fileID: 1345569967}
+  mainNaming: {fileID: 665512440}
+  icon: {fileID: 51761163}
   unlockBtn: {fileID: 842956212}
+  unlockData: {fileID: 979603348}
 --- !u!114 &520178749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14013,7 +14007,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 85%
+  m_Text: 
 --- !u!222 &549568648
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14427,9 +14421,13 @@ MonoBehaviour:
     \uB9CC\uB0AC\uB2E4!"
   hashTag: "#\uC544\uBA54\uB9AC\uCE74\uB178 #\uC88B\uC544\uC88B\uC544\uC88B\uC544
     #\uC778\uC0DD\uB9DB #\uC74C\uB8CC\r\n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30"
+  mainName: "\uC544\uBA54\uB9AC\uCE74\uB178"
   headName: {fileID: 1984309288}
   tagName: {fileID: 1345569967}
+  mainNaming: {fileID: 665512440}
+  icon: {fileID: 51761163}
   unlockBtn: {fileID: 842956212}
+  unlockData: {fileID: 979603348}
 --- !u!114 &609265303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14962,7 +14960,7 @@ PrefabInstance:
     - target: {fileID: 7637547503201400932, guid: 21dc66f1cd6e406478a444d996394ea0,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7637547503201400933, guid: 21dc66f1cd6e406478a444d996394ea0,
         type: 3}
@@ -15075,6 +15073,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 66deb0b2541e8344aa53a13372373067,
         type: 3}
+    - target: {fileID: 7637547503291342257, guid: 21dc66f1cd6e406478a444d996394ea0,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637547503291342257, guid: 21dc66f1cd6e406478a444d996394ea0,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637547503291342257, guid: 21dc66f1cd6e406478a444d996394ea0,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7637547504219990570, guid: 21dc66f1cd6e406478a444d996394ea0,
         type: 3}
       propertyPath: m_Sprite
@@ -15165,6 +15178,83 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fd0e3ef049246314da88b6b3623b625d, type: 3}
   - {fileID: 21300000, guid: 30000a81208b3d64dafc9aa7f6ea0954, type: 3}
   - {fileID: 21300000, guid: 1b7171929e3abb54da7ebd79c1b1b897, type: 3}
+--- !u!1 &665512438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 665512439}
+  - component: {fileID: 665512441}
+  - component: {fileID: 665512440}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &665512439
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665512438}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 167460976}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 80, y: 8}
+  m_SizeDelta: {x: 439.89, y: 183.49}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &665512440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665512438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 59
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 210
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\uC544\uBA54\uB9AC\uCE74\uB178"
+--- !u!222 &665512441
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665512438}
+  m_CullTransparentMesh: 0
 --- !u!1 &680144872
 GameObject:
   m_ObjectHideFlags: 0
@@ -26806,9 +26896,13 @@ MonoBehaviour:
     \uD55C\uAC00\uB4DD...\u2605\r"
   hashTag: "#\uC5BC\uADF8\uB808\uC774\uCF54\uAE30 #\uBA4D\uBA4D #\uC774_\uD3B8\uC9C0\uB294
     \uC601\uAD6D\uC5D0\uC11C \uC2DC\uC791\uB418\uC5B4\u2026 #\uC74C\uB8CC \n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30"
+  mainName: "\uC5BC\uADF8\uB808\uC774\uCF54\uAE30"
   headName: {fileID: 1984309288}
   tagName: {fileID: 1345569967}
+  mainNaming: {fileID: 665512440}
+  icon: {fileID: 51761163}
   unlockBtn: {fileID: 842956212}
+  unlockData: {fileID: 979603348}
 --- !u!114 &842373529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27458,9 +27552,13 @@ MonoBehaviour:
     \uC88B\uC544 XD\r"
   hashTag: "#\uC0DD\uACFC\uC77C\uC8FC\uC2A4 #\uACFC\uC999\uD321\uD321 #\uC624\uB80C\uC9C0
     #\uC74C\uB8CC \n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30"
+  mainName: "\uC0DD\uACFC\uC77C \uC8FC\uC2A4"
   headName: {fileID: 1984309288}
   tagName: {fileID: 1345569967}
+  mainNaming: {fileID: 665512440}
+  icon: {fileID: 51761163}
   unlockBtn: {fileID: 842956212}
+  unlockData: {fileID: 979603348}
 --- !u!114 &909981036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28321,6 +28419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiText: {fileID: 1300779253}
+  juid: {fileID: 0}
 --- !u!114 &979603349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28366,6 +28465,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 409466723}
         m_MethodName: UnlockDrink
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 979603348}
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29062,11 +29172,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CustomerGirl
-      objectReference: {fileID: 0}
-    - target: {fileID: 6167369456139189314, guid: 4a7f2e4da50295648bebba3b0ea297ce,
-        type: 3}
-      propertyPath: speed
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6167369457696511059, guid: 4a7f2e4da50295648bebba3b0ea297ce,
         type: 3}
@@ -30772,12 +30877,12 @@ PrefabInstance:
     - target: {fileID: 7566686985378810628, guid: fc88fae509a6d2a45bbe1b27a8f6c878,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7566686985378810628, guid: fc88fae509a6d2a45bbe1b27a8f6c878,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 62.99998
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7566686985378810628, guid: fc88fae509a6d2a45bbe1b27a8f6c878,
         type: 3}
@@ -36494,7 +36599,7 @@ PrefabInstance:
     - target: {fileID: 7566686985378810628, guid: fc88fae509a6d2a45bbe1b27a8f6c878,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 62.99998
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7566686985378810628, guid: fc88fae509a6d2a45bbe1b27a8f6c878,
         type: 3}
@@ -37946,9 +38051,13 @@ MonoBehaviour:
     \uAC08\uC544 \uBD80\uB4DC\uB7FD\uACE0 \uAE4A\uAC8C!\r"
   hashTag: "#\uB179\uCC28\uB77C\uB5BC #\uB179\uCC28\uB77C\uCFE4\uC6B8\uC9C0\uB9C8
     #\uB179\uCC28 #\uC74C\uB8CC\n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30"
+  mainName: "\uB179\uCC28\uB77C\uB5BC"
   headName: {fileID: 1984309288}
   tagName: {fileID: 1345569967}
+  mainNaming: {fileID: 665512440}
+  icon: {fileID: 51761163}
   unlockBtn: {fileID: 842956212}
+  unlockData: {fileID: 979603348}
 --- !u!114 &1804276119
 MonoBehaviour:
   m_ObjectHideFlags: 0

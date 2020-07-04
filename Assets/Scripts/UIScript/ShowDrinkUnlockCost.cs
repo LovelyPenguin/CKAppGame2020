@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ShowDrinkUnlockCost : MonoBehaviour
 {
     public Text uiText;
+    public JuiceData juid;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,5 +17,10 @@ public class ShowDrinkUnlockCost : MonoBehaviour
     void Update()
     {
         uiText.text = GameMng.Instance.GetComponent<DrinkMng>().mainObjTemp.GetComponent<JuiceData>().unlockCost.ToString();
+    }
+
+    public void OnClick()
+    {
+        juid.Click();
     }
 }

@@ -10,13 +10,14 @@ public class DrinkTransfer : MonoBehaviour
     public GameObject particle;
     public string selectJuice;
     public GameObject juiceIcon;
+    public GameObject juiceSpeechBubble;
     public float setDrinkWaitingTime;
 
     private float setTimer;
     private string[] juiceList = new string[5];
     private float timer;
 
-    public float[] itemDropPercent = new float[3];
+    //public float[] itemDropPercent = new float[3];
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class DrinkTransfer : MonoBehaviour
             particle.SetActive(false);
         }
         juiceIcon.SetActive(false);
+        juiceSpeechBubble.SetActive(false);
         for (int i = 0; i < 5; i++)
         {
             juiceList[i] = GameMng.Instance.GetComponent<DrinkMng>().juiceList[i].juice.GetComponent<JuiceObject>().juiceName;
@@ -87,6 +89,7 @@ public class DrinkTransfer : MonoBehaviour
             isDemandJuice = true;
             PickJuiceSprite();
             juiceIcon.SetActive(true);
+            juiceSpeechBubble.SetActive(true);
             isTransfer = false;
             StartCoroutine(DrinkWaiting());
         }
@@ -115,6 +118,7 @@ public class DrinkTransfer : MonoBehaviour
         isDemandJuice = false;
         selectJuice = juiceList[Random.Range(0, juiceList.Length - 1)];
         juiceIcon.SetActive(false);
+        juiceSpeechBubble.SetActive(false);
         timer = Random.Range(5, 8);
     }
 
