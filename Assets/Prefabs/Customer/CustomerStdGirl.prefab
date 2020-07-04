@@ -32,7 +32,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1149368735606556480}
-  m_LocalRotation: {x: -0, y: 0.38268343, z: -0, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 5.4, y: 1.125, z: 4.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -172,7 +172,7 @@ MonoBehaviour:
   nav: {fileID: 1149368735606556485}
   target: {fileID: 0}
   targetPostion: {x: 0, y: 0, z: 0}
-  speed: 0
+  speed: 5
   isArrive: 0
   setTimer: 0.15
   In1StFloor: 1

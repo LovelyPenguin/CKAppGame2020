@@ -12,14 +12,7 @@ public class OpenCheckPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (GameMng.Instance.getOpenData)
-        {
-            Open();
-        }
-        else
-        {
-            Close();
-        }
+        StartCoroutine(LateStart());
     }
 
     // Update is called once per frame
@@ -36,5 +29,18 @@ public class OpenCheckPanel : MonoBehaviour
     public void Close()
     {
         gameObject.SetActive(true);
+    }
+
+    IEnumerator LateStart()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (GameMng.Instance.getOpenData)
+        {
+            Open();
+        }
+        else
+        {
+            Close();
+        }
     }
 }

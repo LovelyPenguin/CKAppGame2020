@@ -2275,7 +2275,7 @@ PrefabInstance:
     - target: {fileID: 666858931237142142, guid: bca759fac39b3ff4ab83a67a2b6d4075,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.4
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 666858931237142142, guid: bca759fac39b3ff4ab83a67a2b6d4075,
         type: 3}
@@ -2285,7 +2285,7 @@ PrefabInstance:
     - target: {fileID: 666858931237142142, guid: bca759fac39b3ff4ab83a67a2b6d4075,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 28.4
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 666858931237142142, guid: bca759fac39b3ff4ab83a67a2b6d4075,
         type: 3}
@@ -2331,6 +2331,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CustomerStdBoy
+      objectReference: {fileID: 0}
+    - target: {fileID: 666858931728062063, guid: bca759fac39b3ff4ab83a67a2b6d4075,
+        type: 3}
+      propertyPath: speed
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bca759fac39b3ff4ab83a67a2b6d4075, type: 3}
@@ -5023,10 +5028,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: CustomerBoy
       objectReference: {fileID: 0}
+    - target: {fileID: 824570563449376173, guid: 6f0844e613b08164686e7355aca166c1,
+        type: 3}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 824570563739343163, guid: 6f0844e613b08164686e7355aca166c1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.37
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 824570563739343163, guid: 6f0844e613b08164686e7355aca166c1,
         type: 3}
@@ -5036,7 +5046,7 @@ PrefabInstance:
     - target: {fileID: 824570563739343163, guid: 6f0844e613b08164686e7355aca166c1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 30.37
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 824570563739343163, guid: 6f0844e613b08164686e7355aca166c1,
         type: 3}
@@ -7787,10 +7797,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: CustomerStdGirl
       objectReference: {fileID: 0}
+    - target: {fileID: 1149368735606556483, guid: 2ee160d1701c98a4582da76c605ca238,
+        type: 3}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1149368737231138642, guid: 2ee160d1701c98a4582da76c605ca238,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.400002
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 1149368737231138642, guid: 2ee160d1701c98a4582da76c605ca238,
         type: 3}
@@ -7800,7 +7815,7 @@ PrefabInstance:
     - target: {fileID: 1149368737231138642, guid: 2ee160d1701c98a4582da76c605ca238,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 27.4
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 1149368737231138642, guid: 2ee160d1701c98a4582da76c605ca238,
         type: 3}
@@ -28702,10 +28717,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: CustomerGirl
       objectReference: {fileID: 0}
+    - target: {fileID: 6167369456139189314, guid: 4a7f2e4da50295648bebba3b0ea297ce,
+        type: 3}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6167369457696511059, guid: 4a7f2e4da50295648bebba3b0ea297ce,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.36
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 6167369457696511059, guid: 4a7f2e4da50295648bebba3b0ea297ce,
         type: 3}
@@ -28715,7 +28735,7 @@ PrefabInstance:
     - target: {fileID: 6167369457696511059, guid: 4a7f2e4da50295648bebba3b0ea297ce,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 29.36
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 6167369457696511059, guid: 4a7f2e4da50295648bebba3b0ea297ce,
         type: 3}

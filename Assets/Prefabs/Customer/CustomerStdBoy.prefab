@@ -361,7 +361,7 @@ MonoBehaviour:
   nav: {fileID: 666858931728062057}
   target: {fileID: 0}
   targetPostion: {x: 0, y: 0, z: 0}
-  speed: 0
+  speed: 5
   isArrive: 0
   setTimer: 0.15
   In1StFloor: 1
