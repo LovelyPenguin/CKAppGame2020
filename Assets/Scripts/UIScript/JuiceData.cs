@@ -13,6 +13,17 @@ public class JuiceData : MonoBehaviour
     [SerializeField]
     private int tabCountData;
     public int unlockCost;
+
+    [Multiline(3)]
+    public string profileText;
+    [Multiline(3)]
+    public string hashTag;
+
+    public Text headName;
+    public Text tagName;
+
+    public GameObject unlockBtn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,5 +41,17 @@ public class JuiceData : MonoBehaviour
     {
         Debug.Log(gameObject.name + " Click");
         drinkMng.SetMiniGameData(tabCountData, juice, ref isUnlock, gameObject);
+
+        if (isUnlock)
+        {
+            unlockBtn.SetActive(false);
+        }
+        else
+        {
+            unlockBtn.SetActive(true);
+        }
+
+        headName.text = profileText;
+        tagName.text = hashTag;
     }
 }

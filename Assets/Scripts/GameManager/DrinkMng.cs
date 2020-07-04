@@ -37,6 +37,7 @@ public class DrinkMng : MonoBehaviour
     private Text percentText;
     [SerializeField]
     private GameObject blockImage;
+    public GameObject lockImg;
 
     public JuiceData[] juiceList;
     public Sprite[] juiceSprites;
@@ -106,6 +107,7 @@ public class DrinkMng : MonoBehaviour
             GameMng.Instance.money -= mainObjTemp.GetComponent<JuiceData>().unlockCost;
             mainObjTemp.GetComponent<JuiceData>().isUnlock = true;
             SetMiniGameData(tabCountDataTemp, juiceDataTemp, ref mainObjTemp.GetComponent<JuiceData>().isUnlock, mainObjTemp);
+            lockImg.SetActive(false);
         }
     }
 
