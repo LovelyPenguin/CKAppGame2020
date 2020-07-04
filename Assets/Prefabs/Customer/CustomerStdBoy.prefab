@@ -319,6 +319,7 @@ MonoBehaviour:
   dustGen: {fileID: 0}
   stamp: 0
   activePercent: 0
+  anim: {fileID: 1274565220}
 --- !u!114 &666858931728062063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,7 +372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 666858932164127103}
-  isLeftInitialize: 0
+  isLeftInitialize: 1
   direction: 
 --- !u!114 &6690041661067958453
 MonoBehaviour:
@@ -396,6 +397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 666858932164127102}
   - component: {fileID: 666858932164127103}
+  - component: {fileID: 1274565220}
   m_Layer: 8
   m_Name: CustomerSprite
   m_TagString: Untagged
@@ -467,6 +469,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1274565220
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666858932164127101}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c4c8fe6d5afc99a45b442cf84a851210, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &666858932366558717
 GameObject:
   m_ObjectHideFlags: 0

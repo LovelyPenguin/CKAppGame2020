@@ -154,6 +154,7 @@ public class DrinkMng : MonoBehaviour
                         currentJuice.GetComponent<JuiceObject>().SetDecoSprite(true);
                     }
                     PercentTextInitialize();
+                    currentJuice.GetComponent<JuiceObject>().FinishDrink();
                     MiniGameEnd();
                 }
             }

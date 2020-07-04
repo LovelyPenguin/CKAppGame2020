@@ -24,6 +24,7 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
     public bool isComplete = false;
     public string juiceName;
     public float percentValue;
+    public Animator anim;
 
     RaycastHit hit;
 
@@ -32,6 +33,7 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
     {
         icon.SetActive(false);
         initialValue = gameObject.transform.position;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -69,11 +71,17 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
 
     public void FillMainSprite(int value)
     {
+        anim.SetTrigger("Tab");
         if (index >= 5)
         {
             index = 0;
         }
         mainSprite.GetComponent<Image>().sprite = mainSprite.GetComponent<SpriteChange>().spr[index++];
+    }
+
+    public void FinishDrink()
+    {
+        anim.SetTrigger("Done");
     }
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)

@@ -41,6 +41,8 @@ public class Customer : MonoBehaviour
     public DustGenerator dustGen;
     public int stamp;
     public float activePercent;
+
+    public Animator anim;
     // Start is called before the first frame update
     void Awake()
     {
@@ -86,6 +88,7 @@ public class Customer : MonoBehaviour
         {
             OpenCheck();
             DurationCheck();
+            AnimationCheck();
 
             if (isReturning == true)
             {
@@ -363,5 +366,10 @@ public class Customer : MonoBehaviour
         {
             Debug.Log("BUFFFFFFFFF");
         }
+    }
+
+    public void AnimationCheck()
+    {
+        anim.SetBool("isWalk", !GetComponent<RandomMove>().Arrived);
     }
 }
