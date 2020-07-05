@@ -14,11 +14,11 @@ public class CheckCustomerAppear : MonoBehaviour
     {
         if (rac.Length == 0)
         {
-            racOption = true;
+            racOption = false;
         }
         else
         {
-            racOption = false;
+            racOption = true;
         }
     }
 

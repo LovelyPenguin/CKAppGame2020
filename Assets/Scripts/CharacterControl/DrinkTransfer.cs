@@ -17,6 +17,9 @@ public class DrinkTransfer : MonoBehaviour
     private string[] juiceList = new string[5];
     private float timer;
 
+    public GameObject loveIcon;
+    public GameObject hateIcon;
+
     //public float[] itemDropPercent = new float[3];
 
     private void Awake()
@@ -53,13 +56,31 @@ public class DrinkTransfer : MonoBehaviour
         }
     }
 
-    public void Detect(int money = 100)
+    public void Detect(float percent, int money = 100)
     {
+        if (isDemandJuice)
+        {
+            loveIcon.SetActive(true);
+        }
+        else if (isDemandJuice && percent < 50)
+        {
+            WrongDrink();
+        }
         GameMng.Instance.money += money;
         GetComponent<Customer>().money += money;
         ParticleManager(true);
         InitalizeParameter();
         StartCoroutine(Disable());
+    }
+
+    public void WrongDrink()
+    {
+        if (isDemandJuice)
+        {
+            InitalizeParameter();
+            Debug.Log("Wrong");
+            hateIcon.SetActive(true);
+        }
     }
 
     IEnumerator Disable()

@@ -42,7 +42,10 @@ public class CustomerUnlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        cus.unlock = TotalUnlockCheck();
+        if (!cus.unlock)
+        {
+            cus.unlock = TotalUnlockCheck();
+        }
     }
 
     public bool TotalUnlockCheck()
