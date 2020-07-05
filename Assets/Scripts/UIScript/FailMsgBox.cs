@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Events;
+using UnityEngine.Events;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -59,7 +59,7 @@ public class FailMsgBox : MonoBehaviour
         btn.transform.SetParent(FailPopup.transform);
         btn.transform.localScale = Vector3.one;
         Button button = btn.AddComponent<Button>();
-        UnityEventTools.AddObjectPersistentListener(button.onClick, DestroySelf, FailPopup);
+        button.onClick.AddListener(delegate { DestroySelf(FailPopup); } );
         Image btnImg = btn.AddComponent<Image>();
         btnImg.sprite = popupBtnImage;
         btn.GetComponent<RectTransform>().anchoredPosition = new Vector2(90, -130);
