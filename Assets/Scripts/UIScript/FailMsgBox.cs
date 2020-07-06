@@ -12,10 +12,12 @@ public class FailMsgBox : MonoBehaviour
 
     private GameObject FailPopup;
 
+    public AudioClip[] BGMs = new AudioClip[3];
+
     // Start is called before the first frame update
     void Start()
     {
-
+        GetComponent<AudioSource>().clip = BGMs[0];
     }
 
     // Update is called once per frame

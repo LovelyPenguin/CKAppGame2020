@@ -180,7 +180,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b93165da9236af44fbd087767019888c, type: 3}
   endCalls:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 409466726}
+        m_MethodName: RCUnlockCutSceneEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &10506973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,7 +261,7 @@ RectTransform:
   m_Children:
   - {fileID: 1836401408}
   m_Father: {fileID: 1190787082}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3040,7 +3051,7 @@ GameObject:
   - component: {fileID: 169164452}
   - component: {fileID: 169164451}
   m_Layer: 5
-  m_Name: Button
+  m_Name: SaveData
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3053,18 +3064,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 169164449}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1109644560}
-  m_Father: {fileID: 249663554}
-  m_RootOrder: 12
+  m_Father: {fileID: 1190787082}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -230, y: -113.89795}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: 54.6}
+  m_SizeDelta: {x: 160, y: 95.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &169164451
 MonoBehaviour:
@@ -5104,8 +5115,6 @@ RectTransform:
   - {fileID: 972179917}
   - {fileID: 528156081}
   - {fileID: 777572192}
-  - {fileID: 169164450}
-  - {fileID: 2088626494}
   - {fileID: 1190787082}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -6738,17 +6747,15 @@ MonoBehaviour:
   isUnlock: 0
   tabCountData: 9
   unlockCost: 150000
-  profileText: "\uB530\uC2A4\uD55C \uD56B\uCD08\uCF54\uB85C \uB9C8\uC74C\uAE4C\uC9C0
-    \uB179\uC5EC\uBC84\uB9AC\uC790!\r"
-  hashTag: "#\uCF54\uCF54\uC544\uC758_\uB530\uB4EF\uD55C_\uC804\uC728 #\uC74C\uB8CC\uAE4C\uC9C0_\uC4F0\uBA74_\uC880
-    #\uCD08\uCF5C\uB9BF #\uC74C\uB8CC\n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30"
-  mainName: "\uD56B\uCD08\uCF54"
-  headName: {fileID: 1984309288}
-  tagName: {fileID: 1345569967}
-  mainNaming: {fileID: 665512440}
-  icon: {fileID: 51761163}
-  unlockBtn: {fileID: 842956212}
-  unlockData: {fileID: 979603348}
+  profileText: 
+  hashTag: 
+  mainName: 
+  headName: {fileID: 0}
+  tagName: {fileID: 0}
+  mainNaming: {fileID: 0}
+  icon: {fileID: 0}
+  unlockBtn: {fileID: 0}
+  unlockData: {fileID: 0}
 --- !u!114 &367912751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7548,6 +7555,7 @@ GameObject:
   - component: {fileID: 409466728}
   - component: {fileID: 409466724}
   - component: {fileID: 409466729}
+  - component: {fileID: 409466730}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -7643,6 +7651,9 @@ MonoBehaviour:
   openTime: 0
   isOpen: 0
   money: 2000000
+  BGMs:
+  - {fileID: 8300000, guid: 1524902937387534e86246ada090c1c7, type: 3}
+  - {fileID: 8300000, guid: bf9c4761bda43be4f9e18ac96489d687, type: 3}
 --- !u!4 &409466720
 Transform:
   m_ObjectHideFlags: 0
@@ -7709,7 +7720,7 @@ MonoBehaviour:
   tabBtn: {fileID: 1916631655}
   percentText: {fileID: 549568647}
   blockImage: {fileID: 1973744687}
-  lockImg: {fileID: 842956212}
+  lockImg: {fileID: 0}
   juiceList:
   - {fileID: 909981035}
   - {fileID: 609265302}
@@ -7772,6 +7783,7 @@ MonoBehaviour:
   - {fileID: 2025593415}
   RaccoonUnlock: 0000000000000000
   MaxRCCountperMap: 5
+  RCUnlockBGM: {fileID: 8300000, guid: 7b13c15d88a5ee84ab9f8bdd8dbe8d69, type: 3}
 --- !u!114 &409466727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7817,6 +7829,103 @@ MonoBehaviour:
   PopupBackground: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   popupBtnImage: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   PopupFont: {fileID: 12800000, guid: 551c43b3f75dc6b45b3d410990cc433c, type: 3}
+  BGMs: []
+--- !u!82 &409466730
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409466718}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &418951662
 GameObject:
   m_ObjectHideFlags: 0
@@ -13576,17 +13685,15 @@ MonoBehaviour:
   isUnlock: 0
   tabCountData: 6
   unlockCost: 400000
-  profileText: "\uC2DC\uC6D0\uD55C \uBE14\uB8E8\uB808\uBAAC\uC5D0\uC774\uB4DC! \uC5EC\uB984\uBCF4\uB2E4
-    \uB354\uC6B4\uB0A0\uC5D4~\r"
-  hashTag: "#\uC544\uC774\uC2A4\u314C #\uC5D0\uC774\uB4DC #\uAD11\uACE0\uC544\uB2D8
-    #\uBE14\uB8E8\uB808\uBAAC #\uC74C\uB8CC\n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30"
-  mainName: "\uBE14\uB8E8\uC5D0\uC774\uB4DC"
-  headName: {fileID: 1984309288}
-  tagName: {fileID: 1345569967}
-  mainNaming: {fileID: 665512440}
-  icon: {fileID: 51761163}
-  unlockBtn: {fileID: 842956212}
-  unlockData: {fileID: 979603348}
+  profileText: 
+  hashTag: 
+  mainName: 
+  headName: {fileID: 0}
+  tagName: {fileID: 0}
+  mainNaming: {fileID: 0}
+  icon: {fileID: 0}
+  unlockBtn: {fileID: 0}
+  unlockData: {fileID: 0}
 --- !u!114 &520178749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14493,18 +14600,15 @@ MonoBehaviour:
   isUnlock: 1
   tabCountData: 5
   unlockCost: 0
-  profileText: "\uAD6C\uC6B4 \uC544\uBAAC\uB4DC\uC758 \uACE0\uC18C\uD55C \uD5A5\uBBF8\uC640
-    \uACFC\uC77C\uC758 \uC0C1\uD07C\uD55C \uC0B0\uBBF8\uAC00 \uC870\uD654\uB86D\uAC8C
-    \uB9CC\uB0AC\uB2E4!"
-  hashTag: "#\uC544\uBA54\uB9AC\uCE74\uB178 #\uC88B\uC544\uC88B\uC544\uC88B\uC544
-    #\uC778\uC0DD\uB9DB #\uC74C\uB8CC\r\n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30"
-  mainName: "\uC544\uBA54\uB9AC\uCE74\uB178"
-  headName: {fileID: 1984309288}
-  tagName: {fileID: 1345569967}
-  mainNaming: {fileID: 665512440}
-  icon: {fileID: 51761163}
-  unlockBtn: {fileID: 842956212}
-  unlockData: {fileID: 979603348}
+  profileText: 
+  hashTag: 
+  mainName: 
+  headName: {fileID: 0}
+  tagName: {fileID: 0}
+  mainNaming: {fileID: 0}
+  icon: {fileID: 0}
+  unlockBtn: {fileID: 0}
+  unlockData: {fileID: 0}
 --- !u!114 &609265303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26180,7 +26284,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1248343811}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999999
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -26993,17 +27097,15 @@ MonoBehaviour:
   isUnlock: 0
   tabCountData: 9
   unlockCost: 500000
-  profileText: "\uD64D\uCC28\uC78E\uC5D0 \uCF54\uAE30\uC758 \uC624\uB80C\uC9C0\uD5A5\uC774
-    \uD55C\uAC00\uB4DD...\u2605\r"
-  hashTag: "#\uC5BC\uADF8\uB808\uC774\uCF54\uAE30 #\uBA4D\uBA4D #\uC774_\uD3B8\uC9C0\uB294
-    \uC601\uAD6D\uC5D0\uC11C \uC2DC\uC791\uB418\uC5B4\u2026 #\uC74C\uB8CC \n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30"
-  mainName: "\uC5BC\uADF8\uB808\uC774\uCF54\uAE30"
-  headName: {fileID: 1984309288}
-  tagName: {fileID: 1345569967}
-  mainNaming: {fileID: 665512440}
-  icon: {fileID: 51761163}
-  unlockBtn: {fileID: 842956212}
-  unlockData: {fileID: 979603348}
+  profileText: 
+  hashTag: 
+  mainName: 
+  headName: {fileID: 0}
+  tagName: {fileID: 0}
+  mainNaming: {fileID: 0}
+  icon: {fileID: 0}
+  unlockBtn: {fileID: 0}
+  unlockData: {fileID: 0}
 --- !u!114 &842373529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27649,17 +27751,15 @@ MonoBehaviour:
   isUnlock: 0
   tabCountData: 10
   unlockCost: 200000
-  profileText: "\uACFC\uC999 \uD321\uD321 \uC0DD\uACFC\uC77C \uC8FC\uC2A4! \uC624\uB80C\uC9C0
-    \uC88B\uC544 XD\r"
-  hashTag: "#\uC0DD\uACFC\uC77C\uC8FC\uC2A4 #\uACFC\uC999\uD321\uD321 #\uC624\uB80C\uC9C0
-    #\uC74C\uB8CC \n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30"
-  mainName: "\uC0DD\uACFC\uC77C \uC8FC\uC2A4"
-  headName: {fileID: 1984309288}
-  tagName: {fileID: 1345569967}
-  mainNaming: {fileID: 665512440}
-  icon: {fileID: 51761163}
-  unlockBtn: {fileID: 842956212}
-  unlockData: {fileID: 979603348}
+  profileText: 
+  hashTag: 
+  mainName: 
+  headName: {fileID: 0}
+  tagName: {fileID: 0}
+  mainNaming: {fileID: 0}
+  icon: {fileID: 0}
+  unlockBtn: {fileID: 0}
+  unlockData: {fileID: 0}
 --- !u!114 &909981036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28755,7 +28855,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6831e90124dab5743b2d9438b755c7b5, type: 3}
   endCalls:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 409466726}
+        m_MethodName: RCUnlockCutSceneEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &991256937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29164,7 +29275,7 @@ RectTransform:
   m_Children:
   - {fileID: 947971895}
   m_Father: {fileID: 1190787082}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -29749,7 +29860,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: save test
+  m_Text: Save Data
 --- !u!222 &1109644562
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30465,10 +30576,12 @@ RectTransform:
   - {fileID: 1867619827}
   - {fileID: 110127003}
   - {fileID: 143077104}
+  - {fileID: 169164450}
   - {fileID: 11013310}
   - {fileID: 1041540004}
+  - {fileID: 2088626494}
   m_Father: {fileID: 249663554}
-  m_RootOrder: 14
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -31506,7 +31619,29 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 431cf803c3eb21549ad6cc50d6a764e8, type: 3}
   endCalls:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 409466726}
+        m_MethodName: RCUnlockCutSceneEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 409466721}
+        m_MethodName: SetFloor2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1257343215
 GameObject:
   m_ObjectHideFlags: 0
@@ -32756,7 +32891,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: reset test
+  m_Text: Reset Data
 --- !u!222 &1329200021
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -34646,7 +34781,18 @@ MonoBehaviour:
   RCCutScenes: []
   endCalls:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 409466726}
+        m_MethodName: RCUnlockCutSceneEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1497841995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35226,7 +35372,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1d774b98df4fc564b9354dd329cf3715, type: 3}
   endCalls:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 409466726}
+        m_MethodName: RCUnlockCutSceneEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1530805992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37835,7 +37992,18 @@ MonoBehaviour:
   RCCutScenes: []
   endCalls:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 409466726}
+        m_MethodName: RCUnlockCutSceneEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1785870773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38191,17 +38359,15 @@ MonoBehaviour:
   isUnlock: 0
   tabCountData: 3
   unlockCost: 300000
-  profileText: "\uBD80\uB4DC\uB7EC\uC6B4 \uC5B4\uB9B0 \uB179\uCC3B\uC78E\uC744 \uACF1\uAC8C
-    \uAC08\uC544 \uBD80\uB4DC\uB7FD\uACE0 \uAE4A\uAC8C!\r"
-  hashTag: "#\uB179\uCC28\uB77C\uB5BC #\uB179\uCC28\uB77C\uCFE4\uC6B8\uC9C0\uB9C8
-    #\uB179\uCC28 #\uC74C\uB8CC\n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30"
-  mainName: "\uB179\uCC28\uB77C\uB5BC"
-  headName: {fileID: 1984309288}
-  tagName: {fileID: 1345569967}
-  mainNaming: {fileID: 665512440}
-  icon: {fileID: 51761163}
-  unlockBtn: {fileID: 842956212}
-  unlockData: {fileID: 979603348}
+  profileText: 
+  hashTag: 
+  mainName: 
+  headName: {fileID: 0}
+  tagName: {fileID: 0}
+  mainNaming: {fileID: 0}
+  icon: {fileID: 0}
+  unlockBtn: {fileID: 0}
+  unlockData: {fileID: 0}
 --- !u!114 &1804276119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39344,7 +39510,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: db2f4808ac7209a4ab9f44406ddf3a5b, type: 3}
   endCalls:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 409466726}
+        m_MethodName: RCUnlockCutSceneEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1906696813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41500,7 +41677,7 @@ GameObject:
   - component: {fileID: 2088626496}
   - component: {fileID: 2088626495}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: ResetData
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41513,18 +41690,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2088626493}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1329200019}
-  m_Father: {fileID: 249663554}
-  m_RootOrder: 13
+  m_Father: {fileID: 1190787082}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -230, y: -143.5}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: -287.3}
+  m_SizeDelta: {x: 160, y: 95.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2088626495
 MonoBehaviour:

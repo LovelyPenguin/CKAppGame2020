@@ -30,6 +30,8 @@ public class GameMng : MonoBehaviour
     [NonSerialized]
     public int customerCount;
 
+    public AudioClip[] BGMs = new AudioClip[2];
+
     public bool getOpenData
     {
         get
@@ -71,14 +73,17 @@ public class GameMng : MonoBehaviour
         {
             case 0:
                 isOpen = false;
+                GetComponent<AudioSource>().clip = BGMs[0];
                 break;
             case 1:
                 isOpen = true;
+                GetComponent<AudioSource>().clip = BGMs[1];
                 break;
         }
         dustGenerator = GameObject.Find("DustGenerator");
-        RaccoonMng = GameObject.Find("GameManager");
+        RaccoonMng = GameObject.Find("GameManager"); 
         closeEvent.AddListener(dustGenerator.GetComponent<DustGenerator>().Generate);
+        GetComponent<AudioSource>().Play();
 
         LoadGame();
     }
@@ -114,6 +119,9 @@ public class GameMng : MonoBehaviour
         openTime = setOpenTime;
         this.setOpenTime = setOpenTime;
         PlayerPrefs.SetFloat("FIRSTOPENTIME", this.setOpenTime);
+        GetComponent<AudioSource>().clip = BGMs[1];
+        GetComponent<AudioSource>().time = 0;
+        GetComponent<AudioSource>().Play();
         openEvent.Invoke();
     }
 
@@ -122,6 +130,9 @@ public class GameMng : MonoBehaviour
         Debug.Log("Close");
         isOpen = false;
         PlayerPrefs.SetInt("OPENSTATUS", 0);
+        GetComponent<AudioSource>().clip = BGMs[0];
+        GetComponent<AudioSource>().time = 0;
+        GetComponent<AudioSource>().Play();
         closeEvent.Invoke();
         customerCount = 0;
         //openTime = 600;

@@ -30,6 +30,7 @@ public class RaccoonCutScene : MonoBehaviour, IPointerClickHandler
         else
         {
             this.gameObject.SetActive(false);
+            endCalls.Invoke();
             GetComponentInParent<CutSceneControl>().CutSceneEnd();
         }
     }

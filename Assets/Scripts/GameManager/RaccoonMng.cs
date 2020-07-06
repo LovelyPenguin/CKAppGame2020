@@ -35,7 +35,9 @@ public class RaccoonMng : MonoBehaviour
     private int map2RCCount = 0;
     private int curRCCount = 0;
 
-    
+    public AudioClip RCUnlockBGM;
+    private AudioClip OriginalBGM;
+    private float Playtime;
 
 
     /*
@@ -200,6 +202,12 @@ public class RaccoonMng : MonoBehaviour
         }
         else if (!RaccoonUnlock[index])
         {
+            OriginalBGM = GetComponent<AudioSource>().clip;
+            Playtime = GetComponent<AudioSource>().time;
+            GetComponent<AudioSource>().clip = RCUnlockBGM;
+            GetComponent<AudioSource>().time = 0;
+            GetComponent<AudioSource>().Play();
+
             if (index == 4)
             {
                 GameObject.Find("GameManager").GetComponent<FloorStatMng>().UnlockSecondFloor();
@@ -285,6 +293,13 @@ public class RaccoonMng : MonoBehaviour
             map1RCCount--;
         if (floor == 2)
             map2RCCount--;
+    }
+
+    public void RCUnlockCutSceneEnd()
+    {
+        GetComponent<AudioSource>().clip = OriginalBGM;
+        GetComponent<AudioSource>().time = Playtime ;
+        GetComponent<AudioSource>().Play();
     }
 }
 
