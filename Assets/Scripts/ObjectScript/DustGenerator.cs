@@ -10,6 +10,8 @@ public class DustGenerator : MonoBehaviour
     public Sprite Sweep1;
     public Sprite Sweep2;
 
+    public AudioClip[] SweepSound;
+
     public float SweepTime;
 
     private int curDustCount;
@@ -72,6 +74,10 @@ public class DustGenerator : MonoBehaviour
     }
     IEnumerator SweepAnim(Vector3 Pos)
     {
+        AudioSource audio = gameObject.AddComponent<AudioSource>();
+        audio.clip = SweepSound[Random.Range(0, 3)];
+        audio.Play();
+
         GameObject Sweep = new GameObject();
         Sweep.transform.position = Pos + Vector3.up * 1.5f;
         Sweep.transform.localScale = Vector3.one;
@@ -82,6 +88,11 @@ public class DustGenerator : MonoBehaviour
         yield return new WaitForSeconds(SweepTime);
         SweepSprite.sprite = Sweep2;
         yield return new WaitForSeconds(SweepTime);
+
+        while (audio.isPlaying)
+            yield return null;
+
+        Destroy(audio);
 
         DestroyImmediate(Sweep);
     }

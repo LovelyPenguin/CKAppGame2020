@@ -28,6 +28,8 @@ public class UIPopInOut : MonoBehaviour
 
     public UnityEvent PopOutEnd;
 
+    public AudioClip[] BottomInterfaceSEs;
+
     public bool getIsOpen
     {
         get
@@ -126,6 +128,8 @@ public class UIPopInOut : MonoBehaviour
     {
         isOpen = true;
         cardExitPanel.SetActive(true);
+        GetComponent<AudioSource>().clip = BottomInterfaceSEs[1];
+        GetComponent<AudioSource>().Play();
     }
 
     public void CloseWindow()
@@ -133,6 +137,17 @@ public class UIPopInOut : MonoBehaviour
         isOpen = false;
         cardExitPanel.SetActive(false);
         Debug.Log("Close Window");
+        GetComponent<AudioSource>().clip = BottomInterfaceSEs[0];
+        GetComponent<AudioSource>().Play();
+    }
+
+    public void ButtonSEPlay()
+    {
+        if (isOpen)
+        {
+            GetComponent<AudioSource>().clip = BottomInterfaceSEs[Random.Range(2, 6)];
+            GetComponent<AudioSource>().Play();
+        }
     }
 
     public void OtherWindowClose()

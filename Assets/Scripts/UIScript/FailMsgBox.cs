@@ -12,12 +12,11 @@ public class FailMsgBox : MonoBehaviour
 
     private GameObject FailPopup;
 
-    public AudioClip[] BGMs = new AudioClip[3];
+    public AudioClip FailSE;
 
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<AudioSource>().clip = BGMs[0];
     }
 
     // Update is called once per frame
@@ -37,6 +36,8 @@ public class FailMsgBox : MonoBehaviour
             DestroyImmediate(FailPopup);
         }
         FailPopup = new GameObject("Fail");
+        FailPopup.AddComponent<AudioSource>().clip = FailSE;
+        FailPopup.GetComponent<AudioSource>().Play();
         FailPopup.transform.SetParent(GameObject.Find("Canvas").transform);
         FailPopup.layer = 5;
         FailPopup.transform.localScale = Vector3.one;

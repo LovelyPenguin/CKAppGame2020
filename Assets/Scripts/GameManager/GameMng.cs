@@ -30,7 +30,8 @@ public class GameMng : MonoBehaviour
     [NonSerialized]
     public int customerCount;
 
-    public AudioClip[] BGMs = new AudioClip[2];
+    public AudioClip[] BGMs;
+    public AudioClip[] SEs;
 
     public bool getOpenData
     {
@@ -73,17 +74,17 @@ public class GameMng : MonoBehaviour
         {
             case 0:
                 isOpen = false;
-                GetComponent<AudioSource>().clip = BGMs[0];
+                GetComponents<AudioSource>()[0].clip = BGMs[0];
                 break;
             case 1:
                 isOpen = true;
-                GetComponent<AudioSource>().clip = BGMs[1];
+                GetComponents<AudioSource>()[0].clip = BGMs[1];
                 break;
         }
         dustGenerator = GameObject.Find("DustGenerator");
         RaccoonMng = GameObject.Find("GameManager"); 
         closeEvent.AddListener(dustGenerator.GetComponent<DustGenerator>().Generate);
-        GetComponent<AudioSource>().Play();
+        GetComponents<AudioSource>()[0].Play();
 
         LoadGame();
     }
@@ -119,9 +120,13 @@ public class GameMng : MonoBehaviour
         openTime = setOpenTime;
         this.setOpenTime = setOpenTime;
         PlayerPrefs.SetFloat("FIRSTOPENTIME", this.setOpenTime);
-        GetComponent<AudioSource>().clip = BGMs[1];
-        GetComponent<AudioSource>().time = 0;
-        GetComponent<AudioSource>().Play();
+        GetComponents<AudioSource>()[0].clip = BGMs[1];
+        GetComponents<AudioSource>()[0].time = 0;
+        GetComponents<AudioSource>()[0].Play();
+
+        GetComponents<AudioSource>()[1].clip = SEs[1];
+        GetComponents<AudioSource>()[1].Play();
+
         openEvent.Invoke();
     }
 
@@ -130,9 +135,13 @@ public class GameMng : MonoBehaviour
         Debug.Log("Close");
         isOpen = false;
         PlayerPrefs.SetInt("OPENSTATUS", 0);
-        GetComponent<AudioSource>().clip = BGMs[0];
-        GetComponent<AudioSource>().time = 0;
-        GetComponent<AudioSource>().Play();
+        GetComponents<AudioSource>()[0].clip = BGMs[0];
+        GetComponents<AudioSource>()[0].time = 0;
+        GetComponents<AudioSource>()[0].Play();
+
+        GetComponents<AudioSource>()[1].clip = SEs[0];
+        GetComponents<AudioSource>()[1].Play();
+
         closeEvent.Invoke();
         customerCount = 0;
         //openTime = 600;

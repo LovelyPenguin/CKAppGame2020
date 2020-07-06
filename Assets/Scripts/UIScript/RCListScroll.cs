@@ -32,6 +32,7 @@ public class RCListScroll : MonoBehaviour,IBeginDragHandler, IDragHandler, IEndD
         newPos = GetComponent<RectTransform>().anchoredPosition;
         initXPos = newPos.x;
         //Debug.Log("initXPos = " + initXPos);
+        GetComponent<AudioSource>().Play();
     }
 
 
@@ -51,6 +52,7 @@ public class RCListScroll : MonoBehaviour,IBeginDragHandler, IDragHandler, IEndD
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        GetComponent<AudioSource>().Stop();
     }
 
 }

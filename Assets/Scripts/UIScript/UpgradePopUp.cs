@@ -11,6 +11,8 @@ public class UpgradePopUp : MonoBehaviour, IPointerClickHandler
 
     public GameObject RC;
 
+    public AudioClip[] UpgradeSE;
+
     GameObject[] Stars;
     int StarCount;
 
@@ -53,6 +55,9 @@ public class UpgradePopUp : MonoBehaviour, IPointerClickHandler
                 Stars[2].GetComponent<RectTransform>().anchoredPosition = new Vector2(70, -370);
                 Stars[2].GetComponent<RectTransform>().sizeDelta = new Vector2(150, 150);
 
+                GetComponent<AudioSource>().clip = UpgradeSE[0];
+                GetComponent<AudioSource>().Play();
+
                 break;
 
             case 3:
@@ -78,6 +83,9 @@ public class UpgradePopUp : MonoBehaviour, IPointerClickHandler
                 Stars[3].GetComponent<RectTransform>().sizeDelta = new Vector2(150, 150);
                 Stars[4].GetComponent<RectTransform>().anchoredPosition = new Vector2(100, -370);
                 Stars[4].GetComponent<RectTransform>().sizeDelta = new Vector2(150, 150);
+
+                GetComponent<AudioSource>().clip = UpgradeSE[1];
+                GetComponent<AudioSource>().Play();
 
                 break;
         }
