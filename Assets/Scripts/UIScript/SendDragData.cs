@@ -14,6 +14,8 @@ public class SendDragData : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public UnityEvent onDrag;
 
+    public Image[] img = new Image[2];
+
     // Start is called before the first frame update
     void Start()
     {
