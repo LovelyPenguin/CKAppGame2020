@@ -119,10 +119,6 @@ public class RaccoonMng : MonoBehaviour
 
             if (!RaccoonExist[RCindex])
             {
-                RC[RCindex].GetComponent<RaccoonController>().SetRCActive(true);
-                RC[RCindex].GetComponent<RaccoonController>().stamina = 50;
-                RaccoonExist[RCindex] = true;
-                curRCCount++;
                 GameObject.Find("CutSceneCanvas").GetComponent<CutSceneControl>().CutSceneStart(RCindex);
                 Debug.Log("Raccoon Created!");
             }
@@ -295,11 +291,16 @@ public class RaccoonMng : MonoBehaviour
             map2RCCount--;
     }
 
-    public void RCUnlockCutSceneEnd()
+    public void RCUnlockCutSceneEnd(int RCindex)
     {
         GetComponent<AudioSource>().clip = OriginalBGM;
         GetComponent<AudioSource>().time = Playtime ;
         GetComponent<AudioSource>().Play();
+
+        RC[RCindex].GetComponent<RaccoonController>().SetRCActive(true);
+        RC[RCindex].GetComponent<RaccoonController>().stamina = 50;
+        RaccoonExist[RCindex] = true;
+        curRCCount++;
     }
 }
 

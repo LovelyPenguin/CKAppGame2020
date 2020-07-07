@@ -191,6 +191,10 @@ public class GameMng : MonoBehaviour
             money = save.MONEY;
             customerCount = save.CUSTOMERCOUNT;
         }
+        else
+        {
+            GameObject.Find("CutSceneCanvas").GetComponent<CutSceneControl>().CutSceneStart(8);
+        }
     }
 
     public void SaveGame()
