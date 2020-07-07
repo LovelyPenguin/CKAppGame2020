@@ -66,7 +66,7 @@ public class FailMsgBox : MonoBehaviour
         Image btnImg = btn.AddComponent<Image>();
         btnImg.sprite = popupBtnImage;
         btn.GetComponent<RectTransform>().anchoredPosition = new Vector2(90, -130);
-        btn.GetComponent<RectTransform>().sizeDelta = new Vector2(250, 120);
+        btn.GetComponent<RectTransform>().sizeDelta = new Vector2(250, 80);
     }
 
     private void DestroySelf(GameObject go)
