@@ -7513,7 +7513,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0c1dc66bb2328f841a5691be3f429906, type: 3}
   - {fileID: 21300000, guid: d5e930f959a1bfd4f940fcf92af4af47, type: 3}
   - {fileID: 21300000, guid: 1638599d0cfe49b47a94c5a738dc4a1b, type: 3}
-  audio: {fileID: 5460121989932657136, guid: 2de4d52305ba9d9489aa9c266f35c452, type: 3}
+  soundBoy: {fileID: 5460121989932657136, guid: 2de4d52305ba9d9489aa9c266f35c452,
+    type: 3}
   clip: {fileID: 8300000, guid: 63d7d7d73eba62246a6cbaf9bd262461, type: 3}
   mainObjTemp: {fileID: 0}
 --- !u!114 &409466724
