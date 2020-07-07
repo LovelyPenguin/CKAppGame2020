@@ -29995,7 +29995,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1084685422
 Transform:
   m_ObjectHideFlags: 0
@@ -30105,7 +30105,17 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   EventCount: 5
-  Descriptions: []
+  Descriptions:
+  - "\uC548\uB155! \uB77C\uCFE4 \uCE74\uD398\uC5D0 \uC628\uAC78 \uD658\uC601\uD574!"
+  - "\uBA3C\uC800 \uB77C\uCFE4\uC744 \uD574\uAE08\uD574\uBCF4\uC790!"
+  - "\uB77C\uCFE4 \uC544\uC774\uCF58\uC744 \uD074\uB9AD\uD574\uBD10"
+  - "\uB9D0\uD48D\uC120\uC744 \uD074\uB9AD\uD558\uBA74 \uB77C\uCFE4\uC774 \uD574\uAE08\uB3FC"
+  - "\uC798\uD588\uC5B4!"
+  - "\uC774\uBC88\uC5D4 \uD734\uC2DD\uACF5\uAC04\uC744 \uD574\uAE08\uD574\uBCFC\uAE4C?"
+  - "\uB05D\uC774\uC57C!"
+  DecriptionCount: 020000000100000001000000000000000200000001000000
+  TextObj: {fileID: 1347277888}
+  TextBox: {fileID: 2073956855}
 --- !u!1 &1093985572
 GameObject:
   m_ObjectHideFlags: 0
