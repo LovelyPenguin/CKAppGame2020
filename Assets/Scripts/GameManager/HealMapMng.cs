@@ -211,6 +211,7 @@ public class HealMapMng : MonoBehaviour
         {
             GMng.money -= cost;
             Maps[selectedMap].GetComponent<HealMapData>().Enable = true;
+            Maps[selectedMap].GetComponent<HealMapData>().UnlockAnimStart();
             enabledMapCount++;
         }
         else

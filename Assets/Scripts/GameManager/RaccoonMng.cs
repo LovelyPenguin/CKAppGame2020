@@ -196,18 +196,10 @@ public class RaccoonMng : MonoBehaviour
         {
             gameObject.GetComponent<FailMsgBox>().Create();
         }
-        else if (index > 4)
+        else if (index == 6)
         {
-            if (index == 5)
-            {
-                gameObject.GetComponent<FailMsgBox>().Create("벚꽃라쿤은 벚꽃을 찾아 멀리 떠났어요.");
-                return;
-            }
-            if (index == 6)
-            {
-                gameObject.GetComponent<FailMsgBox>().Create("푸딩라쿤은 푸딩을 먹느라 못온다네요.");
-                return;
-            }
+            gameObject.GetComponent<FailMsgBox>().Create("푸딩라쿤은 푸딩을 먹느라 못온다네요.");
+            return;
         }
         else if (!RaccoonUnlock[index])
         {
@@ -311,7 +303,7 @@ public class RaccoonMng : MonoBehaviour
         GetComponent<AudioSource>().Play();
 
         RC[RCindex].GetComponent<RaccoonController>().SetRCActive(true);
-        RC[RCindex].GetComponent<RaccoonController>().stamina = 50;
+        RC[RCindex].GetComponent<RaccoonController>().stamina = 100;
         RaccoonExist[RCindex] = true;
         curRCCount++;
     }

@@ -48,8 +48,8 @@ public class IntroCutScene : MonoBehaviour, IPointerClickHandler
             StartCoroutine(CSceneChange(CutScenes[curCutSceneCount]));
         else
         {
-            endCalls.Invoke();
             this.gameObject.SetActive(false);
+            endCalls.Invoke();
             GetComponentInParent<CutSceneControl>().CutSceneEnd();
         }
     }
@@ -68,7 +68,6 @@ public class IntroCutScene : MonoBehaviour, IPointerClickHandler
         Color initColor = newImage.color;
         while (count <= 1.0f)
         {
-            Debug.Log("Size = " + newImageObj.GetComponent<RectTransform>().sizeDelta);
             initColor.a = count;
             newImage.color = initColor;
 

@@ -33,6 +33,8 @@ public class GameMng : MonoBehaviour
     public AudioClip[] BGMs;
     public AudioClip[] SEs;
 
+    public GameObject Tutorial;
+
     public bool getOpenData
     {
         get
@@ -203,5 +205,10 @@ public class GameMng : MonoBehaviour
         save.MONEY = money;
         save.CUSTOMERCOUNT = customerCount;
         gameObject.GetComponent<SaveLoader>().SaveData<GSaveData>(ref save, "GMNG");
+    }
+
+    public void TutorialStart()
+    {
+        Tutorial.SetActive(true);
     }
 }

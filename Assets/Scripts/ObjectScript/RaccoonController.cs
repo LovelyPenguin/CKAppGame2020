@@ -354,6 +354,8 @@ public class RaccoonController : MonoBehaviour
     //bool isHealing = false;
     private bool Movable;
 
+    public bool isExhaustable = true;
+
     public enum State { unActive = 0, onDrag, inMap1, inMap2, Healing, dropping };
     private State RCState;
 
@@ -608,7 +610,7 @@ public class RaccoonController : MonoBehaviour
     }
     private void Exhausting()
     {
-        if (isWorking)
+        if (isWorking && isExhaustable)
             if ((exhaustTime += Time.deltaTime) > 300.0f && isWorking)
             {
                 this.stamina -= 1;
