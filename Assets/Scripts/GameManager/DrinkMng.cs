@@ -131,6 +131,7 @@ public class DrinkMng : MonoBehaviour
         if (currentJuice != null)
         {
             isStartMiniGame = true;
+            currentJuice.GetComponent<JuiceObject>().SetDecoSprite(false);
             if (TabMiniGame())
             {
                 if (timingBar.active == false)
