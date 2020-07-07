@@ -2417,6 +2417,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CustomerStdBoy
       objectReference: {fileID: 0}
+    - target: {fileID: 666858931728062060, guid: bca759fac39b3ff4ab83a67a2b6d4075,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bca759fac39b3ff4ab83a67a2b6d4075, type: 3}
 --- !u!4 &82650626 stripped
@@ -8282,6 +8287,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CustomerStdGirl
+      objectReference: {fileID: 0}
+    - target: {fileID: 1149368735606556480, guid: 2ee160d1701c98a4582da76c605ca238,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1149368737231138642, guid: 2ee160d1701c98a4582da76c605ca238,
         type: 3}
@@ -26384,7 +26394,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1248343811}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -29484,6 +29494,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CustomerGirl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167369456139189313, guid: 4a7f2e4da50295648bebba3b0ea297ce,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6167369457696511059, guid: 4a7f2e4da50295648bebba3b0ea297ce,
         type: 3}
