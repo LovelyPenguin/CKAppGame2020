@@ -33,7 +33,7 @@ public class DoubleClickDetect : MonoBehaviour
         if(clicking)
         {
             clickingTime += Time.deltaTime;
-            if(clickingTime > 0.3f)
+            if(clickingTime > 0.2f)
             {
                 LongClickEvent.Invoke();
                 clicking = false;

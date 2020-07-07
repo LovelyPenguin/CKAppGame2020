@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SetCameraPos : MonoBehaviour
 {
-    static bool coroutineEnable = true;
+    public static bool CameraMoveEnable = true;
 
     public Vector3 newPos;
 
@@ -33,9 +33,9 @@ public class SetCameraPos : MonoBehaviour
         else
             InitYPos = 82f;
 
-        if (coroutineEnable)
+        if (CameraMoveEnable)
         {
-            coroutineEnable = false;
+            CameraMoveEnable = false;
             StartCoroutine(ChangePos(new Vector3(newPos.x, newPos.y + InitYPos, newPos.z)));
         }
     }
@@ -49,6 +49,6 @@ public class SetCameraPos : MonoBehaviour
             yield return null;
         }
         Camera.main.transform.position = Pos;
-        coroutineEnable = true;
+        CameraMoveEnable = true;
     }
 }

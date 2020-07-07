@@ -38,29 +38,32 @@ public class FloorStatMng : MonoBehaviour
 
     public void SetFloor1()
     {
-        curFloor = Floor.Floor1;
-
-        Camera.main.GetComponent<FloorChange>().SetFloorFirst(22.85f);
-        MenuCollection.GetComponent<ChangeCameraPosition>().SetInitializeYpos(22.85f);
-
-        FloorChangeButtons[0].GetComponent<Image>().color = Color.white;
-        FloorChangeButtons[0].GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -121);
-        if (floor2enable)
+        if (curFloor == Floor.Floor2 && SetCameraPos.CameraMoveEnable)
         {
-            FloorChangeButtons[1].GetComponent<Image>().color = Color.gray;
-            FloorChangeButtons[1].GetComponent<RectTransform>().anchoredPosition = new Vector2(-20, 0);
+            curFloor = Floor.Floor1;
+
+            Camera.main.GetComponent<FloorChange>().SetFloorFirst(22.85f);
+            MenuCollection.GetComponent<ChangeCameraPosition>().SetInitializeYpos(22.85f);
+
+            FloorChangeButtons[0].GetComponent<Image>().color = Color.white;
+            FloorChangeButtons[0].GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -121);
+            if (floor2enable)
+            {
+                FloorChangeButtons[1].GetComponent<Image>().color = Color.gray;
+                FloorChangeButtons[1].GetComponent<RectTransform>().anchoredPosition = new Vector2(-20, 0);
+            }
+            else
+            {
+                FloorChangeButtons[1].GetComponent<Image>().color = new Color(0.2f, 0.2f, 0.2f);
+                FloorChangeButtons[1].GetComponent<RectTransform>().anchoredPosition = new Vector2(-80, 0);
+            }
+            CollisionGround2.SetActive(false);
         }
-        else
-        {
-            FloorChangeButtons[1].GetComponent<Image>().color = new Color(0.2f, 0.2f, 0.2f);
-            FloorChangeButtons[1].GetComponent<RectTransform>().anchoredPosition = new Vector2(-80, 0);
-        }
-        CollisionGround2.SetActive(false);
     }
 
     public void SetFloor2()
     {
-        if (floor2enable)
+        if (floor2enable && curFloor == Floor.Floor1 && SetCameraPos.CameraMoveEnable)
         {
             curFloor = Floor.Floor2;
 
