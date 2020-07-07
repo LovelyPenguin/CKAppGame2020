@@ -6752,14 +6752,16 @@ MonoBehaviour:
   isUnlock: 0
   tabCountData: 9
   unlockCost: 150000
-  profileText: "\uD504\uB85C\uD544 \uD14D\uC2A4\uD2B8"
-  hashTag: "\uD574\uC2DC\uD0DC\uADF8"
-  mainName: "\uD3AD\uADC4\uD3AD\uD3AD"
+  profileText: "\uB530\uC2A4\uD55C \uD56B\uCD08\uCF54\uB85C \uB9C8\uC74C\uAE4C\uC9C0
+    \uB179\uC5EC\uBC84\uB9AC\uC790!\r"
+  hashTag: "\"#\uCF54\uCF54\uC544\uC758_\uB530\uB4EF\uD55C_\uC804\uC728 #\uC74C\uB8CC\uAE4C\uC9C0_\uC4F0\uBA74_\uC880
+    #\uCD08\uCF5C\uB9BF #\uC74C\uB8CC\n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30\"\r"
+  mainName: "\uD56B\uCD08\uCF54"
   headName: {fileID: 1984309288}
   tagName: {fileID: 1345569967}
   mainNaming: {fileID: 665512440}
   icon: {fileID: 51761163}
-  unlockBtn: {fileID: 979603346}
+  unlockBtn: {fileID: 842956212}
   unlockData: {fileID: 979603348}
 --- !u!114 &367912751
 MonoBehaviour:
@@ -13797,12 +13799,12 @@ MonoBehaviour:
   unlockCost: 400000
   profileText: "\uD504\uB85C\uD544 \uD14D\uC2A4\uD2B8"
   hashTag: "\uD574\uC2DC\uD0DC\uADF8"
-  mainName: "\uD3AD\uADC4\uD3AD\uD3AD"
+  mainName: Empty
   headName: {fileID: 1984309288}
   tagName: {fileID: 1345569967}
   mainNaming: {fileID: 665512440}
   icon: {fileID: 51761163}
-  unlockBtn: {fileID: 979603346}
+  unlockBtn: {fileID: 842956212}
   unlockData: {fileID: 979603348}
 --- !u!114 &520178749
 MonoBehaviour:
@@ -14710,14 +14712,17 @@ MonoBehaviour:
   isUnlock: 1
   tabCountData: 5
   unlockCost: 0
-  profileText: "\uD504\uB85C\uD544 \uD14D\uC2A4\uD2B8"
-  hashTag: "\uD574\uC2DC\uD0DC\uADF8"
-  mainName: "\uD3AD\uADC4\uD3AD\uD3AD"
+  profileText: "\uAD6C\uC6B4 \uC544\uBAAC\uB4DC\uC758 \uACE0\uC18C\uD55C \uD5A5\uBBF8\uC640
+    \uACFC\uC77C\uC758 \uC0C1\uD07C\uD55C \uC0B0\uBBF8\uAC00 \uC870\uD654\uB86D\uAC8C
+    \uB9CC\uB0AC\uB2E4!\r"
+  hashTag: "\"#\uC544\uBA54\uB9AC\uCE74\uB178 #\uC88B\uC544\uC88B\uC544\uC88B\uC544
+    #\uC778\uC0DD\uB9DB #\uC74C\uB8CC\n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30\"\r"
+  mainName: "\uC544\uBA54\uB9AC\uCE74\uB178 "
   headName: {fileID: 1984309288}
   tagName: {fileID: 1345569967}
   mainNaming: {fileID: 665512440}
   icon: {fileID: 51761163}
-  unlockBtn: {fileID: 979603346}
+  unlockBtn: {fileID: 842956212}
   unlockData: {fileID: 979603348}
 --- !u!114 &609265303
 MonoBehaviour:
@@ -27207,14 +27212,16 @@ MonoBehaviour:
   isUnlock: 0
   tabCountData: 9
   unlockCost: 500000
-  profileText: "\uD504\uB85C\uD544 \uD14D\uC2A4\uD2B8"
-  hashTag: "\uD574\uC2DC\uD0DC\uADF8"
-  mainName: "\uD3AD\uADC4\uD3AD\uD3AD"
+  profileText: "\uD64D\uCC28\uC78E\uC5D0 \uCF54\uAE30\uC758 \uC624\uB80C\uC9C0\uD5A5\uC774
+    \uD55C\uAC00\uB4DD...\u2605\r"
+  hashTag: "\"#\uC5BC\uADF8\uB808\uC774\uCF54\uAE30 #\uBA4D\uBA4D #\uC774_\uD3B8\uC9C0\uB294
+    \uC601\uAD6D\uC5D0\uC11C \uC2DC\uC791\uB418\uC5B4\u2026 #\uC74C\uB8CC \n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30\"\r"
+  mainName: "\uC5BC\uADF8\uB808\uC774\uCF54\uAE30"
   headName: {fileID: 1984309288}
   tagName: {fileID: 1345569967}
   mainNaming: {fileID: 665512440}
   icon: {fileID: 51761163}
-  unlockBtn: {fileID: 979603346}
+  unlockBtn: {fileID: 842956212}
   unlockData: {fileID: 979603348}
 --- !u!114 &842373529
 MonoBehaviour:
@@ -27861,14 +27868,16 @@ MonoBehaviour:
   isUnlock: 0
   tabCountData: 10
   unlockCost: 200000
-  profileText: "\uD504\uB85C\uD544 \uD14D\uC2A4\uD2B8"
-  hashTag: "\uD574\uC2DC\uD0DC\uADF8"
-  mainName: "\uD3AD\uADC4\uD3AD\uD3AD"
+  profileText: "\uACFC\uC999 \uD321\uD321 \uC0DD\uACFC\uC77C \uC8FC\uC2A4! \uC624\uB80C\uC9C0
+    \uC88B\uC544 XD\r"
+  hashTag: "\"#\uC0DD\uACFC\uC77C\uC8FC\uC2A4 #\uACFC\uC999\uD321\uD321 #\uC624\uB80C\uC9C0
+    #\uC74C\uB8CC \n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30\"\r"
+  mainName: "\uC0DD\uACFC\uC77C\uC8FC\uC2A4"
   headName: {fileID: 1984309288}
   tagName: {fileID: 1345569967}
   mainNaming: {fileID: 665512440}
   icon: {fileID: 51761163}
-  unlockBtn: {fileID: 979603346}
+  unlockBtn: {fileID: 842956212}
   unlockData: {fileID: 979603348}
 --- !u!114 &909981036
 MonoBehaviour:
@@ -38774,14 +38783,16 @@ MonoBehaviour:
   isUnlock: 0
   tabCountData: 3
   unlockCost: 300000
-  profileText: "\uD504\uB85C\uD544 \uD14D\uC2A4\uD2B8"
-  hashTag: "\uD574\uC2DC\uD0DC\uADF8"
+  profileText: "\uBD80\uB4DC\uB7EC\uC6B4 \uC5B4\uB9B0 \uB179\uCC3B\uC78E\uC744 \uACF1\uAC8C
+    \uAC08\uC544 \uBD80\uB4DC\uB7FD\uACE0 \uAE4A\uAC8C!\r"
+  hashTag: "\"#\uB179\uCC28\uB77C\uB5BC #\uB179\uCC28\uB77C\uCFE4\uC6B8\uC9C0\uB9C8
+    #\uB179\uCC28 #\uC74C\uB8CC\n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30\"\r"
   mainName: "\uD3AD\uADC4\uD3AD\uD3AD"
   headName: {fileID: 1984309288}
   tagName: {fileID: 1345569967}
   mainNaming: {fileID: 665512440}
   icon: {fileID: 51761163}
-  unlockBtn: {fileID: 979603346}
+  unlockBtn: {fileID: 842956212}
   unlockData: {fileID: 979603348}
 --- !u!114 &1804276119
 MonoBehaviour:
