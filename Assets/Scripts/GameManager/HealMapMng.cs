@@ -50,7 +50,11 @@ public class HealMapMng : MonoBehaviour
         if (GMNG.GetComponent<SaveLoader>().LoadData<HSaveData>(ref save, "HMNG"))
         {
             for (int i = 0; i < 4; i++)
+            {
                 Maps[i].GetComponent<HealMapData>().Enable = save.HMAPUNLOCK[i];
+                if (Maps[i].GetComponent<HealMapData>().Enable)
+                    Maps[i].GetComponent<HealMapData>().UnlockAnimStart();
+            }
             enabledMapCount = save.ENABLEDMAPCOUNT;
         }
     }
