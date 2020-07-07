@@ -6,18 +6,29 @@ public class CustomerItemInfo : MonoBehaviour
 {
     public GameObject host;
     public int itemIndex;
+    public GameObject standardPos;
 
     private bool click = false;
+    private bool goToTarget = false;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(ActivateClick());
+        standardPos = GameObject.Find("StandardPos");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (goToTarget)
+        {
+            transform.position = Vector3.Lerp(transform.position, Camera.main.ScreenToWorldPoint(standardPos.transform.position), Time.deltaTime * 5);
+            Debug.Log(Vector3.Distance(transform.position, Camera.main.ScreenToWorldPoint(standardPos.transform.position)));
+            if (Vector3.Distance(transform.position, Camera.main.ScreenToWorldPoint(standardPos.transform.position)) < 1f)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     private void OnMouseDown()
@@ -27,7 +38,9 @@ public class CustomerItemInfo : MonoBehaviour
         {
             host.GetComponent<Customer>().itemActive[itemIndex] = true;
             host.GetComponent<Customer>().itemGen[itemIndex] = false;
-            Destroy(gameObject);
+            gameObject.GetComponent<Rigidbody>().useGravity = false;
+            goToTarget = true;
+            //Destroy(gameObject);
         }
     }
 
