@@ -613,7 +613,7 @@ MonoBehaviour:
   setMoneyCollectTime: 8
   poolingPos: {x: -50, y: 0, z: 50}
   entrancePos: {x: 5.63, y: 1.125, z: 1.24}
-  moneyIcon: {fileID: 4495267737210984038}
+  moneyIcon: {fileID: 2168305311722838226}
   items:
   - {fileID: 3535399585868084103, guid: 92a6e5848618748499b0d03d65f8bc77, type: 3}
   - {fileID: 5437751308636621936, guid: 18de493c3688e4040a3527eed7c2b01f, type: 3}

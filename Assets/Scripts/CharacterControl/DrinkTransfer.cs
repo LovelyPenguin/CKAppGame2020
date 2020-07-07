@@ -14,7 +14,8 @@ public class DrinkTransfer : MonoBehaviour
     public float setDrinkWaitingTime;
 
     private float setTimer;
-    private string[] juiceList = new string[5];
+    private string[] juiceList = new string[6];
+    private bool[] juiceUnlockList = new bool[6];
     private float timer;
 
     public GameObject loveIcon;
@@ -36,14 +37,23 @@ public class DrinkTransfer : MonoBehaviour
         }
         juiceIcon.SetActive(false);
         juiceSpeechBubble.SetActive(false);
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 6; i++)
         {
             juiceList[i] = GameMng.Instance.GetComponent<DrinkMng>().juiceList[i].juice.GetComponent<JuiceObject>().juiceName;
+            juiceUnlockList[i] = GameMng.Instance.GetComponent<DrinkMng>().juiceList[i].isUnlock;
         }
 
         setTimer = Random.Range(3, 5);
         timer = setTimer;
-        selectJuice = juiceList[Random.Range(0, juiceList.Length - 1)];
+
+        int randomIndex = Random.Range(0, juiceList.Length - 1);
+        do
+        {
+            randomIndex = Random.Range(0, juiceList.Length - 1);
+        } while (juiceUnlockList[randomIndex] == false);
+
+        selectJuice = juiceList[randomIndex];
+
         isDemandJuice = false;
     }
 
@@ -137,7 +147,19 @@ public class DrinkTransfer : MonoBehaviour
     {
         isTransfer = true;
         isDemandJuice = false;
-        selectJuice = juiceList[Random.Range(0, juiceList.Length - 1)];
+
+        for (int i = 0; i < 6; i++)
+        {
+            juiceUnlockList[i] = GameMng.Instance.GetComponent<DrinkMng>().juiceList[i].isUnlock;
+        }
+        int randomIndex = Random.Range(0, juiceList.Length - 1);
+        do
+        {
+            randomIndex = Random.Range(0, juiceList.Length - 1);
+        } while (juiceUnlockList[randomIndex] == false);
+
+        selectJuice = juiceList[randomIndex];
+
         juiceIcon.SetActive(false);
         juiceSpeechBubble.SetActive(false);
         timer = Random.Range(5, 8);

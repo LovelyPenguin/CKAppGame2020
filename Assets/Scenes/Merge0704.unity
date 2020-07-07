@@ -6752,15 +6752,15 @@ MonoBehaviour:
   isUnlock: 0
   tabCountData: 9
   unlockCost: 150000
-  profileText: 
-  hashTag: 
-  mainName: 
-  headName: {fileID: 0}
-  tagName: {fileID: 0}
-  mainNaming: {fileID: 0}
-  icon: {fileID: 0}
-  unlockBtn: {fileID: 0}
-  unlockData: {fileID: 0}
+  profileText: "\uD504\uB85C\uD544 \uD14D\uC2A4\uD2B8"
+  hashTag: "\uD574\uC2DC\uD0DC\uADF8"
+  mainName: "\uD3AD\uADC4\uD3AD\uD3AD"
+  headName: {fileID: 1984309288}
+  tagName: {fileID: 1345569967}
+  mainNaming: {fileID: 665512440}
+  icon: {fileID: 51761163}
+  unlockBtn: {fileID: 979603346}
+  unlockData: {fileID: 979603348}
 --- !u!114 &367912751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7729,7 +7729,7 @@ MonoBehaviour:
   tabBtn: {fileID: 1916631655}
   percentText: {fileID: 549568647}
   blockImage: {fileID: 1973744687}
-  lockImg: {fileID: 0}
+  lockImg: {fileID: 1702607748}
   juiceList:
   - {fileID: 909981035}
   - {fileID: 609265302}
@@ -13795,15 +13795,15 @@ MonoBehaviour:
   isUnlock: 0
   tabCountData: 6
   unlockCost: 400000
-  profileText: 
-  hashTag: 
-  mainName: 
-  headName: {fileID: 0}
-  tagName: {fileID: 0}
-  mainNaming: {fileID: 0}
-  icon: {fileID: 0}
-  unlockBtn: {fileID: 0}
-  unlockData: {fileID: 0}
+  profileText: "\uD504\uB85C\uD544 \uD14D\uC2A4\uD2B8"
+  hashTag: "\uD574\uC2DC\uD0DC\uADF8"
+  mainName: "\uD3AD\uADC4\uD3AD\uD3AD"
+  headName: {fileID: 1984309288}
+  tagName: {fileID: 1345569967}
+  mainNaming: {fileID: 665512440}
+  icon: {fileID: 51761163}
+  unlockBtn: {fileID: 979603346}
+  unlockData: {fileID: 979603348}
 --- !u!114 &520178749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14710,15 +14710,15 @@ MonoBehaviour:
   isUnlock: 1
   tabCountData: 5
   unlockCost: 0
-  profileText: 
-  hashTag: 
-  mainName: 
-  headName: {fileID: 0}
-  tagName: {fileID: 0}
-  mainNaming: {fileID: 0}
-  icon: {fileID: 0}
-  unlockBtn: {fileID: 0}
-  unlockData: {fileID: 0}
+  profileText: "\uD504\uB85C\uD544 \uD14D\uC2A4\uD2B8"
+  hashTag: "\uD574\uC2DC\uD0DC\uADF8"
+  mainName: "\uD3AD\uADC4\uD3AD\uD3AD"
+  headName: {fileID: 1984309288}
+  tagName: {fileID: 1345569967}
+  mainNaming: {fileID: 665512440}
+  icon: {fileID: 51761163}
+  unlockBtn: {fileID: 979603346}
+  unlockData: {fileID: 979603348}
 --- !u!114 &609265303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27207,15 +27207,15 @@ MonoBehaviour:
   isUnlock: 0
   tabCountData: 9
   unlockCost: 500000
-  profileText: 
-  hashTag: 
-  mainName: 
-  headName: {fileID: 0}
-  tagName: {fileID: 0}
-  mainNaming: {fileID: 0}
-  icon: {fileID: 0}
-  unlockBtn: {fileID: 0}
-  unlockData: {fileID: 0}
+  profileText: "\uD504\uB85C\uD544 \uD14D\uC2A4\uD2B8"
+  hashTag: "\uD574\uC2DC\uD0DC\uADF8"
+  mainName: "\uD3AD\uADC4\uD3AD\uD3AD"
+  headName: {fileID: 1984309288}
+  tagName: {fileID: 1345569967}
+  mainNaming: {fileID: 665512440}
+  icon: {fileID: 51761163}
+  unlockBtn: {fileID: 979603346}
+  unlockData: {fileID: 979603348}
 --- !u!114 &842373529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27861,15 +27861,15 @@ MonoBehaviour:
   isUnlock: 0
   tabCountData: 10
   unlockCost: 200000
-  profileText: 
-  hashTag: 
-  mainName: 
-  headName: {fileID: 0}
-  tagName: {fileID: 0}
-  mainNaming: {fileID: 0}
-  icon: {fileID: 0}
-  unlockBtn: {fileID: 0}
-  unlockData: {fileID: 0}
+  profileText: "\uD504\uB85C\uD544 \uD14D\uC2A4\uD2B8"
+  hashTag: "\uD574\uC2DC\uD0DC\uADF8"
+  mainName: "\uD3AD\uADC4\uD3AD\uD3AD"
+  headName: {fileID: 1984309288}
+  tagName: {fileID: 1345569967}
+  mainNaming: {fileID: 665512440}
+  icon: {fileID: 51761163}
+  unlockBtn: {fileID: 979603346}
+  unlockData: {fileID: 979603348}
 --- !u!114 &909981036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29494,11 +29494,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CustomerGirl
-      objectReference: {fileID: 0}
-    - target: {fileID: 6167369456139189313, guid: 4a7f2e4da50295648bebba3b0ea297ce,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6167369457696511059, guid: 4a7f2e4da50295648bebba3b0ea297ce,
         type: 3}
@@ -31935,6 +31930,7 @@ RectTransform:
   m_Children:
   - {fileID: 1956682366}
   - {fileID: 792290385}
+  - {fileID: 1702607749}
   m_Father: {fileID: 714726153}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -37575,6 +37571,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1700696593}
   m_CullTransparentMesh: 0
+--- !u!1 &1702607748
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1702607749}
+  - component: {fileID: 1702607751}
+  - component: {fileID: 1702607750}
+  m_Layer: 5
+  m_Name: UnlockImg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1702607749
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702607748}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1274763751}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 788}
+  m_SizeDelta: {x: 360, y: 360}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1702607750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702607748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 9b7046782b99c9e47a385cc07012b480, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1702607751
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702607748}
+  m_CullTransparentMesh: 0
 --- !u!1 &1708490261
 GameObject:
   m_ObjectHideFlags: 0
@@ -38779,15 +38848,15 @@ MonoBehaviour:
   isUnlock: 0
   tabCountData: 3
   unlockCost: 300000
-  profileText: 
-  hashTag: 
-  mainName: 
-  headName: {fileID: 0}
-  tagName: {fileID: 0}
-  mainNaming: {fileID: 0}
-  icon: {fileID: 0}
-  unlockBtn: {fileID: 0}
-  unlockData: {fileID: 0}
+  profileText: "\uD504\uB85C\uD544 \uD14D\uC2A4\uD2B8"
+  hashTag: "\uD574\uC2DC\uD0DC\uADF8"
+  mainName: "\uD3AD\uADC4\uD3AD\uD3AD"
+  headName: {fileID: 1984309288}
+  tagName: {fileID: 1345569967}
+  mainNaming: {fileID: 665512440}
+  icon: {fileID: 51761163}
+  unlockBtn: {fileID: 979603346}
+  unlockData: {fileID: 979603348}
 --- !u!114 &1804276119
 MonoBehaviour:
   m_ObjectHideFlags: 0
