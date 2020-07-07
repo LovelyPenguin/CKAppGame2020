@@ -23,6 +23,7 @@ public class CustomerItemInfo : MonoBehaviour
         if (goToTarget)
         {
             transform.position = Vector3.Lerp(transform.position, Camera.main.ScreenToWorldPoint(standardPos.transform.position), Time.deltaTime * 5);
+            //transform.Rotate(0, 0, 500 * Time.deltaTime);
             Debug.Log(Vector3.Distance(transform.position, Camera.main.ScreenToWorldPoint(standardPos.transform.position)));
             if (Vector3.Distance(transform.position, Camera.main.ScreenToWorldPoint(standardPos.transform.position)) < 1f)
             {
