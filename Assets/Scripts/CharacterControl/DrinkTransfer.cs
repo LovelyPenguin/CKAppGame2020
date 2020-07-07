@@ -21,6 +21,9 @@ public class DrinkTransfer : MonoBehaviour
     public GameObject loveIcon;
     public GameObject hateIcon;
 
+    public AudioClip clip;
+    private AudioSource audio;
+
     //public float[] itemDropPercent = new float[3];
 
     private void Awake()
@@ -55,6 +58,9 @@ public class DrinkTransfer : MonoBehaviour
         selectJuice = juiceList[randomIndex];
 
         isDemandJuice = false;
+
+        audio = GetComponent<AudioSource>();
+        audio.clip = clip;
     }
 
     // Update is called once per frame
@@ -71,10 +77,12 @@ public class DrinkTransfer : MonoBehaviour
         if (isDemandJuice)
         {
             loveIcon.SetActive(true);
+            audio.Play();
         }
         else if (isDemandJuice && percent < 50)
         {
             WrongDrink();
+            audio.Play();
         }
         GameMng.Instance.money += money;
         GetComponent<Customer>().money += money;
@@ -90,6 +98,7 @@ public class DrinkTransfer : MonoBehaviour
             InitalizeParameter();
             Debug.Log("Wrong");
             hateIcon.SetActive(true);
+            audio.Play();
         }
     }
 

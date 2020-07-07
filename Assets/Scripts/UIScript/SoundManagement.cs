@@ -5,6 +5,7 @@ using UnityEngine;
 public class SoundManagement : MonoBehaviour
 {
     public AudioClip[] clips;
+    public GameObject soundBoy;
 
     private AudioSource audio;
     // Start is called before the first frame update
@@ -27,5 +28,15 @@ public class SoundManagement : MonoBehaviour
         {
             audio.Play();
         }
+    }
+
+    public void CallSoundBoy()
+    {
+        int random = Random.Range(0, clips.Length - 1);
+
+        GameObject soundBoyGB = Instantiate(soundBoy, Vector3.zero, Quaternion.identity);
+        AudioSource sound = soundBoyGB.GetComponent<AudioSource>();
+        sound.clip = clips[random]; ;
+        sound.Play();
     }
 }
