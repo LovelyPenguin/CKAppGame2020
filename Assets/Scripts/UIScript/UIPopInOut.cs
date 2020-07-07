@@ -128,8 +128,16 @@ public class UIPopInOut : MonoBehaviour
     {
         isOpen = true;
         cardExitPanel.SetActive(true);
-        GetComponent<AudioSource>().clip = BottomInterfaceSEs[1];
-        GetComponent<AudioSource>().Play();
+        Debug.Log("Open Bottom Window");
+    }
+
+    public void OpenSoundPlay()
+    {
+        if (!isOpen)
+        {
+            GetComponent<AudioSource>().clip = BottomInterfaceSEs[1];
+            GetComponent<AudioSource>().Play();
+        }
     }
 
     public void CloseWindow()

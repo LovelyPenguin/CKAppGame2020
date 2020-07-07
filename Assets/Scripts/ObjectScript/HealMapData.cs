@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class HealMapData : MonoBehaviour
@@ -26,7 +25,7 @@ public class HealMapData : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Quad.SetActive(!Enable);
+        //Quad.SetActive(!Enable);
     }
 
     public int retSeatIndex()
@@ -71,5 +70,33 @@ public class HealMapData : MonoBehaviour
     {
         if (!Enable)
             HMng.GetComponent<HealMapMng>().FindMapIndex(this.name);
+    }
+
+    public void UnlockAnimStart()
+    {
+        StartCoroutine(UnlockAnim());
+    }
+
+    IEnumerator UnlockAnim()
+    {
+        float t = 0.0f;
+        Vector3 endScale = Quad.transform.localScale * 1.2f;
+        
+        while (t <= 1.0f)
+        {
+            Quad.transform.localScale = Vector3.Lerp(Quad.transform.localScale, endScale, t);
+            t += Time.deltaTime * 4;
+            yield return null;
+        }
+        Quad.transform.localScale = endScale;
+        t = 0.0f;
+        while (t <= 1.0f)
+        {
+            Quad.transform.localScale = Vector3.Lerp(Quad.transform.localScale, Vector3.zero, t);
+            t += Time.deltaTime * 2;
+            yield return null;
+        }
+        Quad.transform.localScale = Vector3.one;
+        Quad.SetActive(false);
     }
 }
