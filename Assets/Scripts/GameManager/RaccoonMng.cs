@@ -188,13 +188,26 @@ public class RaccoonMng : MonoBehaviour
             }
         }
         int cost = RetCost(index, 0);
-        if(GameObject.Find("GameManager").GetComponent<GameMng>().getOpenData)
+        if (GameObject.Find("GameManager").GetComponent<GameMng>().getOpenData)
         {
             gameObject.GetComponent<FailMsgBox>().Create("장사 중에는 새로운 라쿤을 데려올수 없어요!");
         }
-        else if(GMng.money < cost)
+        else if (GMng.money < cost)
         {
             gameObject.GetComponent<FailMsgBox>().Create();
+        }
+        else if (index > 4)
+        {
+            if (index == 5)
+            {
+                gameObject.GetComponent<FailMsgBox>().Create("벚꽃라쿤은 벚꽃을 찾아 멀리 떠났어요.");
+                return;
+            }
+            if (index == 6)
+            {
+                gameObject.GetComponent<FailMsgBox>().Create("푸딩라쿤은 푸딩을 먹느라 못온다네요.");
+                return;
+            }
         }
         else if (!RaccoonUnlock[index])
         {

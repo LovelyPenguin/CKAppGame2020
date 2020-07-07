@@ -2171,7 +2171,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 41c0b5b5a4623574f8e4878e6a43abe1, type: 3}
   - {fileID: 21300000, guid: fe64c3879d1ebd74ab67eab22c9b0e43, type: 3}
   ParentObj: {fileID: 1438485241}
-  mfont: {fileID: 12800000, guid: 551c43b3f75dc6b45b3d410990cc433c, type: 3}
+  mfont: {fileID: 12800000, guid: 3181b6fc3aaf48b43aece9fae1bb475a, type: 3}
   Balloon: {fileID: 21300000, guid: 46ed23f18e5e78d498e0f4b24ef655c8, type: 3}
   BalloonTail: {fileID: 21300000, guid: c808753d86694c3498f8efda190ba8a1, type: 3}
   RCInfoText: {fileID: 1782994072}
@@ -7986,7 +7986,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PopupBackground: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   popupBtnImage: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  PopupFont: {fileID: 12800000, guid: 551c43b3f75dc6b45b3d410990cc433c, type: 3}
+  PopupFont: {fileID: 12800000, guid: 3181b6fc3aaf48b43aece9fae1bb475a, type: 3}
   FailSE: {fileID: 8300000, guid: 2946124081830364a8939ba47d45a097, type: 3}
 --- !u!82 &409466730
 AudioSource:
@@ -8385,7 +8385,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: d984ba8aaf98e8d4882575468724c7a3, type: 3}
     m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
@@ -38595,7 +38595,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 3181b6fc3aaf48b43aece9fae1bb475a, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
