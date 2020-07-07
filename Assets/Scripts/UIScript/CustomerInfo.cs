@@ -84,7 +84,7 @@ public class CustomerInfo : MonoBehaviour
                 "",
                 "",
                 "",
-                null,
+                itemImages,
                 mainImage,
                 isUnlock,
                 targetCustomer);
