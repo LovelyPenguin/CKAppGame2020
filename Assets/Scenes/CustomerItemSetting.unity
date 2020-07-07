@@ -919,6 +919,7 @@ MonoBehaviour:
   Shadow: {fileID: 1623829578}
   Stamina: 0
   Cost: e0930400e0930400801a060020a1070070640800
+  isExhaustable: 1
   isMoving: 0
   interpolant: 0
   start: {x: 0, y: 0, z: 0}
@@ -2957,7 +2958,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clips:
   - {fileID: 8300000, guid: b986b03283f885e4481fc868158519a9, type: 3}
-  soundBoy: {fileID: 0}
+  soundBoy: {fileID: 5460121989932657136, guid: 2de4d52305ba9d9489aa9c266f35c452,
+    type: 3}
 --- !u!82 &152135807
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8106,6 +8108,7 @@ MonoBehaviour:
   SEs:
   - {fileID: 8300000, guid: 71e03f02669713b41bbb9a427131e21e, type: 3}
   - {fileID: 8300000, guid: 5a76176c3ce6e9646baca22246834ba1, type: 3}
+  Tutorial: {fileID: 0}
 --- !u!4 &409466720
 Transform:
   m_ObjectHideFlags: 0
@@ -8948,6 +8951,7 @@ MonoBehaviour:
   Shadow: {fileID: 1806054141}
   Stamina: 0
   Cost: 00000000a0860100f0490200400d030090d00300
+  isExhaustable: 1
   isMoving: 0
   interpolant: 0
   start: {x: 0, y: 0, z: 0}
@@ -16407,6 +16411,7 @@ MonoBehaviour:
   Shadow: {fileID: 1445967856}
   Stamina: 0
   Cost: 400d0300400d0300e0930400801a0600d0dd0600
+  isExhaustable: 1
   isMoving: 0
   interpolant: 0
   start: {x: 0, y: 0, z: 0}
@@ -21967,6 +21972,7 @@ MonoBehaviour:
   Shadow: {fileID: 1296082752}
   Stamina: 0
   Cost: f0490200f0490200400d0300e093040030570500
+  isExhaustable: 1
   isMoving: 0
   interpolant: 0
   start: {x: 0, y: 0, z: 0}
@@ -32467,6 +32473,7 @@ MonoBehaviour:
   Shadow: {fileID: 262052507}
   Stamina: 0
   Cost: 801a0600801a060020a10700c027090010eb0900
+  isExhaustable: 1
   isMoving: 0
   interpolant: 0
   start: {x: 0, y: 0, z: 0}
@@ -33283,6 +33290,7 @@ MonoBehaviour:
   Shadow: {fileID: 1550642812}
   Stamina: 0
   Cost: 20a1070020a10700c027090060ae0a00b0710b00
+  isExhaustable: 1
   isMoving: 0
   interpolant: 0
   start: {x: 0, y: 0, z: 0}
@@ -42788,6 +42796,7 @@ MonoBehaviour:
   Shadow: {fileID: 1533765052}
   Stamina: 0
   Cost: c0270900c027090060ae0a0000350c0050f80c00
+  isExhaustable: 1
   isMoving: 0
   interpolant: 0
   start: {x: 0, y: 0, z: 0}

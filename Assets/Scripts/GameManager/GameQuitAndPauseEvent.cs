@@ -29,6 +29,7 @@ public class GameQuitAndPauseEvent : MonoBehaviour
         if (pause)
         {
             Debug.Log("Application Pause");
+            gameExit.Invoke();
         }
         else
         {
