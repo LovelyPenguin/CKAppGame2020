@@ -21,6 +21,9 @@ public class DrinkTransfer : MonoBehaviour
     public GameObject loveIcon;
     public GameObject hateIcon;
 
+    public AudioClip clip;
+    private AudioSource audio;
+
     //public float[] itemDropPercent = new float[3];
 
     private void Awake()
@@ -46,15 +49,18 @@ public class DrinkTransfer : MonoBehaviour
         setTimer = Random.Range(3, 5);
         timer = setTimer;
 
-        int randomIndex = Random.Range(0, juiceList.Length - 1);
+        int randomIndex = Random.Range(0, juiceList.Length);
         do
         {
-            randomIndex = Random.Range(0, juiceList.Length - 1);
+            randomIndex = Random.Range(0, juiceList.Length);
         } while (juiceUnlockList[randomIndex] == false);
 
         selectJuice = juiceList[randomIndex];
 
         isDemandJuice = false;
+
+        audio = GetComponent<AudioSource>();
+        audio.clip = clip;
     }
 
     // Update is called once per frame
@@ -71,10 +77,12 @@ public class DrinkTransfer : MonoBehaviour
         if (isDemandJuice)
         {
             loveIcon.SetActive(true);
+            audio.Play();
         }
         else if (isDemandJuice && percent < 50)
         {
             WrongDrink();
+            audio.Play();
         }
         GameMng.Instance.money += money;
         GetComponent<Customer>().money += money;
@@ -90,6 +98,7 @@ public class DrinkTransfer : MonoBehaviour
             InitalizeParameter();
             Debug.Log("Wrong");
             hateIcon.SetActive(true);
+            audio.Play();
         }
     }
 
@@ -152,10 +161,10 @@ public class DrinkTransfer : MonoBehaviour
         {
             juiceUnlockList[i] = GameMng.Instance.GetComponent<DrinkMng>().juiceList[i].isUnlock;
         }
-        int randomIndex = Random.Range(0, juiceList.Length - 1);
+        int randomIndex = Random.Range(0, juiceList.Length);
         do
         {
-            randomIndex = Random.Range(0, juiceList.Length - 1);
+            randomIndex = Random.Range(0, juiceList.Length);
         } while (juiceUnlockList[randomIndex] == false);
 
         selectJuice = juiceList[randomIndex];

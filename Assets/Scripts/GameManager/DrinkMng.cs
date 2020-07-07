@@ -42,6 +42,9 @@ public class DrinkMng : MonoBehaviour
     public JuiceData[] juiceList;
     public Sprite[] juiceSprites;
 
+    public GameObject audio;
+    public AudioClip clip;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -131,6 +134,7 @@ public class DrinkMng : MonoBehaviour
         if (currentJuice != null)
         {
             isStartMiniGame = true;
+            currentJuice.GetComponent<JuiceObject>().SetDecoSprite(false);
             if (TabMiniGame())
             {
                 if (timingBar.active == false)
@@ -152,6 +156,11 @@ public class DrinkMng : MonoBehaviour
                     if (timingBar.GetComponent<TimingSlider>().getPercentValue >= 50)
                     {
                         currentJuice.GetComponent<JuiceObject>().SetDecoSprite(true);
+
+                        GameObject soundBoy = Instantiate(audio, Vector3.zero, Quaternion.identity);
+                        AudioSource sound = soundBoy.GetComponent<AudioSource>();
+                        sound.clip = clip;
+                        sound.Play();
                     }
                     PercentTextInitialize();
                     currentJuice.GetComponent<JuiceObject>().FinishDrink();

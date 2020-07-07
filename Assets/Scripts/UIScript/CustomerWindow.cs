@@ -43,10 +43,12 @@ public class CustomerWindow : MonoBehaviour
                 if (target.itemActive[i])
                 {
                     this.itemImages[i].sprite = itemImages[i];
+                    this.itemImages[i].color = new Color(1, 1, 1);
                 }
                 else
                 {
-                    this.itemImages[i].sprite = nullImage;
+                    this.itemImages[i].sprite = itemImages[i];
+                    this.itemImages[i].color = new Color(0, 0, 0);
                 }
             }
         }
@@ -57,7 +59,8 @@ public class CustomerWindow : MonoBehaviour
             this.stamp.text = "";
             for (int i = 0; i < 3; i++)
             {
-                this.itemImages[i].sprite = nullImage;
+                this.itemImages[i].sprite = itemImages[i];
+                this.itemImages[i].color = new Color(0, 0, 0);
             }
         }
         this.charactreImage.sprite = characterSprite.sprite;

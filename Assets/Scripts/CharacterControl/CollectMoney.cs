@@ -27,5 +27,6 @@ public class CollectMoney : MonoBehaviour
         gameObject.GetComponentInParent<Customer>().ItemDrop();
         gameObject.GetComponentInParent<Customer>().AddStamp();
         gameObject.SetActive(false);
+        source.Play();
     }
 }

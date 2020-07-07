@@ -26,6 +26,10 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
     public float percentValue;
     public Animator anim;
 
+    public AudioClip demandSound;
+    //public AudioClip decoFin;
+    public AudioSource audio;
+
     RaycastHit hit;
 
     // Start is called before the first frame update
@@ -34,6 +38,8 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
         icon.SetActive(false);
         initialValue = gameObject.transform.position;
         anim = GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
+        audio.clip = demandSound;
     }
 
     // Update is called once per frame
@@ -122,7 +128,7 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
 
             if (Physics.Raycast(mouseVector.position, mouseVector.forward * 30, out hit) && hit.transform.GetComponent<DrinkTransfer>() != null)
             {
-                if (hit.transform.GetComponent<DrinkTransfer>().selectJuice == juiceName)
+                if (hit.transform.GetComponent<DrinkTransfer>().selectJuice == juiceName && hit.transform.GetComponent<DrinkTransfer>().isDemandJuice)
                 {
                     hit.transform.GetComponent<DrinkTransfer>().Detect(percentValue, juiceValue * Mathf.RoundToInt(MoneyCalc(percentValue)));
                     if (percentValue >= 50)
@@ -131,12 +137,14 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
                     }
                     ResetAllValue();
                     GameMng.Instance.GetComponent<DrinkMng>().UpdateContent();
+                    audio.Play();
                 }
-                else
+                else if (hit.transform.GetComponent<DrinkTransfer>().isDemandJuice)
                 {
                     hit.transform.GetComponent<DrinkTransfer>().WrongDrink();
                     ResetAllValue();
                     GameMng.Instance.GetComponent<DrinkMng>().UpdateContent();
+                    audio.Play();
                 }
             }
 

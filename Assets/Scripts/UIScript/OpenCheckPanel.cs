@@ -18,7 +18,14 @@ public class OpenCheckPanel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (GameMng.Instance.getOpenData)
+        {
+            Open();
+        }
+        else
+        {
+            Close();
+        }
     }
 
     public void Open()
@@ -34,13 +41,6 @@ public class OpenCheckPanel : MonoBehaviour
     IEnumerator LateStart()
     {
         yield return new WaitForSeconds(0.5f);
-        if (GameMng.Instance.getOpenData)
-        {
-            Open();
-        }
-        else
-        {
-            Close();
-        }
+        
     }
 }
