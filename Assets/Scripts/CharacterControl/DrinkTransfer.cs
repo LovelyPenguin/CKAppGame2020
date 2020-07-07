@@ -49,10 +49,10 @@ public class DrinkTransfer : MonoBehaviour
         setTimer = Random.Range(3, 5);
         timer = setTimer;
 
-        int randomIndex = Random.Range(0, juiceList.Length - 1);
+        int randomIndex = Random.Range(0, juiceList.Length);
         do
         {
-            randomIndex = Random.Range(0, juiceList.Length - 1);
+            randomIndex = Random.Range(0, juiceList.Length);
         } while (juiceUnlockList[randomIndex] == false);
 
         selectJuice = juiceList[randomIndex];
@@ -161,10 +161,10 @@ public class DrinkTransfer : MonoBehaviour
         {
             juiceUnlockList[i] = GameMng.Instance.GetComponent<DrinkMng>().juiceList[i].isUnlock;
         }
-        int randomIndex = Random.Range(0, juiceList.Length - 1);
+        int randomIndex = Random.Range(0, juiceList.Length);
         do
         {
-            randomIndex = Random.Range(0, juiceList.Length - 1);
+            randomIndex = Random.Range(0, juiceList.Length);
         } while (juiceUnlockList[randomIndex] == false);
 
         selectJuice = juiceList[randomIndex];
