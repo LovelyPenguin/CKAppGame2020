@@ -42,7 +42,7 @@ public class DrinkMng : MonoBehaviour
     public JuiceData[] juiceList;
     public Sprite[] juiceSprites;
 
-    public GameObject audio;
+    public GameObject soundBoy;
     public AudioClip clip;
 
     // Start is called before the first frame update
@@ -157,8 +157,8 @@ public class DrinkMng : MonoBehaviour
                     {
                         currentJuice.GetComponent<JuiceObject>().SetDecoSprite(true);
 
-                        GameObject soundBoy = Instantiate(audio, Vector3.zero, Quaternion.identity);
-                        AudioSource sound = soundBoy.GetComponent<AudioSource>();
+                        GameObject soundBoyGB = Instantiate(soundBoy, Vector3.zero, Quaternion.identity);
+                        AudioSource sound = soundBoyGB.GetComponent<AudioSource>();
                         sound.clip = clip;
                         sound.Play();
                     }
