@@ -48,12 +48,12 @@ public class UpgradePopUp : MonoBehaviour, IPointerClickHandler
                 }
 
                 Stars[0].GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -150);
-                Stars[0].GetComponent<RectTransform>().sizeDelta = new Vector2(75, 75);
+                Stars[0].GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
 
                 Stars[1].GetComponent<RectTransform>().anchoredPosition = new Vector2(-70, -370);
-                Stars[1].GetComponent<RectTransform>().sizeDelta = new Vector2(150, 150);
+                Stars[1].GetComponent<RectTransform>().sizeDelta = new Vector2(200, 200);
                 Stars[2].GetComponent<RectTransform>().anchoredPosition = new Vector2(70, -370);
-                Stars[2].GetComponent<RectTransform>().sizeDelta = new Vector2(150, 150);
+                Stars[2].GetComponent<RectTransform>().sizeDelta = new Vector2(200, 200);
 
                 GetComponent<AudioSource>().clip = UpgradeSE[0];
                 GetComponent<AudioSource>().Play();
@@ -73,16 +73,16 @@ public class UpgradePopUp : MonoBehaviour, IPointerClickHandler
                 }
 
                 Stars[0].GetComponent<RectTransform>().anchoredPosition = new Vector2(-37, -150);
-                Stars[0].GetComponent<RectTransform>().sizeDelta = new Vector2(75, 75);
+                Stars[0].GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
                 Stars[1].GetComponent<RectTransform>().anchoredPosition = new Vector2(37, -150);
-                Stars[1].GetComponent<RectTransform>().sizeDelta = new Vector2(75, 75);
+                Stars[1].GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
 
-                Stars[2].GetComponent<RectTransform>().anchoredPosition = new Vector2(-100, -370);
-                Stars[2].GetComponent<RectTransform>().sizeDelta = new Vector2(150, 150);
+                Stars[2].GetComponent<RectTransform>().anchoredPosition = new Vector2(-140, -370);
+                Stars[2].GetComponent<RectTransform>().sizeDelta = new Vector2(200, 200);
                 Stars[3].GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -370);
-                Stars[3].GetComponent<RectTransform>().sizeDelta = new Vector2(150, 150);
-                Stars[4].GetComponent<RectTransform>().anchoredPosition = new Vector2(100, -370);
-                Stars[4].GetComponent<RectTransform>().sizeDelta = new Vector2(150, 150);
+                Stars[3].GetComponent<RectTransform>().sizeDelta = new Vector2(200, 200);
+                Stars[4].GetComponent<RectTransform>().anchoredPosition = new Vector2(140, -370);
+                Stars[4].GetComponent<RectTransform>().sizeDelta = new Vector2(200, 200);
 
                 GetComponent<AudioSource>().clip = UpgradeSE[1];
                 GetComponent<AudioSource>().Play();
