@@ -6,10 +6,10 @@ using UnityEngine;
 [Serializable]
 class CustomerSaveData
 {
-    public bool[] UNLOCK = new bool[4];
-    public int[] GETMONEY = new int[4];
-    public int[] STAMP = new int[4];
-    public bool[,] ITEMS = new bool[4, 3];
+    public bool[] UNLOCK = new bool[10];
+    public int[] GETMONEY = new int[10];
+    public int[] STAMP = new int[10];
+    public bool[,] ITEMS = new bool[10, 3];
 }
 
 public class CustomerMng : MonoBehaviour

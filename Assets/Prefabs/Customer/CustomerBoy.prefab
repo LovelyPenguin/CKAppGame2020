@@ -393,6 +393,7 @@ MonoBehaviour:
   setDrinkWaitingTime: 10
   loveIcon: {fileID: 866049769}
   hateIcon: {fileID: 984305219}
+  clip: {fileID: 8300000, guid: 1e6a81de72c2c1c46aed016d26b69a1c, type: 3}
 --- !u!114 &824570563449376083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,7 +407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 824570564592630560}
-  isLeftInitialize: 0
+  isLeftInitialize: 1
   direction: 
 --- !u!114 &1577147014
 MonoBehaviour:
