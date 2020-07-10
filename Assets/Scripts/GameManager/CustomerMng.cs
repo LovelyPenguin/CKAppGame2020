@@ -93,7 +93,7 @@ public class CustomerMng : MonoBehaviour
         Array.Copy(save.GETMONEY, money, customers.Length);
         Array.Copy(save.STAMP, stamp, customers.Length);
 
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 10; i++)
         {
             for (int j = 0; j < 3; j++)
             {
