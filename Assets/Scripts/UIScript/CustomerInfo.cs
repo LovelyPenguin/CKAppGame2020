@@ -7,7 +7,9 @@ public class CustomerInfo : MonoBehaviour
 {
     public bool isUnlock = false;
     public string name;
+    [Multiline(3)]
     public string info;
+    [Multiline(3)]
     public string unlockCondition;
     public int getMoney;
     public int maxStamp;
