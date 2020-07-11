@@ -130,7 +130,7 @@ public class Customer : MonoBehaviour
                 int number = Random.Range(0, 100);
 
                 // 디버깅용
-                number = 100;
+                //number = 100;
 
                 if (activePercent <= (number + GameMng.Instance.GetComponent<CustomerMng>().buff) - (dustGen.CurDustCount * 2))
                 {

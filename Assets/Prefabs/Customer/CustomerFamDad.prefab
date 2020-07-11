@@ -373,6 +373,7 @@ GameObject:
   - component: {fileID: 2616547200687439612}
   - component: {fileID: 2616547200447182634}
   - component: {fileID: 1721741403}
+  - component: {fileID: 4150110212644166804}
   m_Layer: 8
   m_Name: CustomerFamDad
   m_TagString: Untagged
@@ -510,10 +511,10 @@ MonoBehaviour:
   - {fileID: 4013454757300075582, guid: 94e901a4c086cfc44a50989f2ce01049, type: 3}
   itemActive: 000000
   itemGen: 
-  itemPercentage: 320000003200000032000000
+  itemPercentage: 030000000500000014000000
   dustGen: {fileID: 0}
   stamp: 0
-  activePercent: 0
+  activePercent: 8
   anim: {fileID: 2616547200615576183}
   FirstFloorInitPos: {x: 6.5, y: 1.125, z: 7.3}
   SecondFloorInitPos: {x: 16.5, y: 52, z: 18.6}
@@ -555,7 +556,7 @@ MonoBehaviour:
   selectJuice: 
   juiceIcon: {fileID: 3246813284694943214}
   juiceSpeechBubble: {fileID: 9075531467147950032}
-  setDrinkWaitingTime: 10
+  setDrinkWaitingTime: 20
   loveIcon: {fileID: 2616547199050330403}
   hateIcon: {fileID: 2616547200758299445}
   clip: {fileID: 8300000, guid: 1e6a81de72c2c1c46aed016d26b69a1c, type: 3}
@@ -586,7 +587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88cf9f57609ea9145ab41baec0320c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  condition: 0
+  condition: 3
   rac: []
 --- !u!114 &2616547200687439612
 MonoBehaviour:
@@ -699,6 +700,18 @@ AudioSource:
     m_PostInfinity: 2
     m_RotationOrder: 4
 --- !u!114 &1721741403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3246813284484068991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ccb28a8d19172c4ab39b76324b9c041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4150110212644166804
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
