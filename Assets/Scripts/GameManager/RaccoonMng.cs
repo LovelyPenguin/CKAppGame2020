@@ -115,12 +115,12 @@ public class RaccoonMng : MonoBehaviour
                 if (PlayerPrefs.GetInt("OPENSTATUS") == 1)
                 {
                     if (gameTime > comparedTime)
-                        deltaStamina = -(int)comparedTime / 1;
+                        deltaStamina = -(int)comparedTime / 300;
                     else
-                        deltaStamina = -(int)gameTime / 1;
+                        deltaStamina = -(int)gameTime / 300;
                 }
                 if (save.RCSTATE[i] == RaccoonController.State.Healing)
-                    deltaStamina = (int)comparedTime / 1;
+                    deltaStamina = (int)comparedTime / 120;
                 //----------------------------
 
                 RC[i].GetComponent<RaccoonController>().CallUpgradeTrigger(RaccoonRank[i]);
