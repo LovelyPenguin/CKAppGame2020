@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ButtonInvoker : MonoBehaviour
 {
-    public Button btn;
+    public Button[] btn;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +21,7 @@ public class ButtonInvoker : MonoBehaviour
 
     public void Invoke()
     {
-        btn.onClick.Invoke();
+        foreach (Button b in btn)
+            b.onClick.Invoke();
     }
 }

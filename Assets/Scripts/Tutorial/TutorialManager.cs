@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using UnityEngine;
@@ -11,12 +12,21 @@ public class TutorialManager : MonoBehaviour
     public int EventCount;
     private int curEvent;
     public string[] Descriptions;
+    public RCSpriteState[] RCImageState;
     public int[] DecriptionCount;
     private int curDesciption;
     private int curSubDecription;
 
     public GameObject TextObj;
     public GameObject TextBox;
+    public GameObject RaccoonImg;
+
+    [SerializeField]
+    public enum RCSpriteState
+    { Normal = 0, bolRed };
+
+    public Sprite[] RCImages;
+
 
     private void Awake()
     {
@@ -43,7 +53,8 @@ public class TutorialManager : MonoBehaviour
         if (curSubDecription < DecriptionCount[curEvent])
         {
             TextBox.SetActive(true);
-            TextObj.SetActive(true);
+            RaccoonImg.SetActive(true);
+            RaccoonImg.GetComponent<Image>().sprite = RCImages[(int)RCImageState[curDesciption]];
             TextObj.GetComponent<Text>().text = Descriptions[curDesciption++];
             curSubDecription++;
             Debug.Log("tutorial Text Out");
@@ -53,7 +64,7 @@ public class TutorialManager : MonoBehaviour
         else if (curEvent < EventCount)
         {
             TextBox.SetActive(false);
-            TextObj.SetActive(false);
+            RaccoonImg.SetActive(false);
             TutorialEvent[curEvent++].Invoke();
             curSubDecription = 0;
 
