@@ -349,6 +349,7 @@ MonoBehaviour:
   itemActive: 000000
   itemGen: 
   itemPercentage: 040000000a0000000f000000
+  stampBuff: 0
   dustGen: {fileID: 0}
   stamp: 0
   activePercent: 10
@@ -424,7 +425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88cf9f57609ea9145ab41baec0320c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  condition: 1
+  condition: 2
   rac: []
 --- !u!114 &635175301
 MonoBehaviour:
