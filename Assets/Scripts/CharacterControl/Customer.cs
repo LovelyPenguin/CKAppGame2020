@@ -37,6 +37,7 @@ public class Customer : MonoBehaviour
     [HideInInspector]
     public bool[] itemGen;
     public int[] itemPercentage;
+    public int stampBuff = 0;
 
     public DustGenerator dustGen;
     public int stamp;
@@ -88,6 +89,7 @@ public class Customer : MonoBehaviour
         GameMng.Instance.openEvent.AddListener(InitializeSpawnData);
         moneyIcon.SetActive(false);
         dustGen = GameObject.Find("DustGenerator").GetComponent<DustGenerator>();
+        AddStamp(true);
     }
 
     // Update is called once per frame
@@ -132,7 +134,7 @@ public class Customer : MonoBehaviour
                 // 디버깅용
                 //number = 100;
 
-                if (activePercent <= (number + GameMng.Instance.GetComponent<CustomerMng>().buff) - (dustGen.CurDustCount * 2))
+                if (activePercent <= (number + GameMng.Instance.GetComponent<CustomerMng>().buff + stampBuff) - (dustGen.CurDustCount * 2))
                 {
                     Debug.Log("Active");
                     GameMng.Instance.customerCount++;
@@ -368,16 +370,20 @@ public class Customer : MonoBehaviour
         }
     }
 
-    public void AddStamp()
+    public void AddStamp(bool isRead = false)
     {
-        float randomNumber = Random.Range(0, 100);
+        if (!isRead)
+        {
+            float randomNumber = Random.Range(0, 100);
 
-        if (randomNumber >= 10)
-        {
-            stamp++;
+            if (randomNumber >= 10)
+            {
+                stamp++;
+            }
         }
-        if (stamp == 200)
+        if (stamp >= 200)
         {
+            stampBuff = 10;
             Debug.Log("BUFFFFFFFFF");
         }
     }
