@@ -15,6 +15,7 @@ class RSaveData
     public int[] RCRANK = new int[7];
     public int[] RCSTAMINA = new int[7];
     public RaccoonController.State[] RCSTATE = new RaccoonController.State[7];
+    public HealMapInfo[] HEALMAPINFO = new HealMapInfo[7];
     public int CURRCCOUNT;
 }
 
@@ -80,17 +81,16 @@ public class RaccoonMng : MonoBehaviour
         save.RCUNLOCK = RaccoonUnlock;
         save.CURRCCOUNT = curRCCount;
         for (int i = 0; i < RaccoonCount; i++)
+        {
             save.RCSTAMINA[i] = RC[i].GetComponent<RaccoonController>().stamina;
-        for (int i = 0; i < RaccoonCount; i++)
             save.RCSTATE[i] = RC[i].GetComponent<RaccoonController>().GetRCState;
-
+            save.HEALMAPINFO[i] = RC[i].GetComponent<RaccoonController>().HealInfo;
+        }
         GMng.GetComponent<SaveLoader>().SaveData<RSaveData>(ref save, "RCMNG");
     }
 
     public void LoadData()
     {
-        int healMapCount = 0;
-
         RSaveData save = new RSaveData();
         GMng.GetComponent<SaveLoader>().LoadData<RSaveData>(ref save, "RCMNG");
 
@@ -107,6 +107,7 @@ public class RaccoonMng : MonoBehaviour
         float gameTime = PlayerPrefs.GetFloat("GAMETIME");
         for (int i = 0; i < RaccoonCount; i++)
         {
+            RC[i].GetComponent<RaccoonController>().HealInfo = save.HEALMAPINFO[i];
             Debug.Log("RCUnlock Status = " + i + RaccoonUnlock[i]);
             if (RaccoonUnlock[i])
             {
@@ -120,7 +121,7 @@ public class RaccoonMng : MonoBehaviour
                         deltaStamina = -(int)gameTime / 300;
                 }
                 if (save.RCSTATE[i] == RaccoonController.State.Healing)
-                    deltaStamina = (int)comparedTime / 120;
+                    deltaStamina = (int)comparedTime / 60 * save.HEALMAPINFO[i].SeatCount;
                 //----------------------------
 
                 RC[i].GetComponent<RaccoonController>().CallUpgradeTrigger(RaccoonRank[i]);
@@ -136,6 +137,12 @@ public class RaccoonMng : MonoBehaviour
                 else
                 {
                     RC[i].GetComponent<RaccoonController>().SetRCActive(true);
+                    if (save.RCSTATE[i] == RaccoonController.State.Healing)
+                    {
+                        RC[i].transform.position = HealMapMng.Instance.retPositionForName(save.HEALMAPINFO[i].SeatNum, save.HEALMAPINFO[i].HealMapName);
+                        RC[i].transform.SetParent(HealMapMng.Instance.gameObject.transform);
+                        RC[i].GetComponent<RaccoonController>().GetRCState = RaccoonController.State.Healing;
+                    }
                 }
             }
         }

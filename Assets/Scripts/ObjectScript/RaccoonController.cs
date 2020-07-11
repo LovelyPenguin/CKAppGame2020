@@ -14,12 +14,13 @@ public class RaccoonController : MonoBehaviour
     public GameObject Shadow;
     //GameObject Shadowinst;
 
-    string healMapName;
     State InitState;
     RaycastHit hit;
 
     private Transform OnMapTransform;
     private Transform DragTransform;
+
+    public HealMapInfo HealInfo;
 
     void OnMouseDown()
     {
@@ -94,8 +95,11 @@ public class RaccoonController : MonoBehaviour
                     {
                         if (InitState == State.Healing)
                         {
-                            GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, healMapName);
+                            HealMapMng.Instance.releaseSeatForName(HealInfo.SeatNum, HealInfo.HealMapName);
                             transform.SetParent(GameObject.Find("Raccoons").transform);
+                            HealInfo.HealMapName = null;
+                            HealInfo.SeatCount = -1;
+                            HealInfo.SeatNum = -1;
                         }
                         RMng.MoveToAnotherFloor(1);
 
@@ -150,8 +154,11 @@ public class RaccoonController : MonoBehaviour
                     {
                         if (InitState == State.Healing)
                         {
-                            GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, healMapName);
+                            HealMapMng.Instance.releaseSeatForName(HealInfo.SeatNum, HealInfo.HealMapName);
                             transform.SetParent(GameObject.Find("Raccoons").transform);
+                            HealInfo.HealMapName = null;
+                            HealInfo.SeatCount = -1;
+                            HealInfo.SeatNum = -1;
                         }
                         RMng.MoveToAnotherFloor(2);
                         
@@ -204,18 +211,18 @@ public class RaccoonController : MonoBehaviour
                 else
                 {
                     if (InitState == State.Healing)
-                        GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, healMapName);
+                        HealMapMng.Instance.releaseSeatForName(HealInfo.SeatNum, HealInfo.HealMapName);
 
-                    healMapName = hit.transform.gameObject.name;
-                    healMapSeatNum = GameObject.Find("HealMap").GetComponent<HealMapMng>().retSeatIndexForName(healMapName);
-                    Debug.Log(healMapSeatNum);
-                    if (healMapSeatNum != -1)
+                    HealInfo.HealMapName = hit.transform.gameObject.name;
+                    HealInfo.SeatNum = HealMapMng.Instance.retSeatIndexForName(HealInfo.HealMapName);
+                    Debug.Log(HealInfo.SeatNum);
+                    if (HealInfo.SeatNum != -1)
                     {
-                        this.transform.position = GameObject.Find("HealMap").GetComponent<HealMapMng>().retPositionForName(healMapSeatNum, healMapName);
+                        this.transform.position = HealMapMng.Instance.retPositionForName(HealInfo.SeatNum, HealInfo.HealMapName);
                         //RCState = State.Healing;
                         animator.SetTrigger("DropTrigger");
 
-                        transform.SetParent(GameObject.Find("HealMap").transform);
+                        transform.SetParent(HealMapMng.Instance.gameObject.transform);
 
                         StartCoroutine(Drop(State.Healing));
 
@@ -296,7 +303,7 @@ public class RaccoonController : MonoBehaviour
         //Shadow.transform.position = transform.position + new UnityEngine.Vector3(0, -0.1f, 0);
     }
 
-    IEnumerator Drop(State NextState)
+    public IEnumerator Drop(State NextState)
     {
         GetComponent<BoxCollider>().enabled = false;
         Vector3 initLocation = transform.position;
@@ -365,6 +372,10 @@ public class RaccoonController : MonoBehaviour
         {
             return RCState;
         }
+        set
+        {
+            RCState = value;
+        }
     }
 
     public bool isMoving = false;
@@ -377,8 +388,6 @@ public class RaccoonController : MonoBehaviour
     public GameObject StaminaBar;
     //public GameObject StaminaBarBack;
     public GameObject Sprite;
-
-    private int healMapSeatNum;
 
     private Color OpaqueC = new Color(1f, 1f, 1f, 1f);
     private Color TransparentC = new Color(1f, 1f, 1f, 0f);
@@ -415,50 +424,16 @@ public class RaccoonController : MonoBehaviour
         moveTime = 0.0f;
         exhaustTime = 0.0f;
         healTime = 0.0f;
-        //SetRCActive(false);
 
         //navMesh.enabled = false;
         SetMovable(false);
 
         GetComponent<NavMeshAgent>().speed = vividSpeed;
-
-        //RMng = GameObject.Find("GameManager").GetComponent<RaccoonMng>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (isActive)
-        //{
-        //    isVisible = !(GameObject.Find("GameManager").GetComponent<FloorStatMng>().CurFloor == FloorStatMng.Floor.Floor1 && transform.position.y > 5f && !isOnDrag);
-
-        //    if (isVisible)
-        //    {
-        //        GetComponent<SpriteRenderer>().color = OpaqueC;
-        //    }
-        //    else
-        //    {
-        //        GetComponent<SpriteRenderer>().color = TransparentC;
-        //    }
-
-
-        //    if (!isHealing)
-        //    {
-        //        //RCMove();
-        //        if ((exhaustTime += Time.deltaTime) > 5.0f && stamina != 0 && isWorking)
-        //        {
-        //            this.stamina = this.stamina - 1;
-        //            // 파티클 시스템
-        //            //if (GetComponent<ParticleSystem>())
-        //            //{
-        //            //    GetComponent<ParticleSystemRenderer>().material = Minus;
-        //            //    GetComponent<ParticleSystem>().Play();
-        //            //}
-        //            exhaustTime = 0.0f;
-        //        }
-        //    }
-        //    StaminaBarUpdate();
-        //}
 
         if (RCState != State.unActive)
         {
@@ -508,88 +483,11 @@ public class RaccoonController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        //if (other.gameObject.tag == "Heal")
-        //{
-        //    isMoving = false;
-        //    this.transform.position = new Vector3(5, 0, 5);
-        //    isHealing = true;
-        //    healMapSeatNum = GameObject.Find("HealMap").GetComponent<HealMapMng>().retSeatIndexForName(other.gameObject.name);
-        //    Debug.Log(healMapSeatNum);
-        //    if (healMapSeatNum != -1)
-        //    {
-        //        this.transform.position = GameObject.Find("HealMap").GetComponent<HealMapMng>().retPositionForName(healMapSeatNum, other.gameObject.name);
-        //    }
-        //}
-
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        //Debug.Log(other.gameObject.name);
-        //if (other.gameObject.tag == "Heal")
-        //{
-        //    float efficiency;
-        //    int SeatCount = GameObject.Find("HealMap").GetComponent<HealMapMng>().retSeatCountForName(other.gameObject.name);
-        //    switch (SeatCount)
-        //    {
-        //        case 1:
-        //            efficiency = 1.0f;
-        //            break;
-        //        case 2:
-        //            efficiency = 2.0f;
-        //            break;
-        //        default:
-        //            efficiency = 3.0f;
-        //            break;
-        //    }
-        //    healTime += Time.deltaTime;
-        //    if (healTime > efficiency && stamina != maxStamina)
-        //    {
-        //        this.stamina = this.stamina + 1;
-        //        // 파티클 시스템
-        //        //if(GetComponent<ParticleSystem>())
-        //        //{
-        //        //    GetComponent<ParticleSystemRenderer>().material = Plus;
-        //        //    GetComponent<ParticleSystem>().Play();
-        //        //}
-        //        healTime = 0.0f;
-        //    }
-        //}
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        //if (other.gameObject.tag == "Heal")
-        //{
-        //    healTime = 0.0f;
-        //    isHealing = false;
-        //    GameObject.Find("HealMap").GetComponent<HealMapMng>().releaseSeatForName(healMapSeatNum, other.gameObject.name);
-        //}
-    }
-    //private void SetVisible()
-    //{
-    //    isVisible = !(GameObject.Find("GameManager").GetComponent<FloorStatMng>().CurFloor == FloorStatMng.Floor.Floor1 && RCState == State.inMap2);
-
-    //    if (isVisible)
-    //    {
-    //        Sprite.GetComponent<SpriteRenderer>().color = OpaqueC;
-    //        Shadow.GetComponent<SpriteRenderer>().color = OpaqueC;
-    //        StaminaBar.GetComponent<Image>().color = OpaqueC;
-    //    }
-    //    else
-    //    {
-    //        Sprite.GetComponent<SpriteRenderer>().color = TransparentC;
-    //        Shadow.GetComponent<SpriteRenderer>().color = TransparentC;
-    //        StaminaBar.GetComponent<Image>().color = TransparentC;
-    //    }
-    //}
-
     private void Healing()
     {
         float efficiency;
-        int SeatCount = GameObject.Find("HealMap").GetComponent<HealMapMng>().retSeatCountForName(healMapName);
-        switch (SeatCount)
+        HealInfo.SeatCount = GameObject.Find("HealMap").GetComponent<HealMapMng>().retSeatCountForName(HealInfo.HealMapName);
+        switch (HealInfo.SeatCount)
         {
             case 1:
                 efficiency = 60.0f;
@@ -691,66 +589,6 @@ public class RaccoonController : MonoBehaviour
                 break;
         }
     }
-
-    //private void OnMouseDown()
-    //{
-    //    isOnDrag = true;
-    //    isMoving = false;
-    //    animator.SetTrigger("DragTrigger");
-    //}
-
-    //private void OnMouseUp()
-    //{
-    //    isOnDrag = false;
-    //    animator.SetTrigger("idleTrigger");
-    //}
-
-    //private void RCMove()
-    //{
-    //    if(!isOnDrag && isActive)
-    //    {
-    //        if (!isMoving)
-    //        {
-    //            if (isMoving = ThinkWay())
-    //                animator.SetTrigger("WalkTrigger");
-    //        }
-    //        else
-    //        {
-    //            interpolant += (Time.deltaTime / distance);
-    //            if(interpolant > 1.0f)
-    //            {
-    //                interpolant = 1.0f;
-    //                isMoving = false;
-    //                animator.SetTrigger("idleTrigger");
-    //            }
-    //            transform.position = UnityEngine.Vector3.Lerp(start, dest, interpolant);
-    //        }
-    //    }
-    //}
-
-    //private bool ThinkWay()
-    //{
-    //    if ((moveTime += Time.deltaTime) > 1.0f)
-    //    {
-    //        if (Random.Range(0, 10) > 6)
-    //        {
-    //            start = this.transform.position;
-    //            dest = new UnityEngine.Vector3(Random.Range(0.0f, 10.0f), transform.position.y, Random.Range(0.0f, 10.0f));
-    //            distance = (dest - start).magnitude;
-    //            direction = (dest - start).normalized;
-
-    //            if (0 < Vector3.Dot(direction, new Vector3(-1, 0, 1)))
-    //                transform.localScale = new Vector3(initXScale, initYScale, initZScale);
-    //            else
-    //                transform.localScale = new Vector3(-initXScale, initYScale, initZScale);
-
-    //            interpolant = 0.0f;
-    //            return true;
-    //        }
-    //        moveTime = 0.0f;
-    //    }
-    //    return false;
-    //}
 
 
     public bool GetIsDrag()

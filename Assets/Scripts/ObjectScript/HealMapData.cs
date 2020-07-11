@@ -6,10 +6,9 @@ using UnityEngine;
 public class HealMapData : MonoBehaviour
 {
     public Vector3[] Locations = new Vector3[3];
-    private bool[] Usable = new bool[3];
+    public bool[] Usable = new bool[3];
     public bool Enable = false;
     private int SeatCount = 0;
-    public GameObject HMng;
 
     // this is for test
     public GameObject Quad;
@@ -18,8 +17,9 @@ public class HealMapData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 3; i++)
-            Usable[i] = true;
+    //    if (HealMapMng.Instance.loadFail)
+    //        for (int i = 0; i < 3; i++)
+    //            Usable[i] = true;
     }
 
     // Update is called once per frame
@@ -60,21 +60,21 @@ public class HealMapData : MonoBehaviour
         return SeatCount;
     }
 
-    //private void OnMouseUp()
-    //{
-    //    if (!Enable)
-    //        HMng.GetComponent<HealMapMng>().FindMapIndex(this.name);
-    //}
-
     public void UnlockThis()
     {
         if (!Enable)
-            HMng.GetComponent<HealMapMng>().FindMapIndex(this.name);
+            HealMapMng.Instance.FindMapIndex(this.name);
     }
 
     public void UnlockAnimStart()
     {
         StartCoroutine(UnlockAnim());
+    }
+
+    public void SetAllUsableTrue()
+    {
+        for (int i = 0; i < 3; i++)
+            Usable[i] = true;
     }
 
     IEnumerator UnlockAnim()

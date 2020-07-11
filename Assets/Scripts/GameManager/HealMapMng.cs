@@ -10,6 +10,10 @@ class HSaveData
 {
     public bool[] HMAPUNLOCK = new bool[4];
     public int ENABLEDMAPCOUNT;
+    public bool[] MAP0USABLE = new bool[3];
+    public bool[] MAP1USABLE = new bool[3];
+    public bool[] MAP2USABLE = new bool[3];
+    public bool[] MAP3USABLE = new bool[3];
 }
 
 public class HealMapMng : MonoBehaviour
@@ -20,13 +24,33 @@ public class HealMapMng : MonoBehaviour
     private int enabledMapCount = 0;
     public int DefaultMapUnlockCost = 500000;
     public float ProductionRatio = 1.6f;
-    GameMng GMng;
-    GameObject GMNG;
+    public bool loadFail = false;
     // Start is called before the first frame update
+
+    private static HealMapMng instance;
+    public static HealMapMng Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<HealMapMng>();
+            }
+
+            return instance;
+        }
+    }
+    private void Awake()
+    {
+        instance = this;
+        if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
-        GMNG = GameObject.Find("GameManager");
-        GMng = GMNG.GetComponent<GameMng>();
         LoadData();
     }
 
@@ -41,14 +65,18 @@ public class HealMapMng : MonoBehaviour
         for(int i=0;i< HealMapCount; i++)
             save.HMAPUNLOCK[i] = Maps[i].GetComponent<HealMapData>().Enable;
         save.ENABLEDMAPCOUNT = enabledMapCount;
+        Array.Copy(Maps[0].GetComponent<HealMapData>().Usable, save.MAP0USABLE, 3);
+        Array.Copy(Maps[1].GetComponent<HealMapData>().Usable, save.MAP1USABLE, 3);
+        Array.Copy(Maps[2].GetComponent<HealMapData>().Usable, save.MAP2USABLE, 3);
+        Array.Copy(Maps[3].GetComponent<HealMapData>().Usable, save.MAP3USABLE, 3);
 
-        GMNG.GetComponent<SaveLoader>().SaveData<HSaveData>(ref save,"HMNG");
+        GameMng.Instance.gameObject.GetComponent<SaveLoader>().SaveData<HSaveData>(ref save,"HMNG");
     }
 
     public void LoadData()
     {
         HSaveData save = new HSaveData();
-        if (GMNG.GetComponent<SaveLoader>().LoadData<HSaveData>(ref save, "HMNG"))
+        if (GameMng.Instance.gameObject.GetComponent<SaveLoader>().LoadData<HSaveData>(ref save, "HMNG"))
         {
             for (int i = 0; i < HealMapCount; i++)
             {
@@ -56,8 +84,13 @@ public class HealMapMng : MonoBehaviour
                 if (Maps[i].GetComponent<HealMapData>().Enable)
                     Maps[i].GetComponent<HealMapData>().UnlockAnimStart();
             }
+            Array.Copy(save.MAP0USABLE, Maps[0].GetComponent<HealMapData>().Usable, 3);
+            Array.Copy(save.MAP1USABLE, Maps[1].GetComponent<HealMapData>().Usable, 3);
+            Array.Copy(save.MAP2USABLE, Maps[2].GetComponent<HealMapData>().Usable, 3);
+            Array.Copy(save.MAP3USABLE, Maps[3].GetComponent<HealMapData>().Usable, 3);
             enabledMapCount = save.ENABLEDMAPCOUNT;
         }
+        loadFail = true;
     }
 
     public int retSeatIndexForName(string name)
@@ -219,16 +252,17 @@ public class HealMapMng : MonoBehaviour
 
     public void UnlockHealMap()
     {
-        if (GMng.money >= cost)
+        if (GameMng.Instance.money >= cost)
         {
-            GMng.money -= cost;
+            GameMng.Instance.money -= cost;
             Maps[selectedMap].GetComponent<HealMapData>().Enable = true;
             Maps[selectedMap].GetComponent<HealMapData>().UnlockAnimStart();
+            Maps[selectedMap].GetComponent<HealMapData>().SetAllUsableTrue();
             enabledMapCount++;
         }
         else
         {
-            GMNG.GetComponent<FailMsgBox>().Create();
+            GameMng.Instance.gameObject.GetComponent<FailMsgBox>().Create();
         }
         HealUnlockUIActive = false;
         HealMapUnlockUI.SetActive(false);
@@ -242,7 +276,7 @@ public class HealMapMng : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (HealUnlockUIActive && !GMng.isPopupMenuOpen)
+        if (HealUnlockUIActive && !GameMng.Instance.isPopupMenuOpen)
             HealMapUnlockUI.SetActive(true);
         else
         {
