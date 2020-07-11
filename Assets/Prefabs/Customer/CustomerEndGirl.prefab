@@ -375,6 +375,7 @@ GameObject:
   - component: {fileID: 7496376110771355175}
   - component: {fileID: 7496376110061860849}
   - component: {fileID: 363186056}
+  - component: {fileID: 3248205071670759631}
   m_Layer: 8
   m_Name: CustomerEndGirl
   m_TagString: Untagged
@@ -512,10 +513,10 @@ MonoBehaviour:
   - {fileID: 59372642350939481, guid: e98b8e746d487fe41b21b6f8d0632741, type: 3}
   itemActive: 000000
   itemGen: 
-  itemPercentage: 320000003200000032000000
+  itemPercentage: 03000000050000000f000000
   dustGen: {fileID: 0}
   stamp: 0
-  activePercent: 0
+  activePercent: 5
   anim: {fileID: 7496376110163145388}
   FirstFloorInitPos: {x: 6.5, y: 1.125, z: 7.3}
   SecondFloorInitPos: {x: 16.5, y: 52, z: 18.6}
@@ -557,7 +558,7 @@ MonoBehaviour:
   selectJuice: 
   juiceIcon: {fileID: 7010225489818592565}
   juiceSpeechBubble: {fileID: 3581890312374581003}
-  setDrinkWaitingTime: 10
+  setDrinkWaitingTime: 20
   loveIcon: {fileID: 7496376109193523704}
   hateIcon: {fileID: 7496376110842248174}
   clip: {fileID: 8300000, guid: 1e6a81de72c2c1c46aed016d26b69a1c, type: 3}
@@ -588,7 +589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88cf9f57609ea9145ab41baec0320c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  condition: 0
+  condition: 2
   rac: []
 --- !u!114 &7496376110771355175
 MonoBehaviour:
@@ -701,6 +702,18 @@ AudioSource:
     m_PostInfinity: 2
     m_RotationOrder: 4
 --- !u!114 &363186056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7010225489146377892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ccb28a8d19172c4ab39b76324b9c041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3248205071670759631
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

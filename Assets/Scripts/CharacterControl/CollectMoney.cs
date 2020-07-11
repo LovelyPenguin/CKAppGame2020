@@ -22,7 +22,7 @@ public class CollectMoney : MonoBehaviour
     private void OnMouseDown()
     {
         Debug.Log("CLICK");
-        gameObject.GetComponentInParent<DrinkTransfer>().Detect(1000);
+        gameObject.GetComponentInParent<DrinkTransfer>().Detect(5000);
         gameObject.GetComponentInParent<Customer>().ReturnHome(true);
         gameObject.GetComponentInParent<Customer>().ItemDrop();
         gameObject.GetComponentInParent<Customer>().AddStamp();

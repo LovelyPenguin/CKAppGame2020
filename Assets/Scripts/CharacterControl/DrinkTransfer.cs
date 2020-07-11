@@ -46,7 +46,7 @@ public class DrinkTransfer : MonoBehaviour
             juiceUnlockList[i] = GameMng.Instance.GetComponent<DrinkMng>().juiceList[i].isUnlock;
         }
 
-        setTimer = Random.Range(3, 5);
+        setTimer = Random.Range(5, 20);
         timer = setTimer;
 
         int randomIndex = Random.Range(0, juiceList.Length);
@@ -171,7 +171,7 @@ public class DrinkTransfer : MonoBehaviour
 
         juiceIcon.SetActive(false);
         juiceSpeechBubble.SetActive(false);
-        timer = Random.Range(5, 8);
+        timer = Random.Range(5, 20);
     }
 
     IEnumerator DrinkWaiting()
