@@ -70,6 +70,8 @@ public class SetRCInfo : MonoBehaviour
             RCRockImage.SetActive(true);
         }
         SetStar(RCMng.GetComponent<RaccoonMng>().GetRCRank(CurrentRaccoon));
+        RCInfoText.GetComponent<RCInfoText>().UpdateText(CurrentRaccoon);
+        RCNameText.GetComponent<RCInfoText>().UpdateText(CurrentRaccoon);
     }
     void SetStar(int num)
     {
