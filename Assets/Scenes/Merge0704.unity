@@ -2205,8 +2205,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 68
+    m_Font: {fileID: 12800000, guid: 3181b6fc3aaf48b43aece9fae1bb475a, type: 3}
+    m_FontSize: 105
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -2217,7 +2217,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 15:30
+  m_Text: 00:00:00
 --- !u!222 &65889007
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8994,6 +8994,8 @@ GameObject:
   - component: {fileID: 443066503}
   - component: {fileID: 443066502}
   - component: {fileID: 443066504}
+  - component: {fileID: 443066506}
+  - component: {fileID: 443066505}
   m_Layer: 5
   m_Name: MainImage
   m_TagString: Untagged
@@ -9068,17 +9070,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5d2a689e2ab0ac4e9d2af6eb2e8fcef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: e64610b2e1853054cab23276f6f55663, type: 3}
   buttons:
   - {fileID: 1970484830}
   - {fileID: 366534383}
   - {fileID: 1110708053}
+--- !u!114 &443066505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443066500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5d2a689e2ab0ac4e9d2af6eb2e8fcef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 59e63922988046a43bf72b78985dc8a6, type: 3}
+  buttons:
+  - {fileID: 1458865958}
+--- !u!114 &443066506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443066500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5d2a689e2ab0ac4e9d2af6eb2e8fcef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 20c5417a8eb26c84696eb64ced080820, type: 3}
+  buttons:
   - {fileID: 1005582426}
   - {fileID: 1146938373}
-  - {fileID: 1458865958}
-  sprites:
-  - {fileID: 21300000, guid: e64610b2e1853054cab23276f6f55663, type: 3}
-  - {fileID: 21300000, guid: 20c5417a8eb26c84696eb64ced080820, type: 3}
-  - {fileID: 21300000, guid: 59e63922988046a43bf72b78985dc8a6, type: 3}
 --- !u!1 &447254062
 GameObject:
   m_ObjectHideFlags: 0
@@ -42493,6 +42520,8 @@ GameObject:
   - component: {fileID: 1703114807}
   - component: {fileID: 1703114806}
   - component: {fileID: 1703114808}
+  - component: {fileID: 1703114810}
+  - component: {fileID: 1703114809}
   m_Layer: 5
   m_Name: MainImage
   m_TagString: Untagged
@@ -42567,18 +42596,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5d2a689e2ab0ac4e9d2af6eb2e8fcef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: e64610b2e1853054cab23276f6f55663, type: 3}
   buttons:
   - {fileID: 1534127605}
   - {fileID: 54789939}
-  - {fileID: 1176546277}
-  - {fileID: 373818938}
+--- !u!114 &1703114809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703114804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5d2a689e2ab0ac4e9d2af6eb2e8fcef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 59e63922988046a43bf72b78985dc8a6, type: 3}
+  buttons:
   - {fileID: 709880683}
   - {fileID: 263551401}
   - {fileID: 801016598}
-  sprites:
-  - {fileID: 21300000, guid: e64610b2e1853054cab23276f6f55663, type: 3}
-  - {fileID: 21300000, guid: 20c5417a8eb26c84696eb64ced080820, type: 3}
-  - {fileID: 21300000, guid: 59e63922988046a43bf72b78985dc8a6, type: 3}
+--- !u!114 &1703114810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703114804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5d2a689e2ab0ac4e9d2af6eb2e8fcef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 20c5417a8eb26c84696eb64ced080820, type: 3}
+  buttons:
+  - {fileID: 1176546277}
+  - {fileID: 373818938}
 --- !u!1 &1708490261
 GameObject:
   m_ObjectHideFlags: 0

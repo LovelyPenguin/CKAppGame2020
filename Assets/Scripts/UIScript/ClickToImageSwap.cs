@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class ClickToImageSwap : MonoBehaviour
 {
+    public Sprite sprite;
     public Button[] buttons;
-    public Sprite[] sprites;
     private int previousIndex;
 
     private Image img;
@@ -18,7 +18,6 @@ public class ClickToImageSwap : MonoBehaviour
             buttons[i].onClick.AddListener(OnClick);
         }
         img = GetComponent<Image>();
-        previousIndex = -1;
     }
 
     // Update is called once per frame
@@ -29,14 +28,6 @@ public class ClickToImageSwap : MonoBehaviour
 
     public void OnClick()
     {
-        Debug.Log("Image Swap");
-        int index = Random.Range(0, sprites.Length);
-
-        do
-        {
-            index = Random.Range(0, sprites.Length);
-        } while (previousIndex == index);
-        previousIndex = index;
-        img.sprite = sprites[index];
+        img.sprite = sprite;
     }
 }
