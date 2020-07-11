@@ -499,7 +499,7 @@ MonoBehaviour:
   isActive: 0
   unlock: 1
   money: 0
-  duration: 30
+  duration: 10
   activeTime: 10
   setMoneyCollectTime: 8
   poolingPos: {x: -50, y: 0, z: 50}

@@ -75,14 +75,14 @@ public class Customer : MonoBehaviour
             else
             {
                 isActive = false;
-                durationSecond = duration;
+                durationSecond = duration * 60;
                 gameObject.GetComponent<NavMeshAgent>().enabled = false;
             }
         }
         else
         {
             isActive = false;
-            durationSecond = duration;
+            durationSecond = duration * 60;
             gameObject.GetComponent<NavMeshAgent>().enabled = false;
         }
         GameMng.Instance.openEvent.AddListener(InitializeSpawnData);
@@ -189,7 +189,7 @@ public class Customer : MonoBehaviour
             }
             else
             {
-                PlayerPrefs.SetFloat(objectTime, duration);
+                PlayerPrefs.SetFloat(objectTime, duration * 60);
                 PlayerPrefs.SetFloat(objectActiveTime, activeTime);
             }
         }
@@ -232,7 +232,7 @@ public class Customer : MonoBehaviour
         }
         else
         {
-            PlayerPrefs.SetFloat(objectTime, duration);
+            PlayerPrefs.SetFloat(objectTime, duration * 60);
             PlayerPrefs.SetFloat(objectActiveTime, activeTime);
         }
     }
@@ -276,7 +276,7 @@ public class Customer : MonoBehaviour
         {
             gameObject.transform.position = poolingPos;
             gameObject.GetComponent<NavMeshAgent>().enabled = false;
-            durationSecond = duration;
+            durationSecond = duration * 60;
             string objectTime = gameObject.name + "Time";
             PlayerPrefs.SetFloat(objectTime, durationSecond);
             isMoneyCollect = false;
