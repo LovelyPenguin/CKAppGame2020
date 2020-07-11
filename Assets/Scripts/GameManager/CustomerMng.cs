@@ -10,7 +10,7 @@ class CustomerSaveData
     public int[] GETMONEY = new int[10];
     public int[] STAMP = new int[10];
     public bool[,] ITEMS = new bool[10, 3];
-    public Vector3[] POSITION = new Vector3[10];
+    //public Vector3[] POSITION = new Vector3[10];
 }
 
 public class CustomerMng : MonoBehaviour
@@ -78,7 +78,7 @@ public class CustomerMng : MonoBehaviour
         save.GETMONEY = money;
         save.STAMP = stamp;
         save.ITEMS = item;
-        save.POSITION = pos;
+        //save.POSITION = pos;
 
         GameMng.Instance.GetComponent<SaveLoader>().SaveData<CustomerSaveData>(ref save, "CUSTOMERSAVE");
     }
@@ -97,7 +97,7 @@ public class CustomerMng : MonoBehaviour
         Array.Copy(save.UNLOCK, unlock, customers.Length);
         Array.Copy(save.GETMONEY, money, customers.Length);
         Array.Copy(save.STAMP, stamp, customers.Length);
-        Array.Copy(save.POSITION, pos, customers.Length);
+        //Array.Copy(save.POSITION, pos, customers.Length);
 
         for (int i = 0; i < 10; i++)
         {

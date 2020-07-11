@@ -42,7 +42,7 @@ public class CheckCustomerAppear : MonoBehaviour
 
     private bool NoRac()
     {
-        if (condition <= PlayerPrefs.GetInt("CUSTOMERCOUNT"))
+        if (condition <= GameMng.Instance.GetComponent<RaccoonCountMng>().GetRaccoonCount())
         {
             return true;
         }
@@ -57,11 +57,11 @@ public class CheckCustomerAppear : MonoBehaviour
         bool returnValue = false;
         for (int i = 0; i < rac.Length; i++)
         {
-            if (condition <= PlayerPrefs.GetInt("CUSTOMERCOUNT") && (rac[i].GetRCState == RaccoonController.State.inMap1 || rac[i].GetRCState == RaccoonController.State.inMap2))
+            if (condition <= GameMng.Instance.GetComponent<RaccoonCountMng>().GetRaccoonCount() && (rac[i].GetRCState == RaccoonController.State.inMap1 || rac[i].GetRCState == RaccoonController.State.inMap2))
             {
                 returnValue = true;
             }
-            else if (condition > PlayerPrefs.GetInt("CUSTOMERCOUNT") && (rac[i].GetRCState == RaccoonController.State.inMap1 || rac[i].GetRCState == RaccoonController.State.inMap2))
+            else if (condition > GameMng.Instance.GetComponent<RaccoonCountMng>().GetRaccoonCount() && (rac[i].GetRCState == RaccoonController.State.inMap1 || rac[i].GetRCState == RaccoonController.State.inMap2))
             {
                 returnValue = false;
             }

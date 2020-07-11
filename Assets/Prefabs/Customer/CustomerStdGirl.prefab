@@ -211,7 +211,6 @@ GameObject:
   - component: {fileID: 390025221}
   - component: {fileID: 1455677134}
   - component: {fileID: 1125895865}
-  - component: {fileID: 7993349159391620007}
   m_Layer: 8
   m_Name: CustomerStdGirl
   m_TagString: Untagged
@@ -440,7 +439,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jui: []
-  rac: []
+  rac:
+  - {fileID: 0}
 --- !u!82 &1455677134
 AudioSource:
   m_ObjectHideFlags: 0
@@ -538,18 +538,6 @@ AudioSource:
     m_PostInfinity: 2
     m_RotationOrder: 4
 --- !u!114 &1125895865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1149368735606556480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ccb28a8d19172c4ab39b76324b9c041, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7993349159391620007
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

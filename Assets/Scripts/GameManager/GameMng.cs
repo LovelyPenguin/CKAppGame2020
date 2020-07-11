@@ -77,6 +77,7 @@ public class GameMng : MonoBehaviour
             case 0:
                 isOpen = false;
                 GetComponents<AudioSource>()[0].clip = BGMs[0];
+                openTime = 600;
                 break;
             case 1:
                 isOpen = true;
@@ -136,8 +137,8 @@ public class GameMng : MonoBehaviour
 
         closeEvent.Invoke();
         customerCount = 0;
-        //openTime = 600;
-        openTime = 0;
+        openTime = 600;
+        //openTime = 0;
     }
 
     public void LoadGame()

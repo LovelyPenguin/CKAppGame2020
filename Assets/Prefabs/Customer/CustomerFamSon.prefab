@@ -365,7 +365,6 @@ GameObject:
   - component: {fileID: 2016387615371809094}
   - component: {fileID: 2016387615511402640}
   - component: {fileID: 1039637839}
-  - component: {fileID: 7308929742992603723}
   m_Layer: 8
   m_Name: CustomerFamSon
   m_TagString: Untagged
@@ -489,7 +488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMoneyCollect: 0
   isActive: 0
-  unlock: 1
+  unlock: 0
   money: 0
   duration: 30
   activeTime: 10
@@ -594,7 +593,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jui: []
-  rac: []
+  rac:
+  - {fileID: 0}
 --- !u!82 &2016387615511402640
 AudioSource:
   m_ObjectHideFlags: 0
@@ -692,18 +692,6 @@ AudioSource:
     m_PostInfinity: 2
     m_RotationOrder: 4
 --- !u!114 &1039637839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1349546552356411845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ccb28a8d19172c4ab39b76324b9c041, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7308929742992603723
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

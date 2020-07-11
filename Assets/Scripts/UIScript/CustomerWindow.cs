@@ -35,7 +35,10 @@ public class CustomerWindow : MonoBehaviour
         this.info.text = info;
         if (unlockState)
         {
-            this.unlockCondition.text = "등장조건 : " + unlockCondition;
+            this.name.text = name;
+            this.charactreImage.sprite = characterSprite.sprite;
+            this.charactreImage.color = new Color(1, 1, 1);
+            this.unlockCondition.text = "해금조건 : " + unlockCondition;
             this.getMoney.text = getMoney + "을(를) 수금하였습니다";
             this.stamp.text = currentStamp + " / " + maxStamp;
             for (int i = 0; i < 3; i++)
@@ -57,14 +60,15 @@ public class CustomerWindow : MonoBehaviour
             this.unlockCondition.text = "";
             this.getMoney.text = "";
             this.stamp.text = "";
+            this.charactreImage.sprite = characterSprite.sprite;
+            this.charactreImage.color = new Color(0, 0, 0);
             for (int i = 0; i < 3; i++)
             {
                 this.itemImages[i].sprite = itemImages[i];
                 this.itemImages[i].color = new Color(0, 0, 0);
             }
         }
-        this.charactreImage.sprite = characterSprite.sprite;
-        this.charactreImage.color = characterSprite.color;
+        
         this.charactreImage.GetComponent<RectTransform>().sizeDelta = characterSprite.GetComponent<RectTransform>().sizeDelta;
     }
 
