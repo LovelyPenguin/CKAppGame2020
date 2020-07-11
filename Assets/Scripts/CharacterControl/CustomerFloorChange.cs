@@ -9,6 +9,7 @@ public class CustomerFloorChange : MonoBehaviour
 
     private Customer cus;
     private RandomMove cusMove;
+    private FloorStatMng flos;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,17 +18,19 @@ public class CustomerFloorChange : MonoBehaviour
 
         cus = GetComponent<Customer>();
         cusMove = GetComponent<RandomMove>();
+
+        flos = GameMng.Instance.GetComponent<FloorStatMng>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, floor1.transform.position) < 1f && cusMove.In1StFloor)
+        if (flos.SecondFloorStat && Vector3.Distance(transform.position, floor1.transform.position) < 1f && cusMove.In1StFloor)
         {
             cus.FloorChange2nd();
         }
 
-        if (Vector3.Distance(transform.position, floor2.transform.position) < 1f && !cusMove.In1StFloor)
+        if (flos.SecondFloorStat && Vector3.Distance(transform.position, floor2.transform.position) < 1f && !cusMove.In1StFloor)
         {
             cus.FloorChange1st();
         }
