@@ -151,7 +151,7 @@ public class GameMng : MonoBehaviour
         }
         else
         {
-            GameObject.Find("CutSceneCanvas").GetComponent<CutSceneControl>().CutSceneStart(8);
+            TutorialStart();
         }
     }
 
