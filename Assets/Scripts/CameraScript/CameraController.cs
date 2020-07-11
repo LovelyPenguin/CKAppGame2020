@@ -16,6 +16,7 @@ public class CameraController : MonoBehaviour
     public float MaxCameraSize = 15;
     public float MinCameraSize = 5;
 
+    public Sprite[] BackGroundSprites;
     public float SecondFloorViewHeight;
 
     public bool IsMoved()
@@ -48,10 +49,12 @@ public class CameraController : MonoBehaviour
         if (transform.position.y > SecondFloorViewHeight)
         {
             //    GameMng.GetComponent<FloorStatMng>().SetFloor2();
+            Background.GetComponent<SpriteRenderer>().sprite = BackGroundSprites[1];
         }
         else
         {
             //   GameMng.GetComponent<FloorStatMng>().SetFloor1();
+            Background.GetComponent<SpriteRenderer>().sprite = BackGroundSprites[0];
         }
         //}
     }
