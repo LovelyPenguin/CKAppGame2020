@@ -23,7 +23,7 @@ public class TutorialManager : MonoBehaviour
 
     [SerializeField]
     public enum RCSpriteState
-    { Normal = 0, bolRed };
+    { Normal = 0, bolRed, sad, bbanzzac };
 
     public Sprite[] RCImages;
 
@@ -63,8 +63,8 @@ public class TutorialManager : MonoBehaviour
             gameObject.SetActive(false);
         else if (curEvent < EventCount)
         {
-            TextBox.SetActive(false);
-            RaccoonImg.SetActive(false);
+            //TextBox.SetActive(false);
+            //RaccoonImg.SetActive(false);
             TutorialEvent[curEvent++].Invoke();
             curSubDecription = 0;
 
