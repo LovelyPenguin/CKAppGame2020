@@ -14,7 +14,8 @@ class HSaveData
 
 public class HealMapMng : MonoBehaviour
 {
-    public GameObject[] Maps = new GameObject[4];
+    public int HealMapCount = 4;
+    public GameObject[] Maps;
     public GameObject HealMapUnlockUI;
     private int enabledMapCount = 0;
     public int DefaultMapUnlockCost = 500000;
@@ -37,7 +38,7 @@ public class HealMapMng : MonoBehaviour
     public void SaveData()
     {
         HSaveData save = new HSaveData();
-        for(int i=0;i<4;i++)
+        for(int i=0;i< HealMapCount; i++)
             save.HMAPUNLOCK[i] = Maps[i].GetComponent<HealMapData>().Enable;
         save.ENABLEDMAPCOUNT = enabledMapCount;
 
@@ -49,7 +50,7 @@ public class HealMapMng : MonoBehaviour
         HSaveData save = new HSaveData();
         if (GMNG.GetComponent<SaveLoader>().LoadData<HSaveData>(ref save, "HMNG"))
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < HealMapCount; i++)
             {
                 Maps[i].GetComponent<HealMapData>().Enable = save.HMAPUNLOCK[i];
                 if (Maps[i].GetComponent<HealMapData>().Enable)
@@ -194,18 +195,25 @@ public class HealMapMng : MonoBehaviour
             selectedMap = 0;
         }
 
-        if(enabledMapCount != 0)
+        if (selectedMap == 1 || selectedMap == 0)
         {
-            cost = (int)(DefaultMapUnlockCost * Mathf.Pow(ProductionRatio, enabledMapCount - 1));
-            HealMapUnlockUI.GetComponentsInChildren<Text>()[0].text = "휴식공간을 해금하시겠습니까?\n비용 = " + cost.ToString();
+            if (enabledMapCount != 0)
+            {
+                cost = (int)(DefaultMapUnlockCost * Mathf.Pow(ProductionRatio, enabledMapCount - 1));
+                HealMapUnlockUI.GetComponentsInChildren<Text>()[0].text = "휴식공간을 해금하시겠습니까?\n비용 = " + cost.ToString();
+            }
+            else
+            {
+                cost = 0;
+                HealMapUnlockUI.GetComponentsInChildren<Text>()[0].text = "휴식공간을 해금하시겠습니까?";
+            }
+
+            HealUnlockUIActive = true;
         }
         else
         {
-            cost = 0;
-            HealMapUnlockUI.GetComponentsInChildren<Text>()[0].text = "휴식공간을 해금하시겠습니까?";
+            GameMng.Instance.gameObject.GetComponent<FailMsgBox>().Create("이 휴식공간은 아직 공사 중이에요!");
         }
-
-        HealUnlockUIActive = true;
         Debug.Log("Popup");
     }
 
