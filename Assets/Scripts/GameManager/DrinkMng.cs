@@ -112,6 +112,10 @@ public class DrinkMng : MonoBehaviour
             SetMiniGameData(tabCountDataTemp, juiceDataTemp, ref mainObjTemp.GetComponent<JuiceData>().isUnlock, mainObjTemp);
             lockImg.SetActive(false);
         }
+        else
+        {
+            GameMng.Instance.GetComponent<FailMsgBox>().Create();
+        }
     }
 
     public void UnlockDrink(int cost, ref bool unlock)
