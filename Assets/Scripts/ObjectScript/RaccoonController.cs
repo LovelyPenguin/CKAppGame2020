@@ -771,6 +771,18 @@ public class RaccoonController : MonoBehaviour
             MoveSecondFloor(true);
         }
     }
+    public void SetRCActiveInFloor(bool isFist)
+    {
+        //isActive = activity;
+        if (isFist)
+        {
+            MoveFirstFloor(true);
+        }
+        else
+        {
+            MoveSecondFloor(true);
+        }
+    }
 
     public void StartWork()
     {

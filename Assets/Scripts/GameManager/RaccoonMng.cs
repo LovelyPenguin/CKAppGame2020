@@ -14,6 +14,7 @@ class RSaveData
     public bool[] RCUNLOCK = new bool[7];
     public int[] RCRANK = new int[7];
     public int[] RCSTAMINA = new int[7];
+    public RaccoonController.State[] RCSTATE = new RaccoonController.State[7];
     public int CURRCCOUNT;
 }
 
@@ -59,20 +60,6 @@ public class RaccoonMng : MonoBehaviour
         if (GMng.GetComponent<SaveLoader>().CheckFileExist("RCMNG"))
         {
             LoadData();
-            for (int i = 0; i < 7; i++)
-            {
-                Debug.Log("RCUnlock Status = " + i + RaccoonUnlock[i]);
-                if (RaccoonUnlock[i])
-                {
-                    RC[i].GetComponent<RaccoonController>().SetRCActive(true);
-                    RC[i].GetComponent<RaccoonController>().CallUpgradeTrigger(RaccoonRank[i]);
-                    if (i == 4)
-                    {
-                        GameObject.Find("GameManager").GetComponent<FloorStatMng>().UnlockSecondFloor();
-                        Debug.Log("2nd Floor Unlocked");
-                    }
-                }
-            }
         }
     }
 
@@ -94,12 +81,16 @@ public class RaccoonMng : MonoBehaviour
         save.CURRCCOUNT = curRCCount;
         for (int i = 0; i < RaccoonCount; i++)
             save.RCSTAMINA[i] = RC[i].GetComponent<RaccoonController>().stamina;
+        for (int i = 0; i < RaccoonCount; i++)
+            save.RCSTATE[i] = RC[i].GetComponent<RaccoonController>().GetRCState;
 
         GMng.GetComponent<SaveLoader>().SaveData<RSaveData>(ref save, "RCMNG");
     }
 
     public void LoadData()
     {
+        int healMapCount = 0;
+
         RSaveData save = new RSaveData();
         GMng.GetComponent<SaveLoader>().LoadData<RSaveData>(ref save, "RCMNG");
 
@@ -107,8 +98,47 @@ public class RaccoonMng : MonoBehaviour
         Array.Copy(save.RCRANK, RaccoonRank, 7);
         Array.Copy(save.RCUNLOCK, RaccoonUnlock, 7);
         curRCCount = save.CURRCCOUNT;
+        if (RaccoonUnlock[4])
+        {
+            GameObject.Find("GameManager").GetComponent<FloorStatMng>().UnlockSecondFloor();
+            Debug.Log("2nd Floor Unlocked");
+        }
+        float comparedTime = GameMng.Instance.gameObject.GetComponent<TimeMng>().getCompareTime;
+        float gameTime = PlayerPrefs.GetFloat("GAMETIME");
         for (int i = 0; i < RaccoonCount; i++)
-            RC[i].GetComponent<RaccoonController>().stamina = save.RCSTAMINA[i];
+        {
+            Debug.Log("RCUnlock Status = " + i + RaccoonUnlock[i]);
+            if (RaccoonUnlock[i])
+            {
+                //----------------------------
+                int deltaStamina = 0;
+                if (PlayerPrefs.GetInt("OPENSTATUS") == 1)
+                {
+                    if (gameTime > comparedTime)
+                        deltaStamina = -(int)comparedTime / 1;
+                    else
+                        deltaStamina = -(int)gameTime / 1;
+                }
+                if (save.RCSTATE[i] == RaccoonController.State.Healing)
+                    deltaStamina = (int)comparedTime / 1;
+                //----------------------------
+
+                RC[i].GetComponent<RaccoonController>().CallUpgradeTrigger(RaccoonRank[i]);
+                RC[i].GetComponent<RaccoonController>().stamina = save.RCSTAMINA[i] + deltaStamina;
+                if (save.RCSTATE[i] == RaccoonController.State.inMap1)
+                {
+                    RC[i].GetComponent<RaccoonController>().SetRCActiveInFloor(true);
+                }
+                else if (save.RCSTATE[i] == RaccoonController.State.inMap2)
+                {
+                    RC[i].GetComponent<RaccoonController>().SetRCActiveInFloor(false);
+                }
+                else
+                {
+                    RC[i].GetComponent<RaccoonController>().SetRCActive(true);
+                }
+            }
+        }
     }
 
     public void GenerateRaccoon(int RCindex)
