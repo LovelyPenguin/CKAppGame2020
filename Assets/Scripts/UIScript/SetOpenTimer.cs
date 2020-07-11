@@ -20,6 +20,7 @@ public class SetOpenTimer : MonoBehaviour
     void Start()
     {
         myText = gameObject.GetComponent<Text>();
+        myText.text = "00:10:00";
         span = new TimeSpan(0, 0, Mathf.FloorToInt(GameMng.Instance.openTime));
 
         if (!GameMng.Instance.getOpenData)
@@ -114,15 +115,15 @@ public class SetOpenTimer : MonoBehaviour
     {
         if (GameMng.Instance.getOpenData == false)
         {
-            //if (GameMng.Instance.openTime - number >= 600)
-            if (GameMng.Instance.openTime - number >= 0)
+            if (GameMng.Instance.openTime - number >= 600)
+            //if (GameMng.Instance.openTime - number >= 0)
             {
                 GameMng.Instance.openTime -= number;
             }
             else
             {
-                //GameMng.Instance.openTime = 600;
-                GameMng.Instance.openTime = 0;
+                GameMng.Instance.openTime = 600;
+                //GameMng.Instance.openTime = 0;
             }
 
             if (number >= 60)
@@ -139,8 +140,8 @@ public class SetOpenTimer : MonoBehaviour
     public void SendTimeData()
     {
         timer = GameMng.Instance.openTime;
-        if (timer > 0)
-        //if (timer >= 600)
+        //if (timer > 0)
+        if (timer >= 600)
         {
             GameMng.Instance.OpenCafe(timer);
 

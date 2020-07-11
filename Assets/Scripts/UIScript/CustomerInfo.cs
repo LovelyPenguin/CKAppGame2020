@@ -58,6 +58,12 @@ public class CustomerInfo : MonoBehaviour
         isUnlock = targetCustomer.unlock;
         getMoney = targetCustomer.money;
         currentStamp = targetCustomer.stamp;
+
+        if (isUnlock)
+        {
+            nameText.text = name;
+            mainImage.color = new Color(1, 1, 1);
+        }
     }
 
     public void ButtonClick()
