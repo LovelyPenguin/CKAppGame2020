@@ -15,11 +15,12 @@ public class RaccoonCountMng : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void GetRaccoonCount()
+    public int GetRaccoonCount()
     {
+        counter = 0;
         for (int i = 0; i < GetComponent<RaccoonMng>().RC.Length; i++)
         {
             if (GetComponent<RaccoonMng>().RC[i].GetComponent<RaccoonController>().GetRCState == RaccoonController.State.unActive ||
@@ -32,7 +33,8 @@ public class RaccoonCountMng : MonoBehaviour
                 counter++;
             }
         }
-        PlayerPrefs.SetInt("CUSTOMERCOUNT", counter);
-        Debug.Log(counter);
+        //PlayerPrefs.SetInt("CUSTOMERCOUNT", counter);
+        //Debug.Log(counter);
+        return counter;
     }
 }
