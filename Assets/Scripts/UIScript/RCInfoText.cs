@@ -20,7 +20,10 @@ public class RCInfoText : MonoBehaviour
 
     public void UpdateText(int index)
     {
-        GetComponent<Text>().text = RCInfos[index];
+        if (GameMng.Instance.gameObject.GetComponent<RaccoonMng>().GetRCUnlockData(index) || index == 6)
+            GetComponent<Text>().text = RCInfos[index];
+        else
+            GetComponent<Text>().text = "???";
         Debug.Log("RCInfoUpdate");
     }
 }
