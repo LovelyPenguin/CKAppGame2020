@@ -43,16 +43,26 @@ public class Customer : MonoBehaviour
     public float activePercent;
 
     public Animator anim;
+
+    public Vector3 FirstFloorInitPos = new Vector3(5, 0, 5);
+    public Vector3 SecondFloorInitPos = new Vector3(15, 51, 15);
+
+    private RandomMove moveState;
+    private NavMeshAgent nav;
     // Start is called before the first frame update
     void Awake()
     {
         itemGen = new bool[3];
+
+        gameObject.transform.position = poolingPos;
     }
 
     private void Start()
     {
-        activeTime = Random.Range(5, 35);
+        activeTime = Random.Range(10, 50);
         string objectTime = gameObject.name + "Time";
+        moveState = GetComponent<RandomMove>();
+        nav = GetComponent<NavMeshAgent>();
         if (isActive)
         {
             if (durationSecond > 0)
@@ -76,7 +86,6 @@ public class Customer : MonoBehaviour
             gameObject.GetComponent<NavMeshAgent>().enabled = false;
         }
         GameMng.Instance.openEvent.AddListener(InitializeSpawnData);
-        gameObject.transform.position = poolingPos;
         moneyIcon.SetActive(false);
         dustGen = GameObject.Find("DustGenerator").GetComponent<DustGenerator>();
     }
@@ -237,7 +246,7 @@ public class Customer : MonoBehaviour
     {
         string objectTime = gameObject.name + "ActiveTime";
 
-        activeTime = Random.Range(5, 10);
+        activeTime = Random.Range(10, 50);
         PlayerPrefs.SetFloat(objectTime, activeTime);
         moneyIcon.SetActive(false);
     }
@@ -253,12 +262,17 @@ public class Customer : MonoBehaviour
 
     private void ReturnHome()
     {
-        if (gameObject.GetComponent<NavMeshAgent>().enabled)
+        if (gameObject.GetComponent<NavMeshAgent>().enabled && moveState.In1StFloor)
         {
             gameObject.GetComponent<NavMeshAgent>().SetDestination(entrancePos);
         }
 
-        if (Vector3.Distance(gameObject.transform.position, gameObject.GetComponent<NavMeshAgent>().destination) <= 1f)
+        else if (gameObject.GetComponent<NavMeshAgent>().enabled && !moveState.In1StFloor)
+        {
+            gameObject.GetComponent<NavMeshAgent>().SetDestination(new Vector3(17.71f, 52, 19.52f));
+        }
+
+        if (Vector3.Distance(gameObject.transform.position, entrancePos) <= 1f)
         {
             gameObject.transform.position = poolingPos;
             gameObject.GetComponent<NavMeshAgent>().enabled = false;
@@ -371,5 +385,22 @@ public class Customer : MonoBehaviour
     public void AnimationCheck()
     {
         anim.SetBool("isWalk", !GetComponent<RandomMove>().Arrived);
+    }
+
+    public void FloorChange1st()
+    {
+        nav.enabled = false;
+        transform.position = FirstFloorInitPos;
+        moveState.SetTargerFloor(1);
+        moveState.In1StFloor = true;
+        nav.enabled = true;
+    }
+    public void FloorChange2nd()
+    {
+        nav.enabled = false;
+        transform.position = SecondFloorInitPos;
+        moveState.SetTargerFloor(2);
+        moveState.In1StFloor = false;
+        nav.enabled = true;
     }
 }

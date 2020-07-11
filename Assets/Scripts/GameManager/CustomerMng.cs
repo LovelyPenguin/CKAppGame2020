@@ -10,6 +10,7 @@ class CustomerSaveData
     public int[] GETMONEY = new int[10];
     public int[] STAMP = new int[10];
     public bool[,] ITEMS = new bool[10, 3];
+    public Vector3[] POSITION = new Vector3[10];
 }
 
 public class CustomerMng : MonoBehaviour
@@ -60,12 +61,14 @@ public class CustomerMng : MonoBehaviour
         int[] money = new int[customers.Length];
         int[] stamp = new int[customers.Length];
         bool[,] item = new bool[customers.Length, 3];
+        Vector3[] pos = new Vector3[customers.Length];
 
         for (int i = 0; i < customers.Length; i++)
         {
             unlock[i] = customers[i].unlock;
             money[i] = customers[i].money;
             stamp[i] = customers[i].stamp;
+            pos[i] = customers[i].transform.position;
             for (int j = 0; j < 3; j++)
             {
                 item[i, j] = customers[i].itemActive[j];
@@ -75,6 +78,7 @@ public class CustomerMng : MonoBehaviour
         save.GETMONEY = money;
         save.STAMP = stamp;
         save.ITEMS = item;
+        save.POSITION = pos;
 
         GameMng.Instance.GetComponent<SaveLoader>().SaveData<CustomerSaveData>(ref save, "CUSTOMERSAVE");
     }
@@ -88,10 +92,12 @@ public class CustomerMng : MonoBehaviour
         int[] money = new int[customers.Length];
         int[] stamp = new int[customers.Length];
         bool[, ] item = new bool[customers.Length, 3];
+        Vector3[] pos = new Vector3[customers.Length];
 
         Array.Copy(save.UNLOCK, unlock, customers.Length);
         Array.Copy(save.GETMONEY, money, customers.Length);
         Array.Copy(save.STAMP, stamp, customers.Length);
+        Array.Copy(save.POSITION, pos, customers.Length);
 
         for (int i = 0; i < 10; i++)
         {
@@ -106,6 +112,7 @@ public class CustomerMng : MonoBehaviour
             customers[i].unlock = unlock[i];
             customers[i].money = money[i];
             customers[i].stamp = stamp[i];
+            //customers[i].transform.position = pos[i];
             for (int j = 0; j < 3; j++)
             {
                 customers[i].itemActive[j] = item[i, j];

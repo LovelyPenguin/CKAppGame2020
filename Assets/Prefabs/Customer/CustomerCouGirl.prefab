@@ -402,6 +402,7 @@ GameObject:
   - component: {fileID: 4368761488469873183}
   - component: {fileID: 6951086256308982853}
   - component: {fileID: 6951086255963872659}
+  - component: {fileID: 835865942}
   m_Layer: 8
   m_Name: CustomerCouGirl
   m_TagString: Untagged
@@ -416,7 +417,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7581265392783383750}
-  m_LocalRotation: {x: -0, y: 0.38268343, z: -0, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 5, y: 1.125, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -544,6 +545,8 @@ MonoBehaviour:
   stamp: 0
   activePercent: 0
   anim: {fileID: 6951086256132069582}
+  FirstFloorInitPos: {x: 6.5, y: 1.125, z: 7.3}
+  SecondFloorInitPos: {x: 16.5, y: 52, z: 18.6}
 --- !u!114 &7581265392783383749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -725,6 +728,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &835865942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7581265392783383750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ccb28a8d19172c4ab39b76324b9c041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7581265392889433943
 GameObject:
   m_ObjectHideFlags: 0
