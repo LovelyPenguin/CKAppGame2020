@@ -27878,7 +27878,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1572802290}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -33620,9 +33620,11 @@ MonoBehaviour:
   isUnlock: 0
   tabCountData: 6
   unlockCost: 400000
-  profileText: "\uD504\uB85C\uD544 \uD14D\uC2A4\uD2B8"
-  hashTag: "\uD574\uC2DC\uD0DC\uADF8"
-  mainName: Empty
+  profileText: "\uC2DC\uC6D0\uD55C \uBE14\uB8E8\uB808\uBAAC\uC5D0\uC774\uB4DC! \uC5EC\uB984\uBCF4\uB2E4
+    \uB354\uC6B4\uB0A0\uC5D4~\r"
+  hashTag: "\"#\uC544\uC774\uC2A4\u314C #\uC5D0\uC774\uB4DC #\uAD11\uACE0\uC544\uB2D8
+    #\uBE14\uB8E8\uB808\uBAAC #\uC74C\uB8CC\n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30\"\r"
+  mainName: "\uBE14\uB8E8\uB808\uBAAC\uC5D0\uC774\uB4DC"
   headName: {fileID: 504002933}
   tagName: {fileID: 859346369}
   mainNaming: {fileID: 1257658673}
