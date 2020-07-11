@@ -55,8 +55,8 @@ public class FailMsgBox : MonoBehaviour
         ctext.fontSize = 30;
         ctext.color = Color.black;
         ctext.alignment = TextAnchor.MiddleCenter;
-        txt.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 50);
-        txt.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 300);
+        txt.GetComponent<RectTransform>().anchoredPosition = new Vector2(38, 22);
+        txt.GetComponent<RectTransform>().sizeDelta = new Vector2(470, 300);
 
         GameObject btn = new GameObject("Btn");
         btn.transform.SetParent(FailPopup.transform);
@@ -65,8 +65,8 @@ public class FailMsgBox : MonoBehaviour
         button.onClick.AddListener(delegate { DestroySelf(FailPopup); } );
         Image btnImg = btn.AddComponent<Image>();
         btnImg.sprite = popupBtnImage;
-        btn.GetComponent<RectTransform>().anchoredPosition = new Vector2(90, -130);
-        btn.GetComponent<RectTransform>().sizeDelta = new Vector2(250, 80);
+        btn.GetComponent<RectTransform>().anchoredPosition = new Vector2(150, -130);
+        btn.GetComponent<RectTransform>().sizeDelta = new Vector2(190, 74);
     }
 
     private void DestroySelf(GameObject go)
