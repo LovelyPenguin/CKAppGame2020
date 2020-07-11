@@ -2767,11 +2767,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CustomerStdBoy
       objectReference: {fileID: 0}
-    - target: {fileID: 6690041661067958453, guid: bca759fac39b3ff4ab83a67a2b6d4075,
-        type: 3}
-      propertyPath: condition
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bca759fac39b3ff4ab83a67a2b6d4075, type: 3}
 --- !u!4 &82650626 stripped
@@ -5141,10 +5136,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1359024442}
     m_Modifications:
-    - target: {fileID: 635175301, guid: 6f0844e613b08164686e7355aca166c1, type: 3}
-      propertyPath: rac.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 635175301, guid: 6f0844e613b08164686e7355aca166c1, type: 3}
       propertyPath: rac.Array.data[0]
       value: 
@@ -9382,11 +9373,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6513758803340773785, guid: 2ee160d1701c98a4582da76c605ca238,
-        type: 3}
-      propertyPath: condition
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ee160d1701c98a4582da76c605ca238, type: 3}
@@ -27889,7 +27875,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1572802290}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
