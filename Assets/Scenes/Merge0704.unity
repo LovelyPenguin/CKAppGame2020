@@ -987,8 +987,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.59, y: 1.58, z: 0.2}
-  m_Center: {x: 0, y: 0.79, z: 0}
+  m_Size: {x: 1.19, y: 2.24, z: 0.2}
+  m_Center: {x: 0.27, y: 1.09, z: 0}
 --- !u!195 &40315568
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2503,7 +2503,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bb315be1fe0cf004484d928ed2b17277, type: 3}
   - {fileID: 21300000, guid: c645a2a5c683a3c40a3cfcab67fd2529, type: 3}
   - {fileID: 21300000, guid: 2d3f5a8355e2b51479b584f00b11770a, type: 3}
-  - {fileID: 21300000, guid: b6021f1a34c81f3448d9ad9a04b4ba46, type: 3}
+  - {fileID: 21300000, guid: ba30a6ba4d360b54bbd6811d42ef280d, type: 3}
   RcIcon: {fileID: 98349195}
   Stars:
   - {fileID: 1227741286}
@@ -5501,15 +5501,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7aeee620d10ac394590fcf312ed9c70c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b14fca4a77211be4491dd0361abd8d58, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.8, y: 1.56}
+  m_Size: {x: 2.2, y: 2.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &271802388
@@ -27716,7 +27716,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b6021f1a34c81f3448d9ad9a04b4ba46, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ba30a6ba4d360b54bbd6811d42ef280d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -27889,7 +27889,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1572802290}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999999
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -35917,8 +35917,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.59, y: 1.58, z: 0.2}
-  m_Center: {x: 0, y: 0.79, z: 0}
+  m_Size: {x: 1.21, y: 2.64, z: 0.2}
+  m_Center: {x: 0.2, y: 1.53, z: 0}
 --- !u!195 &1245717920
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -36638,8 +36638,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1.59, y: 1.58, z: 0.2}
-  m_Center: {x: 0, y: 0.79, z: 0}
+  m_Size: {x: 0.9, y: 1.78, z: 0.2}
+  m_Center: {x: 0, y: 1.03, z: 0}
 --- !u!195 &1296754814
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -46770,7 +46770,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 334aa7414c678974fab6f3cfe7be828a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9c02fb7369f352349809135f65ad7523, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -47470,7 +47470,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9257a9514cbd3e0489110db693e58531, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 050a8e6ccd908464dac43af8fa987b01, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
