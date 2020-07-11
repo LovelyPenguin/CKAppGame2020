@@ -212,7 +212,7 @@ public class HealMapMng : MonoBehaviour
         }
         else
         {
-            GameMng.Instance.gameObject.GetComponent<FailMsgBox>().Create("이 휴식공간은 아직 공사 중이에요!");
+            GameMng.Instance.gameObject.GetComponent<FailMsgBox>().Create("이 휴식공간은 아직 사용 할수 없어요!");
         }
         Debug.Log("Popup");
     }

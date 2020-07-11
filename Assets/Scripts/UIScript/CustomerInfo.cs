@@ -27,7 +27,7 @@ public class CustomerInfo : MonoBehaviour
         isUnlock = targetCustomer.unlock;
         getMoney = targetCustomer.money;
 
-        GameMng.Instance.SaveGame();
+        //GameMng.Instance.SaveGame();
         if (isUnlock)
         {
             nameText.text = name;
