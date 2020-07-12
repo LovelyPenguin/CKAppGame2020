@@ -38,11 +38,11 @@ public class DraggableTimer : MonoBehaviour, IDragHandler, IEndDragHandler, IBeg
             else if (previousMousePosition.x > Input.mousePosition.x)
             {
                 //Debug.Log("Time Minus");
-                if (GameMng.Instance.openTime - value > 0)
+                if (GameMng.Instance.openTime - value > 600)
                 {
                     GameMng.Instance.openTime -= value;
                 }
-                else if (GameMng.Instance.openTime > 0)
+                else if (GameMng.Instance.openTime > 600)
                 {
                     GameMng.Instance.openTime -= 1;
                 }
