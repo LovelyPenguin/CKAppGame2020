@@ -25,6 +25,7 @@ public class Customer : MonoBehaviour
     [SerializeField]
     private GameObject moneyIcon;
 
+    [SerializeField]
     private float durationSecond;
     private float currentCafeTime;
 

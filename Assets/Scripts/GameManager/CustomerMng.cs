@@ -10,14 +10,16 @@ class CustomerSaveData
     public int[] GETMONEY = new int[10];
     public int[] STAMP = new int[10];
     public bool[,] ITEMS = new bool[10, 3];
-    //public Vector3[] POSITION = new Vector3[10];
+    public float[] XPOS = new float[10];
+    public float[] YPOS = new float[10];
+    public float[] ZPOS = new float[10];
 }
 
 public class CustomerMng : MonoBehaviour
 {
     public Customer[] customers;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (GameMng.Instance.GetComponent<SaveLoader>().CheckFileExist("CUSTOMERSAVE"))
         {
@@ -61,14 +63,20 @@ public class CustomerMng : MonoBehaviour
         int[] money = new int[customers.Length];
         int[] stamp = new int[customers.Length];
         bool[,] item = new bool[customers.Length, 3];
-        Vector3[] pos = new Vector3[customers.Length];
+        float[] x = new float[customers.Length];
+        float[] y = new float[customers.Length];
+        float[] z = new float[customers.Length];
 
         for (int i = 0; i < customers.Length; i++)
         {
             unlock[i] = customers[i].unlock;
             money[i] = customers[i].money;
             stamp[i] = customers[i].stamp;
-            pos[i] = customers[i].transform.position;
+
+            x[i] = customers[i].transform.position.x;
+            y[i] = customers[i].transform.position.y;
+            z[i] = customers[i].transform.position.z;
+
             for (int j = 0; j < 3; j++)
             {
                 item[i, j] = customers[i].itemActive[j];
@@ -78,7 +86,9 @@ public class CustomerMng : MonoBehaviour
         save.GETMONEY = money;
         save.STAMP = stamp;
         save.ITEMS = item;
-        //save.POSITION = pos;
+        save.XPOS = x;
+        save.YPOS = y;
+        save.ZPOS = z;
 
         GameMng.Instance.GetComponent<SaveLoader>().SaveData<CustomerSaveData>(ref save, "CUSTOMERSAVE");
     }
@@ -92,12 +102,16 @@ public class CustomerMng : MonoBehaviour
         int[] money = new int[customers.Length];
         int[] stamp = new int[customers.Length];
         bool[, ] item = new bool[customers.Length, 3];
-        Vector3[] pos = new Vector3[customers.Length];
+        float[] x = new float[customers.Length];
+        float[] y = new float[customers.Length];
+        float[] z = new float[customers.Length];
 
         Array.Copy(save.UNLOCK, unlock, customers.Length);
         Array.Copy(save.GETMONEY, money, customers.Length);
         Array.Copy(save.STAMP, stamp, customers.Length);
-        //Array.Copy(save.POSITION, pos, customers.Length);
+        Array.Copy(save.XPOS, x, customers.Length);
+        Array.Copy(save.YPOS, y, customers.Length);
+        Array.Copy(save.ZPOS, z, customers.Length);
 
         for (int i = 0; i < 10; i++)
         {
@@ -112,7 +126,7 @@ public class CustomerMng : MonoBehaviour
             customers[i].unlock = unlock[i];
             customers[i].money = money[i];
             customers[i].stamp = stamp[i];
-            //customers[i].transform.position = pos[i];
+            customers[i].transform.position = new Vector3(x[i], y[i], z[i]);
             for (int j = 0; j < 3; j++)
             {
                 customers[i].itemActive[j] = item[i, j];
