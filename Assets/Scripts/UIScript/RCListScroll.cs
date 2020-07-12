@@ -4,19 +4,20 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class RCListScroll : MonoBehaviour,IBeginDragHandler, IDragHandler, IEndDragHandler
+public class RCListScroll : ScrollRect
 {
-    private float minX = -220;
-    private float maxX = 220;
+    //private float minX = -220;
+    //private float maxX = 220;
 
-    private float initMousePosX;
-    private float initXPos;
-    private float XPos;
-    private Vector2 newPos;
+    //private float initMousePosX;
+    //private float initXPos;
+    //private float XPos;
+    //private Vector2 newPos;
 
     // Start is called before the first frame update
     void Start()
     {
+        base.vertical = false;
     }
 
     // Update is called once per frame
@@ -25,33 +26,32 @@ public class RCListScroll : MonoBehaviour,IBeginDragHandler, IDragHandler, IEndD
         
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
+    public override void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("RCList Clicked");
-        initMousePosX = eventData.position.x;
-        newPos = GetComponent<RectTransform>().anchoredPosition;
-        initXPos = newPos.x;
-        //Debug.Log("initXPos = " + initXPos);
+        base.OnBeginDrag(eventData);
+
         GetComponent<AudioSource>().Play();
     }
 
 
-    public void OnDrag(PointerEventData eventData)
-    {
-        float newXPos = initXPos + (eventData.position.x - initMousePosX) * 1530 / Screen.width;
-        //Debug.Log("newXPos = " + newXPos);
+    //public void OnDrag(PointerEventData eventData)
+    //{
+    //    float newXPos = initXPos + (eventData.position.x - initMousePosX) * 1530 / Screen.width;
+    //    //Debug.Log("newXPos = " + newXPos);
 
-        if (newXPos > maxX)
-            newXPos = maxX;
-        if (newXPos < minX)
-            newXPos = minX;
-        newPos.x = newXPos;
-        GetComponent<RectTransform>().anchoredPosition = newPos;
-        //Debug.Log("newPos = " + newPos);
-    }
+    //    if (newXPos > maxX)
+    //        newXPos = maxX;
+    //    if (newXPos < minX)
+    //        newXPos = minX;
+    //    newPos.x = newXPos;
+    //    GetComponent<RectTransform>().anchoredPosition = newPos;
+    //    //Debug.Log("newPos = " + newPos);
+    //}
 
-    public void OnEndDrag(PointerEventData eventData)
+    public override void OnEndDrag(PointerEventData eventData)
     {
+        base.OnEndDrag(eventData);
+
         GetComponent<AudioSource>().Stop();
     }
 
