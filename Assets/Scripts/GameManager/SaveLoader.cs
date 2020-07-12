@@ -103,7 +103,7 @@ public class SaveLoader : MonoBehaviour
                 File.Delete(Application.persistentDataPath + "/" + defsave.FileNames[i] + ".dat");
         }
         defsave.FileNum = 0;
-
+        PlayerPrefs.DeleteAll();
         SaveDef();
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
