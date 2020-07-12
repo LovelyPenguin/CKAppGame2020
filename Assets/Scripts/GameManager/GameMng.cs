@@ -67,7 +67,6 @@ public class GameMng : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        GameMng.instance.GetComponent<TimeMng>().CallOpenTime();
         switch (PlayerPrefs.GetInt("OPENSTATUS"))
         {
             case 0:
@@ -77,6 +76,7 @@ public class GameMng : MonoBehaviour
                 break;
             case 1:
                 isOpen = true;
+                GameMng.instance.GetComponent<TimeMng>().CallOpenTime();
                 GetComponents<AudioSource>()[0].clip = BGMs[1];
                 break;
         }
