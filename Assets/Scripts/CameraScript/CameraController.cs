@@ -131,47 +131,60 @@ public class CameraController : MonoBehaviour
         }
         // for touch input
         {
-            for (int i = 0; i < Input.touchCount; i++)
+            //for (int i = 0; i < Input.touchCount; i++)
+            //{
+            //    Touch t = Input.GetTouch(i);
+            //    if (t.phase == TouchPhase.Began)
+            //    {
+            //        if (i < 2)
+            //        {
+            //            exist[i] = true;
+            //            InitPos[i] = new Vector2(t.position.x / Screen.width, t.position.y / Screen.height);
+            //            CurPos[i] = new Vector2(t.position.x / Screen.width, t.position.y / Screen.height);
+            //            //Debug.Log(i + "번째 Begin" + t.position);
+            //        }
+            //    }
+            //    else if (t.phase == TouchPhase.Ended)
+            //    {
+            //        if (i < 2)
+            //        {
+            //            exist[i] = false;
+            //            //Debug.Log(i + "번째 Ended" + t.position)
+            //        }
+            //    }
+            //    else if (t.phase == TouchPhase.Moved)
+            //    {
+            //        if (i < 2)
+            //        {
+            //            CurPos[i] = new Vector2(t.position.x / Screen.width, t.position.y / Screen.height);
+            //            //Debug.Log(i + "번째 Moved" + t.position);
+            //        }
+            //    }
+            //}
+
+            //if (exist[0] && exist[1])
+            //{
+            //    InitDelta = Vector2.Distance(InitPos[1], InitPos[0]);
+            //    CurDelta = Vector2.Distance(CurPos[1], CurPos[0]);
+
+            //    for (int i = 0; i < 2; i++)
+            //        InitPos[i] = CurPos[i];
+
+            //    Delta = (InitDelta - CurDelta) * 20;
+            //    //Debug.Log("Delta = " + Delta);
+            //}
+            if (Input.touchCount == 2)
             {
-                Touch t = Input.GetTouch(i);
-                if (t.phase == TouchPhase.Began)
-                {
-                    if (i < 2)
-                    {
-                        exist[i] = true;
-                        InitPos[i] = new Vector2(t.position.x / Screen.width, t.position.y / Screen.height);
-                        CurPos[i] = new Vector2(t.position.x / Screen.width, t.position.y / Screen.height);
-                        //Debug.Log(i + "번째 Begin" + t.position);
-                    }
-                }
-                else if (t.phase == TouchPhase.Ended)
-                {
-                    if (i < 2)
-                    {
-                        exist[i] = false;
-                        //Debug.Log(i + "번째 Ended" + t.position)
-                    }
-                }
-                else if (t.phase == TouchPhase.Moved)
-                {
-                    if (i < 2)
-                    {
-                        CurPos[i] = new Vector2(t.position.x / Screen.width, t.position.y / Screen.height);
-                        //Debug.Log(i + "번째 Moved" + t.position);
-                    }
-                }
-            }
+                Touch touchZero = Input.GetTouch(0);
+                Touch touchOne = Input.GetTouch(1);
 
-            if (exist[0] && exist[1])
-            {
-                InitDelta = Vector2.Distance(InitPos[1], InitPos[0]);
-                CurDelta = Vector2.Distance(CurPos[1], CurPos[0]);
+                Vector2 prevTouchZeroDelta = touchZero.position - touchZero.deltaPosition;
+                Vector2 prevTouchOneDelta = touchOne.position - touchOne.deltaPosition;
 
-                for (int i = 0; i < 2; i++)
-                    InitPos[i] = CurPos[i];
+                float prevTouchDeltaMag = (prevTouchZeroDelta - prevTouchOneDelta).magnitude;
+                float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
 
-                Delta = (InitDelta - CurDelta) * 20;
-                //Debug.Log("Delta = " + Delta);
+                Delta = (prevTouchDeltaMag - touchDeltaMag) * Time.deltaTime;
             }
         }
         //Debug.Log("Delta = " + Delta);
