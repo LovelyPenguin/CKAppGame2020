@@ -88,6 +88,7 @@ public class JuiceObject : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
     public void FinishDrink()
     {
         anim.SetTrigger("Done");
+        index = 0;
     }
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)

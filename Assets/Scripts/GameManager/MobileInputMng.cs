@@ -25,6 +25,7 @@ public class MobileInputMng : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     Debug.Log("Two Application Quit");
+                    GameMng.Instance.GetComponent<GameQuitAndPauseEvent>().ForceSave();
                     Application.Quit();
                 }
             }

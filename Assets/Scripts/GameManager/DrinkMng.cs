@@ -48,7 +48,7 @@ public class DrinkMng : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        if (GameMng.Instance.GetComponent<SaveLoader>().CheckFileExist("DRINKMNG"))
+        if (GameMng.Instance.GetComponent<SaveLoader>().CheckFileExist("DRINKDATASAVE"))
         {
             LoadData();
         }
@@ -173,7 +173,7 @@ public class DrinkMng : MonoBehaviour
             }
             else
             {
-                currentJuice.GetComponent<JuiceObject>().FillMainSprite(1);
+                currentJuice.GetComponent<JuiceObject>().FillMainSprite(0);
             }
         }
     }
@@ -273,7 +273,7 @@ public class DrinkMng : MonoBehaviour
         for (int i = 0; i < juiceList.Length; i++)
         {
             unlock[i] = juiceList[i].isUnlock;
-            Debug.Log(unlock[i]);
+            //Debug.Log(unlock[i]);
         }
         save.UNLOCK = unlock;
 
@@ -291,6 +291,7 @@ public class DrinkMng : MonoBehaviour
 
         for (int i = 0; i < juiceList.Length; i++)
         {
+            //Debug.Log(i.ToString() + unlock[i]);
             juiceList[i].isUnlock = unlock[i];
         }
     }

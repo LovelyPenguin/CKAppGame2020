@@ -82,6 +82,7 @@ public class GameMng : MonoBehaviour
             case 1:
                 isOpen = true;
                 GetComponents<AudioSource>()[0].clip = BGMs[1];
+                openTime = PlayerPrefs.GetFloat("SETOPENTIME") - GameMng.Instance.GetComponent<TimeMng>().getCompareTime;
                 break;
         }
         dustGenerator = GameObject.Find("DustGenerator");
@@ -166,5 +167,18 @@ public class GameMng : MonoBehaviour
     public void TutorialStart()
     {
         Tutorial.SetActive(true);
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.SetFloat("SETOPENTIME", openTime);
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause)
+        {
+            PlayerPrefs.SetFloat("SETOPENTIME", openTime);
+        }
     }
 }

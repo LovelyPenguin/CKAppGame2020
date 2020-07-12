@@ -2347,7 +2347,7 @@ RectTransform:
   m_GameObject: {fileID: 65889003}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 1975724498}
   m_RootOrder: 0
@@ -7151,10 +7151,10 @@ MonoBehaviour:
   isUnlock: 0
   tabCountData: 9
   unlockCost: 150000
-  profileText: "\uB530\uC2A4\uD55C \uD56B\uCD08\uCF54\uB85C \uB9C8\uC74C\uAE4C\uC9C0
-    \uB179\uC5EC\uBC84\uB9AC\uC790!\r"
-  hashTag: "\"#\uCF54\uCF54\uC544\uC758_\uB530\uB4EF\uD55C_\uC804\uC728 #\uC74C\uB8CC\uAE4C\uC9C0_\uC4F0\uBA74_\uC880
-    #\uCD08\uCF5C\uB9BF #\uC74C\uB8CC\n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30\"\r"
+  profileText: 
+  hashTag: "\uB530\uC2A4\uD55C \uD56B\uCD08\uCF54\uB85C \uB9C8\uC74C\uAE4C\uC9C0
+    \uB179\uC5EC\uBC84\uB9AC\uC790!\r\n\"#\uCF54\uCF54\uC544\uC758_\uB530\uB4EF\uD55C_\uC804\uC728
+    #\uC74C\uB8CC\uAE4C\uC9C0_\uC4F0\uBA74_\uC880 #\uCD08\uCF5C\uB9BF #\uC74C\uB8CC\n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30\"\r"
   mainName: "\uD56B\uCD08\uCF54"
   headName: {fileID: 504002933}
   tagName: {fileID: 859346369}
@@ -8336,7 +8336,7 @@ MonoBehaviour:
   isPopupMenuOpen: 0
   openTime: 0
   isOpen: 0
-  money: 2000000
+  money: 99999999
   BGMs:
   - {fileID: 8300000, guid: fd5cdd7ea675e1b4a8344c19f6f8cb86, type: 3}
   - {fileID: 8300000, guid: bf9c4761bda43be4f9e18ac96489d687, type: 3}
@@ -8770,6 +8770,17 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 409466728}
+        m_MethodName: SaveData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 409466723}
         m_MethodName: SaveData
         m_Mode: 1
         m_Arguments:
@@ -14733,7 +14744,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &504002933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28714,8 +28725,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -162.40039, y: -340.37988}
-  m_SizeDelta: {x: 789.7, y: 195.2}
+  m_AnchoredPosition: {x: -162.40039, y: -322}
+  m_SizeDelta: {x: 789.7, y: 265.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &862479778
 GameObject:
@@ -31284,9 +31295,9 @@ MonoBehaviour:
   isUnlock: 0
   tabCountData: 3
   unlockCost: 300000
-  profileText: "\uBD80\uB4DC\uB7EC\uC6B4 \uC5B4\uB9B0 \uB179\uCC3B\uC78E\uC744 \uACF1\uAC8C
-    \uAC08\uC544 \uBD80\uB4DC\uB7FD\uACE0 \uAE4A\uAC8C!\r"
-  hashTag: "\"#\uB179\uCC28\uB77C\uB5BC #\uB179\uCC28\uB77C\uCFE4\uC6B8\uC9C0\uB9C8
+  profileText: 
+  hashTag: "\uBD80\uB4DC\uB7EC\uC6B4 \uB179\uCC3B\uC78E\uC73C\uB85C \uBD80\uB4DC\uB7FD\uACE0
+    \uAE4A\uAC8C!\r\n\"#\uB179\uCC28\uB77C\uB5BC #\uB179\uCC28\uB77C\uCFE4\uC6B8\uC9C0\uB9C8
     #\uB179\uCC28 #\uC74C\uB8CC\n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30\"\r"
   mainName: "\uD3AD\uADC4\uD3AD\uD3AD"
   headName: {fileID: 504002933}
@@ -33077,10 +33088,10 @@ MonoBehaviour:
   isUnlock: 0
   tabCountData: 10
   unlockCost: 200000
-  profileText: "\uACFC\uC999 \uD321\uD321 \uC0DD\uACFC\uC77C \uC8FC\uC2A4! \uC624\uB80C\uC9C0
-    \uC88B\uC544 XD\r"
-  hashTag: "\"#\uC0DD\uACFC\uC77C\uC8FC\uC2A4 #\uACFC\uC999\uD321\uD321 #\uC624\uB80C\uC9C0
-    #\uC74C\uB8CC \n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30\"\r"
+  profileText: 
+  hashTag: "\uACFC\uC999 \uD321\uD321 \uC0DD\uACFC\uC77C \uC8FC\uC2A4! \uC624\uB80C\uC9C0
+    \uC88B\uC544 XD\r\n\"#\uC0DD\uACFC\uC77C\uC8FC\uC2A4 #\uACFC\uC999\uD321\uD321
+    #\uC624\uB80C\uC9C0 #\uC74C\uB8CC \n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30\"\r"
   mainName: "\uC0DD\uACFC\uC77C\uC8FC\uC2A4"
   headName: {fileID: 504002933}
   tagName: {fileID: 859346369}
@@ -33804,10 +33815,10 @@ MonoBehaviour:
   isUnlock: 0
   tabCountData: 6
   unlockCost: 400000
-  profileText: "\uC2DC\uC6D0\uD55C \uBE14\uB8E8\uB808\uBAAC\uC5D0\uC774\uB4DC! \uC5EC\uB984\uBCF4\uB2E4
-    \uB354\uC6B4\uB0A0\uC5D4~\r"
-  hashTag: "\"#\uC544\uC774\uC2A4\u314C #\uC5D0\uC774\uB4DC #\uAD11\uACE0\uC544\uB2D8
-    #\uBE14\uB8E8\uB808\uBAAC #\uC74C\uB8CC\n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30\"\r"
+  profileText: 
+  hashTag: "\uC2DC\uC6D0\uD55C \uBE14\uB8E8\uC5D0\uC774\uB4DC! \uC5EC\uB984\uBCF4\uB2E4
+    \uB354\uC6B4\uB0A0\uC5D4~\r\n\"#\uC544\uC774\uC2A4\u314C #\uC5D0\uC774\uB4DC
+    #\uAD11\uACE0\uC544\uB2D8 #\uBE14\uB8E8\uB808\uBAAC #\uC74C\uB8CC\n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30\"\r"
   mainName: "\uBE14\uB8E8\uB808\uBAAC\uC5D0\uC774\uB4DC"
   headName: {fileID: 504002933}
   tagName: {fileID: 859346369}
@@ -39589,10 +39600,11 @@ MonoBehaviour:
   isUnlock: 0
   tabCountData: 9
   unlockCost: 500000
-  profileText: "\uD64D\uCC28\uC78E\uC5D0 \uCF54\uAE30\uC758 \uC624\uB80C\uC9C0\uD5A5\uC774
-    \uD55C\uAC00\uB4DD...\u2605\r"
-  hashTag: "\"#\uC5BC\uADF8\uB808\uC774\uCF54\uAE30 #\uBA4D\uBA4D #\uC774_\uD3B8\uC9C0\uB294
-    \uC601\uAD6D\uC5D0\uC11C \uC2DC\uC791\uB418\uC5B4\u2026 #\uC74C\uB8CC \n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30\"\r"
+  profileText: 
+  hashTag: "\uD64D\uCC28\uC78E\uC5D0 \uCF54\uAE30\uC758 \uC624\uB80C\uC9C0\uD5A5\uC774
+    \uD55C\uAC00\uB4DD...\u2605\r\n\"#\uC5BC\uADF8\uB808\uC774\uCF54\uAE30 #\uBA4D\uBA4D
+    #\uC774_\uD3B8\uC9C0\uB294 \uC601\uAD6D\uC5D0\uC11C \uC2DC\uC791\uB418\uC5B4\u2026
+    #\uC74C\uB8CC \n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30\"\r"
   mainName: "\uC5BC\uADF8\uB808\uC774\uCF54\uAE30"
   headName: {fileID: 504002933}
   tagName: {fileID: 859346369}
@@ -46522,10 +46534,9 @@ MonoBehaviour:
   isUnlock: 1
   tabCountData: 5
   unlockCost: 0
-  profileText: "\uAD6C\uC6B4 \uC544\uBAAC\uB4DC\uC758 \uACE0\uC18C\uD55C \uD5A5\uBBF8\uC640
-    \uACFC\uC77C\uC758 \uC0C1\uD07C\uD55C \uC0B0\uBBF8\uAC00 \uC870\uD654\uB86D\uAC8C
-    \uB9CC\uB0AC\uB2E4!\r"
-  hashTag: "\"#\uC544\uBA54\uB9AC\uCE74\uB178 #\uC88B\uC544\uC88B\uC544\uC88B\uC544
+  profileText: 
+  hashTag: "\uC544\uBAAC\uB4DC\uC758 \uACFC\uC77C\uC758 \uD48D\uBBF8\uAC00 \uC870\uD654\uB86D\uAC8C
+    \uB9CC\uB0AC\uB2E4!\r\n\"#\uC544\uBA54\uB9AC\uCE74\uB178 #\uC88B\uC544\uC88B\uC544\uC88B\uC544
     #\uC778\uC0DD\uB9DB #\uC74C\uB8CC\n#\uD589\uBCF5\uD55C_\uC138\uC0C1\uC758_\uB77C\uCFE4\uCE74\uD398_\uC774\uC57C\uAE30\"\r"
   mainName: "\uC544\uBA54\uB9AC\uCE74\uB178 "
   headName: {fileID: 504002933}

@@ -539,7 +539,7 @@ public class RaccoonController : MonoBehaviour
             animator.ResetTrigger("idleTrigger");
             animator.ResetTrigger("DragTrigger");
             animator.SetTrigger("WalkTrigger");
-            Debug.Log("WalkTrigger ACtived");
+            //Debug.Log("WalkTrigger ACtived");
         }
     }
 
@@ -551,7 +551,7 @@ public class RaccoonController : MonoBehaviour
             animator.ResetTrigger("WalkTrigger");
             animator.ResetTrigger("DragTrigger");
             animator.SetTrigger("idleTrigger");
-            Debug.Log("idleTrigger ACtived");
+            //Debug.Log("idleTrigger ACtived");
         }
     }
 

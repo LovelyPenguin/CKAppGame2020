@@ -36,4 +36,9 @@ public class GameQuitAndPauseEvent : MonoBehaviour
             Debug.Log("Application Rasume");
         }
     }
+
+    public void ForceSave()
+    {
+        gameExit.Invoke();
+    }
 }

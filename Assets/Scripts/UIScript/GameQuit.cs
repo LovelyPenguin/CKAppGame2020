@@ -18,6 +18,7 @@ public class GameQuit : MonoBehaviour
 
     public void OnClick()
     {
+        GameMng.Instance.GetComponent<GameQuitAndPauseEvent>().ForceSave();
         Application.Quit();
     }
 }

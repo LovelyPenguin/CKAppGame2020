@@ -26,7 +26,7 @@ public class RaccoonCountMng : MonoBehaviour
             if (GetComponent<RaccoonMng>().RC[i].GetComponent<RaccoonController>().GetRCState == RaccoonController.State.unActive ||
                 GetComponent<RaccoonMng>().RC[i].GetComponent<RaccoonController>().GetRCState == RaccoonController.State.Healing)
             {
-                Debug.Log(GetComponent<RaccoonMng>().RC[i].GetComponent<RaccoonController>().GetRCState);
+                //Debug.Log(GetComponent<RaccoonMng>().RC[i].GetComponent<RaccoonController>().GetRCState);
             }
             else
             {
