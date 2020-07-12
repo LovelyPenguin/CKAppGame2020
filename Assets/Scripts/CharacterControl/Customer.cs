@@ -61,6 +61,8 @@ public class Customer : MonoBehaviour
 
     private void Start()
     {
+        CallActiveStatus();
+
         activeTime = Random.Range(10, 50);
         string objectTime = gameObject.name + "Time";
         moveState = GetComponent<RandomMove>();
@@ -198,18 +200,27 @@ public class Customer : MonoBehaviour
         }
         else
         {
-            isActive = (PlayerPrefs.GetInt(objectActive) == 1) ? true : false;
+            
+        }
+    }
 
-            if (isActive)
+    void CallActiveStatus()
+    {
+        string objectTime = gameObject.name + "Time";
+        string objectActiveTime = gameObject.name + "ActiveTime";
+        string objectActive = gameObject.name + "IsActive";
+
+        isActive = (PlayerPrefs.GetInt(objectActive) == 1) ? true : false;
+
+        if (isActive)
+        {
+            durationSecond = PlayerPrefs.GetFloat(objectTime) - GameMng.Instance.GetComponent<TimeMng>().getCompareTime;
+        }
+        else
+        {
+            if (GameMng.Instance.getOpenData)
             {
-                durationSecond = PlayerPrefs.GetFloat(objectTime) - GameMng.Instance.GetComponent<TimeMng>().getCompareTime;
-            }
-            else
-            {
-                if (GameMng.Instance.getOpenData)
-                {
-                    activeTime = PlayerPrefs.GetFloat(objectActiveTime) - GameMng.Instance.GetComponent<TimeMng>().getCompareTime;
-                }
+                activeTime = PlayerPrefs.GetFloat(objectActiveTime) - GameMng.Instance.GetComponent<TimeMng>().getCompareTime;
             }
         }
     }

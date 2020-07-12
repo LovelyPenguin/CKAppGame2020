@@ -4980,7 +4980,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &259743988
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8336,7 +8336,7 @@ MonoBehaviour:
   isPopupMenuOpen: 0
   openTime: 0
   isOpen: 0
-  money: 99999999
+  money: 100000
   BGMs:
   - {fileID: 8300000, guid: fd5cdd7ea675e1b4a8344c19f6f8cb86, type: 3}
   - {fileID: 8300000, guid: bf9c4761bda43be4f9e18ac96489d687, type: 3}
@@ -41498,7 +41498,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1562633669
 RectTransform:
   m_ObjectHideFlags: 0

@@ -26,27 +26,7 @@ public class TimeMng : MonoBehaviour
         }
         else
         {
-            string lastTime = PlayerPrefs.GetString("SaveLastTime");
-            System.DateTime lastDataTime = System.DateTime.Parse(lastTime);
-            System.TimeSpan compareTime = System.DateTime.Now - lastDataTime;
-
-            Debug.Log("Connect Time : " + compareTime.Seconds);
-
-            // 쓸땐 주석 지워줄 것
-            GameMng.Instance.openTime = PlayerPrefs.GetFloat("GAMETIME") - compareTime.Seconds;
-            getCompareTime = compareTime.Seconds;
-            if (GameMng.Instance.openTime <= 0)
-            {
-                GameMng.Instance.openTime = 0f;
-            }
-            GameMng.Instance.setOpenTime = PlayerPrefs.GetFloat("FIRSTOPENTIME");
-
-            if (debugText != null)
-            {
-                float time = compareTime.Seconds;
-                debugText.text = "마지막 접속으로 부터 : " + time + " sec";
-                flowTime = time;
-            }
+            CallOpenTime();
         }
     }
 
@@ -73,5 +53,30 @@ public class TimeMng : MonoBehaviour
     public void ResetData(string keyValue)
     {
         PlayerPrefs.DeleteKey(keyValue);
+    }
+
+    public void CallOpenTime()
+    {
+        string lastTime = PlayerPrefs.GetString("SaveLastTime");
+        System.DateTime lastDataTime = System.DateTime.Parse(lastTime);
+        System.TimeSpan compareTime = System.DateTime.Now - lastDataTime;
+
+        Debug.Log("Connect Time : " + compareTime.Seconds);
+
+        // 쓸땐 주석 지워줄 것
+        GameMng.Instance.openTime = PlayerPrefs.GetFloat("GAMETIME") - compareTime.Seconds;
+        getCompareTime = compareTime.Seconds;
+        if (GameMng.Instance.openTime <= 0)
+        {
+            GameMng.Instance.openTime = 0f;
+        }
+        GameMng.Instance.setOpenTime = PlayerPrefs.GetFloat("FIRSTOPENTIME");
+
+        if (debugText != null)
+        {
+            float time = compareTime.Seconds;
+            debugText.text = "마지막 접속으로 부터 : " + time + " sec";
+            flowTime = time;
+        }
     }
 }

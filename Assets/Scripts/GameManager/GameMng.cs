@@ -67,11 +67,7 @@ public class GameMng : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
+        GameMng.instance.GetComponent<TimeMng>().CallOpenTime();
         switch (PlayerPrefs.GetInt("OPENSTATUS"))
         {
             case 0:
@@ -82,15 +78,20 @@ public class GameMng : MonoBehaviour
             case 1:
                 isOpen = true;
                 GetComponents<AudioSource>()[0].clip = BGMs[1];
-                openTime = PlayerPrefs.GetFloat("SETOPENTIME") - GameMng.Instance.GetComponent<TimeMng>().getCompareTime;
                 break;
         }
         dustGenerator = GameObject.Find("DustGenerator");
-        RaccoonMng = GameObject.Find("GameManager"); 
+        RaccoonMng = GameObject.Find("GameManager");
         closeEvent.AddListener(dustGenerator.GetComponent<DustGenerator>().Generate);
         GetComponents<AudioSource>()[0].Play();
 
         LoadGame();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
     }
 
     // Update is called once per frame
