@@ -139,7 +139,7 @@ public class RaccoonMng : MonoBehaviour
                     RC[i].GetComponent<RaccoonController>().SetRCActive(true);
                     if (save.RCSTATE[i] == RaccoonController.State.Healing)
                     {
-                        ReleaseMapCount((RC[i].GetComponent<RaccoonController>().GetRCState() == RaccoonController.State.inMap1)?1:2);
+                        ReleaseMapCount((RC[i].GetComponent<RaccoonController>().GetRCState == RaccoonController.State.inMap1)?1:2);
                         RC[i].transform.position = HealMapMng.Instance.retPositionForName(save.HEALMAPINFO[i].SeatNum, save.HEALMAPINFO[i].HealMapName);
                         RC[i].transform.SetParent(HealMapMng.Instance.gameObject.transform);
                         RC[i].GetComponent<RaccoonController>().GetRCState = RaccoonController.State.Healing;
